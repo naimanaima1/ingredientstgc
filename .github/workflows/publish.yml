@@ -21,7 +21,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # The sheet links are repository secrets, so they never appear in this public repo.
       - name: Download the sheets
@@ -30,6 +30,7 @@ jobs:
           CATALOG_CSV_URL: ${{ secrets.CATALOG_CSV_URL }}
         run: |
           set -euo pipefail
+          mkdir -p data
           fetch () {
             if [ -z "$2" ]; then echo "::error::Secret for $1 is missing (Settings > Secrets and variables > Actions)"; exit 1; fi
             curl -fsSL --retry 3 --retry-delay 5 -o "data/$1.csv" "$2"
