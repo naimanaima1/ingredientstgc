@@ -173,12 +173,12 @@ def shell(r, title, desc, body, path, current=''):
 <header class="site-header">
   <a href="{r}" class="wordmark" aria-label="The Good Coil Library home"><span class="brand-symbol" aria-hidden="true">◎</span> the<span class="brand-amp">good</span>coil<span class="wordmark-sub">Library</span></a>
   <nav class="nav" aria-label="Main">
-    <a class="search" href="{r}#find">{ICON} Look up an ingredient</a>
-    <a class="search-sm" href="{r}#find">{ICON} Search</a>
+    <a class="search" href="{r}ingredients/#find">{ICON} Look up an ingredient</a>
+    <a class="search-sm" href="{r}ingredients/#find">{ICON} Search</a>
     <a href="{r}plans/" class="hide-sm"{cur('plans')}>Hair plans</a>
     <a href="{r}products/" class="hide-sm"{cur('products')}>Products</a>
     <a href="{r}properties/" class="hide-sm hide-md"{cur('props')}>By property</a>
-    <a href="{r}" class="hide-sm hide-md"{cur('home')}>All ingredients</a>
+    <a href="{r}ingredients/" class="hide-sm hide-md"{cur('ingredients')}>All ingredients</a>
   </nav>
 </header>
 <main id="main" class="wrap">
@@ -186,7 +186,7 @@ def shell(r, title, desc, body, path, current=''):
 </main>
 <footer class="site-footer">
   <div><a href="{r}" class="wordmark"><span class="brand-symbol" aria-hidden="true">◎</span> the<span class="brand-amp">good</span>coil</a><p>Good knowledge. Happy hair.<br>A journey that's yours.</p></div>
-  <nav class="footer-links" aria-label="Footer"><a href="{r}">All ingredients</a><a href="{r}plans/">Hair plans</a><a href="{r}products/">Products</a><a href="{r}properties/">By property</a><a href="{r}about/">How we write</a><a href="{r}about/#affiliate">Affiliate disclosure</a><a href="https://thegoodcoil.com">The Good Coil</a><a href="https://itsjara.com">JARA hair journal</a></nav>
+  <nav class="footer-links" aria-label="Footer"><a href="{r}ingredients/">All ingredients</a><a href="{r}plans/">Hair plans</a><a href="{r}products/">Products</a><a href="{r}properties/">By property</a><a href="{r}about/">How we write</a><a href="{r}about/#affiliate">Affiliate disclosure</a><a href="https://thegoodcoil.com">The Good Coil</a><a href="https://itsjara.com">JARA hair journal</a></nav>
   <div class="footer-bottom"><span>© {datetime.date.today().year} The Good Coil</span><span>Descriptions, not verdicts: every head of hair is different.</span><span>Educational guidance, not medical advice.</span></div>
 </footer>
 </body>
@@ -300,7 +300,7 @@ def ingredient_page(g):
         '<a href="#hair">Hair types</a>' if hair else '',
         f'<a href="#across">Found in {len(hits)} product{"s" if len(hits) != 1 else ""}</a>' if hits else '',
     ])
-    body = f'''  <a class="crumb" href="{r}">← All ingredients</a>
+    body = f'''  <a class="crumb" href="{r}ingredients/">← All ingredients</a>
   <section class="first">
     <div class="name">
       <span class="eyebrow"><span class="little-dot"></span>{e(g.get('category', ''))}</span>
@@ -324,11 +324,11 @@ def index_page(counts):
     chips = '<button class="chip" type="button" aria-pressed="true" data-tag="">All</button>' + ''.join(
         f'<button class="chip" type="button" aria-pressed="false" data-tag="{e(t)}">{e(t)}</button>' for t in tags)
     items = ''.join(
-        f'''<li data-tags="{e('|'.join(i['_tags']))}" data-q="{e(norm(' '.join([i['inci_name'], i.get('common_name', '')] + i['_aliases'])))}"><a href="{i['_slug']}/"><b>{e(i['_title'])}</b><span>{e(', '.join(i['_tags']) or i.get('category', ''))}</span>{f'<i>{counts[i["id"]]} label{"s" if counts[i["id"]] != 1 else ""}</i>' if counts[i['id']] else ''}</a></li>'''
+        f'''<li data-tags="{e('|'.join(i['_tags']))}" data-q="{e(norm(' '.join([i['inci_name'], i.get('common_name', '')] + i['_aliases'])))}"><a href="../{i['_slug']}/"><b>{e(i['_title'])}</b><span>{e(', '.join(i['_tags']) or i.get('category', ''))}</span>{f'<i>{counts[i["id"]]} label{"s" if counts[i["id"]] != 1 else ""}</i>' if counts[i['id']] else ''}</a></li>'''
         for i in sorted(ing, key=lambda i: i['_title'].lower()))
     body = f'''  <section class="home-head">
-    <div><span class="eyebrow"><span class="little-dot"></span>Ingredient library</span>
-    <h1>What's on <em>the label,</em> explained</h1></div>
+    <div><a class="crumb" href="../">← Home</a><span class="eyebrow" style="margin-top:22px"><span class="little-dot"></span>Ingredient library</span>
+    <h1>All ingredients</h1></div>
     <p>Every ingredient described by what it is and what it does, with notes for different hair. No scores and no verdicts: you decide what works for you.</p>
   </section>
   <section class="finder" id="find" aria-label="Find an ingredient">
@@ -346,13 +346,13 @@ function run(){{const v=n(q.value);let k=0;list.forEach(li=>{{const ok=(!v||li.d
 q.addEventListener('input',run);chips.forEach(c=>c.addEventListener('click',()=>{{tag=c.dataset.tag;chips.forEach(x=>x.setAttribute('aria-pressed',x===c));run()}}));
 if(location.hash==='#find')q.focus();}})();
 </script>'''
-    write('index.html', shell('', 'The Good Coil Library: hair-care ingredients, explained', 'A library of hair-care ingredients, each described by what it is and what it does, with notes for different hair. No scores, no verdicts.', body, '', 'home'))
+    write('ingredients/index.html', shell('../', 'All ingredients · The Good Coil Library', 'A library of hair-care ingredients, each described by what it is and what it does, with notes for different hair. No scores, no verdicts.', body, 'ingredients/', 'ingredients'))
 
 # ---------- properties ----------
 def property_pages():
     tags = sorted({t for i in ing for t in i['_tags']}, key=lambda t: (-sum(t in i['_tags'] for i in ing), t))
     rows = ''.join(f'''<li><a href="{prop_slug(t)}/"><h2>{e(t)}</h2><p>{e(PROPS.get(t, ''))}</p><span>{sum(t in i['_tags'] for i in ing)}</span></a></li>''' for t in tags)
-    body = f'''  <a class="crumb" href="../">← All ingredients</a>
+    body = f'''  <a class="crumb" href="../ingredients/">← All ingredients</a>
   <section class="page-head"><span class="eyebrow"><span class="little-dot"></span>By property</span><h1>What ingredients do</h1>
   <p>Properties group ingredients by the job they do in a product. Many ingredients do more than one job, so they show up in more than one group.</p></section>
   <ul class="prop-list">{rows}</ul>'''
@@ -369,7 +369,7 @@ def property_pages():
 
 # ---------- about ----------
 def about_page():
-    body = f'''  <a class="crumb" href="../">← All ingredients</a>
+    body = f'''  <a class="crumb" href="../">← Home</a>
   <section class="page-head"><span class="eyebrow"><span class="little-dot"></span>About</span><h1>How we write these</h1>
   <p>This library explains what's on a hair-care label. It is part of The Good Coil and is updated as our research grows.</p></section>
   <div class="prose">
@@ -408,7 +408,7 @@ def extras(tags, plan_urls=()):
     write('CNAME', 'library.thegoodcoil.com\n')
     write('.nojekyll', '')
     write('robots.txt', f'User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n')
-    urls = [''] + [f"{i['_slug']}/" for i in ing] + ['properties/'] + [f'properties/{prop_slug(t)}/' for t in tags] + ['about/', 'plans/', 'products/'] + [f"products/{p['_slug']}/" for p in products] + list(plan_urls)
+    urls = [''] + [f"{i['_slug']}/" for i in ing] + ['properties/'] + [f'properties/{prop_slug(t)}/' for t in tags] + ['ingredients/', 'about/', 'plans/', 'products/'] + [f"products/{p['_slug']}/" for p in products] + list(plan_urls)
     write('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
           ''.join(f'  <url><loc>{SITE}/{u}</loc></url>\n' for u in urls) + '</urlset>\n')
     write('favicon.svg', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#DCF473"/><circle cx="16" cy="16" r="10" fill="none" stroke="#432731" stroke-width="3"/><circle cx="16" cy="16" r="4" fill="#432731"/></svg>')
@@ -457,6 +457,8 @@ def main():
     plan_urls, plan_notes = plans.build()
     import products as PR
     PR.build()
+    import home
+    home.build()
     import programs_full  # TEST pages at /programs/ (noindex, kept out of the sitemap)
     programs_full.build()
     extras(tags, plan_urls)

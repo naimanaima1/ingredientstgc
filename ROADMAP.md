@@ -43,7 +43,8 @@ The real work is data entry: product ingredient lists (19 of 138 have one today)
 - [ ] Trims: the owner is considering 12-week trim options (standard trims start at 12 weeks). Decide whether programs offer a 12-week version with a trim step, or a trim note in maintenance. Affects the JARA enrollment (version name) and trim reminders.
 
 ## 5. Label decoder
-- [ ] On the library home page: paste a label, get every ingredient matched, grouped by property and explained. No verdicts.
+- [x] Nov 14: new homepage. Ink band with a working decoder (paste a label, every known ingredient linked and grouped into friendly groups: The base, Cleansers, Slip, Water binders, Softness, Strength and repair, Hold, pH and minerals, Scalp care, Keeps it safe, Scent, Helpers) and a guided walk-through of one real label; three doors below (Ingredients, Products, Hair plans). The full ingredient list moved to /ingredients/.
+- [ ] Later: a decoder on product pages for labels people paste; saving or sharing a decoded label.
 
 ## 6. JARA (after programs are settled, since they decide the database)
 Decided Nov 14: keep planning here and update JARA's roadmap once programs are final.
