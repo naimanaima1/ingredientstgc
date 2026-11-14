@@ -1,0 +1,58 @@
+name: Build and publish
+
+# Runs every night, on every push to main, and from the Actions tab ("Run workflow").
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 7 * * *'   # about 2:17am New York time
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # The sheet links are repository secrets, so they never appear in this public repo.
+      - name: Download the sheets
+        env:
+          INGREDIENTS_CSV_URL: ${{ secrets.INGREDIENTS_CSV_URL }}
+          CATALOG_CSV_URL: ${{ secrets.CATALOG_CSV_URL }}
+        run: |
+          set -euo pipefail
+          fetch () {
+            if [ -z "$2" ]; then echo "::error::Secret for $1 is missing (Settings > Secrets and variables > Actions)"; exit 1; fi
+            curl -fsSL --retry 3 --retry-delay 5 -o "data/$1.csv" "$2"
+            rows=$(($(wc -l < "data/$1.csv") - 1))
+            if [ "$rows" -lt 1 ]; then echo "::error::$1 came back empty; the live site was left as it was."; exit 1; fi
+            echo "$1: $rows rows"
+          }
+          fetch ingredients "$INGREDIENTS_CSV_URL"
+          fetch catalog "$CATALOG_CSV_URL"
+
+      - name: Build the site
+        run: python3 scripts/build.py
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
