@@ -95,7 +95,12 @@ def program_page(p, col, by_id):
         {f'<p class="pf-picks"><span class="pf-k">Examples from our catalog <i class="pf-draft">draft</i></span> {"; ".join(names)}</p>' if names else '<p class="pf-picks"><span class="pf-k">Examples from our catalog</span> none yet</p>'}</li>'''
     use = f'<ul class="pf-use">{use_rows}</ul><p class="pf-note">Steps are roles, not brands: any product that does the job works. Examples are listed for reference, not as paid placements.</p>'
 
-    cards = ''.join(f'''<li class="pf-card">{badge(k)}<h3>{e(n)}</h3><p>{e(t)}</p>{f'<a href="{r}{l}">More about it</a>' if l else ''}</li>''' for n, k, t, l in p['science'])
+    def card_link(n, l):
+        if l:
+            return l
+        i = B.lookup(n)
+        return f"{i['_slug']}/" if i else ''
+    cards = ''.join(f'''<li class="pf-card">{badge(k)}<h3>{e(n)}</h3><p>{e(t)}</p>{f'<a href="{r}{card_link(n, l)}">More about it</a>' if card_link(n, l) else ''}</li>''' for n, k, t, l in p['science'])
     legend = ''.join(f'<li>{badge(k)}<span>{e(d)}</span></li>' for k, _, d in col['evidence_labels'])
     science = f'<ul class="pf-cards">{cards}</ul><details class="pf-legend"><summary>What the evidence labels mean</summary><ul>{legend}</ul></details>'
 

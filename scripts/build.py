@@ -1,4 +1,4 @@
-"""Build ingredients.thegoodcoil.com from the sheet exports in data/.
+"""Build library.thegoodcoil.com from the sheet exports in data/.
 
     python3 scripts/build.py            -> writes the site to _site/
 
@@ -16,7 +16,7 @@ import csv, html, json, os, re, shutil, sys, datetime
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, 'data')
 OUT = os.path.join(ROOT, '_site')
-SITE = 'https://ingredients.thegoodcoil.com'
+SITE = 'https://library.thegoodcoil.com'
 e = html.escape
 
 # ---------- data ----------
@@ -81,12 +81,29 @@ for i in ing:
         if norm(n):
             keys.setdefault(norm(n), i)
 
+PREFIX = re.compile(r'^(organic|certified organic|deionized|distilled|purified|pure|raw|natural|unrefined)\s+', re.I)
+
 def lookup(t):
-    return keys.get(norm(t)) or keys.get(norm(re.sub(r'\(.*?\)', '', t)))
+    t = t.strip().strip('*').strip()
+    tries = [t, re.sub(r'\(.*?\)', '', t), re.sub(r'\s*\(.*?\)\s*', ' ', t)]
+    m = re.search(r'\((.*?)\)', t)
+    if m:
+        tries.append(m.group(1))
+    for x in list(tries):
+        if '/' in x:  # "Water/Aqua/Eau", "Persea Gratissima Oil / Avocado Oil"
+            tries += x.split('/')
+    for x in list(tries):
+        tries.append(PREFIX.sub('', x.strip()))
+    for x in tries:
+        hit = keys.get(norm(x))
+        if hit:
+            return hit
+    return None
 
 def split_label(L):
     L = re.sub(r'(?<![\w-])(\d),\s+(\d)-', r'\1,\2-', L)  # "1, 2-Hexanediol" typed with a space
-    items = [re.sub(r'\*.*$', '', t).strip().rstrip('.') for t in re.split(r',(?![^()]*\))(?!\d)', L)]
+    items = [re.sub(r'\*.*$', '', t).strip().rstrip('.') for t in re.split(r'[;,](?![^()]*\))(?!\d)', L)]
+    items = [re.sub(r'^(and|or)\s+', '', t, flags=re.I) for t in items]
     return [t for t in items if t]
 
 def product_full_name(p):
@@ -126,7 +143,7 @@ PROPS = {
 prop_slug = lambda t: slugify(t)
 
 # Wording that can read as a drug or hair-growth claim in the US. Reported at build time, never changed.
-CLAIM_WORDS = re.compile(r'\b(grow(th|s)?|follicle\w*|shedding|density|thicker|stimulat\w*|regrow\w*|hair loss|1,?000x)\b', re.I)
+CLAIM_WORDS = re.compile(r'\b(hair[- ]growth|healthier hair growth|grows? hair|follicle\w*|shedding|density|thicker|stimulat\w*|regrow\w*|hair loss|1,?000x)', re.I)
 
 # ---------- page parts ----------
 def ordinal(n):
@@ -154,7 +171,7 @@ def shell(r, title, desc, body, path, current=''):
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
-  <a href="{r}" class="wordmark" aria-label="The Good Coil Ingredients home"><span class="brand-symbol" aria-hidden="true">◎</span> the<span class="brand-amp">good</span>coil<span class="wordmark-sub">Ingredients</span></a>
+  <a href="{r}" class="wordmark" aria-label="The Good Coil Library home"><span class="brand-symbol" aria-hidden="true">◎</span> the<span class="brand-amp">good</span>coil<span class="wordmark-sub">Library</span></a>
   <nav class="nav" aria-label="Main">
     <a class="search" href="{r}#find">{ICON} Look up an ingredient</a>
     <a class="search-sm" href="{r}#find">{ICON} Search</a>
@@ -298,7 +315,7 @@ def ingredient_page(g):
   <p class="source"><span>Source: {e(g['_source'])} · Ref {e(g['id'])}</span><a href="{r}data/ingredients.json">Get this as data (JSON)</a><a href="{r}about/">How we write these</a></p>
 <script>if(matchMedia('(max-width:760px)').matches)document.querySelectorAll('.inci').forEach(p=>{{const b=p.querySelector('.more-btn');if(!b)return;p.classList.add('clamped');b.hidden=false;b.onclick=()=>{{p.classList.remove('clamped');b.remove()}}}})</script>'''
     desc = f"{title} ({g['inci_name']}) in hair products: what it is, what it does, how it's written on labels, and notes for different hair."
-    write(f"{g['_slug']}/index.html", shell(r, f"{title} in hair products: what it is and what it does · The Good Coil Ingredients", desc, body, f"{g['_slug']}/"))
+    write(f"{g['_slug']}/index.html", shell(r, f"{title} in hair products: what it is and what it does · The Good Coil Library", desc, body, f"{g['_slug']}/"))
     return len(hits)
 
 # ---------- index ----------
@@ -329,7 +346,7 @@ function run(){{const v=n(q.value);let k=0;list.forEach(li=>{{const ok=(!v||li.d
 q.addEventListener('input',run);chips.forEach(c=>c.addEventListener('click',()=>{{tag=c.dataset.tag;chips.forEach(x=>x.setAttribute('aria-pressed',x===c));run()}}));
 if(location.hash==='#find')q.focus();}})();
 </script>'''
-    write('index.html', shell('', 'The Good Coil Ingredients: hair-care ingredients, explained', 'A library of hair-care ingredients, each described by what it is and what it does, with notes for different hair. No scores, no verdicts.', body, '', 'home'))
+    write('index.html', shell('', 'The Good Coil Library: hair-care ingredients, explained', 'A library of hair-care ingredients, each described by what it is and what it does, with notes for different hair. No scores, no verdicts.', body, '', 'home'))
 
 # ---------- properties ----------
 def property_pages():
@@ -339,7 +356,7 @@ def property_pages():
   <section class="page-head"><span class="eyebrow"><span class="little-dot"></span>By property</span><h1>What ingredients do</h1>
   <p>Properties group ingredients by the job they do in a product. Many ingredients do more than one job, so they show up in more than one group.</p></section>
   <ul class="prop-list">{rows}</ul>'''
-    write('properties/index.html', shell('../', 'Ingredients by property · The Good Coil Ingredients', 'Hair-care ingredients grouped by what they do: humectants, oils and butters, proteins, film-formers and more.', body, 'properties/', 'props'))
+    write('properties/index.html', shell('../', 'Ingredients by property · The Good Coil Library', 'Hair-care ingredients grouped by what they do: humectants, oils and butters, proteins, film-formers and more.', body, 'properties/', 'props'))
     for t in tags:
         members = sorted([i for i in ing if t in i['_tags']], key=lambda i: i['_title'].lower())
         items = ''.join(f'''<li><a href="../../{i['_slug']}/"><b>{e(i['_title'])}</b><span>{e(i.get('category', ''))}</span></a></li>''' for i in members)
@@ -347,7 +364,7 @@ def property_pages():
   <section class="page-head"><span class="eyebrow"><span class="little-dot"></span>Property</span><h1>{e(t.capitalize())}</h1><p>{e(PROPS.get(t, ''))}</p></section>
   <p class="count-line">{len(members)} ingredients</p>
   <ul class="ing-list">{items}</ul>'''
-        write(f'properties/{prop_slug(t)}/index.html', shell('../../', f'{t.capitalize()} ingredients in hair care · The Good Coil Ingredients', PROPS.get(t, f'{t} ingredients'), body, f'properties/{prop_slug(t)}/', 'props'))
+        write(f'properties/{prop_slug(t)}/index.html', shell('../../', f'{t.capitalize()} ingredients in hair care · The Good Coil Library', PROPS.get(t, f'{t} ingredients'), body, f'properties/{prop_slug(t)}/', 'props'))
     return tags
 
 # ---------- about ----------
@@ -369,7 +386,7 @@ def about_page():
     <h2>Use the data</h2>
     <p>The whole library is available as <a href="../data/ingredients.json">ingredients.json</a>, rebuilt every night from our working sheet. Last built {datetime.date.today().strftime('%B %-d, %Y')}.</p>
   </div>'''
-    write('about/index.html', shell('../', 'How we write these · The Good Coil Ingredients', 'How The Good Coil describes hair-care ingredients: descriptions, not verdicts; sources; affiliate disclosure.', body, 'about/'))
+    write('about/index.html', shell('../', 'How we write these · The Good Coil Library', 'How The Good Coil describes hair-care ingredients: descriptions, not verdicts; sources; affiliate disclosure.', body, 'about/'))
 
 # ---------- data + extras ----------
 def data_files(counts):
@@ -388,7 +405,7 @@ def data_files(counts):
     write('data/ingredients.json', json.dumps(out, ensure_ascii=False, indent=1))
 
 def extras(tags, plan_urls=()):
-    write('CNAME', 'ingredients.thegoodcoil.com\n')
+    write('CNAME', 'library.thegoodcoil.com\n')
     write('.nojekyll', '')
     write('robots.txt', f'User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n')
     urls = [''] + [f"{i['_slug']}/" for i in ing] + ['properties/'] + [f'properties/{prop_slug(t)}/' for t in tags] + ['about/', 'plans/', 'products/'] + [f"products/{p['_slug']}/" for p in products] + list(plan_urls)
@@ -397,7 +414,7 @@ def extras(tags, plan_urls=()):
     write('favicon.svg', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#DCF473"/><circle cx="16" cy="16" r="10" fill="none" stroke="#432731" stroke-width="3"/><circle cx="16" cy="16" r="4" fill="#432731"/></svg>')
     body = '''  <section class="page-head"><span class="eyebrow"><span class="little-dot"></span>Not found</span><h1>That page isn't here</h1>
   <p>The ingredient may have a different name, or it isn't in the library yet. <a class="crumb" href="/">Search all ingredients</a></p></section>'''
-    write('404.html', shell('/', 'Page not found · The Good Coil Ingredients', 'Page not found.', body, '404.html'))
+    write('404.html', shell('/', 'Page not found · The Good Coil Library', 'Page not found.', body, '404.html'))
 
 def checks(counts):
     notes = []

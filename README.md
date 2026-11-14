@@ -1,6 +1,6 @@
-# The Good Coil Ingredients
+# The Good Coil Library
 
-Source for **ingredients.thegoodcoil.com**: a library of hair-care ingredients, each described by what it is and what it does. It's part of [The Good Coil](https://thegoodcoil.com) and feeds [JARA](https://itsjara.com).
+Source for **library.thegoodcoil.com**: a library of hair-care ingredients, each described by what it is and what it does. It's part of [The Good Coil](https://thegoodcoil.com) and feeds [JARA](https://itsjara.com).
 
 ## How it works
 
@@ -14,7 +14,7 @@ GitHub Action (.github/workflows/publish.yml): nightly, on every push, or "Run w
   2. python3 scripts/build.py → _site/       (standard library only, no installs)
   3. publishes _site/ to GitHub Pages
                           ▼
-ingredients.thegoodcoil.com
+library.thegoodcoil.com
   /                         search + list of every ingredient
   /glycerin/                one page per ingredient
   /properties/, /properties/humectant/

@@ -1,4 +1,4 @@
-# Roadmap: The Good Coil library (ingredients.thegoodcoil.com)
+# Roadmap: The Good Coil Library (library.thegoodcoil.com)
 
 Owner's Google Sheets are the master copies. The site rebuilds nightly (or via Actions → Run workflow).
 JARA work is listed at the end and waits until the programs are settled.
@@ -11,7 +11,7 @@ The real work is data entry: product ingredient lists (19 of 138 have one today)
 ## 1. Now (small, before sharing any links)
 - [ ] **Names people actually use.** Add a `display_name` column to the ingredient sheet (page title, list name, address), e.g. Glycerin, Panthenol, Biotin, Mineral Oil, Aloe Vera, Mango Extract. The current `common_name` column has descriptions mixed in ("Vegetable Glycerin", "Pro-Vitamin B5", "Vitamin B7", "Organic Mango Fruit Extract"). Fallback when blank: common name without the bracket.
 - [ ] **Freeze addresses.** Add a `slug` column (e.g. `glycerin`) at the same time, so renaming never moves a page.
-- [ ] **Decide the address:** ingredients.thegoodcoil.com vs library.thegoodcoil.com. Then add the Hostinger DNS record and the GitHub custom domain.
+- [x] **Address decided Nov 14: library.thegoodcoil.com.** Owner: Hostinger CNAME `library` → naimanaima1.github.io; GitHub Settings → Pages custom domain library.thegoodcoil.com; Enforce HTTPS.
 - [x] **"Found in these products"** on ingredient pages, each product linked to its product page (Nov 14).
 - [x] `display_name` and `slug` columns are read by the build (Nov 14); suggestions sent as display-names-suggested.csv. Owner: paste them into the sheet.
 
