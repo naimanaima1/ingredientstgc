@@ -35,6 +35,8 @@ Optional, understood when present:
 - `slug`: freezes the page address (e.g. `glycerin`). Without it the address comes from the page title, so renaming an ingredient would move its page.
 - `source`: e.g. `own research` or `Open Beauty Facts` (shown on the page; Open Beauty Facts data is share-alike).
 - `hair_type_notes`: used instead of `hair_type_porosity_fit` if you rename that column.
+- `display_name`: the name used for the page title, lists and the address (e.g. Glycerin).
+- `featured`: `yes` on up to six rows picks the ingredients shown on the homepage's Ingredients door. Without it, the door shows one standout per job (strength, water binders, slip, softness, hold), skipping basics and rows with claim-like wording.
 
 **Programs Overview** (`data/programs.csv`) and **Program steps** (`data/program-steps.csv`): the hair plans at `/plans/` and `data/plans.json`. Until the repository secrets `PROGRAMS_CSV_URL` and `PROGRAM_STEPS_CSV_URL` exist, the copies saved in `data/` are used. Program steps columns: `program_id, order, step, when, weeks, wash_day_role, property, condition, product_ids, notes`, where `when` is `every_wash`, `every_7_days` (any number), `daily`, `nightly` or `weeks` (with `weeks` like `3,6`; `0` means before you start). Optional overview columns: `slug`, `version`, `image` (a file in `src/img/`).
 

@@ -78,7 +78,28 @@ def build():
     for _, its in B.labels:
         for i in {id(x): x for x in (B.lookup(t) for t in its) if x}.values():
             freq[i['id']] = (freq.get(i['id'], (i, 0))[0], freq.get(i['id'], (i, 0))[1] + 1)
-    common = [i for i, n in sorted(freq.values(), key=lambda v: -v[1])[:6]]
+    ranked = [i for i, n in sorted(freq.values(), key=lambda v: (-v[1], v[0]['_title']))]
+    BASIC = {'base', 'safe', 'scent', 'help', 'ph', 'clean'}
+    # The basics: the everyday ingredients on almost every label.
+    basics = [i for i in ranked if set(groups_of(i)) & BASIC][:8]
+    # Featured: the owner's picks (a "featured" column set to yes), otherwise one standout per job.
+    featured = [i for i in B.ing if (B.col(i, 'featured') or '').strip().lower() in ('yes', 'y', 'true', 'x', '1')][:6]
+    if not featured:
+        seen = set()
+        everyday = {'Glycerin', 'Cetearyl Alcohol', 'Cetyl Alcohol', 'Water', 'Aqua'}
+        def claimy(i):
+            return B.CLAIM_WORDS.search(' '.join(i.get(c, '') for c in ('what_it_does', 'buildup_sensitivity_notes', 'category')))
+        for k in ['strength', 'water', 'slip', 'soft', 'hold', 'scalp', 'strength', 'water']:
+            if len(featured) >= 6:
+                break
+            pool = [i for i in ranked if k in groups_of(i) and not set(groups_of(i)) & BASIC and i['id'] not in seen and i['_title'] not in everyday]
+            pool += [i for i in B.ing if k in groups_of(i) and not set(groups_of(i)) & BASIC and i['id'] not in seen and i['_title'] not in everyday and i not in pool]
+            pool = [i for i in pool if not claimy(i)]
+            if pool:
+                featured.append(pool[0]); seen.add(pool[0]['id'])
+    def job(i):
+        g = [x for x in groups_of(i) if x not in BASIC]
+        return GNAME[g[0]] if g else ''
     labelled = [pp for pp, _ in B.labels][:4]
     n_products = len([x for x in B.products if (x.get('kind') or 'product') == 'product'])
     try:
@@ -110,14 +131,16 @@ def build():
 </section>
 
 <div class="wrap home-rest"><section class="doors2" aria-label="Browse the library">
-  <a class="door" href="ingredients/"><span class="door-n">{len(B.ing)}</span><h2>Ingredients</h2><p>Every ingredient by what it is and what it does. Most common on the labels we've read:</p>
-    <ul>{''.join(f'<li>{e(i["_title"])}</li>' for i in common)}</ul><span class="door-go">All ingredients →</span></a>
+  <a class="door" href="ingredients/"><span class="door-n">{len(B.ing)}</span><h2>Ingredients</h2><p>Every ingredient by what it is and what it does, from proteins to plant gels.</p>
+    <ul class="door-feat">{''.join(f'<li><b>{e(i["_title"])}</b><span>{e(job(i))}</span></li>' for i in featured)}</ul><span class="door-go">All ingredients →</span></a>
   <a class="door" href="products/"><span class="door-n">{n_products}</span><h2>Products</h2><p>{len(B.labels)} labels read so far, each decoded ingredient by ingredient.</p>
     <ul>{''.join(f'<li>{e(B.product_full_name(x))}</li>' for x in labelled)}</ul><span class="door-go">All products →</span></a>
   <a class="door door-photo" href="plans/"><span class="door-n">8</span><h2>Week hair plans</h2><p>What to do, how often, and how to track it.</p>
     <img src="assets/img/ends.jpg" alt="A woman with long dark curls holds the ends of a curl between her fingers." width="799" height="1344" loading="lazy">
     <span class="door-go">See the plans →</span></a>
-</section></div>
+</section>
+<section class="basics" aria-labelledby="basics-h"><h2 id="basics-h">On almost every label</h2><p>The everyday ingredients: the base, preservatives and scent.</p>
+  <ul>{''.join(f'<li><a href="{i["_slug"]}/">{e(i["_title"])}</a></li>' for i in basics)}</ul></section></div>
 <script src="assets/library.js" defer></script>'''
     html = B.shell('', 'The Good Coil Library: read any hair-care label', 'Paste a hair-care ingredient list and see every ingredient explained by what it does. Ingredients, products and hair plans from The Good Coil. No scores, no verdicts.', body, '', 'home')
     html = html.replace('<main id="main" class="wrap">', '<main id="main" class="home">', 1)
