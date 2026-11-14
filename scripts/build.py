@@ -51,6 +51,8 @@ cat = _b
 for i in ing:
     i['_short'] = re.sub(r'\s*\(.*?\)', '', i.get('common_name') or i['inci_name']).strip()
     i['_title'] = i['_short'] if len(i['inci_name']) > 28 else i['inci_name']
+    if col(i, 'display_name'):  # the name people actually use, set in the sheet
+        i['_title'] = i['_short'] = col(i, 'display_name')
     # A slug column in the sheet freezes the address; otherwise it comes from the page title.
     i['_slug'] = col(i, 'slug') or slugify(i['_title'])
     i['_tags'] = [t.strip() for t in (i.get('property_tag') or '').split(',') if t.strip() and t.strip().lower() != 'none']
@@ -59,7 +61,7 @@ for i in ing:
 
 dupes = [i['_short'] for i in ing]
 for i in ing:
-    if dupes.count(i['_short']) > 1 and len(i['inci_name']) > 28:
+    if dupes.count(i['_short']) > 1 and len(i['inci_name']) > 28 and not col(i, 'display_name'):
         i['_title'] = i['_short'] = (i.get('common_name') or i['inci_name']).strip()
         i['_slug'] = col(i, 'slug') or slugify(i['_title'])
 
@@ -86,6 +88,19 @@ def split_label(L):
     L = re.sub(r'(?<![\w-])(\d),\s+(\d)-', r'\1,\2-', L)  # "1, 2-Hexanediol" typed with a space
     items = [re.sub(r'\*.*$', '', t).strip().rstrip('.') for t in re.split(r',(?![^()]*\))(?!\d)', L)]
     return [t for t in items if t]
+
+def product_full_name(p):
+    b, n = (p.get('brand') or '').strip(), (p.get('name') or '').strip()
+    return n if n.lower().startswith(b.lower()) else f'{b} {n}'.strip()
+
+products = [p for p in cat if p.get('id') and p.get('name') and (p.get('kind') or 'product') in ('product', 'tool')]
+_pseen = {}
+for p in products:
+    sl = col(p, 'slug') or slugify(product_full_name(p).replace("'", '').replace('’', ''))
+    if sl in _pseen:
+        sl += '-' + p['id'].lower()
+    _pseen[sl] = p
+    p['_slug'] = sl
 
 labels = [(p, split_label(p['full ingredient list'])) for p in cat
           if p.get('full ingredient list') and (p.get('kind') or 'product') == 'product']
@@ -144,6 +159,7 @@ def shell(r, title, desc, body, path, current=''):
     <a class="search" href="{r}#find">{ICON} Look up an ingredient</a>
     <a class="search-sm" href="{r}#find">{ICON} Search</a>
     <a href="{r}plans/" class="hide-sm"{cur('plans')}>Hair plans</a>
+    <a href="{r}products/" class="hide-sm"{cur('products')}>Products</a>
     <a href="{r}properties/" class="hide-sm hide-md"{cur('props')}>By property</a>
     <a href="{r}" class="hide-sm hide-md"{cur('home')}>All ingredients</a>
   </nav>
@@ -153,7 +169,7 @@ def shell(r, title, desc, body, path, current=''):
 </main>
 <footer class="site-footer">
   <div><a href="{r}" class="wordmark"><span class="brand-symbol" aria-hidden="true">◎</span> the<span class="brand-amp">good</span>coil</a><p>Good knowledge. Happy hair.<br>A journey that's yours.</p></div>
-  <nav class="footer-links" aria-label="Footer"><a href="{r}">All ingredients</a><a href="{r}plans/">Hair plans</a><a href="{r}properties/">By property</a><a href="{r}about/">How we write</a><a href="{r}about/#affiliate">Affiliate disclosure</a><a href="https://thegoodcoil.com">The Good Coil</a><a href="https://itsjara.com">JARA hair journal</a></nav>
+  <nav class="footer-links" aria-label="Footer"><a href="{r}">All ingredients</a><a href="{r}plans/">Hair plans</a><a href="{r}products/">Products</a><a href="{r}properties/">By property</a><a href="{r}about/">How we write</a><a href="{r}about/#affiliate">Affiliate disclosure</a><a href="https://thegoodcoil.com">The Good Coil</a><a href="https://itsjara.com">JARA hair journal</a></nav>
   <div class="footer-bottom"><span>© {datetime.date.today().year} The Good Coil</span><span>Descriptions, not verdicts: every head of hair is different.</span><span>Educational guidance, not medical advice.</span></div>
 </footer>
 </body>
@@ -237,10 +253,10 @@ def ingredient_page(g):
                            if s != 'treatment' or any(h[0].get('step') == s for h in hits))
         top = sum(1 for h in hits if h[2] <= 3)
         heading = f"On {len(hits)} of the {len(labels)} labels we've read" + (', usually near the top' if top * 2 >= len(hits) and len(hits) > 1 else '')
-        rows = ''.join(f'''<li id="p{k}"><span class="pos">{n}<small>of {len(items)}</small></span><div><span class="step">{e(STEP.get(p.get('step', ''), p.get('step', '').capitalize()))}</span><b>{e(p.get('brand', '').strip())}</b> {e(p.get('name', '').strip())}</div></li>''' for k, (p, items, n) in enumerate(hits))
+        rows = ''.join(f'''<li id="p{k}"><span class="pos">{n}<small>of {len(items)}</small></span><div><span class="step">{e(STEP.get(p.get('step', ''), p.get('step', '').capitalize()))}</span><a href="{r}products/{p.get('_slug', '')}/"><b>{e(p.get('brand', '').strip())}</b> {e(p.get('name', '').strip())}</a></div></li>''' for k, (p, items, n) in enumerate(hits))
         sections.append(f'''<section class="across" id="across">
     <div class="intro">
-      <span class="eyebrow">Across labels</span>
+      <span class="eyebrow">Found in these products</span>
       <h2>{heading}</h2>
       <p>Labels list ingredients from most to least, down to about 1%. Below that, the order is free.</p>
       <p class="steps">{steps}</p>
@@ -265,7 +281,7 @@ def ingredient_page(g):
     links = ''.join([
         '<a href="#good">Good to know</a>' if g.get('buildup_sensitivity_notes') else '',
         '<a href="#hair">Hair types</a>' if hair else '',
-        f'<a href="#across">On {len(hits)} of {len(labels)} labels we\'ve read</a>' if hits else '',
+        f'<a href="#across">Found in {len(hits)} product{"s" if len(hits) != 1 else ""}</a>' if hits else '',
     ])
     body = f'''  <a class="crumb" href="{r}">← All ingredients</a>
   <section class="first">
@@ -375,7 +391,7 @@ def extras(tags, plan_urls=()):
     write('CNAME', 'ingredients.thegoodcoil.com\n')
     write('.nojekyll', '')
     write('robots.txt', f'User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n')
-    urls = [''] + [f"{i['_slug']}/" for i in ing] + ['properties/'] + [f'properties/{prop_slug(t)}/' for t in tags] + ['about/', 'plans/'] + list(plan_urls)
+    urls = [''] + [f"{i['_slug']}/" for i in ing] + ['properties/'] + [f'properties/{prop_slug(t)}/' for t in tags] + ['about/', 'plans/', 'products/'] + [f"products/{p['_slug']}/" for p in products] + list(plan_urls)
     write('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
           ''.join(f'  <url><loc>{SITE}/{u}</loc></url>\n' for u in urls) + '</urlset>\n')
     write('favicon.svg', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#DCF473"/><circle cx="16" cy="16" r="10" fill="none" stroke="#432731" stroke-width="3"/><circle cx="16" cy="16" r="4" fill="#432731"/></svg>')
@@ -422,6 +438,8 @@ def main():
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     import plans
     plan_urls, plan_notes = plans.build()
+    import products as PR
+    PR.build()
     import programs_full  # TEST pages at /programs/ (noindex, kept out of the sitemap)
     programs_full.build()
     extras(tags, plan_urls)

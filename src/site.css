@@ -272,3 +272,23 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cobalt);outline-off
 .pf-paths p{font-size:14px;line-height:1.6;margin-top:6px}
 @media(max-width:760px){.pf-legend li,.pf-legend-list li{grid-template-columns:1fr;gap:4px}.pf-steps li{grid-template-columns:40px minmax(0,1fr)}.pf-steps span{font-size:26px}}
 .legend{flex-wrap:wrap;gap:8px 22px}
+
+/* products */
+.prod-h1{font-size:clamp(40px,5vw,72px)!important;line-height:1.02!important}
+.label-product{transform:rotate(-.6deg)}
+.label-product .label-top{padding-right:0}
+.groups{list-style:none;padding:0;margin:0}
+.groups li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;align-items:baseline;padding:14px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.6}
+.groups li:last-child{border-bottom:1px solid var(--line)}
+.groups .tag{justify-self:start}
+.groups span a{font-weight:600;text-decoration:underline dotted 1.5px;text-underline-offset:3px}
+.check{display:inline-flex!important;gap:10px;align-items:center;font-size:14px!important;font-weight:600!important;min-height:32px}
+.check input{width:18px;height:18px;accent-color:var(--cobalt)}
+.ing-list .nolink{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:16px 0}
+.ing-list .nolink b{font-size:18px;letter-spacing:-.02em}
+.labels a{color:inherit}
+.labels a:hover b{color:var(--cobalt)}
+@media(max-width:760px){.groups li{grid-template-columns:1fr;gap:6px}}
+.nav a{white-space:nowrap}
+.finder input:focus-visible{outline:3px solid var(--cobalt);outline-offset:4px}
+@media(max-width:980px){.search{min-width:0}.nav{gap:18px}}
