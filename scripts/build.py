@@ -422,6 +422,8 @@ def main():
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     import plans
     plan_urls, plan_notes = plans.build()
+    import programs_full  # TEST pages at /programs/ (noindex, kept out of the sitemap)
+    programs_full.build()
     extras(tags, plan_urls)
     checks(counts)
     text = '### Hair plans\n' + (f'{len(plan_urls)} plans built.\n' + '\n'.join(plan_notes) if plan_urls else 'No programs found.') + '\n'

@@ -53,3 +53,7 @@ cd _site && python3 -m http.server 8000   # open http://localhost:8000
 ## Look and feel
 
 Styles are in `src/site.css` and follow The Good Coil: paper `#F8F7F2`, ink `#432731`, cobalt `#2548D7`, citrus `#DCF473`, blue mist `#DCE6F0`; Manrope with Instrument Serif italic. Page templates live in `scripts/build.py`.
+
+## Test: full programs at /programs/
+
+`content/programs-full.json` holds the full Signature Care Programs (Intensive Care Collection), transcribed from the owner's original document. `scripts/programs_full.py` builds `/programs/` and `/data/programs-full.json`. These pages carry `noindex`, aren't in the menu or the sitemap, and don't touch `/plans/` or `data/plans.json`. Edit the JSON file to change the content; product examples use catalog ids (e.g. `TGC-063`).

@@ -1,0 +1,1132 @@
+{
+ "collection": {
+  "name": "Intensive Care Collection",
+  "edition": "Founding edition · three 8-week programs",
+  "philosophy": "Growth support + hair-fiber protection + consistent tracking = a more intentional hair-care strategy.",
+  "intro": [
+   "Each program has a defined treatment cadence. You can personalize your schedule and products, but The Good Coil provides the recommended starting protocol rather than leaving you to figure everything out yourself.",
+   "A scientific distinction runs through all three programs: cosmetic hair-fiber care can improve manageability and reduce breakage, while actual follicular growth and medical hair loss require a different level of evidence and sometimes clinical treatment."
+  ],
+  "standards": [
+   [
+    "Program length",
+    "8 weeks"
+   ],
+   [
+    "Starting assessment",
+    "Before first treatment"
+   ],
+   [
+    "Core cadence",
+    "Daily + weekly + monthly"
+   ],
+   [
+    "Product selection",
+    "Products mapped to specific functions"
+   ],
+   [
+    "Routine adherence",
+    "Logged in JARA"
+   ],
+   [
+    "Progress photos",
+    "Baseline, week 4 and week 8"
+   ],
+   [
+    "Program review",
+    "End of week 8"
+   ],
+   [
+    "Maintenance",
+    "Transition to ongoing care"
+   ]
+  ],
+  "timing_note": "Eight weeks is long enough to establish habits and observe changes in manageability, breakage and scalp comfort. It is not long enough to reliably judge substantial new hair growth. Scalp hair grows approximately half an inch per month on average, and hair-growth cycles operate over much longer periods.",
+  "evidence_labels": [
+   [
+    "established",
+    "Established practice",
+    "Supported by dermatology guidance or well-established cosmetic science."
+   ],
+   [
+    "promising",
+    "Promising",
+    "Some human or experimental research supports the ingredient or approach, but limitations remain."
+   ],
+   [
+    "emerging",
+    "Emerging",
+    "Interesting preliminary science; practical benefits are not yet established."
+   ],
+   [
+    "cosmetic",
+    "Cosmetic support",
+    "Helps the appearance, feel, manageability or physical protection of the hair shaft, not necessarily follicular growth."
+   ]
+  ],
+  "tracking": [
+   [
+    "Dryness",
+    "1–5",
+    "5 = driest"
+   ],
+   [
+    "Manageability",
+    "1–5",
+    "5 = most manageable"
+   ],
+   [
+    "Breakage",
+    "1–5",
+    "5 = most breakage"
+   ],
+   [
+    "Tangling",
+    "1–5",
+    "5 = most tangling"
+   ],
+   [
+    "Scalp comfort",
+    "1–5",
+    "5 = most comfortable"
+   ],
+   [
+    "Routine consistency",
+    "% of steps completed",
+    ""
+   ]
+  ],
+  "tracking_note": "Higher breakage and tangling scores mean more breakage and tangling; higher manageability and scalp comfort scores mean better. Score the same way every time so your changes are easy to compare.",
+  "photos": [
+   [
+    "Starting photos",
+    "Week 1"
+   ],
+   [
+    "Progress photos",
+    "Week 4"
+   ],
+   [
+    "Final photos",
+    "Week 8"
+   ]
+  ],
+  "graduation": [
+   [
+    "Continue into maintenance",
+    "Keep the core habits but reduce the intensity of the program where appropriate."
+   ],
+   [
+    "Repeat the program",
+    "Repeat another eight weeks with adjusted products, cadence or treatment focus."
+   ],
+   [
+    "Start another program",
+    "Move on to a program with a different focus, for example from the hairline program to Mega Growth & Retention."
+   ]
+  ],
+  "troubleshooting": [
+   [
+    "Dryness returns quickly",
+    "Review cleanser, conditioning and styling products"
+   ],
+   [
+    "Persistent tangling",
+    "Review slip, detangling technique and friction"
+   ],
+   [
+    "Excessive breakage",
+    "Review mechanical damage, heat and treatment history"
+   ],
+   [
+    "Hair feels coated",
+    "Review buildup and product layering"
+   ],
+   [
+    "Hair feels stiff after protein",
+    "Reduce or discontinue that protein treatment and reassess"
+   ],
+   [
+    "Hair feels limp",
+    "Review product accumulation and conditioning load"
+   ],
+   [
+    "Hair feels rough",
+    "Review surface conditioning, weathering and heat exposure"
+   ]
+  ],
+  "troubleshooting_note": "Do not diagnose protein deficiency from how hair feels. These are practical observations for adjusting cosmetic care.",
+  "responsible": [
+   [
+    "Green tea",
+    "Promising experimental research involving hair follicles"
+   ],
+   [
+    "Caffeine",
+    "Some human topical research, with limitations"
+   ],
+   [
+    "Ceramides",
+    "Lipid-related hair-fiber conditioning"
+   ],
+   [
+    "Protein",
+    "Can provide cosmetic conditioning and fiber-support benefits"
+   ],
+   [
+    "Bond treatments",
+    "Different technologies target different aspects of hair-fiber damage"
+   ],
+   [
+    "Oils",
+    "Can provide lubrication and emollient benefits; not all oils perform identically"
+   ],
+   [
+    "Scalp cleansing",
+    "Helps maintain scalp hygiene and remove buildup"
+   ],
+   [
+    "Traction reduction",
+    "Established preventive measure for traction-related hair loss"
+   ],
+   [
+    "Supplements",
+    "Should address confirmed or suspected deficiencies with clinical guidance"
+   ]
+  ],
+  "references": [
+   "American Academy of Dermatology: Hairstyles that pull can lead to hair loss",
+   "American Academy of Dermatology: Tips for healthy hair",
+   "EGCG and human hair follicle research",
+   "Systematic review of topical caffeine research (2025)",
+   "Chemical bonds and hair behaviour: 2024 review",
+   "Shampoo and conditioners: what a dermatologist should know",
+   "American Academy of Dermatology: Hair loss diagnosis and treatment",
+   "Johns Hopkins Medicine: hair growth rate"
+  ]
+ },
+ "programs": [
+  {
+   "id": "PRG-001",
+   "slug": "edge-growth-plan",
+   "name": "Edge Growth Plan",
+   "tagline": "Protect the hairline.",
+   "focus": "Scalp + hairline care",
+   "image": "hairline.jpg",
+   "next": "PRG-002",
+   "objective": "Create a consistent hairline-care protocol that reduces traction and friction, supports scalp hygiene, conditions fragile hair around the edges and documents changes over time.",
+   "intro": "",
+   "pillars": [
+    [
+     "Hairline protection",
+     "Low-tension styling every day to reduce repeated pulling."
+    ],
+    [
+     "Scalp hygiene",
+     "Weekly cleansing to remove excess oil, sweat and buildup."
+    ],
+    [
+     "Targeted serum cadence",
+     "A consistent scalp-serum step, daily or as the product directs."
+    ],
+    [
+     "Friction reduction",
+     "Nightly protection to minimize overnight mechanical stress."
+    ]
+   ],
+   "assessment": [
+    [
+     "Hairline condition",
+     "Fullness, visible short hairs, sparse areas"
+    ],
+    [
+     "Temples",
+     "Left and right separately"
+    ],
+    [
+     "Breakage",
+     "Short broken hairs versus longer shed hairs"
+    ],
+    [
+     "Scalp",
+     "Flaking, itching, redness, tenderness"
+    ],
+    [
+     "Styling history",
+     "Braids, wigs, ponytails, slick styles, extensions"
+    ],
+    [
+     "Friction",
+     "Bonnets, scarves, headbands, pillowcases"
+    ],
+    [
+     "Current products",
+     "Cleansers, conditioners, oils, serums"
+    ],
+    [
+     "Baseline photos",
+     "Front, left temple, right temple"
+    ]
+   ],
+   "assessment_note": "",
+   "guardrail": "If there are smooth or shiny bald areas, progressive recession, loss of follicular openings, pain, inflammation or patchy shedding, seek a dermatologist's assessment. A routine cannot diagnose or reverse scarring hair loss.",
+   "protocol": [
+    {
+     "title": "",
+     "rows": [
+      [
+       "Scalp cleansing",
+       "Once weekly starting cadence",
+       "Remove excess oil, sweat and buildup"
+      ],
+      [
+       "Targeted scalp serum",
+       "Daily or product-directed cadence",
+       "Consistent scalp-care step"
+      ],
+      [
+       "Hairline conditioning",
+       "Every wash",
+       "Reduce dryness and improve manageability"
+      ],
+      [
+       "Low-tension styling",
+       "Every day",
+       "Reduce repeated pulling"
+      ],
+      [
+       "Friction protection",
+       "Every night",
+       "Minimize overnight mechanical stress"
+      ],
+      [
+       "Progress monitoring",
+       "Every 2 weeks",
+       "Document changes and identify problems"
+      ]
+     ]
+    }
+   ],
+   "protocol_note": "The scalp serum is a core step in this program. You choose the formulation, but the routine intentionally includes consistent scalp-serum application.",
+   "products": [
+    [
+     "Gentle cleanser",
+     "Mild surfactant systems",
+     "Scalp hygiene",
+     [
+      "TGC-063",
+      "TGC-130"
+     ]
+    ],
+    [
+     "Scalp serum",
+     "Green tea/EGCG, caffeine, niacinamide, peptides",
+     "Targeted scalp care",
+     [
+      "TGC-064"
+     ]
+    ],
+    [
+     "Conditioner",
+     "Behentrimonium compounds, fatty alcohols",
+     "Conditioning",
+     [
+      "TGC-066",
+      "TGC-041"
+     ]
+    ],
+    [
+     "Leave-in",
+     "Panthenol, conditioning agents, humectants",
+     "Hairline softness",
+     [
+      "TGC-134"
+     ]
+    ],
+    [
+     "Night protection",
+     "Satin or silk materials",
+     "Friction reduction",
+     []
+    ]
+   ],
+   "science": [
+    [
+     "Green tea / EGCG",
+     "promising",
+     "Promising experimental evidence for hair follicle biology; human topical growth outcomes remain unestablished. EGCG has demonstrated effects on cultured human dermal papilla cells and ex-vivo hair follicles. This is meaningful preliminary research, although it does not establish that a commercial serum regrows human edges.",
+     ""
+    ],
+    [
+     "Caffeine",
+     "promising",
+     "Promising, with some human trials; overall evidence quality is mixed. Caffeine has a larger body of topical human research than many cosmetic scalp ingredients, but a 2025 systematic review found that most included studies had methodological limitations.",
+     ""
+    ],
+    [
+     "Niacinamide",
+     "established",
+     "Established cosmetic skin-conditioning ingredient; not established as a standalone hair-regrowth treatment.",
+     ""
+    ],
+    [
+     "Peptides",
+     "emerging",
+     "Formulation-specific and emerging; do not assume all peptide blends stimulate growth.",
+     "properties/scalp-active/"
+    ],
+    [
+     "Panthenol",
+     "cosmetic",
+     "Cosmetic conditioning and moisture-related support.",
+     "panthenol/"
+    ]
+   ],
+   "progression": {
+    "columns": [
+     "Week",
+     "Treatment emphasis",
+     "JARA milestone"
+    ],
+    "rows": [
+     [
+      "1",
+      "Establish baseline, begin cleansing and daily serum, eliminate tension",
+      "Starting photos"
+     ],
+     [
+      "2",
+      "Maintain serum and conditioning; audit overnight friction",
+      "First check-in"
+     ],
+     [
+      "3",
+      "Continue scalp care; evaluate serum tolerance and styling",
+      "Scalp assessment"
+     ],
+     [
+      "4",
+      "Maintain full protocol; repeat hairline photographs",
+      "Monthly photo comparison"
+     ],
+     [
+      "5",
+      "Continue low-tension styling and daily serum",
+      "Habit review"
+     ],
+     [
+      "6",
+      "Review scalp comfort, dryness and breakage",
+      "Product response review"
+     ],
+     [
+      "7",
+      "Maintain routine; identify persistent friction sources",
+      "Consistency review"
+     ],
+     [
+      "8",
+      "Final photographs and assessment",
+      "Program completion"
+     ]
+    ]
+   },
+   "daily": {
+    "Morning": [
+     "Check for tenderness or irritation.",
+     "Apply scalp serum according to its instructions.",
+     "Keep styling loose and comfortable.",
+     "Avoid aggressive edge brushing."
+    ],
+    "Evening": [
+     "Check for tension from hairstyles.",
+     "Apply serum if the formulation calls for another daily application.",
+     "Wear a comfortable bonnet or use a satin pillowcase.",
+     "Avoid tight elastic around the hairline."
+    ]
+   },
+   "wash_day": [
+    "Gently cleanse the scalp and hairline.",
+    "Condition the hair around the edges.",
+    "Detangle carefully.",
+    "Apply leave-in to the hairline if appropriate.",
+    "Style without tension.",
+    "Resume serum according to its prescribed product cadence."
+   ],
+   "wash_day_note": "",
+   "success_when": "",
+   "success": [
+    "Reduced exposure to tight hairstyles.",
+    "Consistent serum use.",
+    "Less hairline tenderness or irritation.",
+    "Reduced avoidable breakage.",
+    "Improved hairline manageability.",
+    "Comparable photographic documentation."
+   ],
+   "promise": "A more consistent, protective hairline-care routine and a better record of changes."
+  },
+  {
+   "id": "PRG-002",
+   "slug": "mega-growth-retention",
+   "name": "Mega Growth & Retention",
+   "tagline": "Support growth. Maximize retention.",
+   "focus": "Growth support + length retention",
+   "image": "ends.jpg",
+   "next": "PRG-003",
+   "objective": "Support consistent scalp care while improving the condition and protection of the hair fiber so that more of the hair's naturally produced length can be retained.",
+   "intro": "This program has two equally important treatment pillars.",
+   "pillars": [
+    [
+     "Growth support",
+     "Scalp cleansing, scalp serums and scalp-health monitoring."
+    ],
+    [
+     "Length retention",
+     "Hydration, conditioning, lipids, proteins, bond care and reduced breakage."
+    ]
+   ],
+   "assessment": [
+    [
+     "Current length",
+     "Front, sides, crown, back"
+    ],
+    [
+     "Hair density",
+     "Low, medium or high self-assessment"
+    ],
+    [
+     "Strand characteristics",
+     "Fine, medium or coarse"
+    ],
+    [
+     "Scalp condition",
+     "Oiliness, flakes, buildup, irritation"
+    ],
+    [
+     "Breakage",
+     "Areas with the most breakage"
+    ],
+    [
+     "Ends",
+     "Tangling, splitting, thin ends"
+    ],
+    [
+     "Moisture",
+     "Dryness and manageability"
+    ],
+    [
+     "Styling",
+     "Heat, braids, twists, wash-and-go"
+    ],
+    [
+     "Current regimen",
+     "Products and wash frequency"
+    ]
+   ],
+   "assessment_note": "Take standardized photographs and record a baseline length measurement using a consistent method.",
+   "guardrail": "A cosmetic serum is not a substitute for clinically established treatments where a medical hair-loss diagnosis exists.",
+   "protocol": [
+    {
+     "title": "Growth support",
+     "rows": [
+      [
+       "Scalp cleansing",
+       "Weekly starting cadence",
+       "Clean scalp and remove buildup"
+      ],
+      [
+       "Targeted scalp serum",
+       "Daily or product-directed",
+       "Consistent targeted scalp care"
+      ],
+      [
+       "Scalp inspection",
+       "Weekly",
+       "Identify irritation, flakes or changes"
+      ],
+      [
+       "Buildup assessment",
+       "Every 2 weeks",
+       "Review cleanser effectiveness"
+      ],
+      [
+       "Growth tracking",
+       "Every 4 weeks",
+       "Document longer-term changes"
+      ]
+     ]
+    },
+    {
+     "title": "Length retention",
+     "rows": [
+      [
+       "Moisturizing conditioner",
+       "Every wash",
+       "Slip and conditioning"
+      ],
+      [
+       "Deep conditioner",
+       "Weekly",
+       "Intensive conditioning"
+      ],
+      [
+       "Leave-in conditioner",
+       "Every wash",
+       "Manageability and hydration"
+      ],
+      [
+       "Ceramide/lipid support",
+       "Weekly",
+       "Hair-fiber conditioning"
+      ],
+      [
+       "Bond-supporting treatment",
+       "Weeks 2 and 6, subject to label",
+       "Support treatment of damaged hair fibers"
+      ],
+      [
+       "Protein treatment",
+       "Week 4, if the hair profile supports it",
+       "Conditioning and fiber support"
+      ],
+      [
+       "Low-manipulation styling",
+       "Throughout",
+       "Reduce mechanical damage"
+      ],
+      [
+       "Overnight protection",
+       "Every night",
+       "Reduce friction"
+      ]
+     ]
+    }
+   ],
+   "protocol_note": "The scalp serum is a core program requirement, not an optional bonus. Select a leave-on scalp formulation designed for your needs and follow its directions. The protein treatment is a scheduled assessment and treatment checkpoint, not an instruction to apply a strong reconstructor regardless of hair condition. Select a suitable product and follow its directions.",
+   "products": [
+    [
+     "Scalp cleanser",
+     "Appropriate cleansing surfactants",
+     "Scalp hygiene",
+     [
+      "TGC-130",
+      "TGC-065"
+     ]
+    ],
+    [
+     "Scalp serum",
+     "EGCG, caffeine, niacinamide",
+     "Scalp-care support",
+     [
+      "TGC-064"
+     ]
+    ],
+    [
+     "Moisturizing conditioner",
+     "Cationic conditioners, fatty alcohols",
+     "Slip and manageability",
+     [
+      "TGC-066",
+      "TGC-025"
+     ]
+    ],
+    [
+     "Deep conditioner",
+     "Conditioning agents, humectants, emollients",
+     "Conditioning",
+     [
+      "TGC-005",
+      "TGC-045"
+     ]
+    ],
+    [
+     "Leave-in",
+     "Panthenol, glycerin, conditioning polymers",
+     "Hydration and manageability",
+     [
+      "TGC-134",
+      "TGC-122"
+     ]
+    ],
+    [
+     "Lipid treatment",
+     "Ceramides, fatty acids, oils",
+     "Hair-fiber conditioning",
+     [
+      "TGC-008"
+     ]
+    ],
+    [
+     "Bond treatment",
+     "Product-specific bond-supporting technology",
+     "Damage-focused treatment",
+     [
+      "TGC-007",
+      "TGC-010"
+     ]
+    ],
+    [
+     "Protein treatment",
+     "Hydrolyzed keratin, wheat, rice or silk proteins",
+     "Hair-fiber conditioning",
+     [
+      "TGC-071",
+      "TGC-077"
+     ]
+    ]
+   ],
+   "science": [
+    [
+     "Green tea / EGCG",
+     "promising",
+     "Studied for its antioxidant properties and its experimental effects on dermal papilla cells and hair follicles. It belongs in the recommended scalp-serum ingredient family.",
+     ""
+    ],
+    [
+     "Caffeine",
+     "promising",
+     "There are human topical studies, although study quality and product formulations vary.",
+     ""
+    ],
+    [
+     "Ceramides",
+     "cosmetic",
+     "Lipid-related ingredients with a role in hair-fiber surface conditioning and lipid replenishment. Topical ceramides are not claimed to stimulate follicles.",
+     "properties/ceramides/"
+    ],
+    [
+     "Fatty acids and emollients",
+     "established",
+     "These can improve lubrication, softness and manageability. Product formulation matters more than simply seeing an oil listed on the label.",
+     "properties/butter-oil/"
+    ],
+    [
+     "Hydrolyzed proteins",
+     "cosmetic",
+     "Hydrolyzed keratin, wheat, rice and silk proteins. Their film-forming and conditioning effects vary with molecular size, formulation and hair condition.",
+     "hydrolyzed-wheat-protein/"
+    ],
+    [
+     "Bond-supporting treatments",
+     "emerging",
+     "Hair contains hydrogen, ionic and disulfide bonds. Chemical and thermal treatments can alter hair-fiber structure. Products marketed as bond builders use different technologies, so claims should be assessed individually rather than assuming all products rebuild the same bonds.",
+     "properties/bond-repair/"
+    ],
+    [
+     "Conditioning agents",
+     "established",
+     "Behentrimonium chloride, behentrimonium methosulfate, cationic polymers and fatty alcohols. Conditioning can reduce combing friction and improve manageability.",
+     "behentrimonium-chloride/"
+    ]
+   ],
+   "progression": {
+    "columns": [
+     "Week",
+     "Growth-support focus",
+     "Retention treatment"
+    ],
+    "rows": [
+     [
+      "1",
+      "Scalp cleanse + daily serum",
+      "Moisture wash, deep condition, leave-in"
+     ],
+     [
+      "2",
+      "Scalp cleanse + daily serum",
+      "Ceramide/lipid treatment"
+     ],
+     [
+      "3",
+      "Scalp cleanse + daily serum",
+      "Moisture wash + bond treatment"
+     ],
+     [
+      "4",
+      "Scalp cleanse + daily serum",
+      "Protein assessment/treatment + progress photos"
+     ],
+     [
+      "5",
+      "Scalp cleanse + daily serum",
+      "Moisture wash + lipid support"
+     ],
+     [
+      "6",
+      "Scalp cleanse + daily serum",
+      "Bond treatment + deep conditioning"
+     ],
+     [
+      "7",
+      "Scalp cleanse + daily serum",
+      "Hydration and moisture-focused wash"
+     ],
+     [
+      "8",
+      "Scalp cleanse + daily serum",
+      "Deep conditioning, final photos and assessment"
+     ]
+    ]
+   },
+   "daily": {
+    "Every day": [
+     "Apply scalp serum according to directions.",
+     "Protect hair from unnecessary friction.",
+     "Avoid repeated manipulation.",
+     "Maintain comfortable, low-tension styling.",
+     "Assess dryness and tangling.",
+     "Protect hair overnight."
+    ]
+   },
+   "wash_day": [
+    "Pre-wash assessment and sectioning.",
+    "Scalp cleansing.",
+    "Rinse thoroughly.",
+    "Apply scheduled treatment: bond treatment, protein treatment or lipid treatment, depending on the week.",
+    "Rinse or continue according to product instructions.",
+    "Apply conditioner or deep conditioner.",
+    "Detangle gently.",
+    "Rinse.",
+    "Apply leave-in conditioner.",
+    "Apply styling product.",
+    "Choose a low-tension style."
+   ],
+   "wash_day_note": "Treatment products with specific application sequences take precedence over this general order.",
+   "success_when": "At weeks 1, 4 and 8",
+   "success": [
+    "Comparable length photographs.",
+    "Scalp condition.",
+    "Breakage observations.",
+    "End condition.",
+    "Manageability.",
+    "Routine adherence.",
+    "Product tolerance."
+   ],
+   "promise": "A structured approach to scalp care and length retention, not a guaranteed growth rate."
+  },
+  {
+   "id": "PRG-003",
+   "slug": "deep-moisture-protein-balance",
+   "name": "Deep Moisture & Protein Balance",
+   "tagline": "Condition. Strengthen. Maintain.",
+   "focus": "Hydration + conditioning + fiber support",
+   "image": "hairline.jpg",
+   "next": "",
+   "objective": "Establish a deliberate conditioning strategy that improves softness, manageability, hydration and hair-fiber resilience while incorporating appropriate protein and lipid treatments.",
+   "intro": "This is not simply a moisture routine. It is a structured hair-fiber conditioning program.",
+   "pillars": [
+    [
+     "Moisture & hydration",
+     ""
+    ],
+    [
+     "Cuticle conditioning",
+     ""
+    ],
+    [
+     "Biweekly lipid/ceramide support",
+     ""
+    ],
+    [
+     "Scheduled protein checkpoints",
+     ""
+    ],
+    [
+     "Damage-focused bond care",
+     ""
+    ]
+   ],
+   "assessment": [
+    [
+     "Dryness",
+     "When does hair begin feeling dry?"
+    ],
+    [
+     "Tangling",
+     "Where does hair tangle most?"
+    ],
+    [
+     "Breakage",
+     "Which areas experience breakage?"
+    ],
+    [
+     "Elasticity",
+     "General response to stretching; not a diagnostic test"
+    ],
+    [
+     "Strand characteristics",
+     "Fine, medium, coarse"
+    ],
+    [
+     "Porosity",
+     "Self-assessed; note limitations"
+    ],
+    [
+     "Chemical/heat history",
+     "Coloring, relaxing, bleaching, heat"
+    ],
+    [
+     "Current products",
+     "Moisturizers, proteins, oils, bond treatments"
+    ]
+   ],
+   "assessment_note": "",
+   "guardrail": "",
+   "protocol": [
+    {
+     "title": "",
+     "rows": [
+      [
+       "Gentle cleansing",
+       "Weekly starting cadence",
+       ""
+      ],
+      [
+       "Rinse-out conditioner",
+       "Every wash",
+       ""
+      ],
+      [
+       "Deep conditioning",
+       "Weekly",
+       ""
+      ],
+      [
+       "Leave-in conditioner",
+       "Every wash",
+       ""
+      ],
+      [
+       "Lipid/ceramide support",
+       "Every 2 weeks",
+       ""
+      ],
+      [
+       "Protein treatment",
+       "Week 3 and week 7, using an appropriately formulated treatment",
+       ""
+      ],
+      [
+       "Bond-supporting treatment",
+       "Week 5, if damage history supports it",
+       ""
+      ],
+      [
+       "Progress assessment",
+       "Every 2 weeks",
+       ""
+      ]
+     ]
+    }
+   ],
+   "protocol_note": "For severely damaged or chemically processed hair, the bond-supporting step can become a more prominent part of the regimen. Product instructions and compatibility always govern treatment frequency.",
+   "products": [
+    [
+     "Gentle shampoo",
+     "Mild cleansing surfactants",
+     "",
+     [
+      "TGC-063",
+      "TGC-065"
+     ]
+    ],
+    [
+     "Moisturizing conditioner",
+     "Behentrimonium compounds, fatty alcohols",
+     "",
+     [
+      "TGC-066",
+      "TGC-041"
+     ]
+    ],
+    [
+     "Deep conditioner",
+     "Humectants, emollients, conditioning agents",
+     "",
+     [
+      "TGC-005",
+      "TGC-045"
+     ]
+    ],
+    [
+     "Leave-in",
+     "Panthenol, glycerin, cationic conditioning agents",
+     "",
+     [
+      "TGC-134",
+      "TGC-122"
+     ]
+    ],
+    [
+     "Lipid product",
+     "Ceramides, fatty acids, oils",
+     "",
+     [
+      "TGC-008"
+     ]
+    ],
+    [
+     "Protein treatment",
+     "Hydrolyzed keratin, wheat, rice, silk",
+     "",
+     [
+      "TGC-071",
+      "TGC-077"
+     ]
+    ],
+    [
+     "Bond treatment",
+     "Product-specific bond-supporting technology",
+     "",
+     [
+      "TGC-007",
+      "TGC-010"
+     ]
+    ]
+   ],
+   "science": [
+    [
+     "Glycerin",
+     "established",
+     "Humectant. Established cosmetic function.",
+     "glycerin/"
+    ],
+    [
+     "Panthenol",
+     "established",
+     "Conditioning and humectant. Established cosmetic function.",
+     "panthenol/"
+    ],
+    [
+     "Aloe",
+     "formulation",
+     "Humectant/conditioning component. Formulation-dependent.",
+     "aloe-vera-extract-juice/"
+    ],
+    [
+     "Behentrimonium chloride",
+     "established",
+     "Conditioning and detangling. Established cosmetic function.",
+     "behentrimonium-chloride/"
+    ],
+    [
+     "Cetyl/cetearyl alcohol",
+     "established",
+     "Emollient and formulation support. Established cosmetic function.",
+     "cetyl-alcohol/"
+    ],
+    [
+     "Ceramides",
+     "promising",
+     "Lipid-related conditioning. Promising hair-fiber application.",
+     "properties/ceramides/"
+    ],
+    [
+     "Fatty acids",
+     "established",
+     "Emollient and lipid support. Established cosmetic function.",
+     "properties/butter-oil/"
+    ],
+    [
+     "Hydrolyzed keratin",
+     "formulation",
+     "Protein-derived conditioning. Formulation-dependent.",
+     ""
+    ],
+    [
+     "Hydrolyzed wheat protein",
+     "formulation",
+     "Protein-derived conditioning. Formulation-dependent.",
+     "hydrolyzed-wheat-protein/"
+    ],
+    [
+     "Hydrolyzed silk",
+     "formulation",
+     "Film-forming and conditioning. Formulation-dependent.",
+     ""
+    ],
+    [
+     "Bond-supporting actives",
+     "emerging",
+     "Product-specific fiber treatments. Emerging/formulation-specific.",
+     "properties/bond-repair/"
+    ]
+   ],
+   "progression": {
+    "columns": [
+     "Week",
+     "Primary treatment",
+     "Purpose"
+    ],
+    "rows": [
+     [
+      "1",
+      "Moisture wash + deep conditioning",
+      "Establish baseline"
+     ],
+     [
+      "2",
+      "Moisture wash + ceramide/lipid support",
+      "Conditioning"
+     ],
+     [
+      "3",
+      "Moisture wash + protein treatment",
+      "Fiber-support checkpoint"
+     ],
+     [
+      "4",
+      "Moisture wash + deep conditioning",
+      "Evaluate treatment response"
+     ],
+     [
+      "5",
+      "Moisture wash + bond-supporting treatment",
+      "Damage-focused care"
+     ],
+     [
+      "6",
+      "Moisture wash + lipid support",
+      "Conditioning"
+     ],
+     [
+      "7",
+      "Moisture wash + protein treatment",
+      "Second fiber-support checkpoint"
+     ],
+     [
+      "8",
+      "Moisture wash + deep conditioning",
+      "Final assessment"
+     ]
+    ]
+   },
+   "daily": {},
+   "wash_day": [
+    "Cleanse the scalp.",
+    "Rinse thoroughly.",
+    "Apply the scheduled treatment.",
+    "Follow treatment instructions for timing and rinsing.",
+    "Apply moisturizing conditioner.",
+    "Detangle gently.",
+    "Rinse.",
+    "Apply leave-in conditioner.",
+    "Apply styling product.",
+    "Style with minimal unnecessary tension."
+   ],
+   "wash_day_note": "",
+   "success_when": "At baseline, week 4 and week 8",
+   "success": [
+    "Dryness score.",
+    "Tangling score.",
+    "Breakage observations.",
+    "Manageability score.",
+    "Product tolerance.",
+    "Deep-conditioning consistency.",
+    "Protein-treatment response.",
+    "Photographic comparison."
+   ],
+   "promise": "A more deliberate and consistent conditioning regimen, with better insight into how hair responds to different treatments."
+  }
+ ]
+}
