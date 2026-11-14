@@ -28,6 +28,8 @@ jobs:
         env:
           INGREDIENTS_CSV_URL: ${{ secrets.INGREDIENTS_CSV_URL }}
           CATALOG_CSV_URL: ${{ secrets.CATALOG_CSV_URL }}
+          PROGRAMS_CSV_URL: ${{ secrets.PROGRAMS_CSV_URL }}
+          PROGRAM_STEPS_CSV_URL: ${{ secrets.PROGRAM_STEPS_CSV_URL }}
         run: |
           set -euo pipefail
           mkdir -p data
@@ -40,6 +42,9 @@ jobs:
           }
           fetch ingredients "$INGREDIENTS_CSV_URL"
           fetch catalog "$CATALOG_CSV_URL"
+          # Programs: optional. Without these secrets, the copies saved in data/ are used.
+          if [ -n "$PROGRAMS_CSV_URL" ]; then fetch programs "$PROGRAMS_CSV_URL"; else echo "programs: using data/programs.csv from the repo"; fi
+          if [ -n "$PROGRAM_STEPS_CSV_URL" ]; then fetch program-steps "$PROGRAM_STEPS_CSV_URL"; else echo "program-steps: using data/program-steps.csv from the repo"; fi
 
       - name: Build the site
         run: python3 scripts/build.py

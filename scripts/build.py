@@ -143,8 +143,9 @@ def shell(r, title, desc, body, path, current=''):
   <nav class="nav" aria-label="Main">
     <a class="search" href="{r}#find">{ICON} Look up an ingredient</a>
     <a class="search-sm" href="{r}#find">{ICON} Search</a>
+    <a href="{r}plans/" class="hide-sm"{cur('plans')}>Hair plans</a>
     <a href="{r}properties/" class="hide-sm hide-md"{cur('props')}>By property</a>
-    <a href="{r}" class="hide-sm"{cur('home')}>All ingredients</a>
+    <a href="{r}" class="hide-sm hide-md"{cur('home')}>All ingredients</a>
   </nav>
 </header>
 <main id="main" class="wrap">
@@ -152,7 +153,7 @@ def shell(r, title, desc, body, path, current=''):
 </main>
 <footer class="site-footer">
   <div><a href="{r}" class="wordmark"><span class="brand-symbol" aria-hidden="true">◎</span> the<span class="brand-amp">good</span>coil</a><p>Good knowledge. Happy hair.<br>A journey that's yours.</p></div>
-  <nav class="footer-links" aria-label="Footer"><a href="{r}">All ingredients</a><a href="{r}properties/">By property</a><a href="{r}about/">How we write</a><a href="{r}about/#affiliate">Affiliate disclosure</a><a href="https://thegoodcoil.com">The Good Coil</a><a href="https://itsjara.com">JARA hair journal</a></nav>
+  <nav class="footer-links" aria-label="Footer"><a href="{r}">All ingredients</a><a href="{r}plans/">Hair plans</a><a href="{r}properties/">By property</a><a href="{r}about/">How we write</a><a href="{r}about/#affiliate">Affiliate disclosure</a><a href="https://thegoodcoil.com">The Good Coil</a><a href="https://itsjara.com">JARA hair journal</a></nav>
   <div class="footer-bottom"><span>© {datetime.date.today().year} The Good Coil</span><span>Descriptions, not verdicts: every head of hair is different.</span><span>Educational guidance, not medical advice.</span></div>
 </footer>
 </body>
@@ -370,11 +371,11 @@ def data_files(counts):
     }
     write('data/ingredients.json', json.dumps(out, ensure_ascii=False, indent=1))
 
-def extras(tags):
+def extras(tags, plan_urls=()):
     write('CNAME', 'ingredients.thegoodcoil.com\n')
     write('.nojekyll', '')
     write('robots.txt', f'User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n')
-    urls = [''] + [f"{i['_slug']}/" for i in ing] + ['properties/'] + [f'properties/{prop_slug(t)}/' for t in tags] + ['about/']
+    urls = [''] + [f"{i['_slug']}/" for i in ing] + ['properties/'] + [f'properties/{prop_slug(t)}/' for t in tags] + ['about/', 'plans/'] + list(plan_urls)
     write('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
           ''.join(f'  <url><loc>{SITE}/{u}</loc></url>\n' for u in urls) + '</urlset>\n')
     write('favicon.svg', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#DCF473"/><circle cx="16" cy="16" r="10" fill="none" stroke="#432731" stroke-width="3"/><circle cx="16" cy="16" r="4" fill="#432731"/></svg>')
@@ -417,8 +418,17 @@ def main():
     tags = property_pages()
     about_page()
     data_files(counts)
-    extras(tags)
+    sys.modules.setdefault('build', sys.modules[__name__])
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import plans
+    plan_urls, plan_notes = plans.build()
+    extras(tags, plan_urls)
     checks(counts)
+    text = '### Hair plans\n' + (f'{len(plan_urls)} plans built.\n' + '\n'.join(plan_notes) if plan_urls else 'No programs found.') + '\n'
+    print(text)
+    if os.environ.get('GITHUB_STEP_SUMMARY'):
+        with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as fh:
+            fh.write(text)
 
 if __name__ == '__main__':
     main()

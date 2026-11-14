@@ -2,3 +2,5 @@ _site/
 data/*.csv
 __pycache__/
 .DS_Store
+!data/programs.csv
+!data/program-steps.csv

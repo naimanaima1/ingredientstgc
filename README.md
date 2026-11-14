@@ -36,6 +36,8 @@ Optional, understood when present:
 - `source`: e.g. `own research` or `Open Beauty Facts` (shown on the page; Open Beauty Facts data is share-alike).
 - `hair_type_notes`: used instead of `hair_type_porosity_fit` if you rename that column.
 
+**Programs Overview** (`data/programs.csv`) and **Program steps** (`data/program-steps.csv`): the hair plans at `/plans/` and `data/plans.json`. Until the repository secrets `PROGRAMS_CSV_URL` and `PROGRAM_STEPS_CSV_URL` exist, the copies saved in `data/` are used. Program steps columns: `program_id, order, step, when, weeks, wash_day_role, property, condition, product_ids, notes`, where `when` is `every_wash`, `every_7_days` (any number), `daily`, `nightly` or `weeks` (with `weeks` like `3,6`; `0` means before you start). Optional overview columns: `slug`, `version`, `image` (a file in `src/img/`).
+
 **Product catalog:** only `kind`, `brand`, `name`, `step` and `full ingredient list` are used, to show where an ingredient sits on real labels. Links, notes and prices are not published.
 
 Every build prints a report (in the Action's summary): how many label words are recognised, the most common label words that have no ingredient row yet, and wording that could read as a hair-growth or drug claim. The report never changes any text.

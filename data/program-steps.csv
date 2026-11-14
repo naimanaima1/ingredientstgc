@@ -1,0 +1,26 @@
+program_id,order,step,when,weeks,wash_day_role,property,condition,product_ids,notes
+PRG-001,1,Scalp cleanse,every_7_days,,cleanse,,,,
+PRG-001,2,Hairline conditioning,every_wash,,condition,,,,Condition the fragile hair around the edges
+PRG-001,3,Targeted scalp serum,daily,,,scalp active,Or as the product label directs,,
+PRG-001,4,Low-tension styling,daily,,,,,,"Avoid tight braids,  ponytails and slick styles"
+PRG-001,5,Friction protection,nightly,,,,,,"Satin or silk bonnet,  scarf or pillowcase"
+PRG-001,6,Progress photos,weeks,"0,4,8",,,,,"Front,  left temple,  right temple"
+PRG-001,7,Check-in,every_14_days,,,,,,"Tenderness,  breakage,  manageability"
+PRG-002,1,Scalp cleanse,every_7_days,,cleanse,,,,
+PRG-002,2,Rinse-out conditioner,every_wash,,condition,humectant,,,Moisturizing
+PRG-002,3,Leave-in,every_wash,,leave-in,,,,
+PRG-002,4,Deep condition with lipid/ceramide support,every_7_days,,condition,ceramides,,,
+PRG-002,5,Targeted scalp serum,daily,,,scalp active,Or as the product label directs,,
+PRG-002,6,Bond-supporting treatment,weeks,"3,6",treatment,bond repair,Or Weeks 2 and 6 if the label says so,,
+PRG-002,7,Protein checkpoint,weeks,4,treatment,protein,If the hair profile supports it,,
+PRG-002,8,Overnight protection,nightly,,,,,,
+PRG-002,9,Length photos and measurement,weeks,"0,4,8",,,,,"Front,  sides,  crown,  back"
+PRG-003,1,Gentle cleanse,every_7_days,,cleanse,,,,
+PRG-003,2,Rinse-out conditioner,every_wash,,condition,,,,
+PRG-003,3,Leave-in,every_wash,,leave-in,,,,
+PRG-003,4,Deep condition,every_7_days,,condition,,,,
+PRG-003,5,Lipid/ceramide support,weeks,"2,6",treatment,ceramides,,,
+PRG-003,6,Protein treatment checkpoint,weeks,"3,7",treatment,protein,,,
+PRG-003,7,Bond-supporting treatment,weeks,5,treatment,bond repair,More often if severely damaged,,
+PRG-003,8,Progress check (dryness / tangling / manageability 1-5),every_14_days,,,,,,
+PRG-003,9,Progress photos,weeks,"0,4,8",,,,,
