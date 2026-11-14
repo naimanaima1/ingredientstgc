@@ -33,6 +33,7 @@ The real work is data entry: product ingredient lists (19 of 138 have one today)
 
 ## 4. Programs (iterate page by page)
 - [x] Test pages at `/programs/` from the original Intensive Care Collection document (noindex, unlinked). `/plans/` stays as the earlier version.
+- [x] Nov 14: new test layout at `/test-program/deep-moisture-protein-balance/` from the owner's revised Program 03 document (content/test-program.json, scripts/test_program.py): three acts (Start, The 8 weeks, Finish), a week planner with protein Track A/B, ticks saved on the visitor's device. If approved, becomes the template for all programs.
 - [ ] Resolve the flags: Mega's bond weeks (2 and 6 vs 3 and 6) and lipid cadence (weekly vs weeks 2 and 5); mismatched evidence labels (ceramides, panthenol, hydrolyzed proteins); Edge name (Edge Growth Plan vs Edge Recovery); Deep Moisture pillar explanations; reference links.
 - [ ] Owner edits, page by page.
 - [ ] Product picks: replace the draft examples; add a scalp serum with the program's ingredients; add night-protection items to the catalog.

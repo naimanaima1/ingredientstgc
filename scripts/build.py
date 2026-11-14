@@ -459,6 +459,8 @@ def main():
     PR.build()
     import home
     home.build()
+    import test_program  # TEST layout at /test-program/
+    test_program.build()
     import programs_full  # TEST pages at /programs/ (noindex, kept out of the sitemap)
     programs_full.build()
     extras(tags, plan_urls)

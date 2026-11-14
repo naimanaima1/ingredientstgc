@@ -1,0 +1,492 @@
+{
+ "id": "PRG-003",
+ "slug": "deep-moisture-protein-balance",
+ "name": "Deep Moisture & Protein Balance",
+ "tagline": "Condition. Strengthen. Maintain.",
+ "image": "ends.jpg",
+ "image_alt": "A woman with long dark curls, in profile, holds the ends of a curl between her fingers.",
+ "principle": [
+  "Condition consistently.",
+  "Use targeted treatments deliberately.",
+  "Adjust based on the hair's response."
+ ],
+ "overview": [
+  [
+   "Duration",
+   "8 weeks"
+  ],
+  [
+   "Primary focus",
+   "Hair-fiber conditioning and moisture management"
+  ],
+  [
+   "Secondary focus",
+   "Deliberate protein and lipid support"
+  ],
+  [
+   "Best suited for",
+   "People experiencing dryness, tangling, roughness, breakage or difficulty balancing conditioning treatments"
+  ],
+  [
+   "What you'll track",
+   "Dryness, tangling, breakage, manageability, treatment response and end condition"
+  ]
+ ],
+ "goal": "Establish a repeatable conditioning strategy that improves softness, slip and manageability while using protein, lipids and bond-supporting products appropriately.",
+ "goal_note": "This isn't about switching products at random, or reaching for an intensive protein treatment just because hair feels dry.",
+ "pillars": [
+  [
+   "Consistent conditioning",
+   "Use rinse-out conditioner after every wash and a deep-conditioning step on the scheduled wash day."
+  ],
+  [
+   "Hydration and leave-in care",
+   "Use water-based conditioning products and leave-in care to support slip, softness and manageability between wash days."
+  ],
+  [
+   "Lipid support",
+   "Schedule a ceramide- or lipid-focused treatment to support hair-fiber conditioning and lubrication."
+  ],
+  [
+   "Targeted protein and bond support",
+   "Use protein treatments when the hair's damage history and observed response justify them. Use bond-supporting treatments when chemical or thermal damage warrants them."
+  ]
+ ],
+ "baseline": [
+  [
+   "Dryness",
+   "When does the hair begin to feel dry after washing?"
+  ],
+  [
+   "Tangling",
+   "Where does tangling occur?"
+  ],
+  [
+   "Breakage",
+   "Ends, mid-lengths, crown, sides or throughout"
+  ],
+  [
+   "Manageability",
+   "Detangling difficulty, styling difficulty, softness and slip"
+  ],
+  [
+   "Hair characteristics",
+   "Strand thickness, density, curl pattern and porosity self-assessment"
+  ],
+  [
+   "Chemical/heat history",
+   "Color, bleach, relaxer, permanent waving, heat styling"
+  ],
+  [
+   "Current routine",
+   "Cleanser, conditioner, deep conditioner, leave-in, oils and treatments"
+  ],
+  [
+   "Protein history",
+   "Recent protein treatments and how your hair responded"
+  ],
+  [
+   "Lipid history",
+   "Ceramide, oil, butter or lipid-containing products used"
+  ],
+  [
+   "Buildup",
+   "Coated feeling, residue, loss of movement or reduced product performance"
+  ]
+ ],
+ "baseline_note": "Porosity assessments and elasticity observations are practical observations, not medical diagnoses or definitive tests of hair damage.",
+ "kit": [
+  [
+   "Core",
+   "Everyone uses these",
+   [
+    [
+     "Gentle cleanser",
+     "Remove buildup while maintaining a manageable wash routine"
+    ],
+    [
+     "Moisturizing conditioner",
+     "Condition and detangle every wash"
+    ],
+    [
+     "Deep conditioner",
+     "Intensive conditioning on scheduled wash days"
+    ],
+    [
+     "Leave-in conditioner",
+     "Maintain conditioning and slip after washing"
+    ],
+    [
+     "Lipid/ceramide product",
+     "Scheduled lipid-support treatment"
+    ]
+   ]
+  ],
+  [
+   "If your hair calls for it",
+   "Depends on your baseline",
+   [
+    [
+     "Protein treatment",
+     "Targeted fiber-conditioning support"
+    ],
+    [
+     "Bond-supporting treatment",
+     "Targeted support for relevant damage history"
+    ],
+    [
+     "Heat protectant",
+     "Reduce heat exposure effects when heat styling is used"
+    ]
+   ]
+  ],
+  [
+   "Optional",
+   "",
+   [
+    [
+     "Styling product",
+     "Support desired style without excessive tension or buildup"
+    ]
+   ]
+  ]
+ ],
+ "tracks": {
+  "intro": "The schedule is intentional, but it is not a universal instruction to apply a standalone protein treatment twice. Pick the track that sounds like your hair.",
+  "a": {
+   "name": "Track A",
+   "title": "Damage history or clear need",
+   "who": "Relevant chemical or heat damage, persistent breakage and a history of tolerating protein treatments.",
+   "weeks": {
+    "3": "Apply a suitable protein treatment.",
+    "4": "Assess response.",
+    "7": "Repeat only if the response was positive and the hair still benefits."
+   }
+  },
+  "b": {
+   "name": "Track B",
+   "title": "No clear need for intensive protein",
+   "who": "Little chemical or heat damage and no clear reason to add a concentrated treatment.",
+   "weeks": {
+    "3": "Use the regular conditioning routine.",
+    "4": "Assess manageability and breakage.",
+    "7": "Continue moisture and conditioning rather than forcing a standalone protein treatment."
+   }
+  }
+ },
+ "weeks": [
+  [
+   "Baseline",
+   "Establish the baseline",
+   "Moisture wash and deep conditioning",
+   "Establish baseline response to the conditioning routine",
+   [
+    "Complete the initial assessment and photos.",
+    "Use the selected cleanser and moisturizing conditioner.",
+    "Deep-condition.",
+    "Introduce leave-in conditioning.",
+    "Record softness, tangling and breakage."
+   ]
+  ],
+  [
+   "Lipid support",
+   "Add lipid support",
+   "Moisture wash and lipid support",
+   "Introduce ceramide/lipid conditioning",
+   [
+    "Continue the regular conditioning routine.",
+    "Introduce the selected ceramide/lipid product.",
+    "Record whether hair feels smoother, softer, coated or unchanged."
+   ]
+  ],
+  [
+   "Protein decision",
+   "Protein decision",
+   "Moisture wash and protein assessment",
+   "Use a suitable protein treatment if damage history and hair response support it",
+   [
+    "Review damage history and baseline.",
+    "Apply a suitable protein treatment only if indicated.",
+    "Record the formula, contact time and response.",
+    "Do not add multiple intensive treatments to the same wash day."
+   ]
+  ],
+  [
+   "Evaluate",
+   "Evaluate the response",
+   "Moisture wash and deep conditioning",
+   "Assess softness, slip, tangling and stiffness; take progress photos",
+   [
+    "Return to the moisture-focused routine.",
+    "Take progress photos.",
+    "Compare manageability, tangling and breakage with baseline.",
+    "Decide whether the Week 7 protein step remains appropriate."
+   ]
+  ],
+  [
+   "Bond support",
+   "Bond support",
+   "Moisture wash and bond support",
+   "Use a bond-supporting treatment if chemical or thermal damage warrants it",
+   [
+    "Assess heat and chemical history.",
+    "Use the selected bond-supporting treatment if appropriate.",
+    "Follow product instructions exactly.",
+    "Record whether manageability changes."
+   ]
+  ],
+  [
+   "Lipid support",
+   "Reinforce lipid conditioning",
+   "Moisture wash and lipid support",
+   "Continue scheduled lipid conditioning",
+   [
+    "Continue the standard wash and conditioning routine.",
+    "Repeat lipid support.",
+    "Review buildup and product layering."
+   ]
+  ],
+  [
+   "Protein check",
+   "Protein reassessment",
+   "Moisture wash and protein reassessment",
+   "Repeat protein only if the first treatment was tolerated and remains appropriate",
+   [
+    "Repeat protein only if the first treatment was well tolerated and the hair still appears to benefit.",
+    "Otherwise continue moisture and conditioning.",
+    "Record the decision."
+   ]
+  ],
+  [
+   "Consolidate",
+   "Consolidate",
+   "Moisture wash and deep conditioning",
+   "Final assessment and maintenance plan",
+   [
+    "Complete the final moisture-focused wash and deep conditioning.",
+    "Take final photos.",
+    "Compare scores and observations.",
+    "Build the maintenance routine from the products and steps that performed best."
+   ]
+  ]
+ ],
+ "wash_day": [
+  "Assess dryness, tangling and breakage.",
+  "Cleanse the scalp gently.",
+  "Perform the scheduled protein, lipid or bond-supporting treatment if indicated.",
+  "Follow its label instructions.",
+  "Condition or deep-condition as directed.",
+  "Detangle gently with adequate slip.",
+  "Rinse as directed.",
+  "Apply leave-in conditioner.",
+  "Style with minimal manipulation.",
+  "Record the treatment used and the hair's response."
+ ],
+ "daily": {
+  "Morning": [
+   "Check for dryness and tangling.",
+   "Avoid unnecessary combing or restyling.",
+   "Refresh only with products that improve manageability without creating excessive buildup.",
+   "Keep styles comfortable and low tension."
+  ],
+  "Evening": [
+   "Protect hair from friction.",
+   "Avoid sleeping with tightly secured styles.",
+   "Check whether the ends need gentle protection.",
+   "Record any noticeable changes after a treatment."
+  ]
+ },
+ "adjust": [
+  [
+   "If hair feels unusually stiff, rough or hard to detangle after protein",
+   [
+    "Do not repeat the treatment automatically.",
+    "Return to the regular moisturizing conditioner and deep conditioner.",
+    "Review product buildup and styling practices.",
+    "Reassess before scheduling another protein treatment."
+   ]
+  ],
+  [
+   "If hair feels coated, limp or weighed down",
+   [
+    "Review product layering and buildup rather than automatically increasing protein."
+   ]
+  ]
+ ],
+ "ingredients": [
+  [
+   "Glycerin and other humectants",
+   "Help attract and retain water in formulations",
+   "established",
+   "Established cosmetic use; performance depends on formula and conditions",
+   [
+    [
+     "Glycerin",
+     "Glycerin"
+    ],
+    [
+     "Humectants",
+     "properties/humectant/"
+    ]
+   ]
+  ],
+  [
+   "Panthenol",
+   "Conditioning and improved hair feel",
+   "cosmetic",
+   "Cosmetic support",
+   [
+    [
+     "Panthenol",
+     "Panthenol"
+    ]
+   ]
+  ],
+  [
+   "Behentrimonium compounds",
+   "Improve slip and detangling",
+   "established",
+   "Established cosmetic function",
+   [
+    [
+     "Behentrimonium Chloride",
+     "Behentrimonium Chloride"
+    ],
+    [
+     "Behentrimonium Methosulfate",
+     "Behentrimonium Methosulfate"
+    ]
+   ]
+  ],
+  [
+   "Cetyl and cetearyl alcohol",
+   "Support conditioning formulas and softness",
+   "established",
+   "Established cosmetic function",
+   [
+    [
+     "Cetyl Alcohol",
+     "Cetyl Alcohol"
+    ],
+    [
+     "Cetearyl Alcohol",
+     "Cetearyl Alcohol"
+    ]
+   ]
+  ],
+  [
+   "Ceramides",
+   "Lipid-related conditioning support",
+   "promising",
+   "Promising and mechanistically supported; consumer-product outcomes vary",
+   [
+    [
+     "Ceramides",
+     "properties/ceramides/"
+    ]
+   ]
+  ],
+  [
+   "Fatty acids and emollients",
+   "Lubrication, softness and friction management",
+   "cosmetic",
+   "Cosmetic support",
+   [
+    [
+     "Fatty acids",
+     "Oleic Acid"
+    ],
+    [
+     "Oils and butters",
+     "properties/butter-oil/"
+    ]
+   ]
+  ],
+  [
+   "Hydrolyzed keratin, wheat, rice or silk proteins",
+   "Temporary fiber conditioning and film-forming effects",
+   "cosmetic",
+   "Cosmetic support",
+   [
+    [
+     "Keratin",
+     "Hydrolyzed Keratin"
+    ],
+    [
+     "Wheat",
+     "Hydrolyzed Wheat Protein"
+    ],
+    [
+     "Rice",
+     "Hydrolyzed Rice Protein"
+    ],
+    [
+     "Silk",
+     "Hydrolyzed Silk"
+    ]
+   ]
+  ],
+  [
+   "Bond-supporting technologies",
+   "Targeted support for certain forms of hair-fiber damage",
+   "emerging",
+   "Product-specific and evolving",
+   [
+    [
+     "Bond repair",
+     "properties/bond-repair/"
+    ]
+   ]
+  ]
+ ],
+ "explainers": [
+  [
+   "Protein: what it does and what it does not do",
+   [
+    "Hydrolyzed proteins are used in hair-conditioning products. Their effects depend on factors such as molecular size, formulation, deposition and contact time. They may temporarily improve the feel and performance of hair fibers, which is not the same as permanently rebuilding hair.",
+    "\"Protein deficiency\" and \"protein overload\" aren't diagnoses you can make from how hair feels. Stiffness, roughness or breakage can have several explanations, including buildup, insufficient conditioning, damage, product incompatibility and handling practices."
+   ],
+   "Review: On Hair Care Physicochemistry"
+  ],
+  [
+   "Lipids and ceramides",
+   [
+    "Hair fibers contain lipids that contribute to their structure and surface characteristics. Lipid-containing conditioning products can support cosmetic conditioning and improve the feel of damaged hair. The evidence for any one product depends on its formulation, not merely the presence of a ceramide or oil on its ingredient list."
+   ],
+   ""
+  ],
+  [
+   "Bond-supporting treatments",
+   [
+    "Hair's mechanical properties involve multiple types of bonds and interactions. The research is complex, and product technologies differ. Look at the specific technology and follow the product's directions; no single bond treatment rebuilds every damaged bond."
+   ],
+   ""
+  ]
+ ],
+ "finish": {
+  "compare": [
+   "Dryness",
+   "Tangling",
+   "Breakage",
+   "Manageability",
+   "End condition",
+   "Response to lipid treatment",
+   "Response to protein treatment, if used",
+   "Response to bond-supporting treatment, if used",
+   "Routine adherence"
+  ],
+  "maintenance": "Maintain the cleansing, conditioning, deep-conditioning and leave-in foundation. Keep lipid support in the routine at a sustainable interval. Continue protein and bond-supporting treatments only when the hair's condition and response justify them.",
+  "next": [
+   [
+    "Mega Growth & Retention",
+    "If you need a broader scalp and length-retention strategy",
+    "programs/mega-growth-retention/"
+   ],
+   [
+    "Edge Growth Plan",
+    "If you have persistent hairline concerns",
+    "programs/edge-growth-plan/"
+   ]
+  ]
+ }
+}
