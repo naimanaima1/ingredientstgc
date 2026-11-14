@@ -38,8 +38,15 @@ norm = lambda s: re.sub(r'[^a-z0-9]+', ' ', s.lower()).strip()
 slugify = lambda s: re.sub(r'[^a-z0-9]+', '-', s.lower()).strip('-')
 split_names = lambda s: [a.strip() for a in re.split(r',(?!\d)', s or '') if a.strip()]
 
-ing = [r for r in read_csv('ingredients.csv') if r.get('id') and r.get('inci_name')]
-cat = read_csv('catalog.csv')
+_a, _b = read_csv('ingredients.csv'), read_csv('catalog.csv')
+# Tell the two sheets apart by their columns, so swapped links still build the right site.
+if _a and 'inci_name' not in _a[0] and _b and 'inci_name' in _b[0]:
+    print('Note: the ingredient and catalog links are swapped; using each sheet by its columns.')
+    _a, _b = _b, _a
+for name, rows in (('ingredients', _a), ('catalog', _b)):
+    print(f'{name}: {len(rows)} rows; columns: {", ".join(list(rows[0])[:12]) if rows else "none"}')
+ing = [r for r in _a if r.get('id') and r.get('inci_name')]
+cat = _b
 
 for i in ing:
     i['_short'] = re.sub(r'\s*\(.*?\)', '', i.get('common_name') or i['inci_name']).strip()
