@@ -139,8 +139,7 @@ def build():
     <img src="assets/img/ends.jpg" alt="A woman with long dark curls holds the ends of a curl between her fingers." width="799" height="1344" loading="lazy">
     <span class="door-go">See the plans →</span></a>
 </section>
-<section class="basics" aria-labelledby="basics-h"><h2 id="basics-h">On almost every label</h2><p>The everyday ingredients: the base, preservatives and scent.</p>
-  <ul>{''.join(f'<li><a href="{i["_slug"]}/">{e(i["_title"])}</a></li>' for i in basics)}</ul></section></div>
+</div>
 <script src="assets/library.js" defer></script>'''
     html = B.shell('', 'The Good Coil Library: read any hair-care label', 'Paste a hair-care ingredient list and see every ingredient explained by what it does. Ingredients, products and hair plans from The Good Coil. No scores, no verdicts.', body, '', 'home')
     html = html.replace('<main id="main" class="wrap">', '<main id="main" class="home">', 1)
