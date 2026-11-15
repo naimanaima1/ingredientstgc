@@ -636,6 +636,31 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cobalt);outline-off
 @media(min-width:981px){.chk-sec{grid-template-columns:minmax(0,1fr);gap:22px}.chk-sec .intro{display:flex;align-items:baseline;gap:18px}.chk-sec h2{margin-top:0}}
 .chk-lite{margin-top:auto;padding-top:10px;background:none;border:0;font:inherit;font-size:13px;font-weight:700;color:var(--ink);text-align:left;cursor:pointer;text-decoration:underline;text-underline-offset:3px;align-self:flex-start}
 .chk-lite:hover{text-decoration-thickness:2px}
-.inci .lit{background:var(--cobalt);color:#fff;box-shadow:0 0 0 3px var(--cobalt);border-radius:1px}
-.inci .lit{text-decoration-color:#fff}
+.inci .lit,.btl-words .lit{background:var(--cobalt);color:#fff;box-shadow:0 0 0 3px var(--cobalt);border-radius:1px}
+.inci .lit,.btl-words .lit{text-decoration-color:#fff}
 .chk-lite{white-space:nowrap}
+
+/* "does it have" chips and the product finder in the ink band */
+.ask{margin-top:26px}
+.ask-lab{display:block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--citrus);margin-bottom:10px}
+.ask-chips{display:flex;flex-wrap:wrap;gap:8px}
+.ask-chip{font:inherit;font-size:14px;font-weight:600;padding:8px 15px;border:1px solid rgba(248,247,242,.42);background:none;color:var(--paper);cursor:pointer;border-radius:999px;transition:background .15s,color .15s,border-color .15s}
+.ask-chip:hover{border-color:var(--paper)}
+.ask-chip[aria-pressed=true]{background:var(--citrus);border-color:var(--citrus);color:var(--ink)}
+.finder{margin-top:22px;position:relative}
+.finder label,.paste label{display:block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--citrus);margin-bottom:8px}
+.finder input{width:100%;font:inherit;font-size:16px;padding:13px 15px;background:rgba(248,247,242,.07);border:1px solid rgba(248,247,242,.42);color:var(--paper);border-radius:2px}
+.finder input::placeholder{color:rgba(248,247,242,.52)}
+.finder input:focus{outline:2px solid var(--citrus);outline-offset:2px;background:rgba(248,247,242,.12)}
+.f-list{position:absolute;z-index:20;left:0;right:0;top:100%;margin-top:6px;background:var(--paper);border:1px solid var(--ink);box-shadow:5px 5px 0 rgba(0,0,0,.3);list-style:none;padding:0;max-height:300px;overflow:auto}
+.f-list li{padding:11px 15px;cursor:pointer;border-bottom:1px solid var(--line);display:block}
+.f-list li:last-child{border-bottom:0}
+.f-list li b{display:block;font-size:15px;letter-spacing:-.01em}
+.f-list li span{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.f-list li:hover,.f-list li.on{background:var(--citrus)}
+.f-list li.on span,.f-list li:hover span{color:var(--ink)}
+.f-miss{cursor:default!important;font-size:14px;color:var(--muted);line-height:1.5}
+.f-miss:hover{background:none!important}
+.f-note{font-size:13px!important;color:rgba(248,247,242,.62)!important;margin-top:9px!important;line-height:1.5!important}
+.chk-item.is-asked{box-shadow:inset 0 0 0 3px var(--cobalt)}
+.chk-item.is-asked b:after{content:'you asked about this';display:block;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--cobalt);margin-top:3px}

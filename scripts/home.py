@@ -51,8 +51,18 @@ def library_js():
     js = 'window.LIB=' + json.dumps(data, ensure_ascii=False, separators=(',', ':')) + ';\n' + open(B.os.path.join(B.ROOT, 'src', 'library.js'), encoding='utf-8').read()
     B.write('assets/library.js', js)
 
+def find_json():
+    out = []
+    for p, items in B.labels:
+        out.append({'s': p['_slug'], 'n': B.product_full_name(p), 'b': (p.get('brand') or '').strip(), 'i': items})
+    out.sort(key=lambda x: x['n'].lower())
+    B.write('data/find.json', json.dumps(out, ensure_ascii=False, separators=(',', ':')))
+    return len(out)
+
+
 def build():
     library_js()
+    n_found = find_json()
     p, items = pick_example()
     found = [(t, B.lookup(t)) for t in items]
     def c(t, i):
@@ -110,15 +120,28 @@ def build():
     plans = [json.load(open(f, encoding='utf-8')) for f in sorted(glob.glob(B.os.path.join(B.ROOT, 'content', 'guide-*.json')))]
     plans.sort(key=lambda g: g.get('order', 99))
 
+    ask_chips = ''.join(
+        f'<button type="button" class="ask-chip" data-g="{k}" aria-pressed="false">{e(n)}</button>'
+        for k, n, _ in B.CHECK_GROUPS)
     body = f'''<section class="band">
   <div class="band-in">
     <div class="band-copy">
       <span class="eyebrow"><span class="little-dot"></span>The Good Coil Library</span>
-      <h1>Read any hair-care label</h1>
-      <p class="band-lead">Paste the ingredient list from a bottle or a product page. Every ingredient in our library is explained by what it does. No scores, no verdicts.</p>
+      <h1>What's in the bottle?</h1>
+      <p class="band-lead">Tick what you want to know about, then name a product or paste its ingredient list. Every ingredient in our library is explained by what it does. No scores, no verdicts.</p>
+      <div class="ask">
+        <span class="ask-lab" id="ask-lab">Does it have…</span>
+        <div class="ask-chips" role="group" aria-labelledby="ask-lab">{ask_chips}</div>
+      </div>
+      <div class="finder">
+        <label for="f">Product name</label>
+        <input id="f" type="text" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="f-list" placeholder="Start typing, e.g. Quench or Aunt Jackie's">
+        <ul class="f-list" id="f-list" role="listbox" hidden></ul>
+        <p class="f-note" id="f-note">{n_found} labels read so far. Not there yet? Paste it below.</p>
+      </div>
       <form class="paste" id="paste">
-        <label for="t">Ingredient list</label>
-        <textarea id="t" rows="4" placeholder="Water, Glycerin, Cetearyl Alcohol, …"></textarea>
+        <label for="t">Or paste the ingredient list</label>
+        <textarea id="t" rows="3" placeholder="Water, Glycerin, Cetearyl Alcohol, …"></textarea>
         <div class="paste-row"><button class="go" type="submit">Explain this label</button><button class="link-btn" type="button" id="reset" hidden>Back to the example</button></div>
       </form>
     </div>

@@ -191,7 +191,7 @@ def check_strip(items, r='', tags=(), js=True):
     """The quick-check strip. items=None when we have not typed the label out yet."""
     if items is None:
         cells = ''.join(
-            f'''<div class="chk-item {'is-tag' if k in tags else 'is-unread'}"><b>{e(label)}</b>
+            f'''<div class="chk-item {'is-tag' if k in tags else 'is-unread'}" data-g="{k}"><b>{e(label)}</b>
       <span class="chk-state">{'Tagged in our catalog' if k in tags else 'Not checked'}</span><p>{e(desc)}</p></div>'''
             for k, label, desc in CHECK_GROUPS)
         return f'<div class="chk">{cells}</div><p class="chk-note">We have not typed this label out yet, so this is what our catalog says rather than what the bottle says.</p>'
@@ -200,10 +200,10 @@ def check_strip(items, r='', tags=(), js=True):
     for k, label, desc in CHECK_GROUPS:
         hits = [f'<a href="{r}{i["_slug"]}/">{e(i["_title"])}</a>' for i in found[k]] + [e(t) for t in guessed[k]]
         if hits:
-            cells += f'''<div class="chk-item is-yes"><b>{e(label)}</b><span class="chk-state">Yes, {len(hits)}</span><p>{', '.join(hits)}</p>
+            cells += f'''<div class="chk-item is-yes" data-g="{k}"><b>{e(label)}</b><span class="chk-state">Yes, {len(hits)}</span><p>{', '.join(hits)}</p>
       <button type="button" class="chk-lite" data-g="{k}" aria-pressed="false">Show these</button></div>'''
         else:
-            cells += f'''<div class="chk-item is-no"><b>{e(label)}</b><span class="chk-state">None found</span><p>{e(desc)}</p></div>'''
+            cells += f'''<div class="chk-item is-no" data-g="{k}"><b>{e(label)}</b><span class="chk-state">None found</span><p>{e(desc)}</p></div>'''
     note = f'Based on the {len(items)} ingredients on this label.'
     if unknown:
         note += f' {unknown} of them are not in our library yet, so we cannot say for certain about those.'

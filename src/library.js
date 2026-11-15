@@ -37,8 +37,8 @@
     const cells = LIB.checks.map(([k, label, desc]) => {
       const hits = found[k] || [];
       return hits.length
-        ? `<div class="chk-item is-yes"><b>${esc(label)}</b><span class="chk-state">Yes, ${hits.length}</span><p>${hits.join(', ')}</p><button type="button" class="chk-lite" data-g="${k}" aria-pressed="false">Show these</button></div>`
-        : `<div class="chk-item is-no"><b>${esc(label)}</b><span class="chk-state">None found</span><p>${esc(desc)}</p></div>`;
+        ? `<div class="chk-item is-yes" data-g="${k}"><b>${esc(label)}</b><span class="chk-state">Yes, ${hits.length}</span><p>${hits.join(', ')}</p><button type="button" class="chk-lite" data-g="${k}" aria-pressed="false">Show these</button></div>`
+        : `<div class="chk-item is-no" data-g="${k}"><b>${esc(label)}</b><span class="chk-state">None found</span><p>${esc(desc)}</p></div>`;
     }).join('');
     return `<div class="chk">${cells}</div>`;
   }
@@ -83,10 +83,24 @@
   card.addEventListener('mouseenter', stop); card.addEventListener('focusin', stop);
   card.addEventListener('mouseleave', () => { if (keys.length && !card.classList.contains('mine')) play(); });
 
-  document.getElementById('paste').addEventListener('submit', ev => {
-    ev.preventDefault();
-    const items = split(ta.value); if (!items.length) { ta.focus(); return; }
+  // what the reader ticked at the top of the page
+  const asked = new Set();
+  document.querySelectorAll('.ask-chip').forEach(c => c.addEventListener('click', () => {
+    const g = c.dataset.g, on = asked.has(g);
+    on ? asked.delete(g) : asked.add(g);
+    c.setAttribute('aria-pressed', String(!on));
+    paint();
+  }));
+  function paint() {
+    chk.querySelectorAll('.chk-item').forEach(el => el.classList.toggle('is-asked', asked.has(el.dataset.g)));
+    const first = [...asked][0];
+    const btn = first && chk.querySelector(`.chk-lite[data-g="${first}"]`);
+    if (btn && btn.getAttribute('aria-pressed') !== 'true') btn.click();
+  }
+
+  function render(items, source) {
     stop(); card.classList.add('mine');
+    nameEl.innerHTML = source ? `<a href="products/${source.s}/">${esc(source.n)}</a>` : 'Your label';
     const found = items.map(t => [t, lookup(t)]);
     wordsEl.innerHTML = found.map(([t, h]) => h ? `<a href="${h[0]}/" data-g="${h[2].join(" ")}"${h[3].length ? ` data-c="${h[3].join(' ')}"` : ''}>${esc(t)}</a>` : `<span${byName(t) ? ` data-c="${byName(t)}"` : ''}>${esc(t)}</span>`).join(', ') + '.';
     const seen = new Set(found.filter(f => f[1]).map(f => f[1][0]));
@@ -103,11 +117,60 @@
         if (!checks[g].includes(txt)) checks[g].push(txt);
       });
     });
-    let note = `Based on the ${items.length} ingredients you pasted.`;
+    let note = source
+      ? `Based on the ${items.length} ingredients on this label, as we read it.`
+      : `Based on the ${items.length} ingredients you pasted.`;
     const miss = items.length - seen.size;
     if (miss) note += ` ${miss} of them are not in our library yet, so we cannot say for certain about those.`;
     chk.innerHTML = `<h3 class="chk-h">Does it have…</h3>${strip(checks)}<p class="chk-note">${note}</p>`;
     wireLite();
+    paint();
+    card.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+
+  const fIn = document.getElementById('f'), fList = document.getElementById('f-list'), fNote = document.getElementById('f-note');
+  if (fIn) {
+    let all = null, loading = null, pick = -1;
+    const load = () => loading = loading || fetch('data/find.json').then(r => r.json()).then(j => (all = j));
+    fIn.addEventListener('focus', load);
+    const close = () => { fList.hidden = true; fList.innerHTML = ''; fIn.setAttribute('aria-expanded', 'false'); pick = -1; };
+    const choose = p => { close(); fIn.value = p.n; render(p.i, p); };
+    const show = () => {
+      const q = norm(fIn.value);
+      if (!all || q.length < 2) return close();
+      const hits = all.filter(p => norm(p.n + ' ' + p.b).includes(q)).slice(0, 7);
+      if (!hits.length) {
+        fList.innerHTML = '<li class="f-miss">We have not read that label yet. Paste the ingredient list below and we will explain it.</li>';
+        fList.hidden = false; fIn.setAttribute('aria-expanded', 'true');
+        return;
+      }
+      fList.innerHTML = hits.map((p, n) => `<li role="option" id="f-o${n}" tabindex="-1" data-n="${n}"><b>${esc(p.n)}</b><span>${esc(p.b)} · ${p.i.length} ingredients</span></li>`).join('');
+      fList.querySelectorAll('li[data-n]').forEach(li => li.addEventListener('click', () => choose(hits[+li.dataset.n])));
+      fList.hidden = false; fIn.setAttribute('aria-expanded', 'true'); pick = -1;
+      fList._hits = hits;
+    };
+    fIn.addEventListener('input', () => { load().then(show); });
+    fIn.addEventListener('keydown', ev => {
+      const opts = fList.querySelectorAll('li[data-n]');
+      if (!opts.length) return;
+      if (ev.key === 'ArrowDown' || ev.key === 'ArrowUp') {
+        ev.preventDefault();
+        pick = (pick + (ev.key === 'ArrowDown' ? 1 : opts.length - 1)) % opts.length;
+        opts.forEach((o, i) => o.classList.toggle('on', i === pick));
+        fIn.setAttribute('aria-activedescendant', 'f-o' + pick);
+      } else if (ev.key === 'Enter') {
+        ev.preventDefault();
+        choose(fList._hits[pick < 0 ? 0 : pick]);
+      } else if (ev.key === 'Escape') { close(); }
+    });
+    document.addEventListener('click', ev => { if (!fIn.contains(ev.target) && !fList.contains(ev.target)) close(); });
+  }
+
+  document.getElementById('paste').addEventListener('submit', ev => {
+    ev.preventDefault();
+    const items = split(ta.value);
+    if (!items.length) { ta.focus(); return; }
+    render(items, null);
     nameEl.textContent = 'Your label';
     dotsBox.innerHTML = rows.map(([k]) => `<button type="button" class="dot2" data-k="${k}" aria-label="${esc(GN[k][1])}"></button>`).join('');
     cap.innerHTML = `<small>Your label</small><b>${seen.size} of ${items.length} ingredients explained</b><p>Tap a group below, or a dotted word, to read more. We add ingredients every week.</p>`;
