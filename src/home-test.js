@@ -69,7 +69,12 @@
     rows.forEach(function (r) { answers.appendChild(r); });
   }
 
+  var nameEl = document.getElementById('btl-name');
+
   function read(items, product) {
+    if (nameEl) nameEl.innerHTML = product
+      ? '<a href="' + ROOT + 'products/' + product.s + '/">' + esc(product.n) + '</a>'
+      : 'Your label';
     var found = items.map(function (t) { return [t, lookup(t)]; });
     var hits = {}, known = 0;
     found.forEach(function (pair) {
@@ -90,7 +95,15 @@
       row.classList.toggle('is-yes', got.length > 0);
       row.classList.toggle('is-no', got.length === 0);
       row.querySelector('.t-ans').textContent = got.length ? 'Yes' : 'No';
-      row.querySelector('.t-detail').innerHTML = got.length ? got.join(', ') : esc(c[2]);
+      var why = esc(c[2]);
+      if (!got.length && k === 'sulfate') {
+        var near = items.filter(function (t) {
+          var n = norm(t);
+          return n.indexOf('methosulfate') > -1 || n.indexOf('olefin sulfonate') > -1;
+        });
+        if (near.length) why += ' ' + esc(near[0]) + ' is not one of them, despite the name.';
+      }
+      row.querySelector('.t-detail').innerHTML = got.length ? got.join(', ') : why;
     });
     sort();
 

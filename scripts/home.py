@@ -126,16 +126,9 @@ def build(out='', root='', quiet=True):
     plans.sort(key=lambda g: g.get('order', 99))
 
     if quiet:
-        lead = ('Name a product you use and we will tell you what is in it. Every ingredient '
-                'in our library is explained by what it does. No scores, no verdicts.')
-        chips = ''.join(
-            f'<button type="button" class="t-chip" data-g="{k}" aria-pressed="false">{e(n)}</button>'
-            for k, n, _ in B.CHECK_GROUPS)
-        controls = f'''<div class="ask">
-        <span class="ask-lab" id="ask-lab">Does it have…</span>
-        <div class="ask-chips" role="group" aria-labelledby="ask-lab">{chips}</div>
-      </div>
-      <div class="finder">
+        lead = ('Name a product you use and we will tell you what is in it. '
+                'No scores, no verdicts.')
+        controls = f'''<div class="finder">
         <label for="tf">Your product</label>
         <input id="tf" type="text" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="tf-list" placeholder="Start typing, e.g. Quench or Aunt Jackie's">
         <ul class="f-list t-list" id="tf-list" role="listbox" hidden></ul>
@@ -160,12 +153,12 @@ def build(out='', root='', quiet=True):
     if quiet:
         rows = ''.join(
             f'''<li class="t-row" data-g="{k}"><span class="t-name">{e(n)}</span>'''
-            f'''<span class="t-ans">?</span><span class="t-detail">{e(d)}</span></li>'''
-            for k, n, d in B.CHECK_GROUPS)
+            f'''<span class="t-ans">?</span><span class="t-detail"></span></li>'''
+            for k, n, _ in B.CHECK_GROUPS)
         card = f'''<figure class="btl btl-quiet" id="card">
-      <div class="btl-top"><span>Does it have…</span><b id="btl-name">Name a product above</b></div>
+      <div class="btl-top"><span>Does it have…</span><b id="btl-name"></b></div>
       <ol class="t-answers" id="t-answers" aria-live="polite">{rows}</ol>
-      <p class="t-note" id="t-note">We will read its label and answer all {len(B.CHECK_GROUPS)}.</p>
+      <p class="t-note" id="t-note">Pick a product and we will read its label.</p>
       <details class="t-more" id="t-more" hidden>
         <summary>See the full ingredient list</summary>
         <p class="inci" id="t-inci"></p>

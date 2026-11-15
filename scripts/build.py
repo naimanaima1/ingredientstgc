@@ -145,11 +145,11 @@ prop_slug = lambda t: slugify(t)
 
 # The quick check on product pages and in the label decoder.
 CHECK_GROUPS = [
-    ('protein', 'Protein', 'Proteins and amino acids, usually broken into smaller pieces. They cling to the hair surface.'),
+    ('protein', 'Protein', 'Proteins broken into pieces small enough to cling to the hair surface.'),
     ('ceramides', 'Ceramides', "Lipids like the ones between the cells of the hair's outer layer."),
-    ('silicone', 'Silicones', 'Coating ingredients that add slip and shine. Their names end in -cone or -conol, or contain -siloxane. There are four kinds and they do not behave alike.'),
-    ('sulfate', 'Sulfates', 'Strong cleansing agents. Behentrimonium methosulfate is not one of these, despite the name, and nor is an olefin sulfonate.'),
-    ('peptide', 'Peptides', 'Short amino-acid chains, usually named -peptide. Counted separately from protein, because they are not hydrolysed proteins.'),
+    ('silicone', 'Silicones', 'Coating ingredients that add slip and shine.'),
+    ('sulfate', 'Sulfates', 'Strong cleansing agents, the kind that make a shampoo lather hard.'),
+    ('peptide', 'Peptides', 'Short amino-acid chains. Not the same thing as a hydrolysed protein.'),
 ]
 
 # Tags that describe where an ingredient is used rather than what a product is for.
