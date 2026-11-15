@@ -60,6 +60,7 @@ Roughly in order of payoff per hour spent.
 - [ ] **Social preview image and touch icons.** Right now a shared link has no picture. — *Claude*
 - [x] ~~**"Find your product" on the homepage.**~~ Shipped 15 Nov. The hero now asks "Does it have…", takes a product name with live suggestions from the 43 read labels, and falls back to pasting. — *Claude*
 - [x] ~~**Quick check for protein, ceramides, silicones and sulfates.**~~ Shipped 15 Nov, on product pages, as filters on /products/, and on the homepage. Each found group can light its ingredients in the label. — *Claude*
+- [ ] **Pick a homepage layout.** Two are live: the current one at `/` (ink band, big label card, decoder) and a quieter test at `/home-test/` (question as the headline, one search box, four answer lines, label folded away). The test was built because the label card was starting to overwhelm. Compare them on a phone. — *Owner decision*
 - [ ] **Decide whether the four check groups are the right four.** They were chosen from what people ask most. Candidates to add or swap: drying alcohols, heavy oils/butters, fragrance/allergens, bond builders. More than about six cells stops being a quick check. — *Owner decision*
 
 ### Later
