@@ -45,12 +45,11 @@ def pick_example():
         return by_id['TGC-134']
     return max(B.labels, key=lambda pi: (sum(1 for t in pi[1] if B.lookup(t)) / len(pi[1]), len(pi[1])))
 
-# The first homepage, kept at /previous-home/ so it can still be looked at.
-OUT_PATH = 'previous-home/'
-R = '../'
+# The homepage. Built twice: the live one at / with the quiet answer card, and
+# the first version at /previous-home/ with the full label card, for comparison.
 
 
-def library_js():
+def library_js(R=''):
     keys = {k: [v['_slug'], v['_title'], groups_of(v), [g for g, _, _ in B.CHECK_GROUPS if g in v['_tags']]] for k, v in B.keys.items()}
     data = {'root': R, 'keys': keys, 'groups': [[k, n, h, c] for k, n, h, c in GROUPS], 'checks': [[k, n, d] for k, n, d in B.CHECK_GROUPS]}
     js = 'window.LIB=' + json.dumps(data, ensure_ascii=False, separators=(',', ':')) + ';\n' + open(B.os.path.join(B.ROOT, 'src', 'library.js'), encoding='utf-8').read()
@@ -65,8 +64,9 @@ def find_json():
     return len(out)
 
 
-def build():
-    library_js()
+def build(out='', root='', quiet=True):
+    OUT_PATH, R = out, root
+    library_js(root)
     n_found = find_json()
     p, items = pick_example()
     found = [(t, B.lookup(t)) for t in items]
@@ -125,32 +125,56 @@ def build():
     plans = [json.load(open(f, encoding='utf-8')) for f in sorted(glob.glob(B.os.path.join(B.ROOT, 'content', 'guide-*.json')))]
     plans.sort(key=lambda g: g.get('order', 99))
 
-    ask_chips = ''.join(
-        f'<button type="button" class="ask-chip" data-g="{k}" aria-pressed="false">{e(n)}</button>'
-        for k, n, _ in B.CHECK_GROUPS)
-    body = f'''<section class="band">
-  <div class="band-in">
-    <div class="band-copy">
-      <span class="eyebrow"><span class="little-dot"></span>The Good Coil Library</span>
-      <h1>What's in the bottle?</h1>
-      <p class="band-lead">Tick what you want to know about, then name a product or paste its ingredient list. Every ingredient in our library is explained by what it does. No scores, no verdicts.</p>
-      <div class="ask">
+    if quiet:
+        lead = ('Name a product you use and we will tell you what is in it. Every ingredient '
+                'in our library is explained by what it does. No scores, no verdicts.')
+        chips = ''.join(
+            f'<button type="button" class="t-chip" data-g="{k}" aria-pressed="false">{e(n)}</button>'
+            for k, n, _ in B.CHECK_GROUPS)
+        controls = f'''<div class="ask">
         <span class="ask-lab" id="ask-lab">Does it have…</span>
-        <div class="ask-chips" role="group" aria-labelledby="ask-lab">{ask_chips}</div>
+        <div class="ask-chips" role="group" aria-labelledby="ask-lab">{chips}</div>
       </div>
       <div class="finder">
-        <label for="f">Product name</label>
-        <input id="f" type="text" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="f-list" placeholder="Start typing, e.g. Quench or Aunt Jackie's">
-        <ul class="f-list" id="f-list" role="listbox" hidden></ul>
-        <p class="f-note" id="f-note">{n_found} labels read so far. Not there yet? Paste it below.</p>
+        <label for="tf">Your product</label>
+        <input id="tf" type="text" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="tf-list" placeholder="Start typing, e.g. Quench or Aunt Jackie's">
+        <ul class="f-list t-list" id="tf-list" role="listbox" hidden></ul>
+        <p class="f-note">{n_found} labels read so far.</p>
       </div>
-      <form class="paste" id="paste">
-        <label for="t">Or paste the ingredient list</label>
-        <textarea id="t" rows="3" placeholder="Water, Glycerin, Cetearyl Alcohol, …"></textarea>
+      <details class="paste t-paste" >
+        <summary>Our library does not have your product yet?</summary>
+        <form id="t-form">
+          <label for="tt">Paste the ingredient list from the bottle</label>
+          <textarea id="tt" rows="3" placeholder="Water, Glycerin, Cetearyl Alcohol, …"></textarea>
+          <button class="go" type="submit">Read this label</button>
+        </form>
+      </details>'''
+    else:
+        lead = ('Paste the ingredient list from a bottle or a product page. Every ingredient in '
+                'our library is explained by what it does. No scores, no verdicts.')
+        controls = '''<form class="paste" id="paste">
+        <label for="t">Ingredient list</label>
+        <textarea id="t" rows="4" placeholder="Water, Glycerin, Cetearyl Alcohol, …"></textarea>
         <div class="paste-row"><button class="go" type="submit">Explain this label</button><button class="link-btn" type="button" id="reset" hidden>Back to the example</button></div>
-      </form>
-    </div>
-    <figure class="btl" id="card" aria-labelledby="btl-name">
+      </form>'''
+    if quiet:
+        rows = ''.join(
+            f'''<li class="t-row" data-g="{k}"><span class="t-name">{e(n)}</span>'''
+            f'''<span class="t-ans">?</span><span class="t-detail">{e(d)}</span></li>'''
+            for k, n, d in B.CHECK_GROUPS)
+        card = f'''<figure class="btl btl-quiet" id="card">
+      <div class="btl-top"><span>Does it have…</span><b id="btl-name">Name a product above</b></div>
+      <ol class="t-answers" id="t-answers" aria-live="polite">{rows}</ol>
+      <p class="t-note" id="t-note">We will read its label and answer all {len(B.CHECK_GROUPS)}.</p>
+      <details class="t-more" id="t-more" hidden>
+        <summary>See the full ingredient list</summary>
+        <p class="inci" id="t-inci"></p>
+        <p class="t-foot" id="t-foot"></p>
+      </details>
+    </figure>'''
+        script = f'<script src="{R}assets/home-test.js" defer></script>'
+    else:
+        card = f'''<figure class="btl" id="card" aria-labelledby="btl-name">
       <div class="cap" id="cap" aria-live="polite"><small>{e(first[1])}</small><b>{e(first[2])}</b><p>{e(first[3])}</p></div>
       <div class="dots2" id="dots" role="group" aria-label="Step through the groups">{dots}</div>
       <div class="btl-top"><span>Ingredients · as printed</span><b id="btl-name"><a href="{R}products/{p['_slug']}/">{e(name)}</a></b></div>
@@ -158,7 +182,17 @@ def build():
       <div class="btl-foot" id="foot"><b>{known} of {len(items)}</b> in our library · grey words aren't in it yet</div>
       <div class="chk-wrap" id="chk"><h3 class="chk-h">Does it have…</h3>{B.check_strip(items, js=False)}</div>
       <ul class="btl-groups" id="groups">{group_rows}</ul>
-    </figure>
+    </figure>'''
+        script = f'<script src="{R}assets/library.js" defer></script>'
+    body = f'''<section class="band">
+  <div class="band-in">
+    <div class="band-copy">
+      <span class="eyebrow"><span class="little-dot"></span>The Good Coil Library</span>
+      <h1>Read any hair-care label</h1>
+      <p class="band-lead">{lead}</p>
+      {controls}
+    </div>
+    {card}
   </div>
 </section>
 
@@ -172,8 +206,12 @@ def build():
     <span class="door-go">See the plans →</span></a>
 </section>
 </div>
-<script src="{R}assets/library.js" defer></script>'''
-    html = B.shell(R, 'The Good Coil Library: read any hair-care label', 'Paste a hair-care ingredient list and see every ingredient explained by what it does. Ingredients, products and hair plans from The Good Coil. No scores, no verdicts.', body, OUT_PATH, 'home')
-    html = html.replace('</head>', '<meta name="robots" content="noindex">\n</head>')
+{script}'''
+    desc = ('Name a hair-care product and see whether it has protein, ceramides, silicones, '
+            'sulfates or peptides in it, with every ingredient explained by what it does.' if quiet
+            else 'Paste a hair-care ingredient list and see every ingredient explained by what it does.')
+    html = B.shell(R, 'The Good Coil Library: read any hair-care label', desc, body, OUT_PATH, 'home')
+    if not quiet:
+        html = html.replace('</head>', '<meta name="robots" content="noindex">\n</head>')
     html = html.replace('<main id="main" class="wrap">', '<main id="main" class="home">', 1)
     B.write(OUT_PATH + 'index.html', html)

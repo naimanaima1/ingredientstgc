@@ -599,9 +599,10 @@ def main():
     import products as PR
     PR.build()
     import home
-    home.build()  # the first homepage, now at /previous-home/
+    home.build()                                            # the homepage at /
+    home.build(out='previous-home/', root='../', quiet=False)  # the first one, noindex
     import home_test
-    home_test.build()  # the live homepage at /
+    home_test.build(out='home-test/', root='../', test=True)   # the standalone quiet page
     import test_program  # TEST layout at /test-program/
     test_program.build()
     import programs_full  # TEST pages at /programs/ (noindex, kept out of the sitemap)
