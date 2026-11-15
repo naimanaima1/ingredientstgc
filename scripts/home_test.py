@@ -9,7 +9,7 @@ import build as B
 e = B.e
 
 
-def build():
+def build(out='', root='', test=False):
     chips = ''.join(
         f'<button type="button" class="t-chip" data-g="{k}" aria-pressed="false">{e(n)}</button>'
         for k, n, _ in B.CHECK_GROUPS)
@@ -20,8 +20,14 @@ def build():
         <span class="t-detail">{e(d)}</span>
       </li>''' for k, n, d in B.CHECK_GROUPS)
 
+    eyebrow = 'The Good Coil Library · test layout' if test else 'The Good Coil Library'
+    import glob
+    n_ing = len(B.ing)
+    n_prod = len([x for x in B.products if (x.get('kind') or 'product') == 'product'])
+    n_lab = len(B.labels)
+    n_plan = len(glob.glob(B.os.path.join(B.ROOT, 'content', 'guide-*.json')))
     body = f'''<section class="t-wrap">
-  <p class="t-eyebrow"><span class="little-dot"></span>The Good Coil Library · test layout</p>
+  <p class="t-eyebrow"><span class="little-dot"></span>{eyebrow}</p>
   <h1 class="t-h1">Does your product have…</h1>
 
   <div class="t-chips" role="group" aria-label="Jump to one answer">{chips}</div>
@@ -43,6 +49,12 @@ def build():
     <p class="t-foot" id="t-foot"></p>
   </details>
 
+  <nav class="t-doors" aria-label="The rest of the library">
+    <a href="{root}ingredients/"><b>{n_ing}</b><span>Ingredients</span><em>Each one by what it is and what it does.</em></a>
+    <a href="{root}products/"><b>{n_prod}</b><span>Products</span><em>{n_lab} labels read, ingredient by ingredient.</em></a>
+    <a href="{root}plans/"><b>{n_plan}</b><span>Hair plans</span><em>What to do each week, and what to look for.</em></a>
+  </nav>
+
   <details class="t-paste">
     <summary>Our library does not have your product yet?</summary>
     <form id="t-form">
@@ -52,17 +64,22 @@ def build():
     </form>
   </details>
 </section>
-<script src="../assets/home-test.js" defer></script>'''
+<script src="{root}assets/home-test.js" defer></script>'''
 
-    html = B.shell('../', 'Does your product have… · test', 'A quieter layout for the product checker.',
-                   body, 'home-test/index.html')
-    html = html.replace('</head>', '<meta name="robots" content="noindex">\n</head>')
-    B.write('home-test/index.html', html)
+    title = ('Does your product have… · test' if test
+             else 'The Good Coil Library: what is in the bottle?')
+    desc = ('A quieter layout for the product checker.' if test else
+            'Name a hair-care product and see whether it has protein, ceramides, silicones, '
+            'sulfates or peptides in it, with every ingredient explained by what it does.')
+    html = B.shell(root, title, desc, body, out, '' if test else 'home')
+    if test:
+        html = html.replace('</head>', '<meta name="robots" content="noindex">\n</head>')
+    B.write(out + 'index.html', html)
 
     keys = {k: [v['_slug'], v['_title'], [g for g, _, _ in B.CHECK_GROUPS if g in v['_tags']]]
             for k, v in B.keys.items()}
     js = ('window.TLIB=' + json.dumps(
-        {'keys': keys, 'checks': [[k, n, d] for k, n, d in B.CHECK_GROUPS]},
+        {'root': root, 'keys': keys, 'checks': [[k, n, d] for k, n, d in B.CHECK_GROUPS]},
         ensure_ascii=False, separators=(',', ':')) + ';\n'
         + open(B.os.path.join(B.ROOT, 'src', 'home-test.js'), encoding='utf-8').read())
     B.write('assets/home-test.js', js)

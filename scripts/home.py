@@ -45,9 +45,14 @@ def pick_example():
         return by_id['TGC-134']
     return max(B.labels, key=lambda pi: (sum(1 for t in pi[1] if B.lookup(t)) / len(pi[1]), len(pi[1])))
 
+# The first homepage, kept at /previous-home/ so it can still be looked at.
+OUT_PATH = 'previous-home/'
+R = '../'
+
+
 def library_js():
     keys = {k: [v['_slug'], v['_title'], groups_of(v), [g for g, _, _ in B.CHECK_GROUPS if g in v['_tags']]] for k, v in B.keys.items()}
-    data = {'keys': keys, 'groups': [[k, n, h, c] for k, n, h, c in GROUPS], 'checks': [[k, n, d] for k, n, d in B.CHECK_GROUPS]}
+    data = {'root': R, 'keys': keys, 'groups': [[k, n, h, c] for k, n, h, c in GROUPS], 'checks': [[k, n, d] for k, n, d in B.CHECK_GROUPS]}
     js = 'window.LIB=' + json.dumps(data, ensure_ascii=False, separators=(',', ':')) + ';\n' + open(B.os.path.join(B.ROOT, 'src', 'library.js'), encoding='utf-8').read()
     B.write('assets/library.js', js)
 
@@ -148,7 +153,7 @@ def build():
     <figure class="btl" id="card" aria-labelledby="btl-name">
       <div class="cap" id="cap" aria-live="polite"><small>{e(first[1])}</small><b>{e(first[2])}</b><p>{e(first[3])}</p></div>
       <div class="dots2" id="dots" role="group" aria-label="Step through the groups">{dots}</div>
-      <div class="btl-top"><span>Ingredients · as printed</span><b id="btl-name"><a href="products/{p['_slug']}/">{e(name)}</a></b></div>
+      <div class="btl-top"><span>Ingredients · as printed</span><b id="btl-name"><a href="{R}products/{p['_slug']}/">{e(name)}</a></b></div>
       <p class="btl-words" id="words">{words}.</p>
       <div class="btl-foot" id="foot"><b>{known} of {len(items)}</b> in our library · grey words aren't in it yet</div>
       <div class="chk-wrap" id="chk"><h3 class="chk-h">Does it have…</h3>{B.check_strip(items, js=False)}</div>
@@ -158,16 +163,17 @@ def build():
 </section>
 
 <div class="wrap home-rest"><section class="doors2" aria-label="Browse the library">
-  <a class="door" href="ingredients/"><span class="door-n">{len(B.ing)}</span><h2>Ingredients</h2><p>Every ingredient by what it is and what it does, from proteins to plant gels.</p>
+  <a class="door" href="{R}ingredients/"><span class="door-n">{len(B.ing)}</span><h2>Ingredients</h2><p>Every ingredient by what it is and what it does, from proteins to plant gels.</p>
     <ul class="door-feat">{''.join(f'<li><b>{e(i["_title"])}</b><span>{e(job(i))}</span></li>' for i in featured)}</ul><span class="door-go">All ingredients →</span></a>
-  <a class="door" href="products/"><span class="door-n">{n_products}</span><h2>Products</h2><p>{len(B.labels)} labels read so far, each decoded ingredient by ingredient.</p>
+  <a class="door" href="{R}products/"><span class="door-n">{n_products}</span><h2>Products</h2><p>{len(B.labels)} labels read so far, each decoded ingredient by ingredient.</p>
     <ul>{''.join(f'<li>{e(B.product_full_name(x))}</li>' for x in labelled)}</ul><span class="door-go">All products →</span></a>
-  <a class="door door-photo" href="plans/"><span class="door-n">{len(plans)}</span><h2>Hair plans</h2><p>What is going on, what to do each week, and what to look for on a label.</p>
-    <img src="assets/img/ends.jpg" alt="A woman with long dark curls holds the ends of a curl between her fingers." width="799" height="1344" loading="lazy">
+  <a class="door door-photo" href="{R}plans/"><span class="door-n">{len(plans)}</span><h2>Hair plans</h2><p>What is going on, what to do each week, and what to look for on a label.</p>
+    <img src="{R}assets/img/ends.jpg" alt="A woman with long dark curls holds the ends of a curl between her fingers." width="799" height="1344" loading="lazy">
     <span class="door-go">See the plans →</span></a>
 </section>
 </div>
-<script src="assets/library.js" defer></script>'''
-    html = B.shell('', 'The Good Coil Library: read any hair-care label', 'Paste a hair-care ingredient list and see every ingredient explained by what it does. Ingredients, products and hair plans from The Good Coil. No scores, no verdicts.', body, '', 'home')
+<script src="{R}assets/library.js" defer></script>'''
+    html = B.shell(R, 'The Good Coil Library: read any hair-care label', 'Paste a hair-care ingredient list and see every ingredient explained by what it does. Ingredients, products and hair plans from The Good Coil. No scores, no verdicts.', body, OUT_PATH, 'home')
+    html = html.replace('</head>', '<meta name="robots" content="noindex">\n</head>')
     html = html.replace('<main id="main" class="wrap">', '<main id="main" class="home">', 1)
-    B.write('index.html', html)
+    B.write(OUT_PATH + 'index.html', html)

@@ -134,6 +134,7 @@ PROPS = {
     'ceramides': 'Lipids like the ones found naturally between the cells of the hair\'s outer layer.',
     'slip/detangler': 'Makes wet hair slippery, so strands slide apart instead of catching on each other.',
     'scalp active': 'Ingredients used in products made for the scalp, such as serums and tonics.',
+    'peptide': 'Short chains of amino acids. They are built as messengers rather than as patches for the hair surface, so they are not the same thing as a hydrolysed protein.',
     'bond repair': 'Ingredients designed to work on the bonds inside the hair fibre, the ones colour, relaxers and heat can break.',
     'chelating': 'Binds to metals and minerals, like the ones in hard water, so they rinse away. Acids in this group also set a product\'s pH.',
     'silicone': 'Silicones form a smooth, slippery coating on hair that adds shine and reduces friction.',
@@ -148,7 +149,32 @@ CHECK_GROUPS = [
     ('ceramides', 'Ceramides', "Lipids like the ones between the cells of the hair's outer layer."),
     ('silicone', 'Silicones', 'Coating ingredients that add slip and shine. Their names end in -cone or -conol, or contain -siloxane. There are four kinds and they do not behave alike.'),
     ('sulfate', 'Sulfates', 'Strong cleansing agents. Behentrimonium methosulfate is not one of these, despite the name, and nor is an olefin sulfonate.'),
+    ('peptide', 'Peptides', 'Short amino-acid chains, usually named -peptide. Counted separately from protein, because they are not hydrolysed proteins.'),
 ]
+
+# Tags that describe where an ingredient is used rather than what a product is for.
+# A product never takes these on from its ingredients: a leave-in for the lengths
+# that happens to contain a scalp active is still not a scalp product. If product
+# tagging ever learns to read ingredient rows, it has to skip these.
+NEVER_INHERIT = {'scalp active', 'scalp & fiber active', 'peptide / scalp & fiber active'}
+
+
+def inheritable(tags):
+    """The ingredient tags a product may be described by. See NEVER_INHERIT."""
+    return [t for t in tags if t.strip().lower() not in NEVER_INHERIT]
+
+SCALP_STEPS = {'scalp', 'treat'}
+
+
+def scalp_product(p):
+    """True only when the catalog says so: the step, or an explicit property."""
+    props = {t.strip().lower() for t in (p.get('properties') or '').split(',')}
+    if props & NEVER_INHERIT:
+        return True
+    step = (p.get('step') or '').strip().lower()
+    name = ((p.get('name') or '') + ' ' + (p.get('notes') or '')).lower()
+    return step in SCALP_STEPS or 'scalp' in name
+
 
 def check_by_name(t):
     """Name patterns, used only for label words that have no ingredient row yet."""
@@ -573,9 +599,9 @@ def main():
     import products as PR
     PR.build()
     import home
-    home.build()
-    import home_test  # TEST homepage at /home-test/ (noindex, unlinked)
-    home_test.build()
+    home.build()  # the first homepage, now at /previous-home/
+    import home_test
+    home_test.build()  # the live homepage at /
     import test_program  # TEST layout at /test-program/
     test_program.build()
     import programs_full  # TEST pages at /programs/ (noindex, kept out of the sitemap)

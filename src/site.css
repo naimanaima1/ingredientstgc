@@ -609,7 +609,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cobalt);outline-off
 @media(max-width:760px){.gd-copy{padding:34px 6% 32px}.gd-tag em{font-size:25px}.gd-sec{padding:48px 0 54px}.gd-styles{grid-template-columns:minmax(0,1fr)}.gd-stock li{grid-template-columns:minmax(0,1fr);gap:2px}.gd-steps li{grid-template-columns:36px minmax(0,1fr);gap:12px}.gd-steps span{font-size:26px}.gd-jump a{flex:1 1 100%;border-right:0;border-bottom:1px solid var(--line);text-align:left}.gd-jump{position:static}}
 
 /* quick check: does it have protein, ceramides, silicones, sulfates */
-.chk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--ink);background:#fffef9}
+.chk{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:0;border:1px solid var(--ink);background:#fffef9}
 .chk-item{padding:16px 18px 18px;border-right:1px solid var(--ink);display:flex;flex-direction:column;gap:4px;min-width:0}
 .chk-item:last-child{border-right:0}
 .chk-item b{font-size:16px;letter-spacing:-.02em}
@@ -631,7 +631,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cobalt);outline-off
 .chk-wrap .chk-item{padding:12px 14px}
 .chk-wrap .chk-item b{font-size:15px}
 .chips-has{margin-top:4px}
-@media(max-width:860px){.chk{grid-template-columns:repeat(2,minmax(0,1fr))}.chk-item{border-bottom:1px solid var(--ink)}.chk-item:nth-child(2n){border-right:0}.chk-item:nth-last-child(-n+2){border-bottom:0}}
+@media(max-width:860px){.chk{grid-template-columns:repeat(2,minmax(0,1fr))}.chk-item{border-bottom:1px solid var(--ink)}.chk-item:nth-child(2n){border-right:0}}
 @media(max-width:480px){.chk{grid-template-columns:minmax(0,1fr)}.chk-item{border-right:0;border-bottom:1px solid var(--ink)}.chk-item:last-child{border-bottom:0}}
 @media(min-width:981px){.chk-sec{grid-template-columns:minmax(0,1fr);gap:22px}.chk-sec .intro{display:flex;align-items:baseline;gap:18px}.chk-sec h2{margin-top:0}}
 .chk-lite{margin-top:auto;padding-top:10px;background:none;border:0;font:inherit;font-size:13px;font-weight:700;color:var(--ink);text-align:left;cursor:pointer;text-decoration:underline;text-underline-offset:3px;align-self:flex-start}
@@ -744,3 +744,12 @@ a.gp-ing:hover{background:var(--ink);color:var(--paper)}
 .fam-list li a:hover{background:var(--citrus)}
 .chk-more{margin-top:10px!important;font-size:15px!important}
 .chk-more a{color:var(--cobalt);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.t-doors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:42px;border:1px solid var(--ink)}
+.t-doors a{padding:20px 18px 22px;border-right:1px solid var(--ink);text-decoration:none;color:var(--ink);display:block;transition:background .14s}
+.t-doors a:last-child{border-right:0}
+.t-doors a:hover{background:var(--citrus)}
+.t-doors b{display:block;font-size:34px;line-height:1;letter-spacing:-.04em}
+.t-doors span{display:block;font-size:16px;font-weight:700;letter-spacing:-.02em;margin:7px 0 4px}
+.t-doors em{display:block;font-style:normal;font-size:14px;color:var(--muted);line-height:1.5}
+.t-doors a:hover em{color:var(--ink)}
+@media(max-width:640px){.t-doors{grid-template-columns:minmax(0,1fr)}.t-doors a{border-right:0;border-bottom:1px solid var(--ink)}.t-doors a:last-child{border-bottom:0}}

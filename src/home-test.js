@@ -1,5 +1,5 @@
 (function () {
-  var L = window.TLIB, KEYS = L.keys, CHECKS = L.checks;
+  var L = window.TLIB, KEYS = L.keys, CHECKS = L.checks, ROOT = L.root || '';
   var norm = function (s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(); };
   var esc = function (s) {
     return s.replace(/[&<>"]/g, function (c) {
@@ -78,7 +78,7 @@
       var gs = h ? h[2] : (byName(t) ? [byName(t)] : []);
       gs.forEach(function (g) {
         hits[g] = hits[g] || [];
-        var html = h ? '<a href="../' + h[0] + '/">' + esc(h[1]) + '</a>' : esc(t);
+        var html = h ? '<a href="' + ROOT + h[0] + '/">' + esc(h[1]) + '</a>' : esc(t);
         if (hits[g].indexOf(html) === -1) hits[g].push(html);
       });
     });
@@ -103,7 +103,7 @@
 
     inci.innerHTML = found.map(function (pair) {
       var t = pair[0], h = pair[1];
-      return h ? '<a href="../' + h[0] + '/">' + esc(t) + '</a>' : esc(t);
+      return h ? '<a href="' + ROOT + h[0] + '/">' + esc(t) + '</a>' : esc(t);
     }).join(', ') + '.';
     foot.textContent = known + ' of ' + items.length + ' have their own page.';
     more.hidden = false;
@@ -111,7 +111,7 @@
 
   var all = null, loading = null, pick = -1, hits = [];
   function load() {
-    return loading || (loading = fetch('../data/find.json').then(function (r) { return r.json(); })
+    return loading || (loading = fetch(ROOT + 'data/find.json').then(function (r) { return r.json(); })
       .then(function (j) { return (all = j); }));
   }
   function close() { fList.hidden = true; fList.innerHTML = ''; fIn.setAttribute('aria-expanded', 'false'); pick = -1; }
