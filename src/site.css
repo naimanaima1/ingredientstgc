@@ -607,3 +607,30 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cobalt);outline-off
 .gd .tp-ref{color:#f8f7f2b3;margin-top:16px}
 @media(max-width:980px){.gd-hero{grid-template-columns:1fr}.gd-styles{grid-template-columns:repeat(2,minmax(0,1fr))}.gd-causes,.gd-between,.gd-trouble,.gd-derm{grid-template-columns:minmax(0,1fr);gap:30px}.gd-jump a{flex:1 1 40%}}
 @media(max-width:760px){.gd-copy{padding:34px 6% 32px}.gd-tag em{font-size:25px}.gd-sec{padding:48px 0 54px}.gd-styles{grid-template-columns:minmax(0,1fr)}.gd-stock li{grid-template-columns:minmax(0,1fr);gap:2px}.gd-steps li{grid-template-columns:36px minmax(0,1fr);gap:12px}.gd-steps span{font-size:26px}.gd-jump a{flex:1 1 100%;border-right:0;border-bottom:1px solid var(--line);text-align:left}.gd-jump{position:static}}
+
+/* quick check: does it have protein, ceramides, silicones, sulfates */
+.chk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--ink);background:#fffef9}
+.chk-item{padding:16px 18px 18px;border-right:1px solid var(--ink);display:flex;flex-direction:column;gap:4px;min-width:0}
+.chk-item:last-child{border-right:0}
+.chk-item b{font-size:16px;letter-spacing:-.02em}
+.chk-state{font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px}
+.chk-state:before{content:'';width:11px;height:11px;border-radius:50%;border:2px solid var(--ink);flex-shrink:0}
+.chk-item p{font-size:14px!important;line-height:1.55!important;color:var(--muted);margin-top:2px}
+.chk-item a{color:var(--ink);font-weight:600;text-decoration:underline dotted 1.5px;text-underline-offset:3px}
+.is-yes{background:var(--citrus)}
+.is-yes .chk-state:before{background:var(--ink)}
+.is-yes p{color:var(--ink)}
+.is-no .chk-state{color:var(--muted)}
+.is-unread .chk-state,.is-tag .chk-state{color:var(--muted)}
+.is-unread .chk-state:before,.is-tag .chk-state:before{border-style:dashed}
+.is-tag{background:var(--blue-mist)}
+.chk-note{font-size:14px!important;color:var(--muted);margin-top:12px;max-width:72ch;line-height:1.6!important}
+.chk-h{font-size:17px;margin:0 0 10px;letter-spacing:-.02em}
+.chk-wrap{margin-top:18px;border-top:1px solid var(--line);padding-top:16px}
+.chk-wrap .chk{box-shadow:none}
+.chk-wrap .chk-item{padding:12px 14px}
+.chk-wrap .chk-item b{font-size:15px}
+.chips-has{margin-top:4px}
+@media(max-width:860px){.chk{grid-template-columns:repeat(2,minmax(0,1fr))}.chk-item{border-bottom:1px solid var(--ink)}.chk-item:nth-child(2n){border-right:0}.chk-item:nth-last-child(-n+2){border-bottom:0}}
+@media(max-width:480px){.chk{grid-template-columns:minmax(0,1fr)}.chk-item{border-right:0;border-bottom:1px solid var(--ink)}.chk-item:last-child{border-bottom:0}}
+@media(min-width:981px){.chk-sec{grid-template-columns:minmax(0,1fr);gap:22px}.chk-sec .intro{display:flex;align-items:baseline;gap:18px}.chk-sec h2{margin-top:0}}

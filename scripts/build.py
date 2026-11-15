@@ -142,6 +142,65 @@ PROPS = {
 }
 prop_slug = lambda t: slugify(t)
 
+# The quick check on product pages and in the label decoder.
+CHECK_GROUPS = [
+    ('protein', 'Protein', 'Proteins and amino acids, usually broken into smaller pieces. They cling to the hair surface.'),
+    ('ceramides', 'Ceramides', "Lipids like the ones between the cells of the hair's outer layer."),
+    ('silicone', 'Silicones', 'Coating ingredients that add slip and shine. Their names end in -cone or -conol, or contain -siloxane.'),
+    ('sulfate', 'Sulfates', 'Strong cleansing agents. Behentrimonium methosulfate is not one of these, despite the name, and nor is an olefin sulfonate.'),
+]
+
+def check_by_name(t):
+    """Name patterns, used only for label words that have no ingredient row yet."""
+    n = norm(t)
+    if re.search(r'(cone|conol|siloxane|silane)$', n) or 'siloxane' in n or 'methicone' in n:
+        return 'silicone'
+    if 'sulfate' in n and 'methosulfate' not in n and 'sulfosuccinate' not in n:
+        if re.search(r'(lauryl|laureth|coco|myreth|coceth|decyl)', n):
+            return 'sulfate'
+    return None
+
+def check_label(items):
+    """What a label contains, out of the four groups, and how much of it we could not read."""
+    found = {k: [] for k, _, _ in CHECK_GROUPS}   # ingredient rows
+    guessed = {k: [] for k, _, _ in CHECK_GROUPS}  # matched by name only
+    unknown = 0
+    for t in items:
+        i = lookup(t)
+        if i:
+            for k, _, _ in CHECK_GROUPS:
+                if k in i['_tags'] and i not in found[k]:
+                    found[k].append(i)
+        else:
+            unknown += 1
+            g = check_by_name(t)
+            if g and t not in guessed[g]:
+                guessed[g].append(t)
+    return found, guessed, unknown
+
+def check_strip(items, r='', tags=()):
+    """The quick-check strip. items=None when we have not typed the label out yet."""
+    if items is None:
+        cells = ''.join(
+            f'''<div class="chk-item {'is-tag' if k in tags else 'is-unread'}"><b>{e(label)}</b>
+      <span class="chk-state">{'Tagged in our catalog' if k in tags else 'Not checked'}</span><p>{e(desc)}</p></div>'''
+            for k, label, desc in CHECK_GROUPS)
+        return f'<div class="chk">{cells}</div><p class="chk-note">We have not typed this label out yet, so this is what our catalog says rather than what the bottle says.</p>'
+    found, guessed, unknown = check_label(items)
+    cells = ''
+    for k, label, desc in CHECK_GROUPS:
+        hits = [f'<a href="{r}{i["_slug"]}/">{e(i["_title"])}</a>' for i in found[k]] + [e(t) for t in guessed[k]]
+        if hits:
+            cells += f'''<div class="chk-item is-yes"><b>{e(label)}</b><span class="chk-state">Yes, {len(hits)}</span><p>{', '.join(hits)}</p></div>'''
+        else:
+            cells += f'''<div class="chk-item is-no"><b>{e(label)}</b><span class="chk-state">None found</span><p>{e(desc)}</p></div>'''
+    note = f'Based on the {len(items)} ingredients on this label.'
+    if unknown:
+        note += f' {unknown} of them are not in our library yet, so we cannot say for certain about those.'
+    if any(guessed.values()):
+        note += ' Some are recognised by the shape of their name and do not have a page yet.'
+    return f'<div class="chk">{cells}</div><p class="chk-note">{e(note)}</p>'
+
 # Wording that can read as a drug or hair-growth claim in the US. Reported at build time, never changed.
 CLAIM_WORDS = re.compile(r'\b(hair[- ]growth|healthier hair growth|grows? hair|follicle\w*|shedding|density|thicker|stimulat\w*|regrow\w*|hair loss|1,?000x)', re.I)
 

@@ -26,10 +26,27 @@
     return out.map(t => t.replace(/\*.*$/, '').trim().replace(/\.$/, '').replace(/^(and|or)\s+/i, '')).filter(Boolean);
   }
 
+  const chk = document.getElementById('chk');
+  function byName(t) {
+    const n = norm(t);
+    if (/(cone|conol|siloxane|silane)$/.test(n) || n.includes('siloxane') || n.includes('methicone')) return 'silicone';
+    if (n.includes('sulfate') && !n.includes('methosulfate') && !n.includes('sulfosuccinate') && /(lauryl|laureth|coco|myreth|coceth|decyl)/.test(n)) return 'sulfate';
+    return null;
+  }
+  function strip(found) {
+    const cells = LIB.checks.map(([k, label, desc]) => {
+      const hits = found[k] || [];
+      return hits.length
+        ? `<div class="chk-item is-yes"><b>${esc(label)}</b><span class="chk-state">Yes, ${hits.length}</span><p>${hits.join(', ')}</p></div>`
+        : `<div class="chk-item is-no"><b>${esc(label)}</b><span class="chk-state">None found</span><p>${esc(desc)}</p></div>`;
+    }).join('');
+    return `<div class="chk">${cells}</div>`;
+  }
+
   const card = document.getElementById('card'), cap = document.getElementById('cap'), dotsBox = document.getElementById('dots');
   const wordsEl = document.getElementById('words'), groupsEl = document.getElementById('groups'), foot = document.getElementById('foot');
   const nameEl = document.getElementById('btl-name'), reset = document.getElementById('reset'), ta = document.getElementById('t');
-  const example = { words: wordsEl.innerHTML, groups: groupsEl.innerHTML, foot: foot.innerHTML, name: nameEl.innerHTML, dots: dotsBox.innerHTML };
+  const example = { words: wordsEl.innerHTML, groups: groupsEl.innerHTML, foot: foot.innerHTML, name: nameEl.innerHTML, dots: dotsBox.innerHTML, chk: chk.innerHTML };
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let timer = null, idx = 0, keys = [];
 
@@ -61,6 +78,19 @@
       return m.length ? [g[0], m] : null; }).filter(Boolean);
     groupsEl.innerHTML = rows.map(([k, m]) => `<li data-k="${k}"><b>${esc(GN[k][1])}</b><span>${m.map(h => `<a href="${h[0]}/">${esc(h[1])}</a>`).join(', ')}</span></li>`).join('');
     foot.innerHTML = `<b>${seen.size} of ${items.length}</b> in our library · grey words aren't in it yet`;
+    const checks = {};
+    found.forEach(([t, h]) => {
+      const gs = h ? h[3] : (byName(t) ? [byName(t)] : []);
+      gs.forEach(g => {
+        checks[g] = checks[g] || [];
+        const txt = h ? `<a href="${h[0]}/">${esc(h[1])}</a>` : esc(t);
+        if (!checks[g].includes(txt)) checks[g].push(txt);
+      });
+    });
+    let note = `Based on the ${items.length} ingredients you pasted.`;
+    const miss = items.length - seen.size;
+    if (miss) note += ` ${miss} of them are not in our library yet, so we cannot say for certain about those.`;
+    chk.innerHTML = `<h3 class="chk-h">Does it have…</h3>${strip(checks)}<p class="chk-note">${note}</p>`;
     nameEl.textContent = 'Your label';
     dotsBox.innerHTML = rows.map(([k]) => `<button type="button" class="dot2" data-k="${k}" aria-label="${esc(GN[k][1])}"></button>`).join('');
     cap.innerHTML = `<small>Your label</small><b>${seen.size} of ${items.length} ingredients explained</b><p>Tap a group below, or a dotted word, to read more. We add ingredients every week.</p>`;
@@ -70,7 +100,7 @@
   });
   reset.addEventListener('click', () => {
     card.classList.remove('mine'); ta.value = '';
-    wordsEl.innerHTML = example.words; groupsEl.innerHTML = example.groups; foot.innerHTML = example.foot; nameEl.innerHTML = example.name; dotsBox.innerHTML = example.dots;
+    wordsEl.innerHTML = example.words; groupsEl.innerHTML = example.groups; foot.innerHTML = example.foot; nameEl.innerHTML = example.name; dotsBox.innerHTML = example.dots; chk.innerHTML = example.chk;
     reset.hidden = true; guided();
   });
   guided();

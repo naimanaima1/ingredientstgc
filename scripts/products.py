@@ -24,6 +24,7 @@ def product_page(p):
     r = '../../'
     items = items_of(p)
     step = step_of(p)
+    strip = B.check_strip(items if items else None, r, props_of(p))
     tags = ''.join(f'<a class="tag" href="{r}properties/{B.prop_slug(t)}/">{e(t)}</a>' for t in props_of(p))
     if items:
         found = [(t, B.lookup(t)) for t in items]
@@ -65,6 +66,10 @@ def product_page(p):
     </div>
     {inside}
   </section>
+  <section class="section chk-sec" id="check">
+    <div class="intro"><span class="eyebrow">Quick check</span><h2>Does it have…</h2></div>
+    <div>{strip}</div>
+  </section>
   {grouped}
   <p class="source"><span>The Good Coil catalog · Ref {e(p['id'])}</span><a href="{r}data/catalog.json">Get this as data (JSON)</a><a href="{r}about/">How we write these</a></p>'''
     name = B.product_full_name(p)
@@ -75,12 +80,19 @@ def index_page(prods):
     steps = [s for s in STEP_ORDER if any(step_of(p) == s for p in prods)]
     chips = '<button class="chip" type="button" aria-pressed="true" data-tag="">All</button>' + ''.join(
         f'<button class="chip" type="button" aria-pressed="false" data-tag="{s}">{STEP_LABEL[s]}</button>' for s in steps)
+    def checks_of(p):
+        its = items_of(p)
+        if not its:
+            return ''
+        f, g, _ = B.check_label(its)
+        return ' '.join(k for k, _, _ in B.CHECK_GROUPS if f[k] or g[k])
+
     def row(p):
         has = bool(items_of(p))
         inner = f'''<b>{e(p.get('name', '').strip())}</b><span>{e(p.get('brand', '').strip())} · {e(STEP_LABEL.get(step_of(p), step_of(p)))}</span>{'<i>label read</i>' if has else ''}'''
         q = B.norm(f"{p.get('brand', '')} {p.get('name', '')}")
         link = f'<a href="{p["_slug"]}/">{inner}</a>' if step_of(p) != 'tool' else f'<div class="nolink">{inner}</div>'
-        return f'<li data-tags="{step_of(p)}" data-q="{e(q)}" data-label="{1 if has else 0}">{link}</li>'
+        return f'<li data-tags="{step_of(p)}" data-q="{e(q)}" data-label="{1 if has else 0}" data-checks="{checks_of(p)}">{link}</li>'
     rows = ''.join(row(p) for p in sorted(prods, key=lambda p: (p.get('brand', '').lower(), p.get('name', '').lower())))
     n_lab = sum(1 for p in prods if items_of(p))
     body = f'''  <section class="page-head"><span class="eyebrow"><span class="little-dot"></span>The Good Coil catalog</span><h1>Products</h1>
@@ -89,16 +101,18 @@ def index_page(prods):
     <label for="q">Search by product or brand</label>
     <input id="q" type="search" placeholder="Try Pattern, leave-in or curl cream" autocomplete="off">
     <div class="chips" role="group" aria-label="Filter by step">{chips}</div>
+    <div class="chips chips-has" role="group" aria-label="Filter by what the label contains"><button class="chip" type="button" aria-pressed="false" data-has="protein">Has protein</button><button class="chip" type="button" aria-pressed="false" data-has="ceramides">Has ceramides</button><button class="chip" type="button" aria-pressed="false" data-has="silicone">Has silicones</button><button class="chip" type="button" aria-pressed="false" data-has="sulfate">Has sulfates</button></div>
     <label class="check"><input type="checkbox" id="lab"> Only products with an ingredient list</label>
   </section>
   <p class="count-line" id="count" aria-live="polite">{len(prods)} products</p>
   <ul class="ing-list" id="list">{rows}</ul>
   <p class="empty-msg" id="none" hidden>Nothing matches. Try the brand name, or clear the filters.</p>
 <script>
-(()=>{{const q=document.getElementById('q'),lab=document.getElementById('lab'),list=[...document.querySelectorAll('#list li')],chips=[...document.querySelectorAll('.chip')],count=document.getElementById('count'),none=document.getElementById('none');let tag='';
+(()=>{{const q=document.getElementById('q'),lab=document.getElementById('lab'),list=[...document.querySelectorAll('#list li')],chips=[...document.querySelectorAll('.chips:not(.chips-has) .chip')],hasChips=[...document.querySelectorAll('.chips-has .chip')],count=document.getElementById('count'),none=document.getElementById('none');let tag='',has=new Set();
 const n=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
-function run(){{const v=n(q.value);let k=0;list.forEach(li=>{{const ok=(!v||li.dataset.q.includes(v))&&(!tag||li.dataset.tags===tag)&&(!lab.checked||li.dataset.label==='1');li.hidden=!ok;if(ok)k++}});count.textContent=k+' of {len(prods)} products';none.hidden=k>0}}
-q.addEventListener('input',run);lab.addEventListener('change',run);chips.forEach(c=>c.addEventListener('click',()=>{{tag=c.dataset.tag;chips.forEach(x=>x.setAttribute('aria-pressed',x===c));run()}}));}})();
+function run(){{const v=n(q.value);let k=0;list.forEach(li=>{{const c=(li.dataset.checks||'').split(' ');const ok=(!v||li.dataset.q.includes(v))&&(!tag||li.dataset.tags===tag)&&(!lab.checked||li.dataset.label==='1')&&[...has].every(x=>c.includes(x));li.hidden=!ok;if(ok)k++}});count.textContent=k+' of {len(prods)} products';none.hidden=k>0}}
+q.addEventListener('input',run);lab.addEventListener('change',run);chips.forEach(c=>c.addEventListener('click',()=>{{tag=c.dataset.tag;chips.forEach(x=>x.setAttribute('aria-pressed',x===c));run()}}));
+hasChips.forEach(c=>c.addEventListener('click',()=>{{const k=c.dataset.has;has.has(k)?has.delete(k):has.add(k);c.setAttribute('aria-pressed',has.has(k));run()}}));}})();
 </script>'''
     B.write('products/index.html', B.shell('../', 'Products: what\'s inside · The Good Coil', 'Every product in The Good Coil catalog, with its ingredient list decoded.', body, 'products/', 'products'))
 

@@ -46,8 +46,8 @@ def pick_example():
     return max(B.labels, key=lambda pi: (sum(1 for t in pi[1] if B.lookup(t)) / len(pi[1]), len(pi[1])))
 
 def library_js():
-    keys = {k: [v['_slug'], v['_title'], groups_of(v)] for k, v in B.keys.items()}
-    data = {'keys': keys, 'groups': [[k, n, h, c] for k, n, h, c in GROUPS]}
+    keys = {k: [v['_slug'], v['_title'], groups_of(v), [g for g, _, _ in B.CHECK_GROUPS if g in v['_tags']]] for k, v in B.keys.items()}
+    data = {'keys': keys, 'groups': [[k, n, h, c] for k, n, h, c in GROUPS], 'checks': [[k, n, d] for k, n, d in B.CHECK_GROUPS]}
     js = 'window.LIB=' + json.dumps(data, ensure_ascii=False, separators=(',', ':')) + ';\n' + open(B.os.path.join(B.ROOT, 'src', 'library.js'), encoding='utf-8').read()
     B.write('assets/library.js', js)
 
@@ -124,6 +124,7 @@ def build():
       <div class="btl-top"><span>Ingredients · as printed</span><b id="btl-name"><a href="products/{p['_slug']}/">{e(name)}</a></b></div>
       <p class="btl-words" id="words">{words}.</p>
       <div class="btl-foot" id="foot"><b>{known} of {len(items)}</b> in our library · grey words aren't in it yet</div>
+      <div class="chk-wrap" id="chk"><h3 class="chk-h">Does it have…</h3>{B.check_strip(items)}</div>
       <ul class="btl-groups" id="groups">{group_rows}</ul>
     </figure>
   </div>
