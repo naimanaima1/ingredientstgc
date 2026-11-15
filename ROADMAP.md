@@ -7,11 +7,14 @@ Last updated 15 November 2026.
 | | Now |
 |---|---|
 | Ingredients | 74, each with a page |
-| Products | 126, plus 12 tools |
-| Labels read | 34 of 126 products (27%) |
-| Label words recognised | 349 of 730 (48%) |
+| Products | 138, including tools |
+| Labels read | 43 (31%) |
+| Label words recognised | 446 of 943 (47%) |
 | Hair plans | 3 |
-| Pages | ~300 |
+| Pages | ~310 |
+
+Recognition stays near half because every new label brings new words with it. It
+only climbs once the misses in §2 are added.
 
 Sections are ordered by what blocks what, not by size. **Owner** means it needs Naima's words or data; **Claude** means it's build work.
 
@@ -35,8 +38,9 @@ Five things. Everything else can happen after people are already reading.
 
 Roughly in order of payoff per hour spent.
 
-- [ ] **Add the common missing ingredients.** The top misses are silicones (dimethicone, amodimethicone), sodium hydroxide, propanediol, avocado oil, sunflower oil, rosemary extract, sodium laureth sulfate, sodium C14-16 olefin sulfonate, glycol distearate, caprylyl glycol, dehydroacetic acid, isopropyl alcohol, coumarin, benzyl salicylate. Each one lifts the recognition rate on every label at once. — *Owner*
-- [ ] **Keep typing ingredient lists.** 34 of 126 products. Every label added makes the decoder, the product pages and the "found in these products" sections better. — *Owner, ongoing*
+- [ ] **Add the common missing ingredients.** *Now the highest-payoff item on this list:* until silicone and sulfate rows exist, the quick check finds them by the shape of their name rather than from the database, so they show as plain text instead of linking to a page. The Group Guides tab already names them (ING-076 to ING-086), so the rows may be coming in the next upload. The top misses are silicones (dimethicone, amodimethicone), sodium hydroxide, propanediol, avocado oil, sunflower oil, rosemary extract, sodium laureth sulfate, sodium C14-16 olefin sulfonate, glycol distearate, caprylyl glycol, dehydroacetic acid, isopropyl alcohol, coumarin, benzyl salicylate. Each one lifts the recognition rate on every label at once. — *Owner*
+- [ ] **Decide what to do with the new Group Guides tab** (`group_id`, `ingredient_family`, `sub_classification`, `linked_inci_ids`, …). It is a good structure and would let the site group silicones by type, proteins by size, and surfactants by strength. Two things to settle first: the build does not fetch that tab yet (it needs its own repo secret), and its `porosity_and_wash_out_guidance` column is written in verdicts — see §4. — *Owner decision, then Claude*
+- [ ] **Keep typing ingredient lists.** 43 of 138 products. Every label added makes the decoder, the product pages and the "found in these products" sections better. — *Owner, ongoing*
 - [ ] **Add a `source` column** (own research / Open Beauty Facts). Every page currently says "The Good Coil research" because there is nothing else to read. Open Beauty Facts data is share-alike, so this matters once any of it is used. — *Owner*
 - [ ] **Add `evidence` and `why_it_works` columns.** Then the evidence labels on plan pages come from the sheet instead of being written into the code, and ingredient pages can show them too. — *Owner, then Claude*
 - [ ] **Add a `featured` column**, `yes` on up to six rows, to choose what the homepage shows. — *Owner*
@@ -54,7 +58,9 @@ Roughly in order of payoff per hour spent.
 - [ ] **Four style cards with photos** on the Edge Growth Plan, replacing eight. Needs four images. — *Owner images, Claude build*
 - [ ] **Shop links on product pages**, with the affiliate disclosure on every page that carries one. Ingredient pages stay link-free. Needs a decision first. — *Owner decision, Claude build*
 - [ ] **Social preview image and touch icons.** Right now a shared link has no picture. — *Claude*
-- [ ] **"Find your product" on the homepage**, so the first option is searching the catalog rather than pasting a label. The owner doubts many people will paste; product pages already decode their labels, so most of the work is done. — *Claude*
+- [x] ~~**"Find your product" on the homepage.**~~ Shipped 15 Nov. The hero now asks "Does it have…", takes a product name with live suggestions from the 43 read labels, and falls back to pasting. — *Claude*
+- [x] ~~**Quick check for protein, ceramides, silicones and sulfates.**~~ Shipped 15 Nov, on product pages, as filters on /products/, and on the homepage. Each found group can light its ingredients in the label. — *Claude*
+- [ ] **Decide whether the four check groups are the right four.** They were chosen from what people ask most. Candidates to add or swap: drying alcohols, heavy oils/butters, fragrance/allergens, bond builders. More than about six cells stops being a quick check. — *Owner decision*
 
 ### Later
 - [ ] Fold the week grid from the old program pages back into the plans, once it can be done without crowding them.
@@ -67,6 +73,7 @@ Roughly in order of payoff per hour spent.
 
 ## 4. Decisions waiting
 
+0. **The Group Guides verdict language.** The new tab's guidance column tells people what to avoid, which is the one thing the site promised not to do: "Avoid high concentrations on dry, high-porosity, or fragile coils" (GRP-007), "too stripping for weekly wash days on dry 3C–4C coils" (GRP-015), "Best reserved for periodic clarifying" (GRP-015), "Safe for all porosities" (GRP-005, GRP-008). GRP-011, GRP-012 and GRP-014 also reach toward growth claims ("hair density", "counter follicle stress", "regrowth isn't clinically proven" — which still raises regrowth to deny it). Nothing from this tab is on the site yet, so there is no live problem. But it has to be rewritten into what-it-is-and-does before any of it is published. Flagged, not changed.
 1. **Growth wording** on plan pages (above).
 2. **Plan names.** "Edge Growth Plan" is kept. "Mega growth and retention" and "Deep moisture and protein" are still rewrites of the document names.
 3. **Shop links on product pages:** yes or no.
