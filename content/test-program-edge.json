@@ -1,0 +1,360 @@
+{
+ "calm": true,
+ "id": "PRG-001",
+ "slug": "edge-growth-plan",
+ "name": "Edge Growth Plan",
+ "tagline": "Protect the hairline. Reduce tension. Build a consistent care routine.",
+ "image": "hairline.jpg",
+ "image_alt": "A woman with long dark curls presses her fingertips along her hairline and side part.",
+ "eyebrow": "8-week program · hairline and scalp care",
+ "principle": [
+  "Protect the hairline.",
+  "Reduce tension.",
+  "Build a consistent care routine."
+ ],
+ "overview": [
+  [
+   "Duration",
+   "8 weeks"
+  ],
+  [
+   "Primary focus",
+   "Hairline protection and consistent scalp care"
+  ],
+  [
+   "Secondary focus",
+   "Conditioning fragile hair and reducing friction"
+  ],
+  [
+   "Best suited for",
+   "People experiencing edge breakage, styling-related tension or friction concerns"
+  ],
+  [
+   "What you'll track",
+   "Styling tension, scalp comfort, hairline appearance, breakage observations and photo consistency"
+  ]
+ ],
+ "goal": "Create a repeatable hairline-care routine that reduces avoidable mechanical stress, maintains scalp hygiene, conditions fragile hair around the edges and documents changes over time.",
+ "goal_note": "Protecting the hairline comes before trying to stimulate it. A serum cannot compensate for a hairstyle that repeatedly pulls on the follicles.",
+ "pillars": [
+  [
+   "Tension elimination",
+   "Stop or substantially modify hairstyles that pull on the hairline. Avoid tight braids, tight ponytails, heavy extensions, repeated slicking and aggressive edge brushing."
+  ],
+  [
+   "Consistent scalp cleansing",
+   "Follow a scheduled scalp-cleansing interval that suits your scalp and styling routine. Keep the scalp clean without rough scrubbing."
+  ],
+  [
+   "Targeted scalp-care serum",
+   "Include a selected, scalp-compatible serum as the program's targeted care step. Use the product-directed frequency; do not assume all formulas should be applied daily."
+  ],
+  [
+   "Hairline conditioning",
+   "Condition the hair fibers around the hairline during each wash. Use leave-in conditioning when needed to reduce friction and improve manageability."
+  ],
+  [
+   "Friction protection and progress tracking",
+   "Protect the hairline from repeated rubbing and document it consistently through the eight weeks."
+  ]
+ ],
+ "baseline": [
+  [
+   "Hairline appearance",
+   "Front hairline, left temple, right temple"
+  ],
+  [
+   "Hairline density",
+   "Your visual baseline, not a medical density diagnosis"
+  ],
+  [
+   "Breakage",
+   "Short broken hairs, longer shed hairs, uncertain"
+  ],
+  [
+   "Scalp condition",
+   "Comfortable, dry, flaky, itchy, tender, red or irritated"
+  ],
+  [
+   "Styling history",
+   "Braids, wigs, extensions, ponytails, slicked styles, frequent edge brushing"
+  ],
+  [
+   "Friction",
+   "Headwear, scarves, bonnet fit, pillowcase, repeated rubbing"
+  ],
+  [
+   "Product history",
+   "Current cleanser, scalp products, conditioners, styling products"
+  ],
+  [
+   "Symptoms",
+   "Pain, tenderness, itching, burning or noticeable shedding"
+  ]
+ ],
+ "baseline_note": "Take baseline photos before starting the program.",
+ "guardrail": "A hairline that is thinning, receding or developing smooth, shiny areas needs assessment by a dermatologist. Traction alopecia can become permanent if repeated tension continues.",
+ "guardrail_source": "American Academy of Dermatology: Hairstyles that pull can lead to hair loss",
+ "kit": [
+  [
+   "Core",
+   "Everyone uses these",
+   [
+    [
+     "Gentle scalp cleanser",
+     "Maintain scalp hygiene"
+    ],
+    [
+     "Targeted scalp serum",
+     "Consistent scalp-care step (core adjunct)"
+    ],
+    [
+     "Rinse-out conditioner",
+     "Condition hairline fibers"
+    ],
+    [
+     "Leave-in conditioner",
+     "Improve slip and reduce friction during styling"
+    ]
+   ]
+  ],
+  [
+   "Core habit",
+   "You choose the accessory",
+   [
+    [
+     "Satin or silk protection",
+     "Reduce avoidable overnight friction"
+    ]
+   ]
+  ],
+  [
+   "Optional",
+   "",
+   [
+    [
+     "Styling product",
+     "Support your preferred low-tension style; it must not create tension or require aggressive brushing"
+    ]
+   ]
+  ]
+ ],
+ "weeks_intro": "One wash day a week, small habits every day. Each week has one focus.",
+ "weeks": [
+  [
+   "Reset",
+   "Reset and protect",
+   "",
+   "",
+   [
+    "Record baseline photos.",
+    "Stop or modify tension-producing styles.",
+    "Begin cleansing and serum schedule."
+   ]
+  ],
+  [
+   "Consistency",
+   "Establish consistency",
+   "",
+   "",
+   [
+    "Maintain scalp care.",
+    "Audit bonnet, scarf, pillowcase and headwear friction.",
+    "Complete first progress review."
+   ]
+  ],
+  [
+   "Condition",
+   "Condition and protect",
+   "",
+   "",
+   [
+    "Continue serum and wash schedule.",
+    "Review edge brushing, styling gels and manipulation."
+   ]
+  ],
+  [
+   "Photo check",
+   "First visual checkpoint",
+   "",
+   "",
+   [
+    "Take front and temple photos.",
+    "Compare comfort, breakage observations and styling habits with baseline."
+   ]
+  ],
+  [
+   "Reinforce",
+   "Reinforce habits",
+   "",
+   "",
+   [
+    "Maintain the protocol.",
+    "Address any recurring tension or friction source."
+   ]
+  ],
+  [
+   "Review",
+   "Review response",
+   "",
+   "",
+   [
+    "Assess scalp comfort, irritation, dryness and consistency.",
+    "Change an irritating product if necessary."
+   ]
+  ],
+  [
+   "Consolidate",
+   "Consolidate",
+   "",
+   "",
+   [
+    "Maintain the same protective routine.",
+    "Avoid introducing several new products."
+   ]
+  ],
+  [
+   "Final check",
+   "Final assessment",
+   "",
+   "",
+   [
+    "Repeat photos and scores.",
+    "Evaluate the routine and select the maintenance pathway."
+   ]
+  ]
+ ],
+ "wash_day": [
+  "Inspect the hairline before cleansing.",
+  "Gently cleanse the scalp.",
+  "Allow cleanser to rinse through the lengths without scrubbing the edges.",
+  "Condition the hairline fibers and the rest of the hair.",
+  "Detangle gently.",
+  "Apply leave-in conditioner as appropriate.",
+  "Style without tension.",
+  "Resume the serum according to its directions."
+ ],
+ "wash_day_note": "Between wash days, maintain the low-tension styling and friction-protection habits.",
+ "daily": {
+  "Morning": [
+   "Check for tenderness, itching, redness or irritation.",
+   "Apply the selected scalp serum according to its directions and your schedule.",
+   "Choose a comfortable style that does not pull at the temples or front hairline.",
+   "Avoid repeated edge brushing and tight slicked-back styling."
+  ],
+  "Evening": [
+   "Check whether the hairstyle has become tight or uncomfortable.",
+   "Release unnecessary tension.",
+   "Use a comfortable satin or silk bonnet, scarf or pillowcase.",
+   "Avoid tight elastic bands or headwear that rubs directly against the hairline.",
+   "Complete a second serum application only if the product's instructions call for it."
+  ]
+ },
+ "ingredients": [
+  [
+   "Green tea / EGCG",
+   "Interesting early research on hair-follicle biology",
+   "promising",
+   "Promising, not established topical regrowth treatment",
+   [
+    [
+     "Green tea",
+     "EGCG"
+    ]
+   ]
+  ],
+  [
+   "Caffeine",
+   "Studied in topical hair-loss preparations",
+   "promising",
+   "Limited clinical evidence",
+   [
+    [
+     "Caffeine",
+     "Caffeine"
+    ]
+   ]
+  ],
+  [
+   "Niacinamide",
+   "Cosmetic scalp and skin conditioning",
+   "cosmetic",
+   "Cosmetic support; not proven standalone regrowth",
+   [
+    [
+     "Niacinamide",
+     "Niacinamide"
+    ]
+   ]
+  ],
+  [
+   "Peptides",
+   "Used in some targeted scalp formulations",
+   "emerging",
+   "Emerging, formulation-specific",
+   [
+    [
+     "Scalp ingredients",
+     "properties/scalp-active/"
+    ]
+   ]
+  ],
+  [
+   "Panthenol",
+   "Helps condition hair fibers and improve feel",
+   "cosmetic",
+   "Cosmetic support",
+   [
+    [
+     "Panthenol",
+     "Panthenol"
+    ]
+   ]
+  ],
+  [
+   "Cationic conditioners",
+   "Improve slip and reduce combing friction",
+   "established",
+   "Established cosmetic function",
+   [
+    [
+     "Behentrimonium Chloride",
+     "Behentrimonium Chloride"
+    ],
+    [
+     "Polyquaternium-10",
+     "Polyquaternium-10"
+    ]
+   ]
+  ]
+ ],
+ "explainers": [
+  [
+   "Green tea / EGCG: what the research shows",
+   [
+    "EGCG has been investigated in human hair-follicle organ culture and cultured dermal papilla cells. These findings are interesting, but they do not establish that a commercially available topical serum will regrow edges in people."
+   ],
+   "Kwon et al., 2007, Phytomedicine"
+  ],
+  [
+   "Caffeine: what the research shows",
+   [
+    "A 2025 systematic review of topical caffeine included nine clinical studies and 684 participants. Although results generally favored caffeine, three studies were rated medium quality, one low quality and five very low quality. The evidence is not strong enough to guarantee results from retail caffeine products."
+   ],
+   "Systematic review, 2025"
+  ]
+ ],
+ "finish": {
+  "expect": [
+   "The program is designed to improve consistency of protective care and reduce avoidable tension and friction. Hair-fiber breakage may become easier to manage as the routine improves.",
+   "If the hairline is receding, thinning progressively or developing smooth, shiny patches, see a dermatologist rather than waiting for the program to finish."
+  ],
+  "next": [
+   [
+    "Mega Growth & Retention",
+    "For a broader scalp and length-retention strategy",
+    "programs/mega-growth-retention/"
+   ]
+  ]
+ }
+}
