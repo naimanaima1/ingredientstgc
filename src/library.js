@@ -37,11 +37,27 @@
     const cells = LIB.checks.map(([k, label, desc]) => {
       const hits = found[k] || [];
       return hits.length
-        ? `<div class="chk-item is-yes"><b>${esc(label)}</b><span class="chk-state">Yes, ${hits.length}</span><p>${hits.join(', ')}</p></div>`
+        ? `<div class="chk-item is-yes"><b>${esc(label)}</b><span class="chk-state">Yes, ${hits.length}</span><p>${hits.join(', ')}</p><button type="button" class="chk-lite" data-g="${k}" aria-pressed="false">Show these</button></div>`
         : `<div class="chk-item is-no"><b>${esc(label)}</b><span class="chk-state">None found</span><p>${esc(desc)}</p></div>`;
     }).join('');
     return `<div class="chk">${cells}</div>`;
   }
+
+  function wireLite() {
+    chk.querySelectorAll('.chk-lite').forEach(btn => btn.addEventListener('click', () => {
+      const on = btn.getAttribute('aria-pressed') === 'true';
+      chk.querySelectorAll('.chk-lite').forEach(b => { b.setAttribute('aria-pressed', 'false'); b.textContent = 'Show these'; });
+      wordsEl.querySelectorAll('.lit').forEach(w => w.classList.remove('lit'));
+      if (on) return;
+      btn.setAttribute('aria-pressed', 'true');
+      btn.textContent = 'Hide';
+      wordsEl.querySelectorAll('[data-c]').forEach(w => {
+        if (w.dataset.c.split(' ').indexOf(btn.dataset.g) > -1) w.classList.add('lit');
+      });
+    }));
+  }
+
+  wireLite();
 
   const card = document.getElementById('card'), cap = document.getElementById('cap'), dotsBox = document.getElementById('dots');
   const wordsEl = document.getElementById('words'), groupsEl = document.getElementById('groups'), foot = document.getElementById('foot');
@@ -72,7 +88,7 @@
     const items = split(ta.value); if (!items.length) { ta.focus(); return; }
     stop(); card.classList.add('mine');
     const found = items.map(t => [t, lookup(t)]);
-    wordsEl.innerHTML = found.map(([t, h]) => h ? `<a href="${h[0]}/" data-g="${h[2].join(' ')}">${esc(t)}</a>` : `<span>${esc(t)}</span>`).join(', ') + '.';
+    wordsEl.innerHTML = found.map(([t, h]) => h ? `<a href="${h[0]}/" data-g="${h[2].join(" ")}"${h[3].length ? ` data-c="${h[3].join(' ')}"` : ''}>${esc(t)}</a>` : `<span${byName(t) ? ` data-c="${byName(t)}"` : ''}>${esc(t)}</span>`).join(', ') + '.';
     const seen = new Set(found.filter(f => f[1]).map(f => f[1][0]));
     const rows = G.map(g => { const m = []; found.forEach(([t, h]) => { if (h && h[2].includes(g[0]) && !m.some(x => x[0] === h[0])) m.push(h); });
       return m.length ? [g[0], m] : null; }).filter(Boolean);
@@ -91,6 +107,7 @@
     const miss = items.length - seen.size;
     if (miss) note += ` ${miss} of them are not in our library yet, so we cannot say for certain about those.`;
     chk.innerHTML = `<h3 class="chk-h">Does it have…</h3>${strip(checks)}<p class="chk-note">${note}</p>`;
+    wireLite();
     nameEl.textContent = 'Your label';
     dotsBox.innerHTML = rows.map(([k]) => `<button type="button" class="dot2" data-k="${k}" aria-label="${esc(GN[k][1])}"></button>`).join('');
     cap.innerHTML = `<small>Your label</small><b>${seen.size} of ${items.length} ingredients explained</b><p>Tap a group below, or a dotted word, to read more. We add ingredients every week.</p>`;
@@ -100,7 +117,7 @@
   });
   reset.addEventListener('click', () => {
     card.classList.remove('mine'); ta.value = '';
-    wordsEl.innerHTML = example.words; groupsEl.innerHTML = example.groups; foot.innerHTML = example.foot; nameEl.innerHTML = example.name; dotsBox.innerHTML = example.dots; chk.innerHTML = example.chk;
+    wordsEl.innerHTML = example.words; groupsEl.innerHTML = example.groups; foot.innerHTML = example.foot; nameEl.innerHTML = example.name; dotsBox.innerHTML = example.dots; chk.innerHTML = example.chk; wireLite();
     reset.hidden = true; guided();
   });
   guided();

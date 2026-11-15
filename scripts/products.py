@@ -28,7 +28,11 @@ def product_page(p):
     tags = ''.join(f'<a class="tag" href="{r}properties/{B.prop_slug(t)}/">{e(t)}</a>' for t in props_of(p))
     if items:
         found = [(t, B.lookup(t)) for t in items]
-        words = ', '.join(f'<a href="{r}{i["_slug"]}/">{e(t)}</a>' if i else e(t) for t, i in found)
+        def word(t, i):
+            g = B.groups_for(t, i)
+            a = f' data-c="{" ".join(g)}"' if g else ''
+            return f'<a href="{r}{i["_slug"]}/"{a}>{e(t)}</a>' if i else (f'<span{a}>{e(t)}</span>' if g else e(t))
+        words = ', '.join(word(t, i) for t, i in found)
         known = [i for _, i in found if i]
         groups = {}
         for ing in {id(x): x for x in known}.values():

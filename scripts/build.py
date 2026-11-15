@@ -160,6 +160,15 @@ def check_by_name(t):
             return 'sulfate'
     return None
 
+def groups_for(t, i=None):
+    """The check groups a single label word belongs to."""
+    i = i if i is not None else lookup(t)
+    if i:
+        return [k for k, _, _ in CHECK_GROUPS if k in i['_tags']]
+    g = check_by_name(t)
+    return [g] if g else []
+
+
 def check_label(items):
     """What a label contains, out of the four groups, and how much of it we could not read."""
     found = {k: [] for k, _, _ in CHECK_GROUPS}   # ingredient rows
@@ -178,7 +187,7 @@ def check_label(items):
                 guessed[g].append(t)
     return found, guessed, unknown
 
-def check_strip(items, r='', tags=()):
+def check_strip(items, r='', tags=(), js=True):
     """The quick-check strip. items=None when we have not typed the label out yet."""
     if items is None:
         cells = ''.join(
@@ -191,7 +200,8 @@ def check_strip(items, r='', tags=()):
     for k, label, desc in CHECK_GROUPS:
         hits = [f'<a href="{r}{i["_slug"]}/">{e(i["_title"])}</a>' for i in found[k]] + [e(t) for t in guessed[k]]
         if hits:
-            cells += f'''<div class="chk-item is-yes"><b>{e(label)}</b><span class="chk-state">Yes, {len(hits)}</span><p>{', '.join(hits)}</p></div>'''
+            cells += f'''<div class="chk-item is-yes"><b>{e(label)}</b><span class="chk-state">Yes, {len(hits)}</span><p>{', '.join(hits)}</p>
+      <button type="button" class="chk-lite" data-g="{k}" aria-pressed="false">Show these</button></div>'''
         else:
             cells += f'''<div class="chk-item is-no"><b>{e(label)}</b><span class="chk-state">None found</span><p>{e(desc)}</p></div>'''
     note = f'Based on the {len(items)} ingredients on this label.'
@@ -199,7 +209,33 @@ def check_strip(items, r='', tags=()):
         note += f' {unknown} of them are not in our library yet, so we cannot say for certain about those.'
     if any(guessed.values()):
         note += ' Some are recognised by the shape of their name and do not have a page yet.'
-    return f'<div class="chk">{cells}</div><p class="chk-note">{e(note)}</p>'
+    return f'<div class="chk" data-chk>{cells}</div><p class="chk-note">{e(note)}</p>{CHK_JS if js else ""}'
+
+
+CHK_JS = '''<script>
+(function () {
+  document.querySelectorAll('.chk-lite').forEach(function (btn) {
+    var label = document.querySelector('.inci');
+    if (!label) { btn.remove(); return; }
+    btn.addEventListener('click', function () {
+      var on = btn.getAttribute('aria-pressed') === 'true';
+      document.querySelectorAll('.chk-lite').forEach(function (b) {
+        b.setAttribute('aria-pressed', 'false');
+        b.textContent = 'Show these';
+      });
+      label.querySelectorAll('.lit').forEach(function (w) { w.classList.remove('lit'); });
+      if (on) return;
+      btn.setAttribute('aria-pressed', 'true');
+      btn.textContent = "Hide";
+      var g = btn.dataset.g, first = null;
+      label.querySelectorAll('[data-c]').forEach(function (w) {
+        if (w.dataset.c.split(' ').indexOf(g) > -1) { w.classList.add('lit'); first = first || w; }
+      });
+      if (first) first.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    });
+  });
+}());
+</script>'''
 
 # Wording that can read as a drug or hair-growth claim in the US. Reported at build time, never changed.
 CLAIM_WORDS = re.compile(r'\b(hair[- ]growth|healthier hair growth|grows? hair|follicle\w*|shedding|density|thicker|stimulat\w*|regrow\w*|hair loss|1,?000x)', re.I)

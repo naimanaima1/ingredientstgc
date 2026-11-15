@@ -55,8 +55,12 @@ def build():
     library_js()
     p, items = pick_example()
     found = [(t, B.lookup(t)) for t in items]
+    def c(t, i):
+        g = B.groups_for(t, i)
+        return f' data-c="{" ".join(g)}"' if g else ''
     words = ', '.join(
-        f'<a href="{i["_slug"]}/" data-g="{" ".join(groups_of(i))}">{e(t)}</a>' if i else f'<span>{e(t)}</span>' for t, i in found)
+        (f'<a href="{i["_slug"]}/" data-g="{" ".join(groups_of(i))}"{c(t, i)}>{e(t)}</a>'
+         if i else f'<span{c(t, None)}>{e(t)}</span>') for t, i in found)
     present = []
     for k, *_ in GROUPS:
         members = []
@@ -124,7 +128,7 @@ def build():
       <div class="btl-top"><span>Ingredients · as printed</span><b id="btl-name"><a href="products/{p['_slug']}/">{e(name)}</a></b></div>
       <p class="btl-words" id="words">{words}.</p>
       <div class="btl-foot" id="foot"><b>{known} of {len(items)}</b> in our library · grey words aren't in it yet</div>
-      <div class="chk-wrap" id="chk"><h3 class="chk-h">Does it have…</h3>{B.check_strip(items)}</div>
+      <div class="chk-wrap" id="chk"><h3 class="chk-h">Does it have…</h3>{B.check_strip(items, js=False)}</div>
       <ul class="btl-groups" id="groups">{group_rows}</ul>
     </figure>
   </div>

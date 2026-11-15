@@ -634,3 +634,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cobalt);outline-off
 @media(max-width:860px){.chk{grid-template-columns:repeat(2,minmax(0,1fr))}.chk-item{border-bottom:1px solid var(--ink)}.chk-item:nth-child(2n){border-right:0}.chk-item:nth-last-child(-n+2){border-bottom:0}}
 @media(max-width:480px){.chk{grid-template-columns:minmax(0,1fr)}.chk-item{border-right:0;border-bottom:1px solid var(--ink)}.chk-item:last-child{border-bottom:0}}
 @media(min-width:981px){.chk-sec{grid-template-columns:minmax(0,1fr);gap:22px}.chk-sec .intro{display:flex;align-items:baseline;gap:18px}.chk-sec h2{margin-top:0}}
+.chk-lite{margin-top:auto;padding-top:10px;background:none;border:0;font:inherit;font-size:13px;font-weight:700;color:var(--ink);text-align:left;cursor:pointer;text-decoration:underline;text-underline-offset:3px;align-self:flex-start}
+.chk-lite:hover{text-decoration-thickness:2px}
+.inci .lit{background:var(--cobalt);color:#fff;box-shadow:0 0 0 3px var(--cobalt);border-radius:1px}
+.inci .lit{text-decoration-color:#fff}
+.chk-lite{white-space:nowrap}
