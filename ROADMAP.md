@@ -39,7 +39,9 @@ Five things. Everything else can happen after people are already reading.
 Roughly in order of payoff per hour spent.
 
 - [ ] **Add the common missing ingredients.** *Now the highest-payoff item on this list:* until silicone and sulfate rows exist, the quick check finds them by the shape of their name rather than from the database, so they show as plain text instead of linking to a page. The Group Guides tab already names them (ING-076 to ING-086), so the rows may be coming in the next upload. The top misses are silicones (dimethicone, amodimethicone), sodium hydroxide, propanediol, avocado oil, sunflower oil, rosemary extract, sodium laureth sulfate, sodium C14-16 olefin sulfonate, glycol distearate, caprylyl glycol, dehydroacetic acid, isopropyl alcohol, coumarin, benzyl salicylate. Each one lifts the recognition rate on every label at once. — *Owner*
-- [ ] **Decide what to do with the new Group Guides tab** (`group_id`, `ingredient_family`, `sub_classification`, `linked_inci_ids`, …). It is a good structure and would let the site group silicones by type, proteins by size, and surfactants by strength. Two things to settle first: the build does not fetch that tab yet (it needs its own repo secret), and its `porosity_and_wash_out_guidance` column is written in verdicts — see §4. — *Owner decision, then Claude*
+- [ ] **Publish the Group Guides tab as its own sheet link.** The silicone page is built from a copy committed to the repo (`data/groups.csv`), so edits to the sheet will not reach the site until a `GROUPS_CSV_URL` secret is added, the same way the ingredient and catalog links work. Publish the tab to the web and paste the link. — *Owner, 10 min*
+- [ ] **Decide which family goes live next:** Alcohols (3 kinds), Proteins (3 kinds), Scalp Actives (4 kinds), Surfactants & Cleansers (2 kinds). Each is one name in `LIVE` in `scripts/groups.py` plus a two-line intro. Scalp Actives is the one with growth-claim wording, so it is worth reading before it is published. — *Owner decision*
+- [ ] **Add intro copy for the next families.** Silicones has a headline and a lead written for it. Each new family wants the same two lines. — *Owner or Claude*
 - [ ] **Keep typing ingredient lists.** 43 of 138 products. Every label added makes the decoder, the product pages and the "found in these products" sections better. — *Owner, ongoing*
 - [ ] **Add a `source` column** (own research / Open Beauty Facts). Every page currently says "The Good Coil research" because there is nothing else to read. Open Beauty Facts data is share-alike, so this matters once any of it is used. — *Owner*
 - [ ] **Add `evidence` and `why_it_works` columns.** Then the evidence labels on plan pages come from the sheet instead of being written into the code, and ingredient pages can show them too. — *Owner, then Claude*
@@ -74,7 +76,13 @@ Roughly in order of payoff per hour spent.
 
 ## 4. Decisions waiting
 
-0. **The Group Guides verdict language.** The new tab's guidance column tells people what to avoid, which is the one thing the site promised not to do: "Avoid high concentrations on dry, high-porosity, or fragile coils" (GRP-007), "too stripping for weekly wash days on dry 3C–4C coils" (GRP-015), "Best reserved for periodic clarifying" (GRP-015), "Safe for all porosities" (GRP-005, GRP-008). GRP-011, GRP-012 and GRP-014 also reach toward growth claims ("hair density", "counter follicle stress", "regrowth isn't clinically proven" — which still raises regrowth to deny it). Nothing from this tab is on the site yet, so there is no live problem. But it has to be rewritten into what-it-is-and-does before any of it is published. Flagged, not changed.
+**On voice:** the "no scores, no verdicts" line is still printed on the homepage, the
+All ingredients page and the About page, while the Group Guides copy does give
+direct guidance. The owner has decided the Group Guides copy stays as written and
+the anti-verdict messaging gets softened later. Until then the two disagree in
+public. Not urgent, but it is on the list.
+
+
 1. **Growth wording** on plan pages (above).
 2. **Plan names.** "Edge Growth Plan" is kept. "Mega growth and retention" and "Deep moisture and protein" are still rewrites of the document names.
 3. **Shop links on product pages:** yes or no.
