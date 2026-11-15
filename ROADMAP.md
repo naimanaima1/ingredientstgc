@@ -35,7 +35,12 @@ The real work is data entry: product ingredient lists (19 of 138 have one today)
 - [x] Test pages at `/programs/` from the original Intensive Care Collection document (noindex, unlinked). `/plans/` stays as the earlier version.
 - [x] Nov 14: new test layout at `/test-program/deep-moisture-protein-balance/` from the owner's revised Program 03 document (content/test-program.json, scripts/test_program.py): three acts (Start, The 8 weeks, Finish), a week planner with protein Track A/B, ticks saved on the visitor's device. If approved, becomes the template for all programs.
 - [ ] Resolve the flags: Mega's bond weeks (2 and 6 vs 3 and 6) and lipid cadence (weekly vs weeks 2 and 5); mismatched evidence labels (ceramides, panthenol, hydrolyzed proteins); Edge name (Edge Growth Plan vs Edge Recovery); Deep Moisture pillar explanations; reference links.
-- [ ] Owner edits, page by page.
+- [ ] Owner edits, page by page. Feedback Nov 15: the program pages feel overwhelming, too much text, reading level too high for hair care. Direction: guide-shaped pages, plain language.
+- [x] Nov 15: third test layout, `/test-program/healthy-edges/` (content/guide-edges.json, scripts/guide_edges.py). Guide shape: causes, what to note, routine (wash day and between wash days side by side), a style per week instead of a timeline, products by job with how often, ingredients, troubleshooting, dermatologist note. Reads at about grade 3–4 against grade 10–11 for the program pages.
+- [ ] Owner: collect reference guides they like, to steer the next pass.
+- [ ] Owner decision: growth framing. The guide says "the step where the growth-focused ingredients go"; the owner asked for "stimulate follicles" and "ingredients that stimulate growth or thicken hair", which their own documents' guardrails contradict.
+- [ ] Catalog gaps for an edges plan: no edge controls, no silk or satin items, only one scalp serum (TGC-064) and one scalp cleanser (TGC-130).
+- [ ] Owner: check the eight low-tension styles (written by Claude, not from the owner's documents).
 - [ ] Product picks: replace the draft examples; add a scalp serum with the program's ingredients; add night-protection items to the catalog.
 - [ ] Third photo for Deep Moisture.
 - [ ] Move the content from `content/programs-full.json` into sheet tabs (layout drafted Nov 14) so it's edited in Sheets.
