@@ -38,6 +38,8 @@ Five things. Everything else can happen after people are already reading.
 
 Roughly in order of payoff per hour spent.
 
+- [ ] **Retag the peptides** (owner, in progress 15 Nov): `ING-025`, `ING-045`, `ING-046` move from `protein, scalp active` to `peptide, scalp active`, category `Peptide / Scalp & Fiber Active`. The site is ready for this: `peptide` is a described property and its own answer in the quick check, so As I Am Bond Leave-In will stop reading as "has protein" and start reading as "has peptides". Verified against a simulated retag. — *Owner*
+
 - [ ] **Add the common missing ingredients.** *Now the highest-payoff item on this list:* until silicone and sulfate rows exist, the quick check finds them by the shape of their name rather than from the database, so they show as plain text instead of linking to a page. The Group Guides tab already names them (ING-076 to ING-086), so the rows may be coming in the next upload. The top misses are silicones (dimethicone, amodimethicone), sodium hydroxide, propanediol, avocado oil, sunflower oil, rosemary extract, sodium laureth sulfate, sodium C14-16 olefin sulfonate, glycol distearate, caprylyl glycol, dehydroacetic acid, isopropyl alcohol, coumarin, benzyl salicylate. Each one lifts the recognition rate on every label at once. — *Owner*
 - [ ] **Publish the Group Guides tab as its own sheet link.** The silicone page is built from a copy committed to the repo (`data/groups.csv`), so edits to the sheet will not reach the site until a `GROUPS_CSV_URL` secret is added, the same way the ingredient and catalog links work. Publish the tab to the web and paste the link. — *Owner, 10 min*
 - [ ] **Decide which family goes live next:** Alcohols (3 kinds), Proteins (3 kinds), Scalp Actives (4 kinds), Surfactants & Cleansers (2 kinds). Each is one name in `LIVE` in `scripts/groups.py` plus a two-line intro. Scalp Actives is the one with growth-claim wording, so it is worth reading before it is published. — *Owner decision*
@@ -62,8 +64,8 @@ Roughly in order of payoff per hour spent.
 - [ ] **Social preview image and touch icons.** Right now a shared link has no picture. — *Claude*
 - [x] ~~**"Find your product" on the homepage.**~~ Shipped 15 Nov. The hero now asks "Does it have…", takes a product name with live suggestions from the 43 read labels, and falls back to pasting. — *Claude*
 - [x] ~~**Quick check for protein, ceramides, silicones and sulfates.**~~ Shipped 15 Nov, on product pages, as filters on /products/, and on the homepage. Each found group can light its ingredients in the label. — *Claude*
-- [ ] **Pick a homepage layout.** Two are live: the current one at `/` (ink band, big label card, decoder) and a quieter test at `/home-test/` (question as the headline, one search box, four answer lines, label folded away). The test was built because the label card was starting to overwhelm. Compare them on a phone. — *Owner decision*
-- [ ] **Decide whether the four check groups are the right four.** They were chosen from what people ask most. Candidates to add or swap: drying alcohols, heavy oils/butters, fragrance/allergens, bond builders. More than about six cells stops being a quick check. — *Owner decision*
+- [x] ~~**Pick a homepage layout.**~~ Done 15 Nov: the quiet layout is live at `/`, the first one is kept at `/previous-home/` (noindex) for comparison.
+- [ ] **Decide whether the five check groups are the right five.** Protein, ceramides, silicones, sulfates and peptides. Candidates to add or swap: drying alcohols, heavy oils/butters, fragrance/allergens, bond builders. Six is about the ceiling before it stops being quick. — *Owner decision*
 
 ### Later
 - [ ] Fold the week grid from the old program pages back into the plans, once it can be done without crowding them.
