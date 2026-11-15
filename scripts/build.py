@@ -146,7 +146,7 @@ prop_slug = lambda t: slugify(t)
 CHECK_GROUPS = [
     ('protein', 'Protein', 'Proteins and amino acids, usually broken into smaller pieces. They cling to the hair surface.'),
     ('ceramides', 'Ceramides', "Lipids like the ones between the cells of the hair's outer layer."),
-    ('silicone', 'Silicones', 'Coating ingredients that add slip and shine. Their names end in -cone or -conol, or contain -siloxane.'),
+    ('silicone', 'Silicones', 'Coating ingredients that add slip and shine. Their names end in -cone or -conol, or contain -siloxane. There are four kinds and they do not behave alike.'),
     ('sulfate', 'Sulfates', 'Strong cleansing agents. Behentrimonium methosulfate is not one of these, despite the name, and nor is an olefin sulfonate.'),
 ]
 
@@ -209,7 +209,8 @@ def check_strip(items, r='', tags=(), js=True):
         note += f' {unknown} of them are not in our library yet, so we cannot say for certain about those.'
     if any(guessed.values()):
         note += ' Some are recognised by the shape of their name and do not have a page yet.'
-    return f'<div class="chk" data-chk>{cells}</div><p class="chk-note">{e(note)}</p>{CHK_JS if js else ""}'
+    more = f'<p class="chk-more"><a href="{r}groups/silicones/">The four kinds of silicone, and what each one does →</a></p>' if found['silicone'] or guessed['silicone'] else ''
+    return f'<div class="chk" data-chk>{cells}</div><p class="chk-note">{e(note)}</p>{more}{CHK_JS if js else ""}'
 
 
 CHK_JS = '''<script>
@@ -447,9 +448,22 @@ if(location.hash==='#find')q.focus();}})();
 def property_pages():
     tags = sorted({t for i in ing for t in i['_tags']}, key=lambda t: (-sum(t in i['_tags'] for i in ing), t))
     rows = ''.join(f'''<li><a href="{prop_slug(t)}/"><h2>{e(t)}</h2><p>{e(PROPS.get(t, ''))}</p><span>{sum(t in i['_tags'] for i in ing)}</span></a></li>''' for t in tags)
+    import groups as GRP
+    fams = [(f, sl, n) for f, sl, n in (GRP.built or [])]
+    fam_html = ''
+    if fams:
+        cards = ''.join(
+            f'<li><a href="../groups/{sl}/"><h2>{e(f)}</h2>'
+            f'<p>{e(GRP.INTRO.get(f, ("", ""))[0])}</p><span>{n} kinds</span></a></li>'
+            for f, sl, n in fams)
+        fam_html = ('<section class="fam"><span class="eyebrow">Families</span>'
+                    '<p class="fam-lead">Some ingredients split into kinds that behave differently. '
+                    'These pages take one family apart.</p>'
+                    f'<ul class="prop-list fam-list">{cards}</ul></section>')
     body = f'''  <a class="crumb" href="../ingredients/">← All ingredients</a>
   <section class="page-head"><span class="eyebrow"><span class="little-dot"></span>By property</span><h1>What ingredients do</h1>
   <p>Properties group ingredients by the job they do in a product. Many ingredients do more than one job, so they show up in more than one group.</p></section>
+  {fam_html}
   <ul class="prop-list">{rows}</ul>'''
     write('properties/index.html', shell('../', 'Ingredients by property · The Good Coil Library', 'Hair-care ingredients grouped by what they do: humectants, oils and butters, proteins, film-formers and more.', body, 'properties/', 'props'))
     for t in tags:
@@ -541,8 +555,11 @@ def main():
     shutil.rmtree(OUT, ignore_errors=True)
     os.makedirs(os.path.join(OUT, 'assets'))
     shutil.copy(os.path.join(ROOT, 'src', 'site.css'), os.path.join(OUT, 'assets', 'site.css'))
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     counts = {i['id']: ingredient_page(i) for i in ing}
     index_page(counts)
+    import groups as GRP_PRE
+    GRP_PRE.build()
     tags = property_pages()
     about_page()
     data_files(counts)
