@@ -1,70 +1,108 @@
-# Roadmap: The Good Coil Library (library.thegoodcoil.com)
+# The Good Coil Library — roadmap
 
-Owner's Google Sheets are the master copies. The site rebuilds nightly (or via Actions → Run workflow).
-JARA work is listed at the end and waits until the programs are settled.
+Last updated 15 November 2026.
 
-## Size check (Nov 14)
-Today: 69 pages, 1.4 MB (two photos are 220 KB of that), builds in half a second.
-At 75 ingredients + 200 products: about 300 pages, roughly 4–5 MB, builds in 1–2 seconds. GitHub Pages allows 1 GB, so size is not a concern. The products list page would be about 60 KB, and search stays instant in the browser.
-The real work is data entry: product ingredient lists (19 of 138 have one today) and new ingredient rows.
+**Live at library.thegoodcoil.com.** Rebuilds nightly from the owner's Google Sheets, or on demand from Actions → Build and publish → Run workflow.
 
-## 1. Now (small, before sharing any links)
-- [ ] **Names people actually use.** Add a `display_name` column to the ingredient sheet (page title, list name, address), e.g. Glycerin, Panthenol, Biotin, Mineral Oil, Aloe Vera, Mango Extract. The current `common_name` column has descriptions mixed in ("Vegetable Glycerin", "Pro-Vitamin B5", "Vitamin B7", "Organic Mango Fruit Extract"). Fallback when blank: common name without the bracket.
-- [ ] **Freeze addresses.** Add a `slug` column (e.g. `glycerin`) at the same time, so renaming never moves a page.
-- [x] **Address decided Nov 14: library.thegoodcoil.com.** Owner: Hostinger CNAME `library` → naimanaima1.github.io; GitHub Settings → Pages custom domain library.thegoodcoil.com; Enforce HTTPS.
-- [x] **"Found in these products"** on ingredient pages, each product linked to its product page (Nov 14).
-- [x] `display_name` and `slug` columns are read by the build (Nov 14); suggestions sent as display-names-suggested.csv. Owner: paste them into the sheet.
+| | Now |
+|---|---|
+| Ingredients | 74, each with a page |
+| Products | 126, plus 12 tools |
+| Labels read | 34 of 126 products (27%) |
+| Label words recognised | 349 of 730 (48%) |
+| Hair plans | 3 |
+| Pages | ~300 |
 
-## 2. Products (next build)
-- [x] `/products/`: every catalog product, search, filter by step, "only with an ingredient list" (Nov 14). Tools are listed without pages.
-- [x] One page per product: name, brand, step, properties, the label with each known ingredient linked, and "What these ingredients do" grouped by property; "We haven't added this label yet" otherwise. `data/catalog.json` publishes name, brand, kind, step, properties and ingredients only (no links or notes).
-- [ ] Optional `slug` column on the catalog sheet to freeze product addresses (they come from brand + name today).
-- [ ] Decide: shop links on product pages? If yes, affiliate disclosure on every product page (ingredient pages stay link-free).
-- [ ] Merge the website's 52-product shelf (src/data/products.ts) into the catalog sheet: 21 match by name; about 30 need a row (long Amazon titles, combos, satin and silk accessories, tools, "Coming Soon" placeholders to skip).
-- [ ] Owner: tag products by program function (gentle cleanser, scalp serum, deep conditioner, ceramide/lipid, bond, protein, low-tension accessories), as the programs document suggests.
+Sections are ordered by what blocks what, not by size. **Owner** means it needs Naima's words or data; **Claude** means it's build work.
 
-## 3. Ingredient coverage (owner data entry, any time)
-- [ ] Add the most common label words with no row yet: water/aqua, phenoxyethanol, ethylhexylglycerin, potassium sorbate, sodium benzoate, benzyl alcohol, cetearyl alcohol, behentrimonium methosulfate, polyquaternium-10/-37, tocopherol, shea butter, olive oil, fragrance/parfum, and the fragrance allergens (limonene, linalool, hexyl cinnamal, amyl cinnamal, citronellol).
-- [ ] Add the program ingredients: green tea/EGCG, caffeine, niacinamide, hydrolyzed keratin, silk and rice proteins, fatty acids, cationic polymers.
-- [ ] Add `evidence` (Established practice / Promising / Emerging / Cosmetic support) and `why_it_works` columns, so ingredient pages and program pages share one source.
-- [ ] Optional `source` column (own research / Open Beauty Facts).
-- [ ] Fill product ingredient lists toward 50% of the catalog.
-- [ ] Review wording flagged by the build report (ING-015, 025, 029, 044, 045, 046) and the glycerin "dew point" line.
+---
 
-## 4. Hair plans (live)
-Nov 15: the guide layout is the live plan layout. `/plans/` now holds three guides built from content/guide-*.json by scripts/guide.py: Healthy baby hair (edges), Mega growth and retention, Deep moisture and protein. Old plan addresses redirect to the new ones. Earlier layouts are kept for reference under `/test-program/` (noindex): the simple plans (still the source of data/plans.json for JARA) and the two full program pages, whose week grid and planner the owner wants to revisit later.
-- [ ] Owner: review the parts Claude wrote, not the owner's documents: the "why it happens" section on each plan, the eight low-tension styles, and the troubleshooting rows on growth and moisture.
-- [ ] Add images to the style cards; cut to four per the owner's note.
-- [ ] Decide the growth wording (see below) and whether plans keep their old names.
-- [ ] Later: fold the week grid from the old program pages back in, once it can be done without crowding the page.
+## 1. Before sharing the site widely
 
-## 4b. Programs (earlier test pages, kept for reference)
-- [x] Test pages at `/programs/` from the original Intensive Care Collection document (noindex, unlinked). `/plans/` stays as the earlier version.
-- [x] Nov 14: new test layout at `/test-program/deep-moisture-protein-balance/` from the owner's revised Program 03 document (content/test-program.json, scripts/test_program.py): three acts (Start, The 8 weeks, Finish), a week planner with protein Track A/B, ticks saved on the visitor's device. If approved, becomes the template for all programs.
-- [ ] Resolve the flags: Mega's bond weeks (2 and 6 vs 3 and 6) and lipid cadence (weekly vs weeks 2 and 5); mismatched evidence labels (ceramides, panthenol, hydrolyzed proteins); Edge name (Edge Growth Plan vs Edge Recovery); Deep Moisture pillar explanations; reference links.
-- [ ] Owner edits, page by page. Feedback Nov 15: the program pages feel overwhelming, too much text, reading level too high for hair care. Direction: guide-shaped pages, plain language.
-- [x] Nov 15: third test layout, `/test-program/healthy-edges/` (content/guide-edges.json, scripts/guide_edges.py). Guide shape: causes, what to note, routine (wash day and between wash days side by side), a style per week instead of a timeline, products by job with how often, ingredients, troubleshooting, dermatologist note. Reads at about grade 3–4 against grade 10–11 for the program pages.
-- [ ] Owner: collect reference guides they like, to steer the next pass.
-- [ ] Owner decision: growth framing. The guide says "the step where the growth-focused ingredients go"; the owner asked for "stimulate follicles" and "ingredients that stimulate growth or thicken hair", which their own documents' guardrails contradict.
-- [ ] Catalog gaps for an edges plan: no edge controls, no silk or satin items, only one scalp serum (TGC-064) and one scalp cleanser (TGC-130).
-- [ ] Owner: check the eight low-tension styles (written by Claude, not from the owner's documents).
-- [ ] Product picks: replace the draft examples; add a scalp serum with the program's ingredients; add night-protection items to the catalog.
-- [ ] Third photo for Deep Moisture.
-- [ ] Move the content from `content/programs-full.json` into sheet tabs (layout drafted Nov 14) so it's edited in Sheets.
-- [ ] Launch: `/programs/` replaces `/plans/` (redirect), added to the menu and sitemap, noindex removed.
-- [ ] Printable version of each program.
-- [ ] Trims: the owner is considering 12-week trim options (standard trims start at 12 weeks). Decide whether programs offer a 12-week version with a trim step, or a trim note in maintenance. Affects the JARA enrollment (version name) and trim reminders.
+Five things. Everything else can happen after people are already reading.
 
-## 5. Label decoder
-- [x] Nov 14: new homepage. Ink band with a working decoder (paste a label, every known ingredient linked and grouped into friendly groups: The base, Cleansers, Slip, Water binders, Softness, Strength and repair, Hold, pH and minerals, Scalp care, Keeps it safe, Scent, Helpers) and a guided walk-through of one real label; three doors below (Ingredients, Products, Hair plans). The full ingredient list moved to /ingredients/.
-- [ ] Later: a decoder on product pages for labels people paste; saving or sharing a decoded label.
+| | Who | Size |
+|---|---|---|
+| **Display names.** Paste `display_name` and `slug` into the ingredient sheet from `display-names-suggested.csv`. Until then pages read "Aqua", "Parfum", "Paraffinum Liquidum". This is the most visible problem on the site. | Owner | 20 min |
+| **Review the claim-flagged wording.** The build report lists them every night: ING-015, 025, 029, 044, 045, 046, 049, 050, plus the category name "Scalp & Follicle Active". These sit on public pages and in the plans. | Owner | 1 hour |
+| **Decide the growth wording** on plan pages: serum rows and the "what to look for" headings. Three options were set out on 15 Nov. | Owner | a decision |
+| **Read the parts of the plans Claude wrote**, not from your documents: the "why it happens" section on all three plans, the eight low-tension styles, and the troubleshooting rows on growth and moisture. | Owner | 1 hour |
+| **Fix the glycerin dew-point line** (ING-008 says "40–70% dew point"; dew point is a temperature). | Owner | 2 min |
 
-## 6. JARA (after programs are settled, since they decide the database)
-Decided Nov 14: keep planning here and update JARA's roadmap once programs are final.
-- [ ] Lovable, database only: `plan_enrollments` (plan id and version, version name "core" or "maintenance", round number, each person's choices, start/end, status, one active per person, paid-access RLS like saved_routines); `plan_id` and `plan_version` on saved_routines; `catalog_id` on Stash products.
-- [ ] Claude, no credits: nightly copy of the published JSON; plan preview and "Start this program"; reminders per step; "Week 3 of 8" on Week; check-ins with 1–5 scores (hair_checkins.answers); photo milestones; week 8 paths and history; "What's inside" on Stash products.
-- [ ] Later: ticking off daily habits (needs a log table).
+---
 
-## Later
-- Product or ingredient ratings: only if the "no scores, no verdicts" promise is rewritten; rate products, not ingredients; publish the method; JARA results need a privacy policy change.
-- Product images: only with permission (Open Beauty Facts photos need attribution).
+## 2. The sheets: data that makes the site better
+
+Roughly in order of payoff per hour spent.
+
+- [ ] **Add the common missing ingredients.** The top misses are silicones (dimethicone, amodimethicone), sodium hydroxide, propanediol, avocado oil, sunflower oil, rosemary extract, sodium laureth sulfate, sodium C14-16 olefin sulfonate, glycol distearate, caprylyl glycol, dehydroacetic acid, isopropyl alcohol, coumarin, benzyl salicylate. Each one lifts the recognition rate on every label at once. — *Owner*
+- [ ] **Keep typing ingredient lists.** 34 of 126 products. Every label added makes the decoder, the product pages and the "found in these products" sections better. — *Owner, ongoing*
+- [ ] **Add a `source` column** (own research / Open Beauty Facts). Every page currently says "The Good Coil research" because there is nothing else to read. Open Beauty Facts data is share-alike, so this matters once any of it is used. — *Owner*
+- [ ] **Add `evidence` and `why_it_works` columns.** Then the evidence labels on plan pages come from the sheet instead of being written into the code, and ingredient pages can show them too. — *Owner, then Claude*
+- [ ] **Add a `featured` column**, `yes` on up to six rows, to choose what the homepage shows. — *Owner*
+- [ ] **Rewrite the porosity column.** `hair_type_porosity_fit` shows on pages as "Notes for different hair", and it is still full of verdicts: "gold-standard", "essential", "great for". — *Owner*
+- [ ] **Tag the 38 products with no properties**, so they appear in property filters and in plan product rows. — *Owner*
+- [ ] **Fill the catalog gaps the plans exposed:** no edge controls at all, nothing satin or silk, one scalp serum, one scalp cleanser. — *Owner*
+- [ ] **Merge the 52-product affiliate shelf** from thegoodcoil.com (`src/data/products.ts`) into the catalog sheet. 21 match by name; about 30 need new rows. — *Owner, with Claude's match list*
+- [ ] **Tag products by plan job** (gentle cleanser, scalp serum, deep conditioner, lipid, bond, protein, low-tension accessory), so plan product rows fill themselves. — *Owner*
+
+---
+
+## 3. Build work
+
+### Soon
+- [ ] **Four style cards with photos** on the Edge Growth Plan, replacing eight. Needs four images. — *Owner images, Claude build*
+- [ ] **Shop links on product pages**, with the affiliate disclosure on every page that carries one. Ingredient pages stay link-free. Needs a decision first. — *Owner decision, Claude build*
+- [ ] **Social preview image and touch icons.** Right now a shared link has no picture. — *Claude*
+- [ ] **"Find your product" on the homepage**, so the first option is searching the catalog rather than pasting a label. The owner doubts many people will paste; product pages already decode their labels, so most of the work is done. — *Claude*
+
+### Later
+- [ ] Fold the week grid from the old program pages back into the plans, once it can be done without crowding them.
+- [ ] A printable version of each plan.
+- [ ] Ingredient pages: show the evidence label once the sheet has one.
+- [ ] Product photos. Only with permission; Open Beauty Facts images need attribution.
+- [ ] Ratings. Only if the "no scores, no verdicts" promise is rewritten. If it happens: rate products, not ingredients; publish the method; keep ratings away from affiliate links. Results from JARA users would need a privacy policy change first.
+
+---
+
+## 4. Decisions waiting
+
+1. **Growth wording** on plan pages (above).
+2. **Plan names.** "Edge Growth Plan" is kept. "Mega growth and retention" and "Deep moisture and protein" are still rewrites of the document names.
+3. **Shop links on product pages:** yes or no.
+4. **Reference guides.** Send two or three guides you like and the next design pass can start from a shape you have already judged.
+
+---
+
+## 5. JARA (separate track)
+
+Nothing here blocks the library, and the library does not block JARA until the plans are final.
+
+- [ ] **Push the JARA roadmap update.** Drafted 14 Nov, not pushed, because JARA's repo syncs to Lovable. It records the library's address, what it publishes, and what the plans will need.
+- [ ] **Lovable prompt, database only** (updated 15 Nov): `plan_enrollments` (plan id and version, variant such as core or maintenance, round number, the person's choices, previous enrollment, start and end, status including paused, one current plan per person, paid-access RLS like `saved_routines`); `plan_id` and `plan_version` on `saved_routines`; `catalog_id` on `products`. Send once the plans are settled.
+- [ ] **Then, without Lovable credits:** nightly copy of the library's published JSON; plan preview and "Start this plan"; a reminder per step; "Week 3 of 8" on Week; check-ins with 1–5 scores; photo milestones; week-8 paths and history; "What's inside" on Stash products.
+- [ ] **Later:** ticking off daily habits needs a log table.
+
+**Note on data shape:** the library publishes `catalog.json` with the products inside a wrapper (`{generated, source, products: [...]}`), while JARA's own `src/data/catalog.json` is a bare list with the same field names. The copy job has to unwrap it. Until that job exists, JARA's copy is a manual export and can go stale.
+
+---
+
+## 6. How it fits together
+
+```
+Google Sheets (master)          GitHub Action, nightly
+ ├─ Ingredient database  ──┐    1. download both CSVs
+ ├─ Product catalog ───────┤ →  2. python3 scripts/build.py
+ └─ (plans live in the repo,    3. publish to GitHub Pages
+     content/guide-*.json)              ↓
+                            library.thegoodcoil.com
+                              /                 homepage + label decoder
+                              /ingredients/     74 pages
+                              /products/        126 pages
+                              /plans/           3 guides
+                              /properties/, /about/
+                              /data/*.json  ──→ JARA copies these nightly (not built yet)
+                              /test-program/    earlier layouts, kept for reference
+```
+
+Plan content lives in `content/guide-*.json` in this repo, not in a sheet. Moving it to Sheets is possible but has not been worth it while the wording is still changing.

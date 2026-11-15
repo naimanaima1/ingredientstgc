@@ -145,7 +145,7 @@ def index_page(guides):
   <p class="fine">These are guides to cosmetic hair care, not medical advice. For hair loss, scalp conditions or allergies, talk to a dermatologist or doctor.</p>'''
     B.write('plans/index.html', B.shell('../', 'Hair plans · The Good Coil', 'Three hair-care guides from The Good Coil: edges, length retention, and moisture and protein.', body, 'plans/', 'plans'))
 
-REDIRECTS = {'edge-growth-plan': 'healthy-edges', 'deep-moisture-protein-balance': 'moisture-and-protein', 'mega-growth-retention': 'mega-growth-and-retention'}
+REDIRECTS = {'healthy-edges': 'edge-growth-plan', 'deep-moisture-protein-balance': 'moisture-and-protein', 'mega-growth-retention': 'mega-growth-and-retention'}
 
 def build():
     out = [json.load(open(f, encoding='utf-8')) for f in sorted(glob.glob(os.path.join(B.ROOT, 'content', 'guide-*.json')))]
