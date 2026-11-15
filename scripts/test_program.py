@@ -152,11 +152,10 @@ def build():
     for d in progs:
         page(d)
     B.shutil.copy(os.path.join(B.ROOT, 'src', 'test-program.js'), os.path.join(B.OUT, 'assets', 'test-program.js'))
-    import guide_edges
-    g = guide_edges.build()
+    import guide
+    guides = guide.build()
     rows = ''.join(f'<li><a href="{d["slug"]}/"><b>{e(d["name"])}</b><span>{"Calmer version: reference material folded away" if d.get("calm") else "Full version: everything open"}</span></a></li>' for d in progs)
-    if g:
-        rows = f'<li><a href="{g["slug"]}/"><b>{e(g["name"])}</b><span>Guide shape: plain language, no planner</span></a></li>' + rows
+    rows = ''.join(f'<li><a href="{g["slug"]}/"><b>{e(g["name"])}</b><span>Guide shape: plain language, single column</span></a></li>' for g in guides) + rows
     body = f'''<section class="page-head"><span class="eyebrow"><span class="little-dot"></span>Test</span><h1>Test program layouts</h1><p>Layouts being tried before they replace the live plan pages.</p></section>
   <ul class="ing-list">{rows}</ul>'''
     B.write('test-program/index.html', B.shell('../', 'Test program layouts · The Good Coil', 'Test layouts.', body, 'test-program/', 'plans').replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">', 1))

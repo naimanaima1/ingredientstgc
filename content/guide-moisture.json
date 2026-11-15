@@ -1,0 +1,465 @@
+{
+ "id": "GUIDE-MOISTURE",
+ "slug": "moisture-and-protein",
+ "name": "Deep moisture and protein",
+ "tagline": "A guide to conditioning hair that is dry, rough or breaking.",
+ "image": "braids.jpg",
+ "image_alt": "A woman with long cornrow braids and defined baby hair, in profile.",
+ "eyebrow": "Guide · conditioning and moisture",
+ "go": "Start with the routine",
+ "description": "Why hair feels dry or rough, an eight-week conditioning routine, when protein and bond treatments are worth using, and what to look for on a label.",
+ "intro": "Condition consistently. Use the stronger treatments on purpose, not whenever hair feels dry. Then change what you do based on how your hair answers.",
+ "causes": {
+  "title": "Why hair feels dry, rough or stiff",
+  "jump": "Why it happens",
+  "intro": "Hair can feel the same way for several different reasons, which is why swapping products at random rarely fixes it.",
+  "items": [
+   [
+    "Cleansing that is too strong",
+    "A harsh cleanser, or washing more often than your hair needs.",
+    "It takes the oils with the buildup, and the hair has nothing left on it."
+   ],
+   [
+    "Not enough conditioning",
+    "Skipping the deep conditioner, or rinsing the leave-in out.",
+    "Conditioning is what puts slip back. Without it, every comb-through costs you hair."
+   ],
+   [
+    "Buildup",
+    "Layers of styler, oil and dry shampoo that never quite come off.",
+    "Hair can feel coated and limp, and nothing new seems to work on it."
+   ],
+   [
+    "Heat and chemicals",
+    "Color, bleach, relaxers, flat irons.",
+    "They change the hair fiber itself, and that damage does not wash out."
+   ],
+   [
+    "How you handle it",
+    "Detangling dry, brushing hard, tight styles, pulling through knots.",
+    "Most breakage is mechanical. It happens in your hands, not in the bottle."
+   ],
+   [
+    "Too many treatments at once",
+    "Protein, bond and lipid treatments all in the same week.",
+    "If three things change together, you cannot tell which one helped and which one made hair stiff."
+   ]
+  ]
+ },
+ "stock": {
+  "title": "Before you start",
+  "jump": "Before you start",
+  "intro": "Write these down today, with photos. Check the same list at week 4 and week 8.",
+  "items": [
+   [
+    "Dryness",
+    "How long after washing does your hair start to feel dry?"
+   ],
+   [
+    "Tangling",
+    "Where does it tangle most? Ends, underneath, the crown?"
+   ],
+   [
+    "Breakage",
+    "Which areas break: ends, mid-lengths, crown, sides, or all over."
+   ],
+   [
+    "Manageability",
+    "How hard it is to detangle and style, and how soft it feels."
+   ],
+   [
+    "Your hair",
+    "Strand thickness, how dense it is, your curl pattern."
+   ],
+   [
+    "Color, relaxer and heat",
+    "What you have had done, and how recently."
+   ],
+   [
+    "What you use now",
+    "Cleanser, conditioner, deep conditioner, leave-in, oils, treatments."
+   ],
+   [
+    "What you have tried",
+    "Recent protein or bond treatments, and what your hair did afterwards."
+   ]
+  ]
+ },
+ "routine": {
+  "title": "Your routine",
+  "jump": "Your routine",
+  "intro": "One wash day a week. The treatment step is the only part that changes from week to week.",
+  "wash": {
+   "title": "Your wash day",
+   "sub": "Once a week",
+   "steps": [
+    [
+     "Cleanse",
+     "Wash the scalp gently and rinse it all the way out."
+    ],
+    [
+     "This week's treatment",
+     "Protein, lipid or bond, if this week calls for one. Follow its own label for how long to leave it on and how to rinse it. Only one treatment per wash day."
+    ],
+    [
+     "Condition",
+     "Deep conditioner on wash day, or your usual rinse-out."
+    ],
+    [
+     "Detangle",
+     "With the conditioner still in, and enough slip to get through. Then rinse."
+    ],
+    [
+     "Leave-in, then style",
+     "Style with as little pulling and handling as you can."
+    ],
+    [
+     "Write it down",
+     "What you used, and how your hair felt afterwards. This is the part that makes week 8 worth anything."
+    ]
+   ]
+  },
+  "between": {
+   "title": "Between wash days",
+   "sub": "Every day",
+   "groups": [
+    [
+     "Morning",
+     [
+      "Check for dryness and tangling.",
+      "Leave it alone where you can. Less combing, less restyling.",
+      "Refresh only with something that adds slip, not buildup.",
+      "Keep styles comfortable and low tension."
+     ]
+    ],
+    [
+     "Night",
+     [
+      "Protect your hair from friction. Silk or satin.",
+      "Do not sleep in anything tightly secured.",
+      "Check whether your ends need something.",
+      "Note anything that changed after a treatment."
+     ]
+    ]
+   ]
+  }
+ },
+ "weeks": {
+  "title": "What each week is for",
+  "jump": "Week by week",
+  "intro": "Eight wash days. Conditioning stays the same throughout; the treatment is what moves.",
+  "items": [
+   [
+    "Deep conditioning",
+    "Your baseline. Find out how your hair answers plain, consistent conditioning."
+   ],
+   [
+    "Lipid support",
+    "Bring in the ceramide or lipid product. Note whether hair feels smoother, softer, coated, or no different."
+   ],
+   [
+    "Protein, or not",
+    "Only if your damage history and week 1 response point that way. See the next section."
+   ],
+   [
+    "Evaluate",
+    "Back to moisture. Take your week 4 photos and compare with the baseline."
+   ],
+   [
+    "Bond support",
+    "If you have color, bleach, relaxer or heat history. Follow the product's directions exactly."
+   ],
+   [
+    "Lipid support again",
+    "Repeat week 2. Have a look at buildup and how many products you are layering."
+   ],
+   [
+    "Protein check",
+    "Only if week 3 went well and your hair still seems to want it."
+   ],
+   [
+    "Consolidate",
+    "Final wash, final photos. Build your everyday routine out of whatever worked."
+   ]
+  ]
+ },
+ "use": {
+  "title": "What to use",
+  "jump": "What to use",
+  "intro": "Products by the job they do in this routine. Choose your own brands; these are the jobs to fill.",
+  "items": [
+   [
+    "Gentle cleanser",
+    "Takes off buildup without stripping everything you put in last week.",
+    "Once a week",
+    [
+     "TGC-063",
+     "TGC-065"
+    ]
+   ],
+   [
+    "Rinse-out conditioner",
+    "Slip and softness, every single wash. This is the one that prevents breakage.",
+    "Every wash",
+    [
+     "TGC-066",
+     "TGC-025"
+    ]
+   ],
+   [
+    "Deep conditioner",
+    "The heavier conditioning step, with time to sit.",
+    "Weekly",
+    [
+     "TGC-005",
+     "TGC-045"
+    ]
+   ],
+   [
+    "Leave-in",
+    "Keeps the conditioning going between washes.",
+    "Every wash",
+    [
+     "TGC-134",
+     "TGC-122"
+    ]
+   ],
+   [
+    "Lipid or ceramide product",
+    "Puts back the surface lipids that washing, heat and weather wear away.",
+    "Weeks 2 and 6",
+    [
+     "TGC-008"
+    ]
+   ],
+   [
+    "Protein treatment",
+    "Temporarily firms up hair that stretches too easily and snaps.",
+    "Week 3, and week 7 if it suited you",
+    [
+     "TGC-071",
+     "TGC-077"
+    ]
+   ],
+   [
+    "Bond treatment",
+    "For hair with color, bleach, relaxer or heat in its history.",
+    "Week 5, if that is you",
+    [
+     "TGC-007",
+     "TGC-010"
+    ]
+   ],
+   [
+    "Heat protectant",
+    "If you use heat at all.",
+    "Every time you use heat",
+    [
+     "TGC-120"
+    ]
+   ]
+  ]
+ },
+ "choose": {
+  "title": "When protein is worth it, and when it is not",
+  "jump": "About protein",
+  "intro": "Weeks 3 and 7 are a decision, not an instruction. Hair that does not need protein does not benefit from it, and can end up stiff.",
+  "items": [
+   [
+    "Worth doing",
+    "You have color, bleach, relaxer or regular heat in your history, you are seeing breakage, and protein has suited you before. Do week 3, see how week 4 goes, then decide about week 7."
+   ],
+   [
+    "Not worth doing",
+    "Little chemical or heat history and no clear breakage. Use those two weeks for conditioning instead. You are not missing anything."
+   ],
+   [
+    "If it goes wrong",
+    "If hair feels stiff, rough or hard to detangle after a protein treatment, do not repeat it. Go back to your moisturizing conditioner, look at buildup and handling, then reassess later."
+   ],
+   [
+    "What you cannot tell from feel",
+    "Stiff, limp, rough or coated hair all have several possible causes. Protein deficiency and protein overload are not things you can diagnose by touch, so treat these as observations to act on, not a diagnosis."
+   ]
+  ]
+ },
+ "ing": {
+  "title": "What to look for on a conditioning label",
+  "jump": "What to look for",
+  "intro": "These show up in conditioners, masks, leave-ins and treatments. The ingredient list on the back is what tells you which job a product is really set up to do.",
+  "items": [
+   [
+    "Glycerin and other humectants",
+    "They attract water and hold on to it. How well that works depends on the formula and the weather.",
+    "established",
+    [
+     [
+      "Glycerin",
+      "Glycerin"
+     ],
+     [
+      "Humectants",
+      "properties/humectant/"
+     ]
+    ]
+   ],
+   [
+    "Panthenol",
+    "Conditions the hair and improves how it feels.",
+    "cosmetic",
+    [
+     [
+      "Panthenol",
+      "Panthenol"
+     ]
+    ]
+   ],
+   [
+    "Behentrimonium compounds",
+    "The slip in a good conditioner. Less friction through a comb means less breakage.",
+    "established",
+    [
+     [
+      "Behentrimonium Chloride",
+      "Behentrimonium Chloride"
+     ],
+     [
+      "Behentrimonium Methosulfate",
+      "Behentrimonium Methosulfate"
+     ]
+    ]
+   ],
+   [
+    "Cetyl and cetearyl alcohol",
+    "Fatty alcohols. They thicken conditioners and soften hair. Not the drying kind of alcohol.",
+    "established",
+    [
+     [
+      "Cetyl Alcohol",
+      "Cetyl Alcohol"
+     ],
+     [
+      "Cetearyl Alcohol",
+      "Cetearyl Alcohol"
+     ]
+    ]
+   ],
+   [
+    "Ceramides",
+    "Lipids like the ones hair loses to washing and heat. The idea is well supported; how much any one product does varies.",
+    "promising",
+    [
+     [
+      "Ceramides",
+      "properties/ceramides/"
+     ]
+    ]
+   ],
+   [
+    "Fatty acids, oils and butters",
+    "Lubrication and softness. They sit on the surface and cut friction.",
+    "cosmetic",
+    [
+     [
+      "Fatty acids",
+      "Oleic Acid"
+     ],
+     [
+      "Oils and butters",
+      "properties/butter-oil/"
+     ]
+    ]
+   ],
+   [
+    "Hydrolyzed proteins",
+    "Keratin, wheat, rice or silk. They cling to damaged spots and temporarily improve how hair behaves. That is not the same as rebuilding it.",
+    "cosmetic",
+    [
+     [
+      "Keratin",
+      "Hydrolyzed Keratin"
+     ],
+     [
+      "Wheat",
+      "Hydrolyzed Wheat Protein"
+     ],
+     [
+      "Rice",
+      "Hydrolyzed Rice Protein"
+     ],
+     [
+      "Silk",
+      "Hydrolyzed Silk"
+     ]
+    ]
+   ],
+   [
+    "Bond-supporting ingredients",
+    "Several different technologies, each targeting different damage. Judge the product, not the category.",
+    "emerging",
+    [
+     [
+      "Bond repair",
+      "properties/bond-repair/"
+     ]
+    ]
+   ]
+  ]
+ },
+ "trouble": {
+  "title": "If something feels off",
+  "jump": "If something feels off",
+  "items": [
+   [
+    "Dryness comes back quickly",
+    "Look at your cleanser first, then whether the leave-in and styler are sealing anything in."
+   ],
+   [
+    "It keeps tangling",
+    "Look at slip, how you detangle, and what your hair rubs against all day."
+   ],
+   [
+    "Too much breakage",
+    "Look at handling, heat and what you have had done, before you buy a treatment."
+   ],
+   [
+    "It feels coated",
+    "Buildup, or too many products layered. Clarify, then simplify."
+   ],
+   [
+    "Stiff after protein",
+    "Reduce it or stop it, and reassess. Do not repeat it automatically."
+   ],
+   [
+    "Limp and weighed down",
+    "Product buildup, or too much conditioning. Not a reason to add protein."
+   ],
+   [
+    "Rough to the touch",
+    "Look at surface conditioning, heat and general wear."
+   ]
+  ]
+ },
+ "end": {
+  "title": "At the end of eight weeks",
+  "notes": [
+   "Compare your week 8 notes and photos with your baseline. Keep the cleansing, conditioning, deep conditioning and leave-in. Keep lipid support at an interval you will actually stick to. Keep protein and bond treatments only if your hair clearly answered them."
+  ],
+  "list": [
+   "Dryness",
+   "Tangling",
+   "Breakage",
+   "Manageability",
+   "How your ends look",
+   "How each treatment went",
+   "How much of the routine you actually kept up"
+  ],
+  "next": [
+   [
+    "Healthy baby hair",
+    "If your edges need their own attention",
+    "test-program/healthy-edges/"
+   ]
+  ]
+ }
+}

@@ -6,322 +6,390 @@
  "image": "hairline.jpg",
  "image_alt": "A woman with long dark curls presses her fingertips along her hairline and side part.",
  "eyebrow": "Guide · edges and hairline",
+ "go": "Start with the routine",
+ "description": "What wears edges down, a weekly routine, styles that give them a break, and what to look for on a label.",
  "intro": "The hair at your hairline is the finest hair on your head. It breaks first and grows back slowest. This guide covers what wears edges down, what to do each week, and what to look for on a label.",
- "causes_intro": "Most thin edges come from the same few things. Often more than one at a time.",
- "causes": [
-  [
-   "Pulling",
-   "Tight braids, ponytails and buns. Wigs with tight bands or glue. This is the most common cause, and the one you have the most say over.",
-   "The hair is held under tension for hours or days at a time."
-  ],
-  [
-   "Rubbing",
-   "Cotton pillowcases. Scarves, hats and wig caps that sit right on the hairline. Headbands you wear every day.",
-   "Friction wears the hair down until it snaps."
-  ],
-  [
-   "Slicking",
-   "Brushing edges down over and over, with a stiff brush and a hard-hold gel.",
-   "It pulls the same short hairs in the same direction, every day."
-  ],
-  [
-   "Chemicals and heat",
-   "Relaxers, color, bleach and flat irons near the front.",
-   "The hair there is fine to begin with, so it takes the damage first."
-  ],
-  [
-   "Dryness",
-   "Edges dry out faster than the rest of your hair, and dry hair snaps more easily.",
-   "They are exposed, and they are usually the last place anyone moisturizes."
-  ],
-  [
-   "Something else",
-   "Thyroid trouble, low iron, pregnancy, menopause, some illnesses and some medicines can all thin hair.",
-   "A routine cannot fix these. A doctor can look into them."
-  ]
- ],
- "stock_intro": "Write these down today, with photos. Check the same list at week 4 and week 8. That is how you will know whether anything changed.",
- "stock": [
-  [
-   "Photos",
-   "Front, left temple, right temple. Same light, same angle, same hair state each time."
-  ],
-  [
-   "Your edges now",
-   "Where they are full, where they are thin, where you see short broken hairs."
-  ],
-  [
-   "How your scalp feels",
-   "Comfortable, dry, flaky, itchy, sore or red."
-  ],
-  [
-   "What you wear",
-   "The styles you have worn in the last month, and how long each one stayed in."
-  ],
-  [
-   "What rubs",
-   "Your pillowcase, bonnet, scarf, hat, headband, wig cap."
-  ],
-  [
-   "What you use",
-   "Your cleanser, conditioner, leave-in, gel, edge control, oil or serum."
-  ]
- ],
- "routine_intro": "One wash day a week. Small things the rest of the time. The serum is the step people skip, so it is in both lists.",
- "wash_title": "Your wash day",
- "wash_sub": "Once a week",
- "wash": [
-  "Look at your edges before you start.",
-  "Wash your scalp. Go gently at the front, no scrubbing.",
-  "Let the suds rinse down the lengths on their way out.",
-  "Condition your hair, and your edges with it.",
-  "Detangle slowly, with enough slip.",
-  "Add leave-in where you need it.",
-  "Style with no pulling at the front.",
-  "Put your serum back on once your scalp is dry."
- ],
- "between_title": "Between wash days",
- "between_sub": "Every day",
- "between": [
-  [
-   "Morning",
+ "causes": {
+  "title": "Why edges get thin",
+  "jump": "Why edges get thin",
+  "intro": "Most thin edges come from the same few things. Often more than one at a time.",
+  "items": [
    [
-    "Check for soreness, itching or redness.",
-    "Put on your scalp serum. Daily, or as often as the label says.",
-    "Pick a style that does not pull at your temples.",
-    "Leave the edge brush alone."
-   ]
-  ],
-  [
-   "Night",
+    "Pulling",
+    "Tight braids, ponytails and buns. Wigs with tight bands or glue. This is the most common cause, and the one you have the most say over.",
+    "The hair is held under tension for hours or days at a time."
+   ],
    [
-    "Loosen anything that got tight during the day.",
-    "Silk or satin: bonnet, scarf or pillowcase.",
-    "No tight bands sitting on your hairline.",
-    "A second serum only if the label asks for one."
+    "Rubbing",
+    "Cotton pillowcases. Scarves, hats and wig caps that sit right on the hairline. Headbands you wear every day.",
+    "Friction wears the hair down until it snaps."
+   ],
+   [
+    "Slicking",
+    "Brushing edges down over and over, with a stiff brush and a hard-hold gel.",
+    "It pulls the same short hairs in the same direction, every day."
+   ],
+   [
+    "Chemicals and heat",
+    "Relaxers, color, bleach and flat irons near the front.",
+    "The hair there is fine to begin with, so it takes the damage first."
+   ],
+   [
+    "Dryness",
+    "Edges dry out faster than the rest of your hair, and dry hair snaps more easily.",
+    "They are exposed, and they are usually the last place anyone moisturizes."
+   ],
+   [
+    "Something else",
+    "Thyroid trouble, low iron, pregnancy, menopause, some illnesses and some medicines can all thin hair.",
+    "A routine cannot fix these. A doctor can look into them."
    ]
   ]
- ],
- "styles_intro": "Edges need a break from tension. Here is one style to try each week, so you are not wearing the same pull for eight weeks. Swap them around to suit you.",
- "styles": [
-  [
-   "Two-strand twists",
-   "Chunky, and started a little back from your hairline."
-  ],
-  [
-   "A low bun",
-   "Tied with a soft scrunchie, not a thin elastic."
-  ],
-  [
-   "Wash-and-go",
-   "Edges left exactly as they dry."
-  ],
-  [
-   "Bigger braids",
-   "The same style you like, in a larger size, taken out sooner."
-  ],
-  [
-   "A silk scarf",
-   "Tied behind your ears, not across your hairline."
-  ],
-  [
-   "Claw clip, half up",
-   "Nothing gripping the front at all."
-  ],
-  [
-   "Flat twists",
-   "Parted so the tension sits on the top of your head, not the edge."
-  ],
-  [
-   "A wig day, or a hair-down day",
-   "Adjustable cap, no glue, no tight band. Or nothing at all."
+ },
+ "stock": {
+  "title": "Before you start",
+  "jump": "Before you start",
+  "intro": "Write these down today, with photos. Check the same list at week 4 and week 8. That is how you will know whether anything changed.",
+  "items": [
+   [
+    "Photos",
+    "Front, left temple, right temple. Same light, same angle, same hair state each time."
+   ],
+   [
+    "Your edges now",
+    "Where they are full, where they are thin, where you see short broken hairs."
+   ],
+   [
+    "How your scalp feels",
+    "Comfortable, dry, flaky, itchy, sore or red."
+   ],
+   [
+    "What you wear",
+    "The styles you have worn in the last month, and how long each one stayed in."
+   ],
+   [
+    "What rubs",
+    "Your pillowcase, bonnet, scarf, hat, headband, wig cap."
+   ],
+   [
+    "What you use",
+    "Your cleanser, conditioner, leave-in, gel, edge control, oil or serum."
+   ]
   ]
- ],
- "use_intro": "Products by the job they do in this routine. Choose your own brands; these are the jobs to fill.",
- "use": [
-  [
-   "Gentle scalp cleanser",
-   "Keeps the scalp clean, so your serum lands on skin instead of buildup.",
-   "Once a week",
-   [
-    "TGC-130",
-    "TGC-063"
-   ]
-  ],
-  [
-   "Scalp serum",
-   "The step where the growth-focused ingredients go.",
-   "Daily, or as the label says",
-   [
-    "TGC-064"
-   ]
-  ],
-  [
-   "Rinse-out conditioner",
-   "Softens the fine hair at your hairline, so it bends instead of snapping.",
-   "Every wash",
-   [
-    "TGC-066",
-    "TGC-095"
-   ]
-  ],
-  [
-   "Leave-in",
-   "Slip, so styling does not tug at the front.",
-   "Every wash, and when you restyle",
-   [
-    "TGC-134",
-    "TGC-067"
-   ]
-  ],
-  [
-   "Hairline moisturizer, grease or pomade",
-   "Keeps your edges from drying out between washes.",
-   "A little, when they feel dry",
-   [
-    "TGC-030",
-    "TGC-076"
-   ]
-  ],
-  [
-   "Edge control, if you use one",
-   "Soft hold. Hard-hold gels dry stiff and crack the hair they are holding.",
-   "Not every day",
-   []
-  ],
-  [
-   "Silk or satin",
-   "Stops your pillow rubbing your edges all night.",
-   "Every night",
-   []
-  ]
- ],
- "stack_title": "About stacking serums",
- "stack": [
-  "Using two or three scalp products at once makes it impossible to tell which one did anything, and which one made your scalp itch.",
-  "Start one. Give it the full eight weeks. Write down what happened. Then decide whether to add anything."
- ],
- "ing_intro": "What you will see on a scalp serum label, and how much research sits behind each one.",
- "ingredients": [
-  [
-   "Green tea, or EGCG",
-   "Studied in lab-grown hair follicles. Interesting, early, and not the same as a serum regrowing edges on a person.",
-   "promising",
-   [
+ },
+ "routine": {
+  "title": "Your routine",
+  "jump": "Your routine",
+  "intro": "Five steps on wash day. A few small things the rest of the time.",
+  "wash": {
+   "title": "Your wash day",
+   "sub": "Once a week",
+   "steps": [
     [
-     "Green tea",
-     "EGCG"
-    ]
-   ]
-  ],
-  [
-   "Caffeine",
-   "The most-studied of these. A 2025 review of nine studies found the results leaned positive, but most of the studies were weak.",
-   "promising",
-   [
-    [
-     "Caffeine",
-     "Caffeine"
-    ]
-   ]
-  ],
-  [
-   "Peptides",
-   "Different blends do different things. Each one has to be judged on its own research, not on the word peptide.",
-   "emerging",
-   [
-    [
-     "Scalp ingredients",
-     "properties/scalp-active/"
-    ]
-   ]
-  ],
-  [
-   "Niacinamide",
-   "A well-established skin ingredient. It conditions the scalp; it is not a growth treatment on its own.",
-   "established",
-   [
-    [
-     "Niacinamide",
-     "Niacinamide"
-    ]
-   ]
-  ],
-  [
-   "Panthenol",
-   "Softens the hair and improves how it feels.",
-   "cosmetic",
-   [
-    [
-     "Panthenol",
-     "Panthenol"
-    ]
-   ]
-  ],
-  [
-   "Conditioning agents",
-   "The slip in your conditioner. Less friction when you comb means less breakage.",
-   "established",
-   [
-    [
-     "Behentrimonium Chloride",
-     "Behentrimonium Chloride"
+     "Cleanse",
+     "Wash your scalp. Go gently at the front, and let the suds rinse down the lengths on their way out."
     ],
     [
-     "Polyquaternium-10",
-     "Polyquaternium-10"
+     "Condition",
+     "Deep conditioner or rinse-out, whichever you are using that day. Work it through your edges too, not only the lengths."
+    ],
+    [
+     "Leave-in",
+     "On your edges as well. This is the slip that stops styling from tugging at them later."
+    ],
+    [
+     "Scalp serum",
+     "Once your scalp is dry. Daily, or as often as the label says."
+    ],
+    [
+     "A low-tension style",
+     "Nothing pulling at the front. There are eight to choose from below."
     ]
    ]
-  ],
-  [
-   "Oils, butters and greases",
-   "They sit on the surface and slow water loss. That is moisture kept in, not growth.",
-   "established",
+  },
+  "between": {
+   "title": "Between wash days",
+   "sub": "Every day",
+   "groups": [
+    [
+     "Morning",
+     [
+      "Check for soreness, itching or redness.",
+      "Put on your scalp serum. Daily, or as often as the label says.",
+      "Pick a style that does not pull at your temples.",
+      "Leave the edge brush alone."
+     ]
+    ],
+    [
+     "Night",
+     [
+      "Loosen anything that got tight during the day.",
+      "Silk or satin: bonnet, scarf or pillowcase.",
+      "No tight bands sitting on your hairline.",
+      "A second serum only if the label asks for one."
+     ]
+    ]
+   ]
+  }
+ },
+ "weeks": {
+  "title": "A different style each week",
+  "jump": "Styles to try",
+  "intro": "Edges need a break from tension. Here is one style to try each week, so you are not wearing the same pull for eight weeks. Swap them around to suit you.",
+  "items": [
    [
+    "Two-strand twists",
+    "Chunky, and started a little back from your hairline."
+   ],
+   [
+    "A low bun",
+    "Tied with a soft scrunchie, not a thin elastic."
+   ],
+   [
+    "Wash-and-go",
+    "Edges left exactly as they dry."
+   ],
+   [
+    "Bigger braids",
+    "The same style you like, in a larger size, taken out sooner."
+   ],
+   [
+    "A silk scarf",
+    "Tied behind your ears, not across your hairline."
+   ],
+   [
+    "Claw clip, half up",
+    "Nothing gripping the front at all."
+   ],
+   [
+    "Flat twists",
+    "Parted so the tension sits on the top of your head, not the edge."
+   ],
+   [
+    "A wig day, or a hair-down day",
+    "Adjustable cap, no glue, no tight band. Or nothing at all."
+   ]
+  ]
+ },
+ "use": {
+  "title": "What to use",
+  "jump": "What to use",
+  "intro": "Products by the job they do in this routine. Choose your own brands; these are the jobs to fill.",
+  "items": [
+   [
+    "Gentle scalp cleanser",
+    "Keeps the scalp clean, so your serum lands on skin instead of buildup.",
+    "Once a week",
     [
-     "Mineral Oil",
-     "Mineral Oil"
-    ],
+     "TGC-130",
+     "TGC-063"
+    ]
+   ],
+   [
+    "Scalp serum",
+    "The step where the growth-focused ingredients go.",
+    "Daily, or as the label says",
     [
-     "Shea Butter",
-     "Shea Butter"
-    ],
+     "TGC-064"
+    ]
+   ],
+   [
+    "Rinse-out conditioner",
+    "Softens the fine hair at your hairline, so it bends instead of snapping.",
+    "Every wash",
     [
-     "Oils and butters",
-     "properties/butter-oil/"
+     "TGC-066",
+     "TGC-095"
+    ]
+   ],
+   [
+    "Leave-in",
+    "Slip, so styling does not tug at the front.",
+    "Every wash, and when you restyle",
+    [
+     "TGC-134",
+     "TGC-067"
+    ]
+   ],
+   [
+    "Hairline moisturizer, grease or pomade",
+    "Keeps your edges from drying out between washes.",
+    "A little, when they feel dry",
+    [
+     "TGC-030",
+     "TGC-076"
+    ]
+   ],
+   [
+    "Edge control, if you use one",
+    "Soft hold. Hard-hold gels dry stiff and crack the hair they are holding.",
+    "Not every day",
+    []
+   ],
+   [
+    "Silk or satin",
+    "Stops your pillow rubbing your edges all night.",
+    "Every night",
+    []
+   ]
+  ]
+ },
+ "choose": {
+  "title": "One serum, or more than one?",
+  "jump": "One serum, or more?",
+  "intro": "Different serums do different things, so there is a real case for using more than one. There is also a cost to it. Here is how the three choices actually play out.",
+  "items": [
+   [
+    "Start with one",
+    "Give it the full eight weeks before you judge it. One product at a time is the only way to know which one your scalp liked, which one it did not, and what to buy again."
+   ],
+   [
+    "Alternating",
+    "One in the morning and another at night, or one on wash day and another midweek. This suits a scalp that gets irritated easily, and it still lets you tell the two apart."
+   ],
+   [
+    "Stacking",
+    "Both in the same sitting, thinnest first, letting each one soak in before the next. It makes sense when they do different jobs: say, a water-based serum for the scalp and an oil to seal moisture at the hairline."
+   ],
+   [
+    "What is not worth doing",
+    "Two products built on the same active. You are not doubling anything, you are paying twice. And do not start a new serum in the same week you change your cleanser or your style; if something reacts, you will not know what caused it."
+   ]
+  ]
+ },
+ "ing": {
+  "title": "What to look for if you are trying to grow your edges back",
+  "jump": "What to look for",
+  "intro": "These ingredients show up in scalp serums most often, but also in scalp oils and sprays, in some shampoos and conditioners, and in a few greases and edge controls. The ingredient list on the back is what tells you, not the words on the front.",
+  "items": [
+   [
+    "Green tea, or EGCG",
+    "Studied in lab-grown hair follicles. Interesting, early, and not the same as a serum regrowing edges on a person.",
+    "promising",
+    [
+     [
+      "Green tea",
+      "EGCG"
+     ]
+    ]
+   ],
+   [
+    "Caffeine",
+    "The most-studied of these. A 2025 review of nine studies found the results leaned positive, but most of the studies were weak.",
+    "promising",
+    [
+     [
+      "Caffeine",
+      "Caffeine"
+     ]
+    ]
+   ],
+   [
+    "Peptides",
+    "Different blends do different things. Each one has to be judged on its own research, not on the word peptide.",
+    "emerging",
+    [
+     [
+      "Scalp ingredients",
+      "properties/scalp-active/"
+     ]
+    ]
+   ],
+   [
+    "Niacinamide",
+    "A well-established skin ingredient. It conditions the scalp; it is not a growth treatment on its own.",
+    "established",
+    [
+     [
+      "Niacinamide",
+      "Niacinamide"
+     ]
+    ]
+   ],
+   [
+    "Panthenol",
+    "Softens the hair and improves how it feels.",
+    "cosmetic",
+    [
+     [
+      "Panthenol",
+      "Panthenol"
+     ]
+    ]
+   ],
+   [
+    "Conditioning agents",
+    "The slip in your conditioner. Less friction when you comb means less breakage.",
+    "established",
+    [
+     [
+      "Behentrimonium Chloride",
+      "Behentrimonium Chloride"
+     ],
+     [
+      "Polyquaternium-10",
+      "Polyquaternium-10"
+     ]
+    ]
+   ],
+   [
+    "Oils, butters and greases",
+    "They sit on the surface and slow water loss. That is moisture kept in, not growth.",
+    "established",
+    [
+     [
+      "Mineral Oil",
+      "Mineral Oil"
+     ],
+     [
+      "Shea Butter",
+      "Shea Butter"
+     ],
+     [
+      "Oils and butters",
+      "properties/butter-oil/"
+     ]
     ]
    ]
   ]
- ],
- "trouble": [
-  [
-   "Your scalp is sore after a style",
-   "It is too tight. Take it down. Soreness is not something to get used to."
-  ],
-  [
-   "A new serum makes you itch, flake or go red",
-   "Stop it. Go back to what you were using. Try something else after a week or two."
-  ],
-  [
-   "Your edges feel dry and crunchy",
-   "Look at your gel or edge control first, then add a moisturizer at the hairline."
-  ],
-  [
-   "You keep finding short broken hairs",
-   "Check friction and brushing before you buy anything new."
-  ],
-  [
-   "Eight weeks in, nothing has changed",
-   "That is worth a dermatologist's time, not another product."
+ },
+ "trouble": {
+  "title": "If something feels off",
+  "jump": "If something feels off",
+  "items": [
+   [
+    "Your scalp is sore after a style",
+    "It is too tight. Take it down. Soreness is not something to get used to."
+   ],
+   [
+    "A new serum makes you itch, flake or go red",
+    "Stop it. Go back to what you were using. Try something else after a week or two."
+   ],
+   [
+    "Your edges feel dry and crunchy",
+    "Look at your gel or edge control first, then add a moisturizer at the hairline."
+   ],
+   [
+    "You keep finding short broken hairs",
+    "Check friction and brushing before you buy anything new."
+   ],
+   [
+    "Eight weeks in, nothing has changed",
+    "That is worth a dermatologist's time, not another product."
+   ]
   ]
- ],
- "derm_title": "See a dermatologist if",
- "derm": [
-  "Your hairline is moving back, or keeps getting thinner.",
-  "You see smooth, shiny patches where the skin looks different.",
-  "It hurts, burns or stings.",
-  "Hair is coming out in patches."
- ],
- "derm_note": "Hair lost to years of pulling can stop coming back. The earlier someone looks at it, the more options you have.",
- "derm_source": "American Academy of Dermatology: Hairstyles that pull can lead to hair loss"
+ },
+ "end": {
+  "title": "See a dermatologist if",
+  "notes": [
+   "Hair lost to years of pulling can stop coming back. The earlier someone looks at it, the more options you have."
+  ],
+  "list": [
+   "Your hairline is moving back, or keeps getting thinner.",
+   "You see smooth, shiny patches where the skin looks different.",
+   "It hurts, burns or stings.",
+   "Hair is coming out in patches."
+  ],
+  "source": "American Academy of Dermatology: Hairstyles that pull can lead to hair loss"
+ }
 }
