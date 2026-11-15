@@ -151,7 +151,10 @@ def build():
     global built
     rows = B.read_csv('groups.csv')
     if not rows:
-        print('Note: no groups.csv, so no ingredient family pages were built.')
+        print(f'::warning::data/groups.csv is missing, so {len(LIVE)} ingredient family '
+              f'page(s) were not built: {", ".join(LIVE)}. Check .gitignore is not '
+              'excluding it and that the sheet link is set.')
+        print('### Ingredient family pages\n**Not built**: data/groups.csv was missing.\n')
         return []
     ids = by_id()
     made = []
