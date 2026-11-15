@@ -1,0 +1,461 @@
+{
+ "order": 2,
+ "id": "GUIDE-GROWTH",
+ "slug": "mega-growth-and-retention",
+ "name": "Mega growth and retention",
+ "tagline": "Support growth. Keep the length you grow.",
+ "image": "ends.jpg",
+ "image_alt": "A woman with long dark curly hair, in profile, holds the ends of a curl between her fingers.",
+ "eyebrow": "Guide · scalp care and length",
+ "go": "Start with the routine",
+ "description": "Why length does not seem to stick, an eight-week routine for scalp care and length retention, and what to look for on a label.",
+ "intro": "Hair grows at the scalp, at roughly half an inch a month. You cannot hurry that along much. What you can change is how much of it survives to stay on your head. This plan works on both ends: scalp care, and keeping the hair you already have.",
+ "causes": {
+  "title": "Why length does not seem to stick",
+  "jump": "Why it happens",
+  "intro": "If your hair seems to stay the same length for years, it is usually not that it stopped growing. It is that the ends are breaking off about as fast as the roots come in.",
+  "items": [
+   [
+    "Your ends are the oldest hair",
+    "The hair at your ends has been through every wash, every style and every bad day since it grew.",
+    "It has had years of wear, so it is always the first to go."
+   ],
+   [
+    "Dryness",
+    "Dry hair is brittle hair, and brittle hair snaps instead of bending.",
+    "Curly and coily hair is drier by nature, because the oil from your scalp struggles to travel down a bend."
+   ],
+   [
+    "Handling",
+    "Detangling in a rush, combing dry, pulling through knots, restyling every day.",
+    "Most breakage happens in your hands, not in the bottle."
+   ],
+   [
+    "Heat and chemicals",
+    "Flat irons, color, bleach, relaxers.",
+    "They change the hair fiber itself, and that does not wash out or grow back."
+   ],
+   [
+    "Friction at night",
+    "Cotton pillowcases and anything tight you sleep in.",
+    "Eight hours of rubbing, every night, adds up faster than anything you do in the day."
+   ],
+   [
+    "A scalp you have stopped noticing",
+    "Buildup, flaking, itching, soreness.",
+    "New hair comes out of your scalp. It is worth keeping an eye on it."
+   ]
+  ]
+ },
+ "stock": {
+  "title": "Before you start",
+  "jump": "Before you start",
+  "intro": "Write these down today, with photos and one length measurement you can repeat the same way at week 4 and week 8.",
+  "items": [
+   [
+    "Length",
+    "Front, sides, crown, back. Pick a method and use the same one every time."
+   ],
+   [
+    "Photos",
+    "Same light, same angle, same hair state."
+   ],
+   [
+    "How thick your hair is",
+    "Low, medium or high density, and whether strands feel fine, medium or coarse."
+   ],
+   [
+    "Your scalp",
+    "Oily, flaky, built up, irritated, or comfortable."
+   ],
+   [
+    "Where it breaks",
+    "The areas that break most."
+   ],
+   [
+    "Your ends",
+    "Tangling, splitting, thinning out."
+   ],
+   [
+    "Dryness",
+    "How quickly it dries out, and how easy it is to work with."
+   ],
+   [
+    "What you do now",
+    "Heat, braids, twists, wash-and-gos, and how often you wash."
+   ]
+  ]
+ },
+ "routine": {
+  "title": "Your routine",
+  "jump": "Your routine",
+  "intro": "One wash day a week. The treatment step is the only part that changes from week to week. The serum is a daily habit, not an extra.",
+  "wash": {
+   "title": "Your wash day",
+   "sub": "Once a week",
+   "steps": [
+    [
+     "Check and section",
+     "Before you get in. Look at your scalp, and split your hair into sections you can actually work through."
+    ],
+    [
+     "Cleanse",
+     "Wash the scalp and rinse all the way out."
+    ],
+    [
+     "This week's treatment",
+     "Bond, protein or lipid, depending on the week. Follow its own label for timing and rinsing; if the product has its own order of steps, that beats this list."
+    ],
+    [
+     "Condition",
+     "Your conditioner, or the deep conditioner on weeks that call for one."
+    ],
+    [
+     "Detangle, then rinse",
+     "With conditioner still in and enough slip to get through."
+    ],
+    [
+     "Leave-in, then style",
+     "Styler if you use one, and a style that does not need daily redoing."
+    ]
+   ]
+  },
+  "between": {
+   "title": "Between wash days",
+   "sub": "Every day",
+   "groups": [
+    [
+     "Morning",
+     [
+      "Put on your scalp serum, as often as the label says.",
+      "Pick a style you can leave alone for a few days.",
+      "Keep it low tension.",
+      "Notice dryness and tangling before they turn into breakage."
+     ]
+    ],
+    [
+     "Night",
+     [
+      "Silk or satin: bonnet, scarf or pillowcase. Every night.",
+      "Nothing tight.",
+      "Leave your hair alone. Less handling is the whole point."
+     ]
+    ]
+   ]
+  }
+ },
+ "weeks": {
+  "title": "What each week is for",
+  "jump": "Week by week",
+  "intro": "Scalp cleansing and your daily serum stay the same all eight weeks. These are the treatments that move.",
+  "items": [
+   [
+    "Deep conditioning",
+    "Your baseline. Moisture wash, deep conditioner, leave-in."
+   ],
+   [
+    "Lipid support",
+    "Bring in the ceramide or lipid product."
+   ],
+   [
+    "Bond treatment",
+    "If your hair has color, bleach, relaxer or heat in its history."
+   ],
+   [
+    "Protein, or not",
+    "A checkpoint, not an instruction. Take your week 4 photos and length measurement."
+   ],
+   [
+    "Lipid support",
+    "Repeat week 2."
+   ],
+   [
+    "Bond treatment",
+    "Repeat week 3, with deep conditioning."
+   ],
+   [
+    "Hydration",
+    "A plain moisture-focused wash. Nothing intensive."
+   ],
+   [
+    "Consolidate",
+    "Deep conditioning, final photos and measurement, then build your everyday routine from what worked."
+   ]
+  ]
+ },
+ "use": {
+  "title": "What to use",
+  "jump": "What to use",
+  "intro": "Products by the job they do in this routine. Choose your own brands; these are the jobs to fill.",
+  "items": [
+   [
+    "Scalp cleanser",
+    "Clears buildup off the skin your hair grows out of.",
+    "Once a week",
+    [
+     "TGC-130",
+     "TGC-065"
+    ]
+   ],
+   [
+    "Scalp serum",
+    "The step where the growth-focused ingredients go. Core, not a bonus.",
+    "Daily, or as the label says",
+    [
+     "TGC-064"
+    ]
+   ],
+   [
+    "Moisturizing conditioner",
+    "Slip and softness every wash. The step that prevents the most breakage.",
+    "Every wash",
+    [
+     "TGC-066",
+     "TGC-025"
+    ]
+   ],
+   [
+    "Deep conditioner",
+    "The heavier conditioning step, with time to sit.",
+    "Weekly",
+    [
+     "TGC-005",
+     "TGC-045"
+    ]
+   ],
+   [
+    "Leave-in",
+    "Keeps the conditioning going between washes.",
+    "Every wash",
+    [
+     "TGC-134",
+     "TGC-122"
+    ]
+   ],
+   [
+    "Lipid or ceramide product",
+    "Puts back the surface lipids that washing and heat wear away.",
+    "Weeks 2 and 5",
+    [
+     "TGC-008"
+    ]
+   ],
+   [
+    "Bond treatment",
+    "For hair with color, bleach, relaxer or heat in its history.",
+    "Weeks 3 and 6",
+    [
+     "TGC-007",
+     "TGC-010"
+    ]
+   ],
+   [
+    "Protein treatment",
+    "Temporarily firms up hair that stretches too easily and snaps.",
+    "Week 4, if your hair calls for it",
+    [
+     "TGC-071",
+     "TGC-077"
+    ]
+   ],
+   [
+    "Silk or satin",
+    "Stops eight hours of friction every night.",
+    "Every night",
+    []
+   ]
+  ]
+ },
+ "choose": {
+  "title": "What you can change, and what you cannot",
+  "jump": "What you control",
+  "intro": "This plan has growth in the name, so it is worth being straight about which half of it you actually have a say in.",
+  "items": [
+   [
+    "How fast hair grows",
+    "Scalp hair grows roughly half an inch a month on average, and the cycles behind it run over months and years. Eight weeks is long enough to build habits and see changes in breakage, comfort and manageability. It is not long enough to judge new growth."
+   ],
+   [
+    "How much you keep",
+    "This is the half you control, and it is where most visible length comes from. Less breakage means more of what grew stays on your head."
+   ],
+   [
+    "What a serum is for",
+    "It is the scalp-care step, and it is a core part of this plan rather than an optional extra. Use it at the frequency its label gives. If a doctor has diagnosed hair loss, a cosmetic serum is not a substitute for the treatment they prescribed."
+   ],
+   [
+    "The week 4 protein checkpoint",
+    "A decision, not an instruction. If your hair has little heat or chemical history and is not breaking, skip it and condition instead. If you do use it, see how week 5 goes before planning another."
+   ]
+  ]
+ },
+ "ing": {
+  "title": "What to look for on a label",
+  "jump": "What to look for",
+  "intro": "Scalp ingredients and length-keeping ingredients do different jobs. Both matter here, and they tend to live in different bottles.",
+  "items": [
+   [
+    "Green tea, or EGCG",
+    "Studied in lab-grown follicles and dermal papilla cells. Early, interesting, and not proof that a serum regrows hair on a person.",
+    "promising",
+    [
+     [
+      "Green tea",
+      "EGCG"
+     ]
+    ]
+   ],
+   [
+    "Caffeine",
+    "There are human studies, though the quality varies a lot between them. Worth comparing when you choose a serum.",
+    "promising",
+    [
+     [
+      "Caffeine",
+      "Caffeine"
+     ]
+    ]
+   ],
+   [
+    "Ceramides",
+    "Lipids like the ones hair loses to washing and heat. They condition the surface; they do not act on follicles.",
+    "promising",
+    [
+     [
+      "Ceramides",
+      "properties/ceramides/"
+     ]
+    ]
+   ],
+   [
+    "Fatty acids, oils and butters",
+    "Lubrication and softness. How a product is built matters more than seeing an oil on the list.",
+    "established",
+    [
+     [
+      "Fatty acids",
+      "Oleic Acid"
+     ],
+     [
+      "Oils and butters",
+      "properties/butter-oil/"
+     ]
+    ]
+   ],
+   [
+    "Hydrolyzed proteins",
+    "Keratin, wheat, rice or silk. They cling to damaged spots and temporarily improve how hair behaves.",
+    "cosmetic",
+    [
+     [
+      "Keratin",
+      "Hydrolyzed Keratin"
+     ],
+     [
+      "Wheat",
+      "Hydrolyzed Wheat Protein"
+     ],
+     [
+      "Rice",
+      "Hydrolyzed Rice Protein"
+     ],
+     [
+      "Silk",
+      "Hydrolyzed Silk"
+     ]
+    ]
+   ],
+   [
+    "Bond-supporting ingredients",
+    "Hair holds together with several different kinds of bond, and these products target different ones. Judge the product, not the category.",
+    "emerging",
+    [
+     [
+      "Bond repair",
+      "properties/bond-repair/"
+     ]
+    ]
+   ],
+   [
+    "Conditioning agents",
+    "Behentrimonium compounds, cationic polymers and fatty alcohols. Less friction through a comb means less breakage, which is the whole game here.",
+    "established",
+    [
+     [
+      "Behentrimonium Chloride",
+      "Behentrimonium Chloride"
+     ],
+     [
+      "Polyquaternium-10",
+      "Polyquaternium-10"
+     ],
+     [
+      "Cetearyl Alcohol",
+      "Cetearyl Alcohol"
+     ]
+    ]
+   ]
+  ]
+ },
+ "trouble": {
+  "title": "If something feels off",
+  "jump": "If something feels off",
+  "items": [
+   [
+    "Dryness comes back quickly",
+    "Look at your cleanser first, then whether anything is sealing the moisture in."
+   ],
+   [
+    "It keeps tangling",
+    "Look at slip, how you detangle, and what your hair rubs against all day."
+   ],
+   [
+    "Too much breakage",
+    "Look at handling, heat and your chemical history before you buy a treatment."
+   ],
+   [
+    "It feels coated",
+    "Buildup, or too many products layered. Clarify, then simplify."
+   ],
+   [
+    "Stiff after protein",
+    "Reduce it or stop it. Do not repeat it automatically."
+   ],
+   [
+    "Limp and weighed down",
+    "Product buildup, or too much conditioning. Not a reason to add protein."
+   ],
+   [
+    "Your scalp itches or flakes with a new serum",
+    "Stop it and go back to what you had. Try something else in a week or two."
+   ]
+  ]
+ },
+ "end": {
+  "title": "At the end of eight weeks",
+  "notes": [
+   "Compare your week 8 photos, length and notes with your baseline. Keep the cleansing, conditioning and overnight protection, because that is where retention comes from. Keep the serum if your scalp liked it. Keep protein and bond treatments only if your hair clearly answered them.",
+   "If you are losing hair rather than breaking it, or your scalp is sore, inflamed or shedding in patches, that is a dermatologist's question, not a product one."
+  ],
+  "list": [
+   "Length, measured the same way",
+   "Scalp condition",
+   "Breakage",
+   "How your ends look",
+   "How easy it is to work with",
+   "How much of the routine you kept up"
+  ],
+  "next": [
+   [
+    "Healthy baby hair",
+    "If your edges need their own attention",
+    "plans/healthy-edges/"
+   ],
+   [
+    "Deep moisture and protein",
+    "If dryness is the bigger problem",
+    "plans/moisture-and-protein/"
+   ]
+  ]
+ }
+}

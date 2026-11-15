@@ -1,4 +1,6 @@
-"""Signature hair programs: /plans/ pages and data/plans.json (the file JARA copies).
+"""TEST: the earlier, simpler plan pages, now at /test-program/simple-<slug>/ (noindex, unlinked).
+
+Still the source of data/plans.json, the machine-readable file JARA will copy.
 
 Inputs:
     data/programs.csv       one row per program (the "Programs Overview" tab)
@@ -109,6 +111,7 @@ def label_and_detail(s):
 def plan_page(p):
     r = '../../'
     total = p['duration_weeks']
+    test_note = '<p class="pf-test tp-test" role="note"><b>Earlier layout.</b> Kept for reference; not linked from the site.</p>'
     recipe = sorted([s for s in p['steps'] if s['wash_day_role']], key=lambda s: (ROLE_ORDER.index(s['wash_day_role']) if s['wash_day_role'] in ROLE_ORDER else 9, s['order']))
     habits = [s for s in p['steps'] if s['when']['type'] in ('daily', 'nightly')]
     tracking = [s for s in p['steps'] if not s['wash_day_role'] and s['when']['type'] in ('weeks', 'every_n_days')]
@@ -180,7 +183,8 @@ def plan_page(p):
     <div class="promise">{f'<p class="note">{e(p["promise"])}</p>' if p['promise'] else ''}{f'<div class="guard"><b>See a dermatologist</b><p>{e(p["guardrail"])}</p></div>' if p['guardrail'] else ''}</div>
   </section>'''
 
-    body = f'''  <a class="crumb" href="../">← All hair plans</a>
+    body = f'''  {test_note}
+  <a class="crumb" href="../">← Test layouts</a>
   <section class="plan-hero">
     <figure class="plan-photo"><img src="{r}assets/img/{e(img)}" alt="{e(IMAGE_ALT.get(img, ''))}" width="799" height="1344"></figure>
     <div class="plan-intro">
@@ -196,14 +200,17 @@ def plan_page(p):
   {sections}
   <p class="source"><span>The Good Coil signature program · Ref {e(p['id'])} · Version {e(p['version'])}</span><a href="{r}data/plans.json">Get this as data (JSON)</a><a href="{r}about/">How we write these</a></p>'''
     desc = f"{p['name']}: an {total}-week hair-care plan from The Good Coil. {p['tagline']}"
-    B.write(f"plans/{p['slug']}/index.html", B.shell(r, f"{p['name']}: {total}-week hair plan · The Good Coil", desc, body, f"plans/{p['slug']}/", 'plans'))
+    html = B.shell(r, f"{p['name']}: {total}-week hair plan · The Good Coil", desc, body, f"test-program/simple-{p['slug']}/", 'plans')
+    B.write(f"test-program/simple-{p['slug']}/index.html", html.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">', 1))
 
 def plans_index(plans):
-    cards = ''.join(f'''<li><a href="{p['slug']}/"><img src="../assets/img/{e(p['image'])}" alt="" width="799" height="1344" loading="lazy"><span class="eyebrow">{e(p['focus_area'])} · {p['duration_weeks']} weeks</span><h2>{e(p['name'])}</h2><p><em>{e(p['tagline'])}</em></p></a></li>''' for p in plans)
-    body = f'''  <section class="page-head"><span class="eyebrow"><span class="little-dot"></span>Signature programs</span><h1>Hair plans</h1>
+    r = '../'
+    cards = ''.join(f'''<li><a href="../simple-{p['slug']}/"><img src="../../assets/img/{e(p['image'])}" alt="" width="799" height="1344" loading="lazy"><span class="eyebrow">{e(p['focus_area'])} · {p['duration_weeks']} weeks</span><h2>{e(p['name'])}</h2><p><em>{e(p['tagline'])}</em></p></a></li>''' for p in plans)
+    body = f'''  <p class="pf-test tp-test" role="note"><b>Earlier layout.</b> Kept for reference; not linked from the site.</p>
+  <section class="page-head"><span class="eyebrow"><span class="little-dot"></span>Earlier layout</span><h1>Simple plans</h1>
   <p>Structured {plans[0]['duration_weeks'] if plans else 8}-week plans: a wash-day recipe, what happens each week, small daily habits and what to track. Steps are roles, not brands, so you can use what you already own.</p></section>
   <ul class="plan-cards">{cards}</ul>'''
-    B.write('plans/index.html', B.shell('../', 'Hair plans: signature programs · The Good Coil', 'Structured hair-care plans from The Good Coil: wash-day recipes, week-by-week schedules and what to track.', body, 'plans/', 'plans'))
+    B.write('test-program/simple-plans/index.html', B.shell('../../', 'Simple plans (earlier layout) · The Good Coil', 'Earlier plan layout.', body, 'test-program/simple-plans/', 'plans').replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">', 1))
 
 def build():
     plans = load()
@@ -230,4 +237,4 @@ def build():
         for s in p['steps']:
             if s['when']['type'] == 'note':
                 notes.append(f"- {p['id']} step {s['order']} \"{s['name']}\": 'when' not recognised")
-    return [f"plans/{p['slug']}/" for p in plans], notes
+    return [], notes

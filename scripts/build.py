@@ -454,7 +454,10 @@ def main():
     sys.modules.setdefault('build', sys.modules[__name__])
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     import plans
-    plan_urls, plan_notes = plans.build()
+    _, plan_notes = plans.build()          # earlier layout, now under /test-program/, still writes data/plans.json
+    import guide
+    guides = guide.build()                 # the live hair plans
+    plan_urls = [f"plans/{g['slug']}/" for g in guides]
     import products as PR
     PR.build()
     import home

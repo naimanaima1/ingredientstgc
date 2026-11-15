@@ -1,4 +1,4 @@
-"""TEST: guide-shaped plan pages at /test-program/<slug>/ (noindex, unlinked).
+"""Hair plans: guide-shaped pages at /plans/<slug>/, plus the /plans/ index.
 
 One section per question, in a single column, plain language. Content files are
 content/guide-*.json; every section except the hero is optional, so a plan that has
@@ -119,8 +119,7 @@ def page(d):
 </div></section>''')
 
     jump_html = ''.join(f'<a href="#{a}">{e(b)}</a>' for a, b in jump)
-    body = f'''<p class="pf-test tp-test" role="note"><b>Test layout.</b> Not linked from the site and hidden from search engines.</p>
-<section class="gd-hero">
+    body = f'''<section class="gd-hero">
   <div class="gd-copy">
     <span class="eyebrow">{e(d['eyebrow'])}</span>
     <h1>{e(d['name'])}</h1>
@@ -132,14 +131,34 @@ def page(d):
 </section>
 <nav class="gd-jump" aria-label="On this page">{jump_html}</nav>
 {''.join(out)}
-<p class="source tp-in tp-source"><span>The Good Coil · Ref {e(d['id'])} · Test layout</span><a href="{r}test-program/">Other test layouts</a></p>'''
-    html = B.shell(r, f"{d['name']} · The Good Coil", d.get('description', d['tagline']), body, f"test-program/{d['slug']}/", 'plans')
-    html = html.replace('<main id="main" class="wrap">', '<main id="main" class="gd">', 1).replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">', 1)
-    B.write(f"test-program/{d['slug']}/index.html", html)
+<p class="source tp-in tp-source"><span>The Good Coil hair plan · Ref {e(d['id'])}</span><a href="{r}plans/">All hair plans</a><a href="{r}about/">How we write these</a></p>'''
+    html = B.shell(r, f"{d['name']} · The Good Coil", d.get('description', d['tagline']), body, f"plans/{d['slug']}/", 'plans')
+    html = html.replace('<main id="main" class="wrap">', '<main id="main" class="gd">', 1)
+    B.write(f"plans/{d['slug']}/index.html", html)
     return d
 
+def index_page(guides):
+    cards = ''.join(f'''<li><a href="{g['slug']}/"><img src="../assets/img/{e(g['image'])}" alt="" width="848" height="1424" loading="lazy"><span class="eyebrow">{e(g['eyebrow'].split(' · ')[-1])}</span><h2>{e(g['name'])}</h2><p><em>{e(g['tagline'])}</em></p></a></li>''' for g in guides)
+    body = f'''  <section class="page-head"><span class="eyebrow"><span class="little-dot"></span>The Good Coil</span><h1>Hair plans</h1>
+  <p>Three guides: what is going on, what to do each week, and what to look for on a label. Steps are jobs, not brands, so you can follow them with what you already own.</p></section>
+  <ul class="plan-cards">{cards}</ul>
+  <p class="fine">These are guides to cosmetic hair care, not medical advice. For hair loss, scalp conditions or allergies, talk to a dermatologist or doctor.</p>'''
+    B.write('plans/index.html', B.shell('../', 'Hair plans · The Good Coil', 'Three hair-care guides from The Good Coil: edges, length retention, and moisture and protein.', body, 'plans/', 'plans'))
+
+REDIRECTS = {'edge-growth-plan': 'healthy-edges', 'deep-moisture-protein-balance': 'moisture-and-protein', 'mega-growth-retention': 'mega-growth-and-retention'}
+
 def build():
-    out = []
-    for f in sorted(glob.glob(os.path.join(B.ROOT, 'content', 'guide-*.json'))):
-        out.append(page(json.load(open(f, encoding='utf-8'))))
+    out = [json.load(open(f, encoding='utf-8')) for f in sorted(glob.glob(os.path.join(B.ROOT, 'content', 'guide-*.json')))]
+    out.sort(key=lambda g: g.get('order', 99))
+    for g in out:
+        page(g)
+    index_page(out)
+    live = {g['slug'] for g in out}
+    for old, new in REDIRECTS.items():  # the plan pages these replaced
+        if new in live:
+            B.write(f'plans/{old}/index.html', f'''<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Moved</title><link rel="canonical" href="{B.SITE}/plans/{new}/">
+<meta http-equiv="refresh" content="0; url=../{new}/"><meta name="robots" content="noindex"></head>
+<body><p>This plan is now at <a href="../{new}/">/plans/{new}/</a>.</p></body></html>
+''')
     return out

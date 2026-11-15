@@ -31,7 +31,14 @@ The real work is data entry: product ingredient lists (19 of 138 have one today)
 - [ ] Fill product ingredient lists toward 50% of the catalog.
 - [ ] Review wording flagged by the build report (ING-015, 025, 029, 044, 045, 046) and the glycerin "dew point" line.
 
-## 4. Programs (iterate page by page)
+## 4. Hair plans (live)
+Nov 15: the guide layout is the live plan layout. `/plans/` now holds three guides built from content/guide-*.json by scripts/guide.py: Healthy baby hair (edges), Mega growth and retention, Deep moisture and protein. Old plan addresses redirect to the new ones. Earlier layouts are kept for reference under `/test-program/` (noindex): the simple plans (still the source of data/plans.json for JARA) and the two full program pages, whose week grid and planner the owner wants to revisit later.
+- [ ] Owner: review the parts Claude wrote, not the owner's documents: the "why it happens" section on each plan, the eight low-tension styles, and the troubleshooting rows on growth and moisture.
+- [ ] Add images to the style cards; cut to four per the owner's note.
+- [ ] Decide the growth wording (see below) and whether plans keep their old names.
+- [ ] Later: fold the week grid from the old program pages back in, once it can be done without crowding the page.
+
+## 4b. Programs (earlier test pages, kept for reference)
 - [x] Test pages at `/programs/` from the original Intensive Care Collection document (noindex, unlinked). `/plans/` stays as the earlier version.
 - [x] Nov 14: new test layout at `/test-program/deep-moisture-protein-balance/` from the owner's revised Program 03 document (content/test-program.json, scripts/test_program.py): three acts (Start, The 8 weeks, Finish), a week planner with protein Track A/B, ticks saved on the visitor's device. If approved, becomes the template for all programs.
 - [ ] Resolve the flags: Mega's bond weeks (2 and 6 vs 3 and 6) and lipid cadence (weekly vs weeks 2 and 5); mismatched evidence labels (ceramides, panthenol, hydrolyzed proteins); Edge name (Edge Growth Plan vs Edge Recovery); Deep Moisture pillar explanations; reference links.

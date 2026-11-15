@@ -102,10 +102,9 @@ def build():
         return GNAME[g[0]] if g else ''
     labelled = [pp for pp, _ in B.labels][:4]
     n_products = len([x for x in B.products if (x.get('kind') or 'product') == 'product'])
-    try:
-        plans = json.load(open(B.os.path.join(B.ROOT, 'content', 'programs-full.json'), encoding='utf-8'))['programs']
-    except Exception:
-        plans = []
+    import glob
+    plans = [json.load(open(f, encoding='utf-8')) for f in sorted(glob.glob(B.os.path.join(B.ROOT, 'content', 'guide-*.json')))]
+    plans.sort(key=lambda g: g.get('order', 99))
 
     body = f'''<section class="band">
   <div class="band-in">
@@ -135,7 +134,7 @@ def build():
     <ul class="door-feat">{''.join(f'<li><b>{e(i["_title"])}</b><span>{e(job(i))}</span></li>' for i in featured)}</ul><span class="door-go">All ingredients →</span></a>
   <a class="door" href="products/"><span class="door-n">{n_products}</span><h2>Products</h2><p>{len(B.labels)} labels read so far, each decoded ingredient by ingredient.</p>
     <ul>{''.join(f'<li>{e(B.product_full_name(x))}</li>' for x in labelled)}</ul><span class="door-go">All products →</span></a>
-  <a class="door door-photo" href="plans/"><span class="door-n">8</span><h2>Week hair plans</h2><p>What to do, how often, and how to track it.</p>
+  <a class="door door-photo" href="plans/"><span class="door-n">{len(plans)}</span><h2>Hair plans</h2><p>What is going on, what to do each week, and what to look for on a label.</p>
     <img src="assets/img/ends.jpg" alt="A woman with long dark curls holds the ends of a curl between her fingers." width="799" height="1344" loading="lazy">
     <span class="door-go">See the plans →</span></a>
 </section>

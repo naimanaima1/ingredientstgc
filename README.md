@@ -18,6 +18,7 @@ library.thegoodcoil.com
   /                         search + list of every ingredient
   /glycerin/                one page per ingredient
   /properties/, /properties/humectant/
+  /plans/                   hair plans (content/guide-*.json)
   /about/                   how we write, sources, affiliate disclosure
   /data/ingredients.json    the published data (JARA copies this nightly)
 ```

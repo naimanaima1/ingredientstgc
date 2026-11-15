@@ -152,10 +152,8 @@ def build():
     for d in progs:
         page(d)
     B.shutil.copy(os.path.join(B.ROOT, 'src', 'test-program.js'), os.path.join(B.OUT, 'assets', 'test-program.js'))
-    import guide
-    guides = guide.build()
     rows = ''.join(f'<li><a href="{d["slug"]}/"><b>{e(d["name"])}</b><span>{"Calmer version: reference material folded away" if d.get("calm") else "Full version: everything open"}</span></a></li>' for d in progs)
-    rows = ''.join(f'<li><a href="{g["slug"]}/"><b>{e(g["name"])}</b><span>Guide shape: plain language, single column</span></a></li>' for g in guides) + rows
-    body = f'''<section class="page-head"><span class="eyebrow"><span class="little-dot"></span>Test</span><h1>Test program layouts</h1><p>Layouts being tried before they replace the live plan pages.</p></section>
+    rows += '<li><a href="simple-plans/"><b>Simple plans</b><span>First layout: wash-day recipe and week grid</span></a></li>'
+    body = f'''<section class="page-head"><span class="eyebrow"><span class="little-dot"></span>Test</span><h1>Test program layouts</h1><p>Earlier plan layouts, kept for reference. The live hair plans are at <a href="../plans/">/plans/</a>.</p></section>
   <ul class="ing-list">{rows}</ul>'''
     B.write('test-program/index.html', B.shell('../', 'Test program layouts · The Good Coil', 'Test layouts.', body, 'test-program/', 'plans').replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">', 1))
