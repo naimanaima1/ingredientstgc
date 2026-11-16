@@ -50,7 +50,7 @@ def jara(where, r='../../', over=None):
     if where == 'track':
         steps = (f'<ol class="jara-next" aria-label="What to do next"><li>Follow the plan</li>'
                  f'<li><a href="{r}products/">Explore products</a></li><li>Track it in JARA</li></ol>')
-        return jara_card(r, head, text, 'jara-save', 'Start Tracking in JARA', steps)
+        return jara_card(r, head, text, 'jara-save', 'Try JARA', steps)
     return jara_card(r, head, text, 'jara-end')
 
 
