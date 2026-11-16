@@ -67,7 +67,9 @@ Roughly in order of payoff per hour spent.
 - [x] ~~**Pick a homepage layout.**~~ Done 15 Nov: the quiet layout is live at `/`, the first one is kept at `/previous-home/` (noindex) for comparison.
 - [x] ~~**Hover preview on ingredient links.**~~ Shipped 15 Nov: name, category and a one-line description, anywhere an ingredient is linked.
 - [x] ~~**Photos for the low-tension styles**~~ on the edge plan, and the longer-framed braids shot moved to the deep moisture hero.
-- [ ] **Shoot or generate the remaining four styles** — silk scarf, claw clip half-up, flat twists, wig/hair-down day — so all eight are photographed rather than four and four. — *Owner*
+- [ ] **A photo for the silk scarf style**, the one the owner thinks is gettable. The other three (claw clip, flat twists, wig day) show a drawn tile instead, which looks deliberate, so this is optional rather than blocking. — *Owner*
+- [ ] **A dedicated hero image for Glass hair.** It currently borrows the wash-and-go shot that also appears as a style card on the edge plan. — *Owner*
+- [ ] **Check the Glass hair copy.** Written by Claude from the Glass Coil document: the twelve-week rotation and product jobs follow the source, but the "what shine actually is" section and all the section copy are new writing. — *Owner review*
 - [ ] **Decide whether the five check groups are the right five.** Protein, ceramides, silicones, sulfates and peptides. Candidates to add or swap: drying alcohols, heavy oils/butters, fragrance/allergens, bond builders. Six is about the ceiling before it stops being quick. — *Owner decision*
 
 ### Later
@@ -95,7 +97,10 @@ public. Not urgent, but it is on the list.
 
 ---
 
-## 5. JARA (separate track)
+## 5. JARA
+
+- [x] ~~**CTAs to JARA**~~ shipped 15 Nov: two in every plan (after the baseline, after the last week) and a band on the homepage. $19 once, no subscription. Price and URL are constants at the top of `scripts/guide.py` — change them in one place.
+ (separate track)
 
 Nothing here blocks the library, and the library does not block JARA until the plans are final.
 
