@@ -204,7 +204,7 @@ def build(out='', root='', quiet=True):
   <a class="jara-shot" href="{B.utm('https://itsjara.com', 'home_banner')}" tabindex="-1" aria-hidden="true"><img src="{R}assets/img/jara-promo.jpg" alt="" width="1000" height="1000" loading="lazy"></a>
   <div class="jara-txt"><h2>Found your ingredients? Track how your hair responds.</h2>
   <p>JARA connects your wash days, products, and monthly progress photos.</p></div>
-  <a class="btn" href="{B.utm('https://itsjara.com', 'home_banner')}">Get JARA &middot; $19</a>
+  <a class="btn" href="{B.utm('https://itsjara.com', 'home_banner')}">Try JARA</a>
 </div></aside>
 </div>
 {script}'''

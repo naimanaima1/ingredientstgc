@@ -291,7 +291,7 @@ def ordinal(n):
 
 ICON = '<svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'
 
-QUIZ_URL = 'https://thegoodcoil.com/#quiz'
+QUIZ_URL = 'https://thegoodcoil.com/routine-builder'
 def utm(url, medium, campaign='jara_beta', content=''):
     """Add tracking to links that leave this site, so each other site can see where a visit came from."""
     base, _, frag = url.partition('#')
@@ -318,7 +318,7 @@ def shell(r, title, desc, body, path, current=''):
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="eco-bar"><nav aria-label="The Good Coil sites"><a href="{utm('https://thegoodcoil.com', 'utility_bar', 'ecosystem')}">The Good Coil</a><a href="{r}" aria-current="true">Ingredient Library</a><a href="{utm('https://itsjara.com', 'utility_bar', 'jara_beta')}">JARA App &middot; $19 Beta</a></nav></div>
+<div class="eco-bar"><nav aria-label="The Good Coil sites"><a href="{utm('https://thegoodcoil.com', 'utility_bar', 'ecosystem')}">The Good Coil</a><a href="{r}" aria-current="true">Ingredient Library</a><a href="{utm('https://itsjara.com', 'utility_bar', 'jara_beta')}">JARA Hair Tracker</a></nav></div>
 <header class="site-header">
   <a href="{r}" class="wordmark" aria-label="The Good Coil Library home"><span class="brand-symbol" aria-hidden="true">◎</span> the<span class="brand-amp">good</span>coil<span class="wordmark-sub">Library</span></a>
   <nav class="nav" aria-label="Main">

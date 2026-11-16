@@ -22,19 +22,18 @@ def links(r, ls):
     return ' · '.join(out)
 
 JARA_URL = 'https://itsjara.com'
-JARA_PRICE = '$19'
 
 JARA_DEFAULT = {
     'track': ('Save this plan to JARA',
               'Stop screenshotting routines. Track your wash days, products, and monthly growth photos in one place.'),
     'end': ('Found your ingredients? Track how your hair responds.',
-            "JARA connects your wash days, products, and monthly progress photos. Lock in Founder's Beta pricing ($19) before it increases to $29."),
+            "JARA connects your wash days, products, and monthly progress photos, so you can see what your routine is really doing."),
 }
 SLUG = ['']
 
 
 def jara_card(r, head, text, cls='', btn=None, steps=''):
-    btn = btn or f'Get JARA &middot; {JARA_PRICE}'
+    btn = btn or 'Try JARA'
     """One quiet prompt: small app picture, a short line, one button."""
     return f'''<aside class="jara {cls}" aria-label="About JARA"><div class="jara-in">
     <a class="jara-shot" href="{B.utm(JARA_URL, 'plan_cta', content=SLUG[0])}" tabindex="-1" aria-hidden="true"><img src="{r}assets/img/jara-promo.jpg" alt="" width="1000" height="1000" loading="lazy"></a>

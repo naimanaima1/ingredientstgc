@@ -152,3 +152,4 @@ Plan content lives in `content/guide-*.json` in this repo, not in a sheet. Movin
 - Test pages (noindex): /programs/jara-landing-test/ (JARA landing, pricing roadmap, free tracker + exit-intent) and /programs/goodcoil-home-test/ (homepage order + quiz results mock-up).
 - Full plan, email map, Hostinger prompt, JARA checkout review: docs/ECOSYSTEM.md
 - Open: real JARA screenshots; more ebooks to attach to plans; confirm price story ($29/$39 vs "regular $39"); quiz must exist at thegoodcoil.com/#quiz.
+- Nov 16 update: buttons now say "Try JARA" (price only on the JARA page); bar says "JARA Hair Tracker"; quiz link is thegoodcoil.com/routine-builder. Future: attach the Weave Detox Guide to Edge growth and Moisture & protein plans once it is finished (add a `book` entry to their JSON).
