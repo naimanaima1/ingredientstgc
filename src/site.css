@@ -937,3 +937,5 @@ a.gp-ing:hover{background:var(--ink);color:var(--paper)}
   .tl-card h3{font-size:26px}
 }
 @media(min-width:901px){.tl-hint{display:none}}
+.gd-link{font-weight:800;border-bottom:2px solid var(--ink);padding-bottom:1px}
+.gd-link:hover{color:var(--cobalt);border-color:var(--cobalt)}

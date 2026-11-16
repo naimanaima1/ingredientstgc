@@ -167,6 +167,8 @@ def page(d):
             t, x = st[0], st[1]
             extra = st[2] if len(st) > 2 else {}
             note = f'<p class="gd-stepnote">{e(extra["note"])}</p>' if extra.get('note') else ''
+            if extra.get('link'):
+                note += f'<p class="gd-stepnote"><a class="gd-link" href="{r}{extra["link"][1]}">{e(extra["link"][0])} &rarr;</a></p>'
             strip = prod_strip(r, extra['use'], extra.get('screen', False), extra.get('label', 'What to use')) if extra.get('use') else ''
             return f'<li><span>{n}</span><div><b>{e(t)}</b><p>{e(x)}</p>{note}{strip}</div></li>'
         bits = ''
@@ -330,7 +332,7 @@ def index_page(guides):
   <p>{len(guides)} guides: what is going on, what to do each week, and what to look for on a label. Steps are jobs, not brands, so you can follow them with what you already own.</p></section>
   <ul class="plan-cards">{cards}</ul>
   <p class="fine">These are guides to cosmetic hair care, not medical advice. For hair loss, scalp conditions or allergies, talk to a dermatologist or doctor.</p>'''
-    B.write('plans/index.html', B.shell('../', 'Hair plans · The Good Coil', 'Three hair-care guides from The Good Coil: edges, length retention, and moisture and protein.', body, 'plans/', 'plans'))
+    B.write('plans/index.html', B.shell('../', 'Hair plans · The Good Coil', f'{len(guides)} hair-care guides from The Good Coil: edges, length retention, moisture, shine, wash and goes and winter care.', body, 'plans/', 'plans'))
 
 REDIRECTS = {'healthy-edges': 'edge-growth-plan', 'deep-moisture-protein-balance': 'moisture-and-protein', 'mega-growth-retention': 'mega-growth-and-retention'}
 

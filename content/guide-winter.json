@@ -1,0 +1,182 @@
+{
+ "id": "GUIDE-WINTER",
+ "slug": "winter-arc-lock",
+ "name": "Winter arc lock",
+ "tagline": "Four things to lock in before the cold gets to your hair.",
+ "image": "style-twists.jpg",
+ "image_alt": "Chunky two-strand twists parted off the hairline, resting over one shoulder.",
+ "eyebrow": "Guide · winter hair care",
+ "go": "Start with the four locks",
+ "description": "Four winter hair-care moves: a calm scalp routine, ceramides, warm conditioner, and getting your vitamin D, iron and ferritin checked.",
+ "intro": "Cold air outside, dry heat inside, hats and scarves rubbing your hair all day. Winter is a lot. This plan is four simple locks to go all in on this season, one at a time.",
+ "order": 6,
+ "jara": {
+  "track": [
+   "Want to see how winter treats you?",
+   "Log your wash days and photos in JARA so you can compare December with February."
+  ],
+  "end": [
+   "Keep your winter notes.",
+   "JARA keeps your photos and wash days together, so you know what worked next year."
+  ]
+ },
+ "causes": {
+  "title": "Why winter is hard on hair",
+  "jump": "Why winter",
+  "intro": "None of this is your fault. It's just the season.",
+  "items": [
+   [
+    "Dry air, inside and out",
+    "Cold air holds less moisture, and indoor heating dries it out even more.",
+    "Hair and scalp can feel drier and tighter than usual."
+   ],
+   [
+    "Hats, scarves and collars",
+    "Fabric rubbing against your hair all day.",
+    "Friction roughens the surface of the strand and tangles ends. Satin or silk lining makes a difference."
+   ],
+   [
+    "Long, hot showers",
+    "Hot water feels amazing when it's freezing out.",
+    "It can leave scalp and hair drier. Lukewarm for hair is kinder."
+   ],
+   [
+    "Less of everything else",
+    "Less sleep, more stress, a heavier schedule.",
+    "Your body and your hair feel it too, which is why the fourth lock is a check-up."
+   ]
+  ]
+ },
+ "routine": {
+  "title": "The four locks",
+  "jump": "The four locks",
+  "intro": "You don't have to do all four on day one. Start with the one that feels easiest and add the next.",
+  "washes": [
+   {
+    "title": "Lock it in",
+    "sub": "Four steps",
+    "steps": [
+     [
+      "Look after your scalp",
+      "Add a leave-on scalp serum with green tea extract (EGCG) to a calm, consistent scalp routine. Part your hair, apply a little to the scalp, and massage gently with your fingertips. A comfortable scalp is the goal, and a serum is a support for that. It does not treat shedding or hair loss.",
+      {
+       "note": "If you notice a lot more shedding than usual, or patchy thinning, see a doctor or dermatologist first.",
+       "link": [
+        "Read about green tea, caffeine, niacinamide and the other scalp actives",
+        "groups/scalp-actives/"
+       ]
+      }
+     ],
+     [
+      "Add ceramides",
+      "Use a conditioner, mask or leave-in with ceramides to support the lipids on the surface of your hair. Winter is a great time to do this weekly. It works alongside your regular conditioner, it doesn't replace it.",
+      {
+       "label": "With ceramides",
+       "use": [
+        [
+         "TGC-008",
+         "Ceramide mask"
+        ],
+        [
+         "TGC-009",
+         "Ceramide leave-in"
+        ],
+        [
+         "TGC-128",
+         "Ceramide leave-in"
+        ]
+       ]
+      }
+     ],
+     [
+      "Warm up your conditioner",
+      "Cold conditioner is stiff and hard to spread. Stand the bottle or tub in a bowl of warm (not hot) water for a few minutes first, or use a heat cap. It will spread more easily and feel like a treat. Never microwave a bottle.",
+      {
+       "label": "Heat cap",
+       "use": [
+        [
+         "TGC-091",
+         "Thermal heat cap"
+        ]
+       ]
+      }
+     ],
+     [
+      "Get your levels checked",
+      "Ask your doctor about checking your vitamin D, iron and ferritin. These are some of the things doctors look at when someone is concerned about shedding or tired hair. Please get tested before you supplement. Too much iron can be harmful, and only a test tells you what you actually need.",
+      {
+       "note": "We can't tell you what's going on in your body from your hair, and a product can't replace a blood test. This is a conversation to have with your doctor."
+      }
+     ]
+    ]
+   }
+  ],
+  "between": {
+   "title": "Every day this winter",
+   "sub": "Small habits",
+   "groups": [
+    [
+     "Morning",
+     [
+      "Check your ends. If they feel dry, add a little leave-in.",
+      "Wear a satin-lined hat or put a scarf over a satin cap."
+     ]
+    ],
+    [
+     "Night",
+     [
+      "Satin bonnet or pillowcase.",
+      "Loose styles. Nothing tight on cold, dry hair."
+     ]
+    ]
+   ]
+  }
+ },
+ "trouble": {
+  "title": "If something feels off",
+  "jump": "Fixes",
+  "items": [
+   [
+    "Scalp itchy or flaky",
+    "Dry winter air is a common cause, but flaking and itching can have other causes too. If it doesn't settle, ask a doctor or dermatologist."
+   ],
+   [
+    "Hair feels stiff and dry",
+    "Go back to a moisturising conditioner and warm it up. Check for buildup before you add anything."
+   ],
+   [
+    "More shedding than usual",
+    "See your doctor. Bring up vitamin D, iron and ferritin, and anything else going on with your health, medicines or stress."
+   ],
+   [
+    "Tangles at the ends",
+    "Look at friction first: hats, scarves, collars. Satin lining helps."
+   ]
+  ]
+ },
+ "end": {
+  "title": "By the end of winter",
+  "notes": [
+   "Winter is a season, and your hair will bounce back. Keep whichever locks you liked, drop the ones you didn't, and keep your photos from December to compare."
+  ],
+  "list": [
+   "Your scalp feels comfortable",
+   "Ends feel softer",
+   "Less tangling",
+   "Conditioner is spreading easily",
+   "You know your blood-test numbers"
+  ],
+  "next": [
+   [
+    "Deep moisture and protein",
+    "If your hair needs a longer conditioning reset",
+    "plans/moisture-and-protein/"
+   ],
+   [
+    "Edge Growth Plan",
+    "If your edges need their own attention",
+    "plans/edge-growth-plan/"
+   ]
+  ]
+ }
+}
