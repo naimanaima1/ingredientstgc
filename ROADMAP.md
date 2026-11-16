@@ -146,3 +146,9 @@ Plan content lives in `content/guide-*.json` in this repo, not in a sheet. Movin
 - Catalog gaps (shown as plain text until the CSV has them): Kenra Blow Dry Spray, Amika Blockade, Camille Rose Heat Tamer, Uncle Funky's Curly Magic. Doux Big Poppa has no ingredient list yet, so no polymer flag.
 - Experiments (noindex, unlinked): /programs/guided-test/ = colour-block guided steps with scroll highlight + partial email gate. Gate is a soft gate (content is in the page) and sends nothing until `GATE_ACTION` in scripts/guided_test.py is set to an email provider's form URL. A real dashboard = the provider's subscriber list.
 - Open: more images for guided sections; JARA feature claims need owner confirmation; Scalp Actives sheet-copy review.
+
+## Ecosystem pass (Nov 16)
+- Shipped on the library: 32px ecosystem bar, 4-link nav + "Take Hair Quiz", Label Decoder quiz bridge, My Hair Plans / Product Finder / Ingredient Guide on the homepage, "Save this plan to JARA" callout + next-step row on every plan, ebook resource card at the bottom of plans (Juicy only so far), new bottom JARA banner copy, UTM links on all outbound links.
+- Test pages (noindex): /programs/jara-landing-test/ (JARA landing, pricing roadmap, free tracker + exit-intent) and /programs/goodcoil-home-test/ (homepage order + quiz results mock-up).
+- Full plan, email map, Hostinger prompt, JARA checkout review: docs/ECOSYSTEM.md
+- Open: real JARA screenshots; more ebooks to attach to plans; confirm price story ($29/$39 vs "regular $39"); quiz must exist at thegoodcoil.com/#quiz.

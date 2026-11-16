@@ -25,19 +25,21 @@ JARA_URL = 'https://itsjara.com'
 JARA_PRICE = '$19'
 
 JARA_DEFAULT = {
-    'track': ('Want this in your pocket?',
-              'Log your wash days and monthly photos in JARA, and see them side by side.'),
-    'end': ('Keep the proof.',
-            'JARA keeps your photos and wash days in one place, on every device.'),
+    'track': ('Save this plan to JARA',
+              'Stop screenshotting routines. Track your wash days, products, and monthly growth photos in one place.'),
+    'end': ('Found your ingredients? Track how your hair responds.',
+            "JARA connects your wash days, products, and monthly progress photos. Lock in Founder's Beta pricing ($19) before it increases to $29."),
 }
+SLUG = ['']
 
 
-def jara_card(r, head, text, cls=''):
+def jara_card(r, head, text, cls='', btn=None, steps=''):
+    btn = btn or f'Get JARA &middot; {JARA_PRICE}'
     """One quiet prompt: small app picture, a short line, one button."""
     return f'''<aside class="jara {cls}" aria-label="About JARA"><div class="jara-in">
-    <a class="jara-shot" href="{JARA_URL}" tabindex="-1" aria-hidden="true"><img src="{r}assets/img/jara-promo.jpg" alt="" width="1000" height="1000" loading="lazy"></a>
-    <div class="jara-txt"><h2>{e(head)}</h2><p>{e(text)}</p></div>
-    <a class="btn" href="{JARA_URL}">Get JARA &middot; {JARA_PRICE}</a>
+    <a class="jara-shot" href="{B.utm(JARA_URL, 'plan_cta', content=SLUG[0])}" tabindex="-1" aria-hidden="true"><img src="{r}assets/img/jara-promo.jpg" alt="" width="1000" height="1000" loading="lazy"></a>
+    <div class="jara-txt"><h2>{e(head)}</h2><p>{e(text)}</p>{steps}</div>
+    <a class="btn" href="{B.utm(JARA_URL, 'plan_cta', content=SLUG[0])}">{btn}</a>
   </div></aside>'''
 
 
@@ -46,7 +48,11 @@ def jara(where, r='../../', over=None):
     first asks you to write things down, one at the end. A plan can word its own
     in its json under "jara": {"track": [head, text], "end": [head, text]}."""
     head, text = (over or {}).get(where) or JARA_DEFAULT[where]
-    return jara_card(r, head, text, 'jara-end' if where == 'end' else '')
+    if where == 'track':
+        steps = (f'<ol class="jara-next" aria-label="What to do next"><li>Follow the plan</li>'
+                 f'<li><a href="{r}products/">Explore products</a></li><li>Track it in JARA</li></ol>')
+        return jara_card(r, head, text, 'jara-save', 'Start Tracking in JARA', steps)
+    return jara_card(r, head, text, 'jara-end')
 
 
 def explainer(d, key, id_, cls=''):
@@ -127,6 +133,10 @@ def section(id_, title, intro, inner, cls=''):
 
 def page(d):
     r = '../../'
+    SLUG[0] = d['slug']
+    def save():
+        if not any('jara-save' in x for x in out):
+            out.append(jara('track', r, d.get('jara')))
     cat = {c.get('id'): c for c in B.cat}
     out = []
     jump = []
@@ -144,7 +154,6 @@ def page(d):
         items = ''.join(f'<li><b>{e(a)}</b><span>{e(b)}</span></li>' for a, b in s['items'])
         out.append(section('stock', s['title'], s.get('intro'), f'<ul class="gd-stock">{items}</ul>', 'gd-paper'))
         jump.append(('stock', s.get('jump', s['title'])))
-        out.append(jara('track', r, d.get('jara')))
 
     # 2b. are you ready? swipeable yes / not yet cards, and the optional prep
     if d.get('ready'):
@@ -207,6 +216,7 @@ def page(d):
                 bits += f'<div class="gz-after"><details class="gd-fold"><summary>{e(bt["title"])}<small>{e(bt["sub"])}</small></summary><div class="gd-between">{groups}</div></details></div>'
             out.append(f'<section class="gz-sec" id="routine"><div class="tp-in gz-head"><h2>{e(ro["title"])}</h2>' + (f'<p class="gd-lead">{e(ro["intro"])}</p>' if ro.get('intro') else '') + f'</div>{bits}</section>')
             jump.append(('routine', ro.get('jump', ro['title'])))
+            save()
             ro = None
     if d.get('routine') and ro is not None:
         for w in (ro.get('washes') or [ro['wash']]):
@@ -218,13 +228,7 @@ def page(d):
             bits += f'''<details class="gd-fold"><summary>{e(bt['title'])}<small>{e(bt['sub'])}</small></summary><div class="gd-between">{groups}</div></details>'''
         out.append(section('routine', ro['title'], ro.get('intro'), bits, 'gd-mist'))
         jump.append(('routine', ro.get('jump', ro['title'])))
-        if d.get('book') and d['book'].get('url'):
-            bkd = d['book']
-            out.append(f'''<aside class="book" aria-label="The book"><div class="book-in">
-    <div class="book-txt"><span class="eyebrow">{e(bkd.get('eyebrow', 'The book'))}</span><h2>{e(bkd['title'])}</h2><p>{e(bkd['text'])}</p></div>
-    <a class="btn" href="{e(bkd['url'])}">{e(bkd.get('button', 'Get the book'))}</a>
-  </div></aside>''')
-
+        save()
     # 4a. a winding week-by-week timeline: one idea at a time on a phone
     if d.get('timeline'):
         tl = d['timeline']
@@ -243,6 +247,7 @@ def page(d):
                  f'<ol class="tl-list">{lis}</ol><p class="rd-hint tl-hint" aria-hidden="true">Swipe for the next week &rarr;</p>')
         out.append(section('weeks', tl['title'], tl.get('intro'), inner, 'gd-paper tl-sec'))
         jump.append(('weeks', tl.get('jump', tl['title'])))
+        save()
 
     # 4. a card per week (styles, or what each week does)
     if d.get('weeks'):
@@ -329,6 +334,13 @@ def page(d):
         items = ''.join(f'<div><h4>{e(a)}</h4><p>{e(b)}</p></div>' for a, b in tr['items'])
         out.append(section('help', tr['title'], tr.get('intro'), f'<div class="gd-trouble">{items}</div>'))
         jump.append(('help', tr.get('jump', tr['title'])))
+
+    if d.get('book') and d['book'].get('url'):
+        bkd = d['book']
+        out.append(f'''<aside class="book" aria-label="A guide to go with this plan"><div class="book-in">
+    <div class="book-txt"><span class="eyebrow">{e(bkd.get('eyebrow', 'Go deeper'))}</span><h2>{e(bkd['title'])}</h2><p>{e(bkd['text'])}</p></div>
+    <a class="btn" href="{e(B.utm(bkd['url'], 'plan_resource', 'ebook', d['slug']))}">{e(bkd.get('button', 'Get the guide'))}</a>
+  </div></aside>''')
 
     # 9. closing band
     if d.get('end'):

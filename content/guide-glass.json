@@ -10,16 +10,6 @@
  "go": "Start with wash one",
  "description": "A simple two-wash plan for glossy coils: wash one clarifies and preps, wash two glosses.",
  "intro": "Shine comes from a smooth surface, so the plan is simple: clear off what's dulling your hair, then add the gloss. Two wash days, one job each. The aim is the glossiest your coils can get, with healthy hair as the part that does not move.",
- "jara": {
-  "track": [
-   "Want to see the difference?",
-   "Take a daylight photo today and one after wash two. JARA keeps them side by side."
-  ],
-  "end": [
-   "Keep your gloss going.",
-   "Log each gloss day in JARA with a photo, and see how long the shine really lasts."
-  ]
- },
  "stock": {
   "title": "Before you start",
   "jump": "Before",

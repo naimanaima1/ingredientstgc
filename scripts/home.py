@@ -177,7 +177,7 @@ def build(out='', root='', quiet=True):
       <ul class="btl-groups" id="groups">{group_rows}</ul>
     </figure>'''
         script = f'<script src="{R}assets/library.js" defer></script>'
-    body = f'''<section class="band">
+    body = f'''<section class="band" id="find">
   <div class="band-in">
     <div class="band-copy">
       <span class="eyebrow"><span class="little-dot"></span>The Good Coil Library</span>
@@ -185,25 +185,26 @@ def build(out='', root='', quiet=True):
       <p class="band-lead">{lead}</p>
       {controls}
     </div>
-    {card}
+    <div class="band-card">{card}
+    <p class="bridge"><span>Not sure what your hair needs right now?</span> <a href="{B.utm(B.QUIZ_URL, 'label_decoder', 'routine_quiz')}">Take the 2-minute Routine Quiz &rarr;</a></p></div>
   </div>
 </section>
 
-<div class="wrap home-rest"><section class="doors2" aria-label="Browse the library">
-  <a class="door" href="{R}ingredients/"><span class="door-n">{len(B.ing)}</span><h2>Ingredients</h2><p>Every ingredient by what it is and what it does, from proteins to plant gels.</p>
-    <ul class="door-feat">{''.join(f'<li><b>{e(i["_title"])}</b><span>{e(job(i))}</span></li>' for i in featured)}</ul><span class="door-go">All ingredients →</span></a>
-  <a class="door" href="{R}products/"><span class="door-n">{n_products}</span><h2>Products</h2><p>{len(B.labels)} labels read so far, each decoded ingredient by ingredient.</p>
-    <ul>{''.join(f'<li>{e(B.product_full_name(x))}</li>' for x in labelled)}</ul><span class="door-go">All products →</span></a>
-  <a class="door door-photo" href="{R}plans/"><span class="door-n">{len(plans)}</span><h2>Hair plans</h2><p>What is going on, what to do each week, and what to look for on a label.</p>
+<div class="wrap home-rest"><section class="doors2" aria-label="Where to go next">
+  <a class="door door-photo" href="{R}plans/"><span class="door-n">{len(plans)}</span><h2>My Hair Plans</h2><p>Personalized routines and educational plans: what is going on, what to do each week, and what to look for on a label.</p>
     <img src="{R}assets/img/ends.jpg" alt="A woman with long dark curls holds the ends of a curl between her fingers." width="799" height="1344" loading="lazy">
     <span class="door-go">See the plans →</span></a>
+  <a class="door" href="{R}products/"><span class="door-n">{n_products}</span><h2>Product Finder</h2><p>Popular products, with {len(B.labels)} labels read so far, each decoded ingredient by ingredient.</p>
+    <ul>{''.join(f'<li>{e(B.product_full_name(x))}</li>' for x in labelled)}</ul><span class="door-go">Find a product →</span></a>
+  <a class="door" href="{R}ingredients/"><span class="door-n">{len(B.ing)}</span><h2>Ingredient Guide</h2><p>Look up any ingredient and what it does, from proteins to plant gels.</p>
+    <ul class="door-feat">{''.join(f'<li><b>{e(i["_title"])}</b><span>{e(job(i))}</span></li>' for i in featured)}</ul><span class="door-go">Open the guide →</span></a>
 </section>
 
 <aside class="jara home-jara" aria-label="About JARA"><div class="jara-in">
-  <a class="jara-shot" href="https://itsjara.com" tabindex="-1" aria-hidden="true"><img src="{R}assets/img/jara-promo.jpg" alt="" width="1000" height="1000" loading="lazy"></a>
-  <div class="jara-txt"><h2>Read the label, then keep the record.</h2>
-  <p>JARA is our hair journal: wash days, products and monthly photos in one place.</p></div>
-  <a class="btn" href="https://itsjara.com">Get JARA &middot; $19</a>
+  <a class="jara-shot" href="{B.utm('https://itsjara.com', 'home_banner')}" tabindex="-1" aria-hidden="true"><img src="{R}assets/img/jara-promo.jpg" alt="" width="1000" height="1000" loading="lazy"></a>
+  <div class="jara-txt"><h2>Found your ingredients? Track how your hair responds.</h2>
+  <p>JARA connects your wash days, products, and monthly progress photos.</p></div>
+  <a class="btn" href="{B.utm('https://itsjara.com', 'home_banner')}">Get JARA &middot; $19</a>
 </div></aside>
 </div>
 {script}'''

@@ -392,16 +392,6 @@
    ]
   ]
  },
- "jara": {
-  "track": [
-   "Want your wash days saved?",
-   "Log each set in JARA with a photo, so you can see which gel really works for your hair."
-  ],
-  "end": [
-   "See which gel wins.",
-   "Keep your photos and wash days in JARA and compare set after set."
-  ]
- },
  "ready": {
   "title": "Are you ready to style?",
   "jump": "Ready?",
@@ -464,9 +454,9 @@
   }
  },
  "book": {
-  "eyebrow": "Want more?",
-  "title": "The Wash and Go Guide",
-  "text": "Our full guide to wash and gos that last, with everything from this plan and more, in one place you can keep.",
+  "eyebrow": "Go deeper",
+  "title": "The Wash and Go Guide · $10",
+  "text": "Our full guide to wash and gos that last. Everything in this plan, plus the extras, in one place you can keep.",
   "button": "Get the guide",
   "url": "https://thegoodcoil.com/wash-and-go-guide"
  }

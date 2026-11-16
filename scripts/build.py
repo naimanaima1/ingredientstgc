@@ -291,6 +291,14 @@ def ordinal(n):
 
 ICON = '<svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'
 
+QUIZ_URL = 'https://thegoodcoil.com/#quiz'
+def utm(url, medium, campaign='jara_beta', content=''):
+    """Add tracking to links that leave this site, so each other site can see where a visit came from."""
+    base, _, frag = url.partition('#')
+    q = f'utm_source=library&utm_medium={medium}&utm_campaign={campaign}' + (f'&utm_content={content}' if content else '')
+    out = base + ('&' if '?' in base else '?') + q
+    return out + ('#' + frag if frag else '')
+
 def shell(r, title, desc, body, path, current=''):
     """r = relative path to the site root, e.g. '../'."""
     cur = lambda k: ' aria-current="page"' if current == k else ''
@@ -310,24 +318,24 @@ def shell(r, title, desc, body, path, current=''):
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="eco-bar"><nav aria-label="The Good Coil sites"><a href="{utm('https://thegoodcoil.com', 'utility_bar', 'ecosystem')}">The Good Coil</a><a href="{r}" aria-current="true">Ingredient Library</a><a href="{utm('https://itsjara.com', 'utility_bar', 'jara_beta')}">JARA App &middot; $19 Beta</a></nav></div>
 <header class="site-header">
   <a href="{r}" class="wordmark" aria-label="The Good Coil Library home"><span class="brand-symbol" aria-hidden="true">◎</span> the<span class="brand-amp">good</span>coil<span class="wordmark-sub">Library</span></a>
   <nav class="nav" aria-label="Main">
-    <a class="search" href="{r}ingredients/#find">{ICON} Look up an ingredient</a>
-    <a class="search-sm" href="{r}ingredients/#find">{ICON} Search</a>
-    <a href="{r}plans/" class="hide-sm"{cur('plans')}>Hair plans</a>
+    <a href="{r}#find" class="hide-sm"{cur('home')}>Label Decoder</a>
+    <a href="{r}ingredients/" class="hide-sm"{cur('ingredients')}>Ingredients</a>
     <a href="{r}products/" class="hide-sm"{cur('products')}>Products</a>
-    <a href="{r}properties/" class="hide-sm hide-md"{cur('props')}>By property</a>
-    <a href="{r}groups/" class="hide-sm hide-md"{cur('groups')}>Families</a>
-    <a href="{r}ingredients/" class="hide-sm hide-md"{cur('ingredients')}>All ingredients</a>
+    <a href="{r}plans/" class="hide-sm"{cur('plans')}>Hair Plans</a>
+    <a class="nav-cta" href="{utm(QUIZ_URL, 'nav_cta', 'routine_quiz')}">Take Hair Quiz</a>
   </nav>
 </header>
+<nav class="subnav" aria-label="Library sections"><a href="{r}#find">Label Decoder</a><a href="{r}ingredients/">Ingredients</a><a href="{r}products/">Products</a><a href="{r}plans/">Hair Plans</a></nav>
 <main id="main" class="wrap">
 {body}
 </main>
 <footer class="site-footer">
   <div><a href="{r}" class="wordmark"><span class="brand-symbol" aria-hidden="true">◎</span> the<span class="brand-amp">good</span>coil</a><p>Good knowledge. Happy hair.<br>A journey that's yours.</p></div>
-  <nav class="footer-links" aria-label="Footer"><a href="{r}ingredients/">All ingredients</a><a href="{r}plans/">Hair plans</a><a href="{r}products/">Products</a><a href="{r}properties/">By property</a><a href="{r}groups/">Ingredient families</a><a href="{r}about/">How we write</a><a href="{r}about/#affiliate">Affiliate disclosure</a><a href="https://thegoodcoil.com">The Good Coil</a><a href="https://itsjara.com">JARA hair journal</a></nav>
+  <nav class="footer-links" aria-label="Footer"><a href="{r}ingredients/">All ingredients</a><a href="{r}plans/">Hair plans</a><a href="{r}products/">Products</a><a href="{r}properties/">By property</a><a href="{r}groups/">Ingredient families</a><a href="{r}about/">How we write</a><a href="{r}about/#affiliate">Affiliate disclosure</a><a href="{utm('https://thegoodcoil.com', 'footer', 'ecosystem')}">The Good Coil</a><a href="{utm('https://itsjara.com', 'footer')}">JARA hair journal</a></nav>
   <div class="footer-bottom"><span>© {datetime.date.today().year} The Good Coil</span><span>Descriptions, not verdicts: every head of hair is different.</span><span>Educational guidance, not medical advice.</span></div>
 </footer>
 <script src="{r}assets/tips.js" data-root="{r}" defer></script>
@@ -632,6 +640,8 @@ def main():
     programs_full.build()
     import guided_test  # TEST guided steps + email gate (noindex)
     guided_test.build()
+    import ecosystem_tests  # TEST JARA landing + Good Coil homepage (noindex)
+    ecosystem_tests.build()
     extras(tags, plan_urls)
     checks(counts)
     text = '### Hair plans\n' + (f'{len(plan_urls)} plans built.\n' + '\n'.join(plan_notes) if plan_urls else 'No programs found.') + '\n'
