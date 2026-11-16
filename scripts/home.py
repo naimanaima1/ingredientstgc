@@ -206,7 +206,8 @@ def build(out='', root='', quiet=True):
     actually doing for your hair. JARA is our app for keeping that record: wash
     days, the products you used, how your hair felt afterwards, and photos lined
     up month by month so the change is something you can see.</p></div>
-  <div class="jara-do"><a class="btn" href="https://itsjara.com">Get JARA · $19 once</a>
+  <div class="jara-do"><a class="jara-shot" href="https://itsjara.com"><img src="{R}assets/img/jara-promo.jpg" alt="The JARA app on a tablet: this week, last wash day, average rating, and what care is next." width="1000" height="1000" loading="lazy"></a>
+  <a class="btn" href="https://itsjara.com">Get JARA · $19 once</a>
     <p>One payment, no subscription.</p></div>
 </div></section>
 </div>

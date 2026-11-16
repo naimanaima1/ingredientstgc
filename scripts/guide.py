@@ -25,7 +25,7 @@ JARA_URL = 'https://itsjara.com'
 JARA_PRICE = '$19 once'
 
 
-def jara(where):
+def jara(where, r='../../'):
     """A prompt to carry the plan into JARA. Two per guide: one where the plan
     first asks you to write things down, one at the end."""
     if where == 'track':
@@ -36,7 +36,8 @@ def jara(where):
       things again at week 4 and week 8. JARA is our app for exactly that: wash
       days, what you used, how it felt, and your photos lined up side by side so
       the change is something you can see rather than remember.</p></div>
-    <div class="jara-do"><a class="btn" href="{JARA_URL}">Get JARA · {JARA_PRICE}</a>
+    <div class="jara-do"><a class="jara-shot" href="{JARA_URL}"><img src="{r}assets/img/jara-promo.jpg" alt="The JARA app on a tablet: this week, last wash day, average rating, and what care is next." width="1000" height="1000" loading="lazy"></a>
+      <a class="btn" href="{JARA_URL}">Get JARA · {JARA_PRICE}</a>
       <p>One payment, no subscription. Works on your phone and your laptop.</p></div>
   </div></section>'''
     return f'''<section class="jara jara-end"><div class="jara-in">
@@ -45,7 +46,8 @@ def jara(where):
       <p>Keep logging wash days and photos and by next spring you will have your
       own evidence instead of a guess about what worked. That is the whole point
       of JARA.</p></div>
-    <div class="jara-do"><a class="btn" href="{JARA_URL}">Get JARA · {JARA_PRICE}</a>
+    <div class="jara-do"><a class="jara-shot" href="{JARA_URL}"><img src="{r}assets/img/jara-promo.jpg" alt="The JARA app on a tablet: this week, last wash day, average rating, and what care is next." width="1000" height="1000" loading="lazy"></a>
+      <a class="btn" href="{JARA_URL}">Get JARA · {JARA_PRICE}</a>
       <p>One payment, no subscription.</p></div>
   </div></section>'''
 
@@ -76,7 +78,7 @@ def page(d):
         items = ''.join(f'<li><b>{e(a)}</b><span>{e(b)}</span></li>' for a, b in s['items'])
         out.append(section('stock', s['title'], s.get('intro'), f'<ul class="gd-stock">{items}</ul>', 'gd-paper'))
         jump.append(('stock', s.get('jump', s['title'])))
-        out.append(jara('track'))
+        out.append(jara('track', r))
 
     # 3. routine: wash day open, between wash days folded
     if d.get('routine'):
@@ -173,7 +175,7 @@ def page(d):
         out.append(f'''<section class="gd-sec gd-ink" id="end"><div class="tp-in">
   <div class="gd-derm"><div><h2>{e(en['title'])}</h2>{notes}{src}</div><div>{right}</div></div>
 </div></section>''')
-        out.append(jara('end'))
+        out.append(jara('end', r))
 
     jump_html = ''.join(f'<a href="#{a}">{e(b)}</a>' for a, b in jump)
     body = f'''<section class="gd-hero">
