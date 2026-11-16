@@ -13,13 +13,42 @@ LABELS = {'established': 'Established', 'promising': 'Promising', 'emerging': 'E
 def links(r, ls):
     out = []
     for label, target in ls:
-        if target.startswith('properties/'):
+        if target.startswith('properties/') or target.startswith('groups/'):
             out.append(f'<a href="{r}{target}">{e(label)}</a>')
         else:
             i = B.lookup(target)
             if i:
                 out.append(f'<a href="{r}{i["_slug"]}/">{e(label)}</a>')
     return ' · '.join(out)
+
+JARA_URL = 'https://itsjara.com'
+JARA_PRICE = '$19 once'
+
+
+def jara(where):
+    """A prompt to carry the plan into JARA. Two per guide: one where the plan
+    first asks you to write things down, one at the end."""
+    if where == 'track':
+        return f'''<section class="jara"><div class="jara-in">
+    <div><span class="eyebrow">Keeping track</span>
+      <h2>Keep this on paper, or keep it in JARA.</h2>
+      <p>This plan asks you to note where your hair is today and check the same
+      things again at week 4 and week 8. JARA is our app for exactly that: wash
+      days, what you used, how it felt, and your photos lined up side by side so
+      the change is something you can see rather than remember.</p></div>
+    <div class="jara-do"><a class="btn" href="{JARA_URL}">Get JARA · {JARA_PRICE}</a>
+      <p>One payment, no subscription. Works on your phone and your laptop.</p></div>
+  </div></section>'''
+    return f'''<section class="jara jara-end"><div class="jara-in">
+    <div><span class="eyebrow">After week 8</span>
+      <h2>The next eight weeks are the ones that show.</h2>
+      <p>Keep logging wash days and photos and by next spring you will have your
+      own evidence instead of a guess about what worked. That is the whole point
+      of JARA.</p></div>
+    <div class="jara-do"><a class="btn" href="{JARA_URL}">Get JARA · {JARA_PRICE}</a>
+      <p>One payment, no subscription.</p></div>
+  </div></section>'''
+
 
 def section(id_, title, intro, inner, cls=''):
     return f'''<section class="gd-sec {cls}" id="{id_}"><div class="tp-in">
@@ -47,6 +76,7 @@ def page(d):
         items = ''.join(f'<li><b>{e(a)}</b><span>{e(b)}</span></li>' for a, b in s['items'])
         out.append(section('stock', s['title'], s.get('intro'), f'<ul class="gd-stock">{items}</ul>', 'gd-paper'))
         jump.append(('stock', s.get('jump', s['title'])))
+        out.append(jara('track'))
 
     # 3. routine: wash day open, between wash days folded
     if d.get('routine'):
@@ -64,18 +94,35 @@ def page(d):
     # 4. a card per week (styles, or what each week does)
     if d.get('weeks'):
         wk = d['weeks']
-        shown = [i for i in wk['items'] if len(i) > 2]
-        rest = [i for i in wk['items'] if len(i) == 2]
-        cards = ''.join(
-            f'''<li><img src="{r}assets/img/{e(img)}" alt="{e(alt)}" width="799" height="1344" loading="lazy">
-          <b>{e(t)}</b><p>{e(x)}</p></li>''' for t, x, img, alt in shown)
-        html = f'<ul class="gd-styles2">{cards}</ul>' if cards else ''
-        if rest:
-            more = ''.join(f'<li><b>{e(t)}</b><p>{e(x)}</p></li>' for t, x in rest)
-            label = e(wk.get('more', 'More to try'))
-            html += f'<h3 class="gd-more-h">{label}</h3><ul class="gd-styles">{more}</ul>'
-        out.append(section('weeks', wk['title'], wk.get('intro'), html))
+        # one grid, every style the same size. A style without a photo gets a
+        # drawn tile rather than being hidden behind a hover.
+        cards = ''
+        for n, it in enumerate(wk['items']):
+            t, x = it[0], it[1]
+            if len(it) > 2:
+                top = (f'<img src="{r}assets/img/{e(it[2])}" alt="{e(it[3])}" '
+                       f'width="799" height="1344" loading="lazy">')
+                cls = 'has-photo'
+            else:
+                top = f'<span class="gd-tile" aria-hidden="true"><em>{e(t)}</em></span>'
+                cls = f'no-photo tint-{n % 3}'
+            cards += f'<li class="{cls}">{top}<b>{e(t)}</b><p>{e(x)}</p></li>'
+        out.append(section('weeks', wk['title'], wk.get('intro'),
+                           f'<ul class="gd-styles2">{cards}</ul>'))
         jump.append(('weeks', wk.get('jump', wk['title'])))
+
+    # 4b. a twelve-week treatment rotation (glass hair)
+    if d.get('rota'):
+        ro = d['rota']
+        ph = ''.join(
+            f'<li><span class="eyebrow">{e(a)}</span><b>{e(b)}</b><p>{e(c)}</p></li>'
+            for a, b, c in ro.get('phases', []))
+        rows = ''.join(
+            f'<li><span class="ro-n">{e(n)}</span><b>{e(t)}</b><p>{e(w)}</p></li>'
+            for n, t, w in ro['items'])
+        inner = (f'<ol class="ro-phases">{ph}</ol>' if ph else '') + f'<ol class="ro-weeks">{rows}</ol>'
+        out.append(section('rota', ro['title'], ro.get('intro'), inner))
+        jump.append(('rota', ro.get('jump', ro['title'])))
 
     # 5. what to use
     if d.get('use'):
@@ -126,6 +173,7 @@ def page(d):
         out.append(f'''<section class="gd-sec gd-ink" id="end"><div class="tp-in">
   <div class="gd-derm"><div><h2>{e(en['title'])}</h2>{notes}{src}</div><div>{right}</div></div>
 </div></section>''')
+        out.append(jara('end'))
 
     jump_html = ''.join(f'<a href="#{a}">{e(b)}</a>' for a, b in jump)
     body = f'''<section class="gd-hero">
@@ -149,7 +197,7 @@ def page(d):
 def index_page(guides):
     cards = ''.join(f'''<li><a href="{g['slug']}/"><img src="../assets/img/{e(g['image'])}" alt="" width="848" height="1424" loading="lazy"><span class="eyebrow">{e(g['eyebrow'].split(' · ')[-1])}</span><h2>{e(g['name'])}</h2><p><em>{e(g['tagline'])}</em></p></a></li>''' for g in guides)
     body = f'''  <section class="page-head"><span class="eyebrow"><span class="little-dot"></span>The Good Coil</span><h1>Hair plans</h1>
-  <p>Three guides: what is going on, what to do each week, and what to look for on a label. Steps are jobs, not brands, so you can follow them with what you already own.</p></section>
+  <p>{len(guides)} guides: what is going on, what to do each week, and what to look for on a label. Steps are jobs, not brands, so you can follow them with what you already own.</p></section>
   <ul class="plan-cards">{cards}</ul>
   <p class="fine">These are guides to cosmetic hair care, not medical advice. For hair loss, scalp conditions or allergies, talk to a dermatologist or doctor.</p>'''
     B.write('plans/index.html', B.shell('../', 'Hair plans · The Good Coil', 'Three hair-care guides from The Good Coil: edges, length retention, and moisture and protein.', body, 'plans/', 'plans'))

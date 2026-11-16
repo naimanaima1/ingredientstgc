@@ -198,6 +198,17 @@ def build(out='', root='', quiet=True):
     <img src="{R}assets/img/ends.jpg" alt="A woman with long dark curls holds the ends of a curl between her fingers." width="799" height="1344" loading="lazy">
     <span class="door-go">See the plans →</span></a>
 </section>
+
+<section class="jara home-jara"><div class="jara-in">
+  <div><span class="eyebrow">The app</span>
+    <h2>Reading the label is step one. JARA is step two.</h2>
+    <p>Once you know what is in your products, the next question is what they are
+    actually doing for your hair. JARA is our app for keeping that record: wash
+    days, the products you used, how your hair felt afterwards, and photos lined
+    up month by month so the change is something you can see.</p></div>
+  <div class="jara-do"><a class="btn" href="https://itsjara.com">Get JARA · $19 once</a>
+    <p>One payment, no subscription.</p></div>
+</div></section>
 </div>
 {script}'''
     desc = ('Name a hair-care product and see whether it has protein, ceramides, silicones, '

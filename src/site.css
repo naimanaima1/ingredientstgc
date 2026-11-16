@@ -774,7 +774,7 @@ a.gp-ing:hover{background:var(--ink);color:var(--paper)}
 .band .t-chip[aria-pressed=true]{background:var(--citrus);border-color:var(--citrus);color:var(--ink)}
 .band .ask-chips{display:flex;flex-wrap:wrap;gap:8px}
 /* low-tension style cards on a plan page */
-.gd-styles2{list-style:none;padding:0;margin:0 0 34px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.gd-styles2{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px 20px}
 .gd-styles2 li{min-width:0}
 .gd-styles2 img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:50% 66%;display:block;border:1px solid var(--ink);background:var(--blue-mist)}
 .gd-styles2 b{display:block;font-size:17px;letter-spacing:-.025em;margin:12px 0 4px}
@@ -792,3 +792,48 @@ a.gp-ing:hover{background:var(--ink);color:var(--paper)}
 .tip p{font-size:13.5px!important;line-height:1.5!important;margin:8px 0 0!important;color:rgba(248,247,242,.86)!important}
 .tip-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
 .tip-tags span{font-size:11px;font-weight:700;padding:3px 8px;border:1px solid rgba(248,247,242,.4);border-radius:999px}
+/* a style with no photo yet: a drawn tile, same size as the photos */
+.gd-tile{display:flex;align-items:flex-end;aspect-ratio:3/4;border:1px solid var(--ink);padding:16px;overflow:hidden;position:relative}
+.gd-tile em{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:34px;line-height:1.02;letter-spacing:-.02em;color:var(--ink)}
+.tint-0 .gd-tile{background:var(--blue-mist)}
+.tint-1 .gd-tile{background:var(--citrus)}
+.tint-2 .gd-tile{background:#EDE7E4}
+.gd-tile:after{content:'';position:absolute;top:-30%;right:-28%;width:78%;aspect-ratio:1;border:1px solid var(--ink);border-radius:50%;opacity:.5}
+.no-photo b{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.no-photo{position:relative}
+.no-photo p{margin-top:12px!important}
+.gd-tile em{font-size:30px}
+
+/* carry this plan into JARA */
+.jara{background:var(--citrus);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin:56px 0}
+.jara-end{background:var(--blue-mist)}
+.jara-in{max-width:1180px;margin:0 auto;padding:40px 24px 44px;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:28px 48px;align-items:center}
+.jara h2{font-size:34px;line-height:1.05;letter-spacing:-.04em;margin:10px 0 14px;max-width:18ch}
+.jara p{font-size:16px!important;line-height:1.6!important;margin:0!important;max-width:58ch}
+.jara .eyebrow{color:var(--ink)}
+.jara-do{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.jara-do .btn{background:var(--ink);color:var(--paper);border:1px solid var(--ink);padding:15px 26px;font-size:17px;font-weight:700;text-decoration:none;border-radius:2px;display:inline-block}
+.jara-do .btn:hover{background:var(--cobalt);border-color:var(--cobalt)}
+.jara-do p{font-size:14px!important;color:var(--ink)!important;opacity:.72}
+@media(max-width:860px){.jara-in{grid-template-columns:minmax(0,1fr);padding:30px 20px 34px;gap:20px}.jara h2{font-size:27px}}
+.home-jara{margin:0 0 0;border-bottom:0}
+.home-jara .jara-in{padding:44px 0 48px}
+
+/* twelve-week treatment rotation */
+.ro-phases{list-style:none;padding:0;margin:0 0 34px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--ink)}
+.ro-phases li{padding:18px 20px 20px;border-right:1px solid var(--ink)}
+.ro-phases li:last-child{border-right:0}
+.ro-phases li:nth-child(1){background:var(--blue-mist)}
+.ro-phases li:nth-child(2){background:#EDE7E4}
+.ro-phases li:nth-child(3){background:var(--citrus)}
+.ro-phases b{display:block;font-size:20px;letter-spacing:-.03em;margin:7px 0 6px}
+.ro-phases p{font-size:14.5px!important;line-height:1.55!important;margin:0!important}
+.ro-weeks{list-style:none;padding:0;margin:0;border-top:1px solid var(--ink)}
+.ro-weeks li{display:grid;grid-template-columns:52px minmax(0,15ch) minmax(0,1fr);gap:4px 20px;padding:13px 2px;border-bottom:1px solid var(--line);align-items:baseline}
+.ro-weeks li:last-child{border-bottom:1px solid var(--ink)}
+.ro-n{font-size:13px;font-weight:800;letter-spacing:.1em;color:var(--muted);font-variant-numeric:tabular-nums}
+.ro-n:before{content:'WK '}
+.ro-weeks b{font-size:16.5px;letter-spacing:-.025em}
+.ro-weeks p{font-size:15px!important;line-height:1.5!important;color:var(--muted)!important;margin:0!important}
+@media(max-width:860px){.ro-phases{grid-template-columns:minmax(0,1fr)}.ro-phases li{border-right:0;border-bottom:1px solid var(--ink)}.ro-phases li:last-child{border-bottom:0}
+.ro-weeks li{grid-template-columns:52px minmax(0,1fr)}.ro-weeks p{grid-column:2}}
