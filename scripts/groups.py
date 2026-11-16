@@ -20,6 +20,31 @@ INTRO = {
         'and one that seals the strand until you clarify are doing different jobs. '
         'There are four kinds on labels, and the name on the bottle tells you which '
         'one you are holding.'),
+    # Written by the owner, 15 Nov. One sentence each, used as the page headline.
+    'Alcohols': (
+        'Not all alcohols dry out coily hair: fatty alcohols soften and detangle, aromatic alcohols preserve the bottle, and only short-chain alcohols evaporate moisture.',
+        ''),
+    'Proteins': (
+        'Protein strength comes down to size: amino acids hydrate inside the strand, silk, rice and quinoa add lightweight bounce, and keratin and wheat patch heavy damage.',
+        ''),
+    'Scalp Actives': (
+        'Healthy edges start at the skin: niacinamide calms the scalp barrier, caffeine and EGCG offer promising follicle support, and peptides target root anchoring (without replacing medical hair-loss care).',
+        ''),
+    'Surfactants & Cleansers': (
+        'Cleansing is a dial, not an all-or-nothing choice: gentle non-sulfate cleansers protect weekly moisture, while sulfates and chelators reset heavy buildup.',
+        ''),
+}
+
+# Callouts the owner asked for on specific family pages. Not rendered yet: they go in
+# when the page is built. Keyed by family.
+NOTES = {
+    'Scalp Actives': [
+        'Topical actives support scalp health and the look of density. They do not treat medical hair loss.',
+        'Peptides like Procapil and Capixyl are made for scalp serums. Copper Tripeptide-1 (GHK-Cu) also appears in some hair-shaft bond and repair leave-ins, where it is there for the fibre, not the scalp.',
+    ],
+    'Surfactants & Cleansers': [
+        'Chelators (citric acid, tartaric acid, EDTA) bind minerals from hard water. They are not foaming detergents like sulfates.',
+    ],
 }
 
 HOW_TO_SPOT = {
