@@ -163,15 +163,16 @@ def page(d):
     # 3. routine: wash day open, between wash days folded
     if d.get('routine'):
         ro = d['routine']
-        w = ro['wash']
         def one(n, st):
             t, x = st[0], st[1]
             extra = st[2] if len(st) > 2 else {}
             note = f'<p class="gd-stepnote">{e(extra["note"])}</p>' if extra.get('note') else ''
             strip = prod_strip(r, extra['use'], extra.get('screen', False), extra.get('label', 'What to use')) if extra.get('use') else ''
             return f'<li><span>{n}</span><div><b>{e(t)}</b><p>{e(x)}</p>{note}{strip}</div></li>'
-        steps = ''.join(one(n, st) for n, st in enumerate(w['steps'], 1))
-        bits = f'''<div class="gd-washday"><h3>{e(w['title'])}<small>{e(w['sub'])}</small></h3><ol class="gd-steps">{steps}</ol></div>'''
+        bits = ''
+        for w in (ro.get('washes') or [ro['wash']]):
+            steps = ''.join(one(n, st) for n, st in enumerate(w['steps'], 1))
+            bits += f'''<div class="gd-washday"><h3>{e(w['title'])}<small>{e(w['sub'])}</small></h3><ol class="gd-steps">{steps}</ol></div>'''
         if ro.get('between'):
             bt = ro['between']
             groups = ''.join(f'<div><h4>{e(k)}</h4><ul class="ticks">' + ''.join(f'<li>{e(x)}</li>' for x in v) + '</ul></div>' for k, v in bt['groups'])

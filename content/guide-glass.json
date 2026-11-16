@@ -2,534 +2,228 @@
  "id": "GUIDE-GLASS",
  "slug": "glass-hair",
  "name": "Glass hair",
- "tagline": "A guide to getting coils as smooth and light-catching as they can get.",
  "image": "glass-hair.jpg",
  "image_alt": "A woman in profile with a smooth, glossy braided low bun and defined edges, blowing a pink bubble.",
  "eyebrow": "Guide · shine and smoothness",
- "go": "Start with the routine",
- "description": "What shine actually is on coily hair, a twelve-week rotation of moisture, strength and gloss treatments, and what to look for on a label.",
- "intro": "Shine is a surface effect. Smooth cuticles reflect light; rough ones scatter it. The aim is not glass hair at any cost. It is the glossiest your coils can get, with healthy hair as the part that does not move.",
  "order": 4,
- "causes": {
-  "title": "What shine actually is",
-  "jump": "What shine is",
-  "intro": "Worth being clear about this before you spend money, because a lot of shine marketing is selling something coily hair cannot do.",
-  "items": [
-   [
-    "Light bounces off smooth surfaces",
-    "A cuticle that lies flat reflects light in one direction, so you see a highlight. A lifted or chipped one scatters it, so the hair reads dull.",
-    "Almost everything sold as a shine product is doing a single job: making the outside of the strand smoother."
-   ],
-   [
-    "Coils scatter light by design",
-    "Every bend in a coil turns the strand a different way, so the light leaving it goes in many directions at once.",
-    "That is why coily hair will not look like glass the way pin-straight hair can, however good the routine. What it can look like is its own best version: juicy, wet-looking, catching light along the length."
-   ],
-   [
-    "Softness has more than one source",
-    "Water keeps a strand flexible. Conditioning agents cut friction and improve how the surface feels. Lipids and film formers help smooth and protect the outside.",
-    "These are related, but they are not the same thing. Hair can feel soft from conditioning and still be damaged underneath, so the plan checks for breakage too."
-   ],
-   [
-    "Buildup reads as dull, not shiny",
-    "Past a certain point more product stops adding shine and starts adding a film.",
-    "Adding more layers is the most common reason a shine routine stops working, and clarifying is the usual fix."
-   ],
-   [
-    "Breakage shows up as frizz",
-    "Snapped ends sticking out along the length catch light at every angle.",
-    "Reducing breakage does as much for how shiny hair looks as anything you put on top of it."
-   ]
+ "tagline": "Two wash days to the glossiest your coils can get.",
+ "go": "Start with wash one",
+ "description": "A simple two-wash plan for glossy coils: wash one clarifies and preps, wash two glosses.",
+ "intro": "Shine comes from a smooth surface, so the plan is simple: clear off what's dulling your hair, then add the gloss. Two wash days, one job each. The aim is the glossiest your coils can get, with healthy hair as the part that does not move.",
+ "jara": {
+  "track": [
+   "Want to see the difference?",
+   "Take a daylight photo today and one after wash two. JARA keeps them side by side."
+  ],
+  "end": [
+   "Keep your gloss going.",
+   "Log each gloss day in JARA with a photo, and see how long the shine really lasts."
   ]
  },
  "stock": {
   "title": "Before you start",
-  "jump": "Start",
-  "intro": "Write these down today, in daylight, with photos. Check the same list at week 4, week 8 and week 12. Shine is hard to judge from memory.",
+  "jump": "Before",
+  "intro": "Two minutes now makes the result easy to see later.",
   "items": [
    [
-    "A daylight photo",
-    "Same spot, same time of day, same light. Indoor light hides the thing you are trying to measure."
+    "Take a daylight photo",
+    "Same spot and same light each time. Indoor light hides shine."
    ],
    [
-    "How it feels dry",
-    "Run a section through your fingers. Rough, squeaky, soft, waxy?"
+    "Check your water",
+    "Hair looks dull and feels rough even when it's clean? Hard water may be the reason. Wash one has a step for it."
    ],
    [
-    "Your hair's history",
-    "Colour, bleach, relaxer, regular heat? This decides whether the protein and bond weeks apply to you."
-   ],
-   [
-    "Breakage",
-    "Does hair snap while you detangle? Do you see short broken pieces after a wash day?"
-   ],
-   [
-    "Where it tangles",
-    "Ends only, or all the way up?"
-   ],
-   [
-    "How long definition lasts",
-    "Day one, or still there on day four?"
-   ],
-   [
-    "What is in your rotation now",
-    "Every product you used in the last month. You will be cutting from this list, not only adding."
+    "Note your hair's history",
+    "Colour, bleach, relaxer, regular heat? Some gloss treatments are acidic, so follow each label."
    ]
   ]
  },
  "routine": {
-  "title": "Your routine",
-  "jump": "Your routine",
-  "intro": "One wash day a week. Only the treatment step changes from week to week; everything around it stays the same.",
-  "wash": {
-   "title": "Your wash day",
-   "sub": "Once a week",
-   "steps": [
-    [
-     "Pre-wash, 20 to 30 minutes",
-     "Split into four to eight sections. Work a slippery conditioner or pre-wash treatment through the mid-lengths and ends, then detangle from the ends upward and twist each section as you finish it."
-    ],
-    [
-     "Cleanse the scalp",
-     "Shampoo onto the scalp, massage with fingertips, let the lather rinse down the lengths. Repeat only if there is real buildup. Some people need a clarifying wash every few weeks and some need it far less often. Use it when hair feels coated or dull, not by the calendar."
-    ],
-    [
-     "This week's treatment",
-     "Moisture, ceramide, protein, bond or gloss, depending on the week. The twelve-week rotation says which. Follow its own label for timing, and if a treatment has two steps, do both."
-    ],
-    [
-     "Rinse-out conditioner",
-     "If your treatment was not also a conditioner, finish with a slippery one and do your final detangle while the slip is there."
-    ],
-    [
-     "Leave-in on soaking hair",
-     "Section by section, while it is still dripping. Enough for slip and softness, not enough to feel coated."
-    ],
-    [
-     "Style in order",
-     "Cream if you want it, then gel or mousse. Smooth each section rather than raking repeatedly."
-    ],
-    [
-     "Dry, then polish",
-     "Air-dry or diffuse low. Leave it alone while it dries. Once it is fully dry, scrunch out the cast and put one or two drops of serum or light oil over the outside and the ends."
+  "title": "The how-to",
+  "jump": "The how-to",
+  "intro": "Do wash one first. Do wash two a week or so later, or when your next wash day comes round.",
+  "washes": [
+   {
+    "title": "Wash one: clear and prep",
+    "sub": "Set the stage",
+    "steps": [
+     [
+      "Clarify",
+      "Shampoo with a clarifying shampoo to lift product buildup and oils. Gloss can't work through a film of old product. Section your hair first and keep it detangled.",
+      {
+       "label": "Clarifying shampoos",
+       "use": [
+        [
+         "TGC-002",
+         "Clarifying"
+        ],
+        [
+         "TGC-023",
+         "Clarifying"
+        ]
+       ]
+      }
+     ],
+     [
+      "Chelate, if your water is hard",
+      "Hard water leaves minerals on hair that clarifying shampoos don't always remove. A chelating shampoo targets them. Some products do both jobs, so you may not need two.",
+      {
+       "label": "Chelating",
+       "use": [
+        [
+         "TGC-003",
+         "Chelating"
+        ]
+       ]
+      }
+     ],
+     [
+      "Prep with a moisture mask",
+      "Deep condition so the strand is soft and flexible before any gloss goes on. Detangle while the conditioner is in.",
+      {
+       "label": "Moisture masks",
+       "use": [
+        [
+         "TGC-033",
+         "Deep conditioner"
+        ],
+        [
+         "TGC-080",
+         "Deep conditioner"
+        ]
+       ]
+      }
+     ],
+     [
+      "Treat with a glossing mask",
+      "Pick one from the list and follow its label for timing. Rinse well.",
+      {
+       "label": "Glossing masks, pick one",
+       "use": [
+        [
+         "TGC-119",
+         "Conditioning gloss"
+        ],
+        [
+         "L'Oréal EverPure Glossing Lamination Mask",
+         "Glossing treatment"
+        ],
+        [
+         "Moroccanoil High Shine Gloss Mask",
+         "Shine and conditioning"
+        ],
+        [
+         "JVN Revive Rapid Repair Bond Gloss",
+         "Bond-care and shine"
+        ],
+        [
+         "Gisou Honey Gloss Ceramide Therapy Mask",
+         "Ceramide and gloss-focused conditioning"
+        ]
+       ]
+      }
+     ],
+     [
+      "Leave-in, then style",
+      "Leave-in on soaking wet hair, then your usual gel or cream, smoothed through each section. Let the coils clump and leave them alone while they dry."
+     ]
     ]
-   ]
-  },
+   },
+   {
+    "title": "Wash two: gloss",
+    "sub": "The shine day",
+    "steps": [
+     [
+      "Gentle shampoo",
+      "Cleanse the scalp and let the lather rinse down the lengths. Nothing harsh today, you're about to add shine.",
+      {
+       "label": "Gentle shampoos",
+       "use": [
+        [
+         "TGC-065",
+         "Moisturising shampoo"
+        ],
+        [
+         "TGC-063",
+         "Moisturising shampoo"
+        ]
+       ]
+      }
+     ],
+     [
+      "Gloss, with a mask and/or a hair gloss",
+      "Use a glossing mask, a hair gloss, or one after the other if the labels say that's fine. Start with just one product the first time so you know what's working. Do not stack several glosses on one wash day.",
+      {
+       "label": "Glosses, pick one to start",
+       "use": [
+        [
+         "TGC-119",
+         "Conditioning gloss"
+        ],
+        [
+         "L'Oréal EverPure Glossing Lamination Mask",
+         "Glossing treatment"
+        ],
+        [
+         "Moroccanoil High Shine Gloss Mask",
+         "Shine and conditioning"
+        ],
+        [
+         "JVN Revive Rapid Repair Bond Gloss",
+         "Bond-care and shine"
+        ],
+        [
+         "Gisou Honey Gloss Ceramide Therapy Mask",
+         "Ceramide and gloss-focused conditioning"
+        ]
+       ]
+      }
+     ],
+     [
+      "Leave-in and gel",
+      "Same as wash one. Clump, smooth and leave your coils alone while they dry. A clumped coil gives one long highlight, while a cloud of separate strands gives lots of tiny ones."
+     ],
+     [
+      "Finish when it's fully dry",
+      "One or two drops of serum or light oil on the outside and the ends. This is the actual polish, and the easiest step to overdo. Satin at night.",
+      {
+       "label": "Finishing serums",
+       "use": [
+        [
+         "TGC-117",
+         "Finishing oil"
+        ],
+        [
+         "TGC-028",
+         "Serum"
+        ]
+       ]
+      }
+     ]
+    ]
+   }
+  ],
   "between": {
-   "title": "Between wash days",
-   "sub": "Five minutes",
+   "title": "Keeping it glossy",
+   "sub": "Between washes",
    "groups": [
     [
      "Most days",
      [
-      "Check the ends, not the roots. Ends dry out first.",
-      "If they feel soft, do nothing at all.",
-      "A light mist of water and a little leave-in on the dry parts only.",
-      "Smooth with wet hands rather than raking through."
-     ]
-    ],
-    [
-     "Midweek refresh",
-     [
-      "Water, a little leave-in or refresher, a touch of gel on the frizzy sections.",
-      "Let it dry undisturbed. Touching it while it dries is what causes frizz.",
-      "Resist adding butter, cream, oil, gel and mousse on top of each other."
+      "Check the ends, not the roots. If they feel soft, do nothing at all.",
+      "A light mist of water and a little leave-in on dry parts only."
      ]
     ],
     [
      "Every night",
      [
-      "Loose twists, braids or a pineapple. Nothing tight.",
-      "Satin bonnet or a satin pillowcase.",
-      "Keep the ends tucked away where you can.",
-      "No gloss treatment survives seven nights of friction against cotton."
+      "Satin bonnet or pillowcase and loose twists. Nothing tight.",
+      "Keep the ends tucked away."
      ]
     ]
    ]
   }
- },
- "rota": {
-  "title": "Twelve weeks",
-  "jump": "12 weeks",
-  "intro": "One treatment per wash day. This is a rotation, not a stack: it never asks you to do two of these in the same week.",
-  "phases": [
-   [
-    "Weeks 1 to 4",
-    "Moisture first",
-    "Get cleansing and conditioning consistent, bring in ceramides, and find out how your hair answers protein before you commit to it."
-   ],
-   [
-    "Weeks 5 to 8",
-    "Strength where it is needed",
-    "Add protein or bond treatments only if week 1 to 4 showed you need them, and start the gloss rotation."
-   ],
-   [
-    "Weeks 9 to 12",
-    "Polish",
-    "Settle the balance you have found, keep the gloss going, and start cutting products you have proved you do not need."
-   ]
-  ],
-  "items": [
-   [
-    "1",
-    "Moisture mask",
-    "Set the baseline. Note how long softness lasts."
-   ],
-   [
-    "2",
-    "Ceramide conditioner or mask",
-    "Smoothness and easier detangling."
-   ],
-   [
-    "3",
-    "Moisture mask",
-    "Flexibility and slip."
-   ],
-   [
-    "4",
-    "Gloss treatment",
-    "First shine step. Photograph in daylight before and after."
-   ],
-   [
-    "5",
-    "Protein, if indicated",
-    "Only if the checks in week 1 to 4 pointed to it. Skip it if your hair is strong and breaking little."
-   ],
-   [
-    "6",
-    "Moisture and ceramides",
-    "Soften back down after week 5."
-   ],
-   [
-    "7",
-    "Bond treatment, if damaged",
-    "Colour, bleach, heat or visible breakage. Otherwise skip."
-   ],
-   [
-    "8",
-    "Gloss treatment",
-    "Second shine step. Compare with your week 4 photo."
-   ],
-   [
-    "9",
-    "Moisture mask",
-    "Flexibility again."
-   ],
-   [
-    "10",
-    "Protein if needed, otherwise moisture",
-    "Same checks as week 5."
-   ],
-   [
-    "11",
-    "Ceramide conditioning",
-    "Smoothness before the last polish."
-   ],
-   [
-    "12",
-    "Gloss treatment",
-    "Final polish, then your week 12 photo."
-   ]
-  ],
-  "note": "If your hair is severely damaged or chemically processed, you may need a repair plan built around you. A twelve-week calendar is not a replacement for a stylist looking at substantial breakage."
- },
- "use": {
-  "title": "What to use",
-  "jump": "What to use",
-  "intro": "Products by the job they do in this plan. You do not need one of everything. Six is enough for a very good shine routine: a gentle shampoo, a clarifying or chelating shampoo for when you need it, one moisturising conditioner or mask, one leave-in, one gel, and one finishing serum. Everything else is optional.",
-  "items": [
-   [
-    "Gentle cleanser",
-    "Your weekly wash. Takes off sweat and light buildup without stripping what you put in last week.",
-    "Once a week",
-    [
-     "TGC-063",
-     "TGC-065",
-     "TGC-069"
-    ]
-   ],
-   [
-    "Clarifying cleanser",
-    "Resets the surface by lifting product residue and oils. Gloss and shine products cannot work through a film of old product.",
-    "When hair feels coated, not by the calendar",
-    [
-     "TGC-002",
-     "TGC-023",
-     "TGC-003"
-    ]
-   ],
-   [
-    "Chelating cleanser",
-    "For mineral deposits from hard water, which clarifying shampoos do not always remove. Some products do both jobs.",
-    "When water is hard and hair looks dull",
-    [
-     "TGC-003"
-    ]
-   ],
-   [
-    "Moisture deep conditioner",
-    "The backbone. Softness, slip and elasticity, which is most of what makes a strand sit smooth.",
-    "Weeks 1, 3, 6, 9",
-    [
-     "TGC-005",
-     "TGC-033",
-     "TGC-080"
-    ]
-   ],
-   [
-    "Ceramide conditioning",
-    "Lipid support for the cuticle. The step that most changes how rough or smooth hair feels to your hand. It does not replace a rinse-out or deep conditioner.",
-    "Weeks 2, 6, 11",
-    [
-     "TGC-009",
-     "TGC-128",
-     "TGC-124"
-    ]
-   ],
-   [
-    "Protein treatment",
-    "Temporary reinforcement for damaged areas, only if your hair asked for it. If the product comes in two steps, do both, then follow with a conditioner.",
-    "Weeks 5 and 10, if indicated",
-    [
-     "TGC-048",
-     "TGC-071",
-     "TGC-053"
-    ]
-   ],
-   [
-    "Bond treatment",
-    "Works on the inside of the fibre rather than the surface. For colour, bleach, heat or visible breakage.",
-    "Week 7, if damaged",
-    [
-     "TGC-010",
-     "TGC-007",
-     "TGC-057"
-    ]
-   ],
-   [
-    "Gloss treatment",
-    "The shine step. A cosmetic smoothing treatment, not a rebuild. Pick one from the shortlist below.",
-    "Weeks 4, 8 and 12",
-    [
-     "TGC-119"
-    ]
-   ],
-   [
-    "Leave-in",
-    "Slip and softness on soaking hair, before any styler.",
-    "Every wash day",
-    [
-     "TGC-021",
-     "TGC-067",
-     "TGC-134"
-    ]
-   ],
-   [
-    "Gel or mousse",
-    "Holds each coil in one shape while it dries. A clumped coil reflects light; a fluffed one scatters it.",
-    "Every wash day",
-    [
-     "TGC-034",
-     "TGC-068",
-     "TGC-112"
-    ]
-   ],
-   [
-    "Finishing oil or serum",
-    "One or two drops on fully dry hair. This is the polish step, and the easiest one to overdo. A dimethicone-based serum is a finish, not a conditioner.",
-    "On dry hair",
-    [
-     "TGC-117",
-     "TGC-028",
-     "TGC-082"
-    ]
-   ],
-   [
-    "Heat protectant",
-    "Only if you diffuse or use hot tools.",
-    "Before heat",
-    [
-     "TGC-050",
-     "TGC-012"
-    ]
-   ]
-  ]
- },
- "choose": {
-  "title": "One gloss, not three",
-  "jump": "Gloss",
-  "intro": "Gloss treatments are the part of this plan people get wrong, usually by buying three and using them all on the same day. Here is how to think about it.",
-  "items": [
-   [
-    "Start with one",
-    "Pick a single gloss and use it on weeks 4, 8 and 12. Three treatments is enough to tell whether it does anything for you, and one product at a time is the only way to know which one worked."
-   ],
-   [
-    "Check the directions",
-    "Several gloss and lamination treatments are acidic, and some are also conditioning masks. Follow each product's own instructions, and do not use two on the same wash day."
-   ],
-   [
-    "It is a surface treatment",
-    "A gloss smooths and coats. It does not rebuild the inside of the strand, and it washes out. That is not a criticism, it is what the category is: the effect is real and it is temporary."
-   ],
-   [
-    "The cheapest gloss is a clean strand",
-    "A clarified, well-conditioned, well-clumped coil with two drops of oil on it will out-shine a glossed strand covered in four other products. Do the free part first."
-   ]
-  ],
-  "shortlist": {
-   "title": "The shortlist",
-   "items": [
-    [
-     "Rizos Curls Gloss + Repair Mask",
-     "Conditioning gloss"
-    ],
-    [
-     "L'Oréal EverPure Glossing Lamination Mask",
-     "Glossing treatment"
-    ],
-    [
-     "Moroccanoil High Shine Gloss Mask",
-     "Shine and conditioning"
-    ],
-    [
-     "JVN Revive Rapid Repair Bond Gloss",
-     "Bond-care and shine"
-    ],
-    [
-     "Gisou Honey Gloss Ceramide Therapy Mask",
-     "Ceramide and gloss-focused conditioning"
-    ]
-   ],
-   "note": "Choose one to start."
-  }
- },
- "ing": {
-  "title": "What to look for on a label",
-  "jump": "Labels",
-  "intro": "These are the ingredient groups this plan leans on. Hover any name to see what it is, or follow it through to its page.",
-  "items": [
-   [
-    "Humectants",
-    "They pull water in and hold on to it. How well that works depends on the formula and the weather.",
-    "established",
-    [
-     [
-      "Glycerin",
-      "Glycerin"
-     ],
-     [
-      "Panthenol",
-      "Panthenol"
-     ],
-     [
-      "Humectants",
-      "properties/humectant/"
-     ]
-    ]
-   ],
-   [
-    "Fatty alcohols",
-    "The waxy, softening kind, not the drying kind. They are what make a conditioner feel creamy and give it slip.",
-    "established",
-    [
-     [
-      "Cetearyl Alcohol",
-      "Cetearyl Alcohol"
-     ],
-     [
-      "Cetyl Alcohol",
-      "Cetyl Alcohol"
-     ]
-    ]
-   ],
-   [
-    "Conditioning agents",
-    "Positively charged, so they stick to the damaged spots on a strand and smooth them down.",
-    "established",
-    [
-     [
-      "Behentrimonium Methosulfate",
-      "Behentrimonium Methosulfate"
-     ],
-     [
-      "Behentrimonium Chloride",
-      "Behentrimonium Chloride"
-     ],
-     [
-      "Slip and detangling",
-      "properties/slip-detangler/"
-     ]
-    ]
-   ],
-   [
-    "Ceramides and lipids",
-    "Support for the lipid layer between cuticle cells. The step that most changes how rough or smooth hair feels to your hand.",
-    "promising",
-    [
-     [
-      "Ceramide NP",
-      "Ceramide NP"
-     ],
-     [
-      "Ceramides",
-      "properties/ceramides/"
-     ]
-    ]
-   ],
-   [
-    "Proteins",
-    "Temporary patches over damaged areas. More is not better, and too much reads as stiffness.",
-    "established",
-    [
-     [
-      "Hydrolyzed Wheat Protein",
-      "Hydrolyzed Wheat Protein"
-     ],
-     [
-      "Protein",
-      "properties/protein/"
-     ]
-    ]
-   ],
-   [
-    "Peptides",
-    "Short amino-acid chains, named -peptide. A different thing from a hydrolysed protein, doing a different job.",
-    "emerging",
-    [
-     [
-      "Copper Tripeptide-1",
-      "Copper Tripeptide-1"
-     ]
-    ]
-   ],
-   [
-    "Silicones",
-    "The surface smoothing most finishing serums are built on. There are four kinds and they do not behave alike.",
-    "established",
-    [
-     [
-      "The four kinds",
-      "groups/silicones/"
-     ],
-     [
-      "Dimethicone",
-      "Dimethicone"
-     ]
-    ]
-   ],
-   [
-    "Film formers",
-    "They hold the coil clumped while it dries, which is where most definition comes from.",
-    "cosmetic",
-    [
-     [
-      "Film formers",
-      "properties/film-former/"
-     ]
-    ]
-   ]
-  ]
  },
  "trouble": {
   "title": "If something feels off",
@@ -537,149 +231,49 @@
   "items": [
    [
     "Dull and heavy, not shiny",
-    "You have buildup. Clarify, then rebuild with fewer products than before and add back one at a time."
+    "That's buildup. Clarify again, and add products back one at a time."
    ],
    [
-    "Stiff, rough or snapping after a treatment",
-    "That reads like too much protein. Stop protein treatments, condition for a few washes, and start again later with a longer gap."
-   ],
-   [
-    "Weak and breaking when wet",
-    "Think about your history first: bleach, relaxer, heat. If that fits, try one protein or bond treatment, then condition, and see how it feels after a few washes. Stretchy hair on its own does not mean it needs protein."
+    "Rough even when clean",
+    "Think hard water. Try the chelating step."
    ],
    [
     "Shiny on day one, dull by day three",
-    "Look at nights first. Satin, loose styles, ends tucked. Then look at how much you are touching it."
+    "Look at nights first: satin, loose styles, ends tucked. Then at how much you touch it."
    ],
    [
-    "Greasy rather than glossy",
-    "Too much oil, or oil on hair that was not dry yet. One or two drops, on fully dry hair, on the outside only."
+    "Greasy, not glossy",
+    "Too much oil, or oil on hair that wasn't fully dry. One or two drops, on the outside only."
    ],
    [
     "The gloss did nothing",
-    "Check that you clarified first, and that you are judging it in daylight against your own photo rather than against someone else's hair."
+    "Check that you clarified first, and compare in daylight against your own photo, not someone else's hair."
    ]
   ]
  },
  "end": {
-  "title": "At the end of twelve weeks",
+  "title": "After your two washes",
   "notes": [
-   "Put your week 12 daylight photo next to your week 1 one. That comparison is the only honest answer to whether this worked, and it is why the plan asks for photos on day one.",
-   "Keep the cleansing, the conditioning and the nights. Keep the gloss at whatever interval you actually enjoy. Then start cutting: anything you cannot point to a reason for is a product you are paying for and your hair is wearing for nothing."
+   "Put your photo from after wash two next to the one you took today. That comparison is the only honest answer to whether it worked.",
+   "Keep the clarify step whenever hair feels coated, and keep the gloss at whatever pace you enjoy."
   ],
   "list": [
    "Softer after washing",
    "Detangles with less effort",
-   "Ends feel less rough",
-   "Stretches and springs back",
-   "Less breakage while styling",
-   "Definition lasts longer",
+   "Coils clump and stay put",
    "Catches more light in daylight",
-   "Scalp comfortable and clean",
-   "No film or heaviness building up",
-   "Satin every night"
+   "No film or heaviness"
   ],
   "next": [
+   [
+    "Juicy wash and go",
+    "If you want definition that lasts",
+    "plans/juicy-wash-and-go/"
+   ],
    [
     "Deep moisture and protein",
     "If the conditioning side is where the work is",
     "plans/moisture-and-protein/"
-   ],
-   [
-    "The four kinds of silicone",
-    "If you want to understand the finishing step",
-    "groups/silicones/"
-   ]
-  ]
- },
- "techniques": {
-  "title": "The shine techniques",
-  "jump": "Techniques",
-  "intro": "Most of what makes coils look glossy is how they are styled, not what they are coated in. A clumped coil gives one long highlight. A cloud of separate strands gives a hundred small ones.",
-  "items": [
-   [
-    "Section smaller",
-    "Four to eight sections, more if your hair is dense.",
-    "Smaller sections spread product evenly and cut the urge to rake through the same hair again and again."
-   ],
-   [
-    "Clump the coils",
-    "Start with soaking wet hair. Leave-in in small sections, then smooth gel over each section with praying hands. Use your fingers or a suitable curl brush to group the coils, then stop touching them.",
-    "Raking after the coils have clumped breaks them back apart."
-   ],
-   [
-    "Use gentle tension",
-    "Smoothing the gel on with a little tension gives a sleeker result. Praying hands, finger smoothing or a styling brush all work.",
-    "Never pull hard, especially around the hairline."
-   ],
-   [
-    "Diffuse gently",
-    "Low or medium airflow, moderate heat, and leave the coils alone while they dry. Finish with cool air if you like. Be fully dry before you sleep.",
-    ""
-   ],
-   [
-    "Finish with a serum, if you want one",
-    "Leave-in on wet hair, then gel or mousse, then dry completely. Scrunch out the cast. One or two drops of serum on the outside and the ends.",
-    "The serum is a finish. It is not a replacement for conditioning."
-   ],
-   [
-    "Protect it at night",
-    "Satin bonnet or pillowcase, loose twists, ends tucked in. No tight pineapple.",
-    "Hair should not have to fight cotton bedding every night."
-   ]
-  ]
- },
- "strength": {
-  "title": "Three kinds of strengthening",
-  "jump": "Strength",
-  "intro": "Protein, amino-acid and bond-building treatments are often sold as the same thing. They are not interchangeable.",
-  "items": [
-   [
-    "Protein treatments",
-    "Hydrolysed proteins that cling to the strand and can fill in damaged spots for a while.",
-    "They suit hair that is weak, breaking and has a damage history. Too much leaves hair stiff and rough."
-   ],
-   [
-    "Amino-acid treatments",
-    "Smaller building blocks, often paired with conditioning.",
-    "Sold as gentler than protein. How hair responds is individual, so judge by your own results."
-   ],
-   [
-    "Bond-building treatments",
-    "Formulas that claim to work on the chemistry inside the fibre, which differs by brand.",
-    "For colour, bleach, heat or visible breakage. Not a routine step for hair that is not damaged."
-   ],
-   [
-    "How to tell what your hair needs",
-    "Look at several things together: breakage while detangling, hair that feels weak when wet, a history of bleach, relaxer or heat, and how hair feels after a treatment.",
-    "Stronger-feeling after a treatment is a good sign. Stiff and rough means back off. A wet stretch test alone is not reliable, because wet hair naturally stretches."
-   ]
-  ]
- },
- "climate": {
-  "title": "Water and weather",
-  "jump": "Water",
-  "intro": "A good routine can still look dull if the water or the air is working against it.",
-  "items": [
-   [
-    "Hard water",
-    "Minerals can leave deposits that make hair look dull and feel rough. A chelating shampoo targets those. A clarifying shampoo targets product and oil. Some products do both, and you do not automatically need two.",
-    ""
-   ],
-   [
-    "High humidity",
-    "Humectants such as glycerin pull water from the air, and hair can swell and frizz. A good gel or film former holds the coil clumped.",
-    "How well a humectant performs depends on the whole formula and the weather."
-   ],
-   [
-    "Dry weather",
-    "Lean on conditioning and a suitable leave-in rather than more humectants.",
-    ""
-   ],
-   [
-    "Hot weather",
-    "Lighter products may feel better, and you may need fewer layers.",
-    ""
    ]
   ]
  }
