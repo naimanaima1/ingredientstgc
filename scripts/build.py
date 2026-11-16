@@ -630,6 +630,8 @@ def main():
     test_program.build()
     import programs_full  # TEST pages at /programs/ (noindex, kept out of the sitemap)
     programs_full.build()
+    import guided_test  # TEST guided steps + email gate (noindex)
+    guided_test.build()
     extras(tags, plan_urls)
     checks(counts)
     text = '### Hair plans\n' + (f'{len(plan_urls)} plans built.\n' + '\n'.join(plan_notes) if plan_urls else 'No programs found.') + '\n'
