@@ -364,6 +364,12 @@ def ingredient_page(g):
     r = '../'
     hits = hits_for(g)
     title = g['_title']
+    # The page's H1 is the common name from the sheet (display_name wins if one is set).
+    h1 = col(g, 'display_name') or (g.get('common_name') or '').strip() or title
+    summary = (g.get('plain_english_summary') or '').strip()
+    deep = (g.get('how_it_works_deep_dive') or '').strip()
+    howto = (g.get('how_to_use_and_pair') or '').strip()
+    evid = (g.get('evidence_and_nuance') or '').strip()
     tags = ''.join(f'<a class="tag" href="{r}properties/{prop_slug(t)}/">{e(t)}</a>' for t in g['_tags'])
 
     if hits:
@@ -396,16 +402,34 @@ def ingredient_page(g):
     </figure>'''
 
     sections = []
-    if g.get('buildup_sensitivity_notes'):
+    if deep:
+        sections.append(f'''<section class="section" id="why">
+    <div class="intro"><span class="eyebrow">The science, simplified</span><h2>Why your curls care</h2></div>
+    <div class="prose"><p>{e(deep)}</p></div>
+  </section>''')
+    if g.get('buildup_sensitivity_notes') or howto:
+        good = f'<h3>Good to know</h3><p class="note">{e(g["buildup_sensitivity_notes"])}</p>' if g.get('buildup_sensitivity_notes') else ''
+        use = f'<h3>How to get the most out of it</h3><p>{e(howto)}</p>' if howto else ''
         sections.append(f'''<section class="section" id="good">
-    <div class="intro"><span class="eyebrow">Good to know</span></div>
-    <p class="note">{e(g['buildup_sensitivity_notes'])}</p>
+    <div class="intro"><span class="eyebrow">{'Good to know and how to use it' if howto else 'Good to know'}</span></div>
+    <div class="prose">{good}{use}</div>
   </section>''')
     hair = col(g, 'hair_type_notes', 'hair_type_porosity_fit')
     if hair:
         sections.append(f'''<section class="section" id="hair">
     <div class="intro"><span class="eyebrow">Hair types</span><h2>Notes for different hair</h2></div>
     <div class="hair"><p>{e(hair)}</p><small>General patterns from our research, not rules. Hair of the same type can respond differently, so your own results count most.</small></div>
+  </section>''')
+
+    if evid:
+        tag, _, rest = evid.partition('. ')
+        if rest and len(tag) <= 70 and re.match(r'(Established|Cosmetic|Emerging|Promising|Regulated|Universal|Standard)', tag):
+            ev = f'<p><span class="evi">{e(tag)}</span> {e(rest)}</p>'
+        else:
+            ev = f'<p>{e(evid)}</p>'
+        sections.append(f'''<section class="section" id="research">
+    <div class="intro"><span class="eyebrow">Honest context</span><h2>What the research says</h2></div>
+    <div class="prose">{ev}</div>
   </section>''')
 
     if hits:
@@ -446,17 +470,24 @@ def ingredient_page(g):
   </section>''')
 
     links = ''.join([
-        '<a href="#good">Good to know</a>' if g.get('buildup_sensitivity_notes') else '',
+        '<a href="#why">Why your curls care</a>' if deep else '',
+        '<a href="#good">Good to know</a>' if (g.get('buildup_sensitivity_notes') or howto) else '',
         '<a href="#hair">Hair types</a>' if hair else '',
+        '<a href="#research">The research</a>' if evid else '',
         f'<a href="#across">Found in {len(hits)} product{"s" if len(hits) != 1 else ""}</a>' if hits else '',
     ])
+    names = []
+    for n in [g['inci_name']] + g['_aliases']:
+        if norm(n) != norm(h1) and norm(n) not in [norm(x) for x in names]:
+            names.append(n)
+    aka = f'<p class="aka"><em>also on labels as</em> {" · ".join(e(a) for a in names)}</p>' if names else ''
     body = f'''  <a class="crumb" href="{r}ingredients/">← All ingredients</a>
   <section class="first">
     <div class="name">
       <span class="eyebrow"><span class="little-dot"></span>{e(g.get('category', ''))}</span>
-      <h1>{e(title)}</h1>
-      <p class="aka"><em>also on labels as</em> {' · '.join(e(a) for a in g['_aliases']) or e(g['inci_name'])}</p>
-      <p class="lead">{e(g.get('what_it_does', ''))}</p>
+      <h1>{e(h1)}</h1>
+      {aka}
+      <p class="lead">{e(summary or g.get('what_it_does', ''))}</p>
       <div class="meta">{tags}{links}</div>
     </div>
     {hero}
@@ -562,7 +593,9 @@ def data_files(counts):
             'inci_name': i['inci_name'], 'common_name': i.get('common_name', ''), 'category': i.get('category', ''),
             'properties': i['_tags'], 'aliases': i['_aliases'],
             'what_it_does': i.get('what_it_does', ''), 'hair_type_notes': col(i, 'hair_type_notes', 'hair_type_porosity_fit'),
-            'good_to_know': i.get('buildup_sensitivity_notes', ''), 'source': i['_source'], 'labels_seen_on': counts[i['id']],
+            'good_to_know': i.get('buildup_sensitivity_notes', ''),
+            'plain_english_summary': i.get('plain_english_summary', ''), 'how_it_works': i.get('how_it_works_deep_dive', ''),
+            'how_to_use_and_pair': i.get('how_to_use_and_pair', ''), 'evidence_and_nuance': i.get('evidence_and_nuance', ''), 'source': i['_source'], 'labels_seen_on': counts[i['id']],
         } for i in ing],
     }
     write('data/ingredients.json', json.dumps(out, ensure_ascii=False, indent=1))
@@ -582,7 +615,7 @@ def extras(tags, plan_urls=()):
 def checks(counts):
     notes = []
     for i in ing:
-        text = ' '.join(i.get(k, '') for k in ('common_name', 'category', 'what_it_does', 'hair_type_porosity_fit', 'hair_type_notes', 'buildup_sensitivity_notes'))
+        text = ' '.join(i.get(k, '') for k in ('common_name', 'category', 'what_it_does', 'hair_type_porosity_fit', 'hair_type_notes', 'buildup_sensitivity_notes', 'plain_english_summary', 'how_it_works_deep_dive', 'how_to_use_and_pair', 'evidence_and_nuance'))
         found = sorted({m.group(0).lower() for m in CLAIM_WORDS.finditer(text)})
         if found:
             notes.append(f"- {i['id']} {i['_title']}: may read as a growth or drug claim ({', '.join(found)})")
