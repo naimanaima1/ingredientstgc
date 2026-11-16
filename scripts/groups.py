@@ -12,7 +12,7 @@ e = B.e
 
 # Families published. Add a name here once its rows have been reviewed and it has a
 # how-to-spot list.
-LIVE = ['Silicones', 'Alcohols', 'Proteins', 'Scalp Actives', 'Surfactants & Cleansers']
+LIVE = ['Silicones', 'Alcohols', 'Proteins', 'Scalp Actives', 'Peptides', 'Surfactants & Cleansers']
 
 INTRO = {
     'Silicones': (
@@ -29,7 +29,10 @@ INTRO = {
         'Protein strength comes down to size: amino acids hydrate inside the strand, silk, rice and quinoa add lightweight bounce, and keratin and wheat patch heavy damage.',
         ''),
     'Scalp Actives': (
-        'Healthy edges start at the skin: niacinamide calms the scalp barrier, caffeine and EGCG offer promising follicle support, and peptides target root anchoring (without replacing medical hair-loss care).',
+        'Healthy edges start at the skin: niacinamide calms the scalp barrier, while caffeine and EGCG offer promising follicle support (without replacing medical hair-loss care).',
+        ''),
+    'Peptides': (
+        'Peptides are precision messengers, not heavy proteins: follicle peptides like Procapil™ and Capixyl™ target root anchoring at the scalp, while Copper Peptides (GHK-Cu) and bond peptides support both scalp comfort and stressed strands.',
         ''),
     'Surfactants & Cleansers': (
         'Cleansing is a dial, not an all-or-nothing choice: gentle non-sulfate cleansers protect weekly moisture, while sulfates and chelators reset heavy buildup.',
@@ -41,11 +44,18 @@ INTRO = {
 NOTES = {
     'Scalp Actives': [
         'Topical actives support scalp health and the look of density. They do not treat medical hair loss.',
-        'Peptides like Procapil and Capixyl are made for scalp serums. Copper Tripeptide-1 (GHK-Cu) also appears in some hair-shaft bond and repair leave-ins, where it is there for the fibre, not the scalp.',
+    ],
+    'Peptides': [
+        'Topical peptides support scalp comfort and the look of density. They do not treat medical hair loss.',
     ],
     'Surfactants & Cleansers': [
         'Chelators (citric acid, tartaric acid, EDTA) bind minerals from hard water. They are not foaming detergents like sulfates.',
     ],
+}
+
+# Links between families: (text before, link text, family slug)
+CROSS = {
+    'Scalp Actives': ('Looking for Procapil™, Capixyl™, or Copper Peptides? ', 'Explore our Peptides guide', 'peptides'),
 }
 
 HOW_TO_SPOT = {
@@ -73,8 +83,13 @@ HOW_TO_SPOT = {
         ('Niacinamide', 'Vitamin B3. Sometimes written as Niacinamide (Vitamin B3).'),
         ('Caffeine', 'Written plainly.'),
         ('Camellia Sinensis Leaf Extract', 'Green tea. EGCG is the part of it this family is about.'),
-        ('Names with -peptide and a number', 'Copper Tripeptide-1, Biotinoyl Tripeptide-1, Acetyl Tetrapeptide-3. Brand names such as Procapil and Capixyl sometimes appear in brackets.'),
         ('Where it sits in the list', 'These are often used in small amounts, so low on the list is normal. Position alone does not tell you whether a product is any good.'),
+    ],
+    'Peptides': [
+        ('Names ending in -peptide, or containing Tripeptide or Tetrapeptide', 'Copper Tripeptide-1, Biotinoyl Tripeptide-1, Acetyl Tetrapeptide-3. The number tells you which one.'),
+        ('Procapil™ and Capixyl™', 'Brand names for scalp complexes. On a label you will usually see the peptide name instead, sometimes with the brand in brackets.'),
+        ('sh-Oligopeptide-78', 'The bond-repair peptide behind K18. It is a repair ingredient for the strand, not a scalp one.'),
+        ('Where it sits in the list', 'Peptides are used in small amounts, so low on the list is normal. Position alone does not tell you whether a product is any good.'),
     ],
     'Surfactants & Cleansers': [
         ('Ends in -sulfate', 'Sodium Lauryl Sulfate and Sodium Laureth Sulfate. Note that Methosulfate, as in Behentrimonium Methosulfate, is a conditioning ingredient, not a cleanser.'),
@@ -177,11 +192,17 @@ def page(family, rows, ids):
     total = len(members)
     note = ''
     if soon:
-        how = f'None of the {total}' if soon == total else f'{soon} of the {total}'
-        note = (f'<p class="gp-soon">{how} ingredients named below have their own page yet. '
-                'Their rows are on the way, and the names here will become links as soon as they land.</p>')
+        if soon == total:
+            msg = f'None of the {total} ingredients named below have their own page yet.'
+        else:
+            msg = f'{soon} of the {total} ingredients named below {"does" if soon == 1 else "do"} not have {"its" if soon == 1 else "their"} own page yet.'
+        note = (f'<p class="gp-soon">{msg} '
+                'The row is on the way, and the name here will become a link as soon as it lands.</p>')
 
     callouts = ''.join(f'<p class="gp-note">{e(t)}</p>' for t in NOTES.get(family, []))
+    if family in CROSS:
+        pre, txt, slug = CROSS[family]
+        callouts += f'<p class="gp-note">{e(pre)}<a href="../{slug}/">{e(txt)} &rarr;</a></p>'
     body = f'''  <a class="crumb" href="../../groups/">← Ingredient families</a>
   <section class="gp-first">
     <span class="eyebrow"><span class="little-dot"></span>Ingredient family</span>
