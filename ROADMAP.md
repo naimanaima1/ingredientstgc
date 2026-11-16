@@ -65,6 +65,9 @@ Roughly in order of payoff per hour spent.
 - [x] ~~**"Find your product" on the homepage.**~~ Shipped 15 Nov. The hero now asks "Does it have…", takes a product name with live suggestions from the 43 read labels, and falls back to pasting. — *Claude*
 - [x] ~~**Quick check for protein, ceramides, silicones and sulfates.**~~ Shipped 15 Nov, on product pages, as filters on /products/, and on the homepage. Each found group can light its ingredients in the label. — *Claude*
 - [x] ~~**Pick a homepage layout.**~~ Done 15 Nov: the quiet layout is live at `/`, the first one is kept at `/previous-home/` (noindex) for comparison.
+- [x] ~~**Hover preview on ingredient links.**~~ Shipped 15 Nov: name, category and a one-line description, anywhere an ingredient is linked.
+- [x] ~~**Photos for the low-tension styles**~~ on the edge plan, and the longer-framed braids shot moved to the deep moisture hero.
+- [ ] **Shoot or generate the remaining four styles** — silk scarf, claw clip half-up, flat twists, wig/hair-down day — so all eight are photographed rather than four and four. — *Owner*
 - [ ] **Decide whether the five check groups are the right five.** Protein, ceramides, silicones, sulfates and peptides. Candidates to add or swap: drying alcohols, heavy oils/butters, fragrance/allergens, bond builders. Six is about the ceiling before it stops being quick. — *Owner decision*
 
 ### Later
