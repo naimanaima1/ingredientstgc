@@ -606,6 +606,7 @@ def main():
     index_page(counts)
     tips_json()
     write('assets/tips.js', open(os.path.join(ROOT, 'src', 'tips.js'), encoding='utf-8').read())
+    write('assets/guide.js', open(os.path.join(ROOT, 'src', 'guide.js'), encoding='utf-8').read())
     import groups as GRP_PRE
     GRP_PRE.build()
     tags = property_pages()

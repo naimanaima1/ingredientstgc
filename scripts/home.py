@@ -199,17 +199,12 @@ def build(out='', root='', quiet=True):
     <span class="door-go">See the plans →</span></a>
 </section>
 
-<section class="jara home-jara"><div class="jara-in">
-  <div><span class="eyebrow">The app</span>
-    <h2>Reading the label is step one. JARA is step two.</h2>
-    <p>Once you know what is in your products, the next question is what they are
-    actually doing for your hair. JARA is our app for keeping that record: wash
-    days, the products you used, how your hair felt afterwards, and photos lined
-    up month by month so the change is something you can see.</p></div>
-  <div class="jara-do"><a class="jara-shot" href="https://itsjara.com"><img src="{R}assets/img/jara-promo.jpg" alt="The JARA app on a tablet: this week, last wash day, average rating, and what care is next." width="1000" height="1000" loading="lazy"></a>
-  <a class="btn" href="https://itsjara.com">Get JARA · $19 once</a>
-    <p>One payment, no subscription.</p></div>
-</div></section>
+<aside class="jara home-jara" aria-label="About JARA"><div class="jara-in">
+  <a class="jara-shot" href="https://itsjara.com" tabindex="-1" aria-hidden="true"><img src="{R}assets/img/jara-promo.jpg" alt="" width="1000" height="1000" loading="lazy"></a>
+  <div class="jara-txt"><h2>Read the label, then keep the record.</h2>
+  <p>JARA is our hair journal: wash days, products and monthly photos in one place.</p></div>
+  <a class="btn" href="https://itsjara.com">Get JARA &middot; $19 lifetime</a>
+</div></aside>
 </div>
 {script}'''
     desc = ('Name a hair-care product and see whether it has protein, ceramides, silicones, '

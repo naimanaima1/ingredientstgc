@@ -6,9 +6,9 @@
  "image": "style-washngo.jpg",
  "image_alt": "A rounded wash-and-go with defined coils and the front curls left to fall forward.",
  "eyebrow": "Guide · wash and go",
- "go": "Start with the ritual",
- "description": "A botanical-forward wash and go: what juicy actually means, the ten-step ritual, how to pick one botanical gel, and how to set it fully dry and keep it for a week.",
- "intro": "A juicy wash and go is not a wet one. It is conditioned, well clumped, then dried completely under a hooded dryer, diffuser or blow dryer and released gently. This plan uses botanical-forward gels and no air-drying.",
+ "go": "Start with the routine",
+ "description": "A botanical-forward wash and go: are you ready, the ten-step routine with what to use at each step, and how to set it fully dry and keep it for a week.",
+ "intro": "A juicy wash and go is not a wet one. It is conditioned, well clumped, dried all the way through, then released gently. This plan leans on botanical gels, protects your hair from the heat you set it with, and skips air-drying.",
  "order": 5,
  "causes": {
   "title": "What juicy actually means",
@@ -42,80 +42,159 @@
    ]
   ]
  },
- "stock": {
-  "title": "Are you ready to style?",
-  "jump": "Ready?",
-  "intro": "You do not need perfect hair first. You need manageable hair. If most of these are a yes, go straight to the ritual. If not, the optional prep below is for you.",
-  "items": [
-   [
-    "Detangles without a fight",
-    "Your hair is reasonably easy to detangle with conditioner in it."
-   ],
-   [
-    "Ends are not rough or knotted",
-    "Check the last few inches first."
-   ],
-   [
-    "Nothing feels coated",
-    "No film, no waxy feel, no heaviness from old product."
-   ],
-   [
-    "Not unusually brittle",
-    "It bends before it breaks."
-   ],
-   [
-    "Scalp is clean and comfortable",
-    "No itch, tightness or flaking you are trying to style over."
-   ]
-  ]
- },
  "routine": {
-  "title": "The ritual",
-  "jump": "The ritual",
-  "intro": "One complete wash, style and hooded-dryer set. Give it a free afternoon the first time.",
+  "title": "The routine",
+  "jump": "The routine",
+  "intro": "One wash, style and set from start to finish. Each step shows what to reach for, and you only need one product per step. Give yourself a free afternoon the first time.",
   "wash": {
    "title": "Wash, style and set",
    "sub": "Ten steps",
    "steps": [
     [
      "Saturate",
-     "Wet your hair in four to eight sections and make sure the roots and the inside of each section are soaked. Dense hair can be dripping outside and dry in the middle."
+     "Wet your hair in four to eight sections and make sure the roots and the middle of each section are soaked. Dense hair can be dripping outside and still dry in the center."
     ],
     [
      "Shampoo",
-     "Shampoo the scalp, let the lather rinse down the lengths, and rinse well. There is no need to scrub the ends. Clarify or chelate only when your hair needs it."
+     "Shampoo the scalp, let the lather rinse down the lengths, and rinse well. No need to scrub the ends. Clarify or chelate only when your hair asks for it.",
+     {
+      "use": [
+       [
+        "TGC-065",
+        "Moisturising shampoo"
+       ],
+       [
+        "TGC-063",
+        "Moisturising shampoo"
+       ]
+      ]
+     }
     ],
     [
      "Deep condition",
-     "Apply a moisture-rich mask to each section and leave it on for as long as its label says. Warmth is fine if the label allows it."
+     "Apply a moisture-rich mask to each section and leave it on for as long as the label says. Warmth is fine if the label allows it.",
+     {
+      "use": [
+       [
+        "TGC-033",
+        "Deep conditioner"
+       ],
+       [
+        "TGC-080",
+        "Deep conditioner"
+       ]
+      ]
+     }
     ],
     [
      "Detangle",
-     "Fingers first, then a wide-tooth comb or detangling brush, ends toward roots, with enough conditioner for real slip. Remove the shed hair now, before any gel goes on."
+     "Fingers first, then a wide-tooth comb or detangling brush, working from the ends up, with enough conditioner for real slip. Get the shed hair out now, before any gel goes on."
     ],
     [
      "Rinse and check",
-     "Hair should feel soft, slippery and flexible, not waxy. This is the moment to decide whether you need a leave-in at all."
+     "Hair should feel soft, slippery and flexible, not waxy."
     ],
     [
-     "Add a leave-in, if needed",
-     "A light layer on soaking wet hair, just enough for slip. If your gel already gives you slip, skip it. Test any new leave-in and gel pairing on one small section first."
+     "Leave-in, with heat protection",
+     "Because we set with heat, your leave-in should protect from it. Pick one with heat protection built in, or add protection in step 8. Use it on soaking wet hair, just enough for slip.",
+     {
+      "label": "Leave-ins with heat protection",
+      "use": [
+       [
+        "TGC-120",
+        "Heat protectant leave-in"
+       ],
+       [
+        "TGC-129",
+        "All-in-one spray"
+       ],
+       [
+        "TGC-108",
+        "All-in-one leave-in"
+       ]
+      ],
+      "note": "Test a new leave-in and gel pairing on one small section first. If they flake or turn white together, they are not friends."
+     }
     ],
     [
-     "Apply the botanical gel",
-     "Hair must be very wet, not damp. Work in small sections with praying hands and smooth from roots to ends. Shingle only the sections that need more definition, then leave each one alone."
+     "Gel and shape",
+     "Your hair should still be very wet, not damp. Work in small sections with praying hands and smooth from roots to ends, with gentle tension to elongate. Shingle only the sections that need more definition, then leave each one alone.",
+     {
+      "label": "Gels, softest hold to firmest",
+      "screen": true,
+      "use": [
+       [
+        "TGC-046",
+        "Soft hold · High moisture"
+       ],
+       [
+        "Uncle Funky's Daughter Curly Magic",
+        "Mid hold · Good moisture"
+       ],
+       [
+        "TGC-022",
+        "Mid-firm hold · High moisture"
+       ],
+       [
+        "TGC-062",
+        "Mid-firm hold · Okay moisture"
+       ],
+       [
+        "TGC-035",
+        "Firm hold · Okay moisture"
+       ],
+       [
+        "TGC-116",
+        "Firm hold · Okay moisture"
+       ],
+       [
+        "TGC-034",
+        "Extra firm hold · Mid moisture"
+       ]
+      ],
+      "note": "Start with one gel. Add a second only if you need more hold. Read the whole ingredient list: water first, then plant extracts, pectin or gums is what botanical-forward looks like."
+     }
     ],
     [
-     "Shape and elongate",
-     "Encourage natural clumps and smooth each section with gentle tension. No hard pulling and no tight root stretching."
+     "Add heat protection",
+     "If your leave-in does not already protect from heat, mist or smooth on a heat protectant before you dry. Skip this step if it does.",
+     {
+      "label": "Heat protectants",
+      "use": [
+       [
+        "Kenra Blow Dry Spray",
+        "Blow dry spray"
+       ],
+       [
+        "Amika Blockade",
+        "Heat protectant serum"
+       ],
+       [
+        "TGC-028",
+        "Serum"
+       ],
+       [
+        "Camille Rose Heat Tamer",
+        "Heat protectant"
+       ]
+      ]
+     }
     ],
     [
      "Set it, fully dry",
-     "Arrange the coils in their final shape, then dry them completely, roots and inside included. A hooded dryer is best. No hooded dryer? Use a diffuser, or a blow dryer on low heat and low airflow with a diffuser or on the cool setting. Let the hair cool before you touch it."
+     "Arrange the coils in their final shape, then dry them completely, roots and middle included. A hooded dryer is best. No hooded dryer? Use a diffuser, or a blow dryer on low heat and low airflow. Let the hair cool before you touch it, and check the roots and nape with your fingertips: cool and damp means keep going."
     ],
     [
      "Release and polish",
-     "When it is fully dry and cool, rub a drop or two of lightweight oil between your palms, scrunch the lengths gently, and break the cast without pulling every clump apart."
+     "When it is fully dry and cool, rub a drop or two of lightweight oil between your palms, scrunch the lengths gently, and break the cast without pulling every clump apart. You are going for soft definition, not an oil slick.",
+     {
+      "use": [
+       [
+        "Lightweight jojoba or squalane oil",
+        "Finishing oil"
+       ]
+      ]
+     }
     ]
    ]
   },
@@ -153,7 +232,7 @@
  "techniques": {
   "title": "The rules of this plan",
   "jump": "The rules",
-  "intro": "These are the choices that make this a juicy wash and go and not just a wash and go.",
+  "intro": "A few choices make this a juicy wash and go and not just a wash and go.",
   "items": [
    [
     "Dry it completely, no air-drying",
@@ -161,9 +240,9 @@
     "Drying time depends on density, length, how much product you used and your dryer, so go by how the hair feels, not by a number of minutes. With a diffuser or blow dryer, use low airflow and moderate heat, and do not keep moving the coils around."
    ],
    [
-    "Botanical gels, not synthetic ones",
-    "Choose your hold from plant gels. No synthetic gel toppers, and no polymer-heavy hold products.",
-    "A botanical extract on the label does not mean a formula is free of synthetic polymers. Read the complete ingredient list."
+    "Plant-forward gels",
+    "Build your hold from gels made with plant ingredients like flax, aloe, marshmallow and pectin. Some of the firmer holds also use a synthetic thickener or polymer, and we point those out.",
+    "A plant extract on the label does not mean a formula is free of synthetic polymers. Read the whole ingredient list."
    ],
    [
     "Clump, then do not touch",
@@ -186,141 +265,6 @@
     "Your night routine decides how much of the definition survives."
    ]
   ]
- },
- "rota": {
-  "title": "Optional prep",
-  "jump": "Prep",
-  "intro": "If your hair is dry, tangled, breaking or coated, take two to four weeks to get it ready before the full ritual. If it is already soft and manageable, skip this and go straight to the ritual.",
-  "phases": [
-   [
-    "Weeks 1 to 4",
-    "Get it ready",
-    "Remove buildup, set a conditioned baseline, and check strength. One focus per wash day."
-   ]
-  ],
-  "items": [
-   [
-    "1",
-    "Reset",
-    "Shampoo, clarify if there is buildup, chelate if your water is hard, deep condition, detangle, light leave-in, loose protective style."
-   ],
-   [
-    "2",
-    "Ceramide and lipid conditioning",
-    "A conditioner with ceramides and other supportive lipids. Then your normal leave-in and a protective style."
-   ],
-   [
-    "3",
-    "Strength check",
-    "Only if your hair has been bleached, relaxed, heavily heat-styled or is breaking. Otherwise deep condition as normal."
-   ],
-   [
-    "4",
-    "Softness check",
-    "Moisture deep conditioner, gentle detangling, leave-in, low-manipulation style. Aim for flexible and manageable, not as soft as possible."
-   ]
-  ],
-  "note": "If your hair is badly damaged or chemically processed, a stylist may be a better first step than any calendar."
- },
- "use": {
-  "title": "What to use",
-  "jump": "What to use",
-  "intro": "Products by the job they do in this plan. Our catalog is still growing, so some rows are empty for now.",
-  "items": [
-   [
-    "Moisturising shampoo",
-    "Cleanses the scalp without leaving the lengths hard to detangle.",
-    "Every wash",
-    [
-     "TGC-065",
-     "TGC-063"
-    ]
-   ],
-   [
-    "Moisture deep conditioner",
-    "The foundation. Botanical slip plus conditioning agents.",
-    "Every wash",
-    [
-     "TGC-033",
-     "TGC-005",
-     "TGC-080"
-    ]
-   ],
-   [
-    "Ceramide conditioner",
-    "Lipid-supporting conditioning. It does not replace your deep conditioner.",
-    "Prep, or when needed",
-    []
-   ],
-   [
-    "Leave-in",
-    "A light layer for slip. Skip it if your gel already has enough.",
-    "If needed",
-    [
-     "TGC-021"
-    ]
-   ],
-   [
-    "Botanical gel",
-    "Your main product. Pick one from the shortlist below.",
-    "Every wash",
-    [
-     "TGC-022",
-     "TGC-035"
-    ]
-   ],
-   [
-    "Finishing oil",
-    "A drop or two of lightweight jojoba or squalane on fully dry hair. The aim is soft definition, not an oil slick.",
-    "After the set",
-    []
-   ]
-  ]
- },
- "choose": {
-  "title": "Pick one gel",
-  "jump": "Pick a gel",
-  "intro": "Test one botanical gel on its own before you try anything else. You do not need four gels for a beautiful wash and go.",
-  "items": [
-   [
-    "Start with one",
-    "Use one gel for the first wash day. Add a second only if you need more hold, and test the pair on one section first."
-   ],
-   [
-    "Read the whole ingredient list",
-    "Water first, then plant extracts and pectin or gums, is what you are looking for. Synthetic polymers or thickeners further down the list mean it is botanical-forward, not botanical-only."
-   ],
-   [
-    "Watch for protein",
-    "Some botanical gels also contain hydrolysed protein. If you are tracking protein, check for it."
-   ]
-  ],
-  "shortlist": {
-   "title": "Botanical gels to try",
-   "items": [
-    [
-     "Uncle Funky's Daughter Curly Magic",
-     "Botanical base gel. Slip and definition"
-    ],
-    [
-     "Kinky-Curly Curling Custard",
-     "Concentrated definition and elongation"
-    ],
-    [
-     "Camille Rose Curl Maker",
-     "Softer, flexible definition"
-    ],
-    [
-     "Ecoslay Jello Shot",
-     "Firmer cast. Its list includes carbomer, so botanical-forward rather than botanical-only"
-    ],
-    [
-     "Ecoslay Orange Marmalade Curl Definer",
-     "Flax-based definer"
-    ]
-   ],
-   "note": "Pick one to start."
-  }
  },
  "ing": {
   "title": "What to look for on a label",
@@ -420,7 +364,7 @@
  "end": {
   "title": "After your first set",
   "notes": [
-   "Judge the wash and go once it is dry and released, not while it is wet. That is the only version that tells you whether it worked.",
+   "Judge your wash and go once it is dry and released, not while it is wet. That is the only version that tells you whether it worked.",
    "A homemade gel is a different thing: water-based recipes grow bacteria unless they are properly preserved, and refrigerating or adding vitamin E does not fix that. If you make your own, make a tiny batch, use clean tools, keep it cold and throw it out quickly."
   ],
   "list": [
@@ -447,5 +391,76 @@
     "plans/moisture-and-protein/"
    ]
   ]
+ },
+ "jara": {
+  "track": [
+   "Want your wash days saved?",
+   "Log each set in JARA with a photo, so you can see which gel really works for your hair."
+  ],
+  "end": [
+   "See which gel wins.",
+   "Keep your photos and wash days in JARA and compare set after set."
+  ]
+ },
+ "ready": {
+  "title": "Are you ready to style?",
+  "jump": "Ready?",
+  "intro": "You don't need perfect hair first. You need hair that is manageable. Tap through these five, and we'll tell you where to start.",
+  "items": [
+   [
+    "It detangles without a fight",
+    "With conditioner in, your hair comes apart without a struggle."
+   ],
+   [
+    "Your ends feel okay",
+    "Not rough, not knotted. Check the last few inches first."
+   ],
+   [
+    "Nothing feels coated",
+    "No film, no waxy feel, no heavy leftovers from old product."
+   ],
+   [
+    "It's not brittle",
+    "It bends before it breaks."
+   ],
+   [
+    "Your scalp feels good",
+    "Clean and comfortable, with no itch or tightness you're trying to ignore."
+   ]
+  ],
+  "verdict": {
+   "wait": "{n} of {total} answered. Do the rest and we'll tell you where to start.",
+   "all": "You're ready! Skip the prep and go straight to the routine.",
+   "four": "So close. You can start the routine now, or open the optional prep below for a gentler runway.",
+   "few": "Let's get your hair ready first. We opened the optional prep for you: a few easy weeks, then the routine."
+  },
+  "prep": {
+   "title": "Optional prep",
+   "sub": "Two to four weeks",
+   "intro": "If your hair is dry, tangled, breaking or coated, give it a little time before the full routine. Skip this if you answered yes to everything.",
+   "items": [
+    [
+     "1",
+     "Reset",
+     "Shampoo, clarify if there is buildup, chelate if your water is hard, deep condition, detangle, add a light leave-in, and put it in a loose protective style."
+    ],
+    [
+     "2",
+     "Ceramide and lipid conditioning",
+     "A conditioner with ceramides and other supportive lipids. Then your normal leave-in and a protective style."
+    ],
+    [
+     "3",
+     "Strength check",
+     "Only if your hair has been bleached, relaxed, heavily heat-styled or is breaking. Otherwise deep condition as normal."
+    ],
+    [
+     "4",
+     "Softness check",
+     "Moisture deep conditioner, gentle detangling, leave-in, low-manipulation style. Aim for flexible and manageable, not as soft as possible."
+    ]
+   ],
+   "note": "If your hair is badly damaged or chemically processed, a stylist may be the best first step."
+  }
  }
 }
