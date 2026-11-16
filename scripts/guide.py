@@ -33,7 +33,7 @@ SLUG = ['']
 
 
 def jara_card(r, head, text, cls='', btn=None, steps=''):
-    btn = btn or 'Try JARA'
+    btn = btn or 'Try JARA free'
     """One quiet prompt: small app picture, a short line, one button."""
     return f'''<aside class="jara {cls}" aria-label="About JARA"><div class="jara-in">
     <a class="jara-shot" href="{B.utm(JARA_URL, 'plan_cta', content=SLUG[0])}" tabindex="-1" aria-hidden="true"><img src="{r}assets/img/jara-promo.jpg" alt="" width="1000" height="1000" loading="lazy"></a>
@@ -50,7 +50,7 @@ def jara(where, r='../../', over=None):
     if where == 'track':
         steps = (f'<ol class="jara-next" aria-label="What to do next"><li>Follow the plan</li>'
                  f'<li><a href="{r}products/">Explore products</a></li><li>Track it in JARA</li></ol>')
-        return jara_card(r, head, text, 'jara-save', 'Try JARA', steps)
+        return jara_card(r, head, text, 'jara-save', 'Try JARA free', steps)
     return jara_card(r, head, text, 'jara-end')
 
 

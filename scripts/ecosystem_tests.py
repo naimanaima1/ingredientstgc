@@ -107,7 +107,7 @@ def jara_page():
 <span class="eyebrow">JARA hair journal</span>
 <h1>Your hair's complete record: wash days, products, and growth in one place.</h1>
 <p>Stop guessing about your hair growth. Start tracking your journey.</p>
-<a class="et-btn" href="{cta}">Try JARA</a>
+<a class="et-btn" href="{cta}">Try JARA free</a>
 <p class="et-micro">$19 right now instead of $39. Beta buyers get the iOS app free.</p>
 <p class="et-micro"><a class="et-link" href="{cta}">Try it free first</a>: set up your hair profile and log your last wash day.</p>
 </div><img src="../../assets/img/jara-promo.jpg" alt="The JARA app showing a hair journal entry." width="1000" height="1000"></div></section>
@@ -140,7 +140,7 @@ def jara_page():
 <div class="on" role="listitem"><small>Available now</small><b>$19</b><h3>Founder's Web Beta</h3><p>Free iOS app upgrade included.</p></div>
 <div class="later" role="listitem"><small>Upcoming</small><b>$29</b><h3>Public Web Release</h3><p>After beta closes.</p></div>
 <div class="later" role="listitem"><small>Future</small><b>$39</b><h3>Apple iOS App Store</h3><p>Official iOS launch price.</p></div></div>
-<p style="margin-top:28px"><a class="et-btn" href="{u(JARA + '/try', 'landing_test', 'jara_beta', 'pricing')}">Try JARA</a></p></div></section>
+<p style="margin-top:28px"><a class="et-btn" href="{u(JARA + '/try', 'landing_test', 'jara_beta', 'pricing')}">Try JARA free</a></p></div></section>
 
 <section class="et-mist" id="faq"><div class="et-in" style="max-width:760px"><span class="eyebrow">Questions</span><h2>Good to know.</h2>{faq}</div></section>
 
@@ -150,7 +150,7 @@ def jara_page():
 <p class="et-note" id="free-msg" role="status"></p><p class="et-micro">Or <a class="et-link" href="{free}">open the printable now</a>.</p></div></div></section>
 
 <section class="et-ink"><div class="et-in" style="text-align:center"><h2>Stop guessing. Start tracking.</h2><p style="max-width:30em;margin:0 auto 24px">Your wash days, products, and growth, in one place.</p>
-<a class="et-btn" href="{u(JARA + '/try', 'landing_test', 'jara_beta', 'final')}">Try JARA</a></div></section>
+<a class="et-btn" href="{u(JARA + '/try', 'landing_test', 'jara_beta', 'final')}">Try JARA free</a></div></section>
 
 <dialog class="et-modal" id="exit" aria-labelledby="exit-h"><button class="et-x" type="button" aria-label="Close" id="exit-x">&times;</button>
 <h2 id="exit-h" style="font-size:38px">Before you go: a free tracker.</h2><p>A printable hair tracker you can start tonight. No app needed.</p>
@@ -193,7 +193,7 @@ def home_page():
 
 <section class="et-paper"><div class="et-in et-two"><div><span class="eyebrow">3 &middot; Track your progress</span><h2>Keep the record in JARA.</h2></div>
 <div><p>Wash days, products, and monthly photos in one place, so you can see what your routine is really doing.</p>
-<a class="et-btn" href="{u(JARA, 'home_test', 'jara_beta', 'section')}">Try JARA</a></div></div></section>
+<a class="et-btn" href="{u(JARA, 'home_test', 'jara_beta', 'section')}">Try JARA free</a></div></div></section>
 
 <section class="et-mist"><div class="et-in"><span class="eyebrow">4 &middot; Hair-care resources</span><h2>Guides to go deeper.</h2>
 <div class="et-three">
@@ -203,7 +203,7 @@ def home_page():
 
 <section class="et-paper"><div class="et-in"><span class="eyebrow">What people say</span><h2>Real words go here.</h2><p>Only real reviews from real customers, with permission. This slot stays empty until we have them.</p></div></section>
 
-<section class="et-cobalt"><div class="et-in" style="text-align:center"><h2>Stop guessing. Start tracking.</h2><p style="max-width:30em;margin:0 auto 24px">Take the quiz, follow your plan, and keep the proof in JARA.</p><a class="et-btn" href="{u(JARA, 'home_test', 'jara_beta', 'final')}">Try JARA</a></div></section>
+<section class="et-cobalt"><div class="et-in" style="text-align:center"><h2>Stop guessing. Start tracking.</h2><p style="max-width:30em;margin:0 auto 24px">Take the quiz, follow your plan, and keep the proof in JARA.</p><a class="et-btn" href="{u(JARA, 'home_test', 'jara_beta', 'final')}">Try JARA free</a></div></section>
 
 <section class="et-paper" id="results"><div class="et-in"><span class="eyebrow">Quiz results page (mock-up)</span><h2>Your hair profile.</h2>
 <div class="et-card"><h3>Example: medium-porosity, tight coils</h3><p>You hold moisture best with layered leave-ins, and heavy products can weigh your coils down.</p></div>
@@ -212,7 +212,7 @@ def home_page():
 <p style="margin:28px 0 12px;font-weight:800">Your next step</p>
 <div class="et-two">
 <div class="et-card"><h3>Quick win &middot; $10</h3><p>Master Your Styling: The Wash and Go Guide.</p><p style="margin-top:14px"><a class="et-btn" href="{e(GUIDE)}">Get the guide</a></p></div>
-<div class="et-card"><h3>Track your results in JARA</h3><p>Log wash days and monthly photos, so you can see what your routine is doing.</p><p style="margin-top:14px"><a class="et-btn" href="{u(JARA + '/try', 'quiz_results', 'jara_beta', 'results')}">Try JARA</a></p></div></div></div></section>'''
+<div class="et-card"><h3>Track your results in JARA</h3><p>Log wash days and monthly photos, so you can see what your routine is doing.</p><p style="margin-top:14px"><a class="et-btn" href="{u(JARA + '/try', 'quiz_results', 'jara_beta', 'results')}">Try JARA free</a></p></div></div></div></section>'''
     html = B.shell('../../', 'Good Coil homepage test · The Good Coil', 'Test page.', wrap(body), 'programs/goodcoil-home-test/', 'plans')
     B.write('programs/goodcoil-home-test/index.html', html.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">', 1))
 
