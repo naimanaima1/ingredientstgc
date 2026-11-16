@@ -106,4 +106,14 @@
       items.forEach(function (it) { io2.observe(it); });
     }
   });
+
+  /* Guided plans: each colour block lights up as it reaches the middle of the screen. */
+  var gz = document.querySelectorAll('.gz-step');
+  if (gz.length && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('gz-js');
+    var gio = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { en.target.classList.toggle('is-on', en.isIntersecting); });
+    }, { rootMargin: '-35% 0px -35% 0px' });
+    gz.forEach(function (x) { gio.observe(x); });
+  }
 })();

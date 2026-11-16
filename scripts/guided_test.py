@@ -89,7 +89,7 @@ def build():
     free = ''.join(step(i, s) for i, s in enumerate(steps[:FREE_STEPS]))
     rest = ''.join(step(i + FREE_STEPS, s) for i, s in enumerate(steps[FREE_STEPS:]))
     gate = f'''<div class="gt-gate" id="gate"><h2>Want the last {len(steps) - FREE_STEPS} locks?</h2>
-<p>Pop in your email and they unlock right here. We'll send the Winter arc lock checklist too, and that's it.</p>
+<p>Pop in your email and they unlock right here. We'll send the Winter arc lock-in checklist too, and that's it.</p>
 <form id="gt-form" method="post" action="{e(GATE_ACTION)}"><label class="sr-only" for="gt-email" style="position:absolute;left:-9999px">Email</label><input id="gt-email" name="email" type="email" required autocomplete="email" placeholder="you@email.com"><button type="submit">Unlock the rest</button></form>
 <p class="gt-msg" id="gt-msg" role="status"></p>
 <p class="gt-fine">No spam, unsubscribe any time.</p></div>'''

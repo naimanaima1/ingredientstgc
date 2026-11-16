@@ -1,7 +1,7 @@
 {
  "id": "GUIDE-WINTER",
- "slug": "winter-arc-lock",
- "name": "Winter arc lock",
+ "slug": "winter-arc-lock-in",
+ "name": "Winter arc lock-in",
  "tagline": "Four things to lock in before the cold gets to your hair.",
  "image": "style-twists.jpg",
  "image_alt": "Chunky two-strand twists parted off the hairline, resting over one shoulder.",
@@ -58,12 +58,19 @@
     "steps": [
      [
       "Look after your scalp",
-      "Add a leave-on scalp serum with green tea extract (EGCG) to a calm, consistent scalp routine. Part your hair, apply a little to the scalp, and massage gently with your fingertips. A comfortable scalp is the goal, and a serum is a support for that. It does not treat shedding or hair loss.",
+      "Add a leave-on scalp serum with green tea extract (EGCG), like The Ordinary's, to a calm, consistent scalp routine. Green tea may help slow winter shedding and keep your scalp comfortable. Part your hair, apply a little to the scalp, and massage gently with your fingertips.",
       {
-       "note": "If you notice a lot more shedding than usual, or patchy thinning, see a doctor or dermatologist first.",
+       "note": "The research on green tea is early, so think of it as support, not a cure. If you notice a lot more shedding than usual, or patchy thinning, see a doctor or dermatologist first.",
        "link": [
         "Read about green tea, caffeine, niacinamide and the other scalp actives",
         "groups/scalp-actives/"
+       ],
+       "label": "A simple serum to start with",
+       "use": [
+        [
+         "The Ordinary scalp serum",
+         "Green tea serum"
+        ]
        ]
       }
      ],
@@ -178,5 +185,6 @@
     "plans/edge-growth-plan/"
    ]
   ]
- }
+ },
+ "layout": "guided"
 }

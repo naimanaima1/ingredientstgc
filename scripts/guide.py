@@ -22,7 +22,7 @@ def links(r, ls):
     return ' · '.join(out)
 
 JARA_URL = 'https://itsjara.com'
-JARA_PRICE = '$19 lifetime'
+JARA_PRICE = '$19'
 
 JARA_DEFAULT = {
     'track': ('Want this in your pocket?',
@@ -107,6 +107,17 @@ def prod_strip(r, entries, screen=False, label='What to use'):
         return ''
     return f'<div class="pc-wrap"><span class="pc-label">{e(label)}</span><ul class="pc-strip">{cards}</ul></div>'
 
+GZ_TONES = ['cobalt', 'citrus', 'mist', 'ink']
+
+def gz_image(d, wi, n, extra):
+    """Step picture slot. Uses src/img/<slug>-w<wash>-s<step>.jpg (or extra['image']) when it exists;
+    otherwise a designed colour panel, so the layout already reads as finished and a photo can drop in."""
+    fn = extra.get('image') or f"{d['slug']}-w{wi}-s{n}.jpg"
+    if os.path.exists(os.path.join(B.ROOT, 'src', 'img', fn)):
+        alt = extra.get('image_alt', '')
+        return f'<figure class="gz-img"><img src="../../assets/img/{e(fn)}" alt="{e(alt)}" width="1200" height="1200" loading="lazy"></figure>'
+    return '<figure class="gz-img gz-ph" aria-hidden="true"><i></i><i></i><i></i></figure>'
+
 def section(id_, title, intro, inner, cls=''):
     return f'''<section class="gd-sec {cls}" id="{id_}"><div class="tp-in">
   <h2>{e(title)}</h2>
@@ -172,6 +183,32 @@ def page(d):
             strip = prod_strip(r, extra['use'], extra.get('screen', False), extra.get('label', 'What to use')) if extra.get('use') else ''
             return f'<li><span>{n}</span><div><b>{e(t)}</b><p>{e(x)}</p>{note}{strip}</div></li>'
         bits = ''
+        if d.get('layout') == 'guided':
+            gz, k = '', 0
+            for wi, w in enumerate(ro.get('washes') or [ro['wash']], 1):
+                gz += f'<div class="gz-band"><span class="eyebrow">{e(w["sub"])}</span><h3>{e(w["title"])}</h3></div>'
+                for n, st in enumerate(w['steps'], 1):
+                    t, x = st[0], st[1]
+                    extra = st[2] if len(st) > 2 else {}
+                    note = f'<p class="gz-note">{e(extra["note"])}</p>' if extra.get('note') else ''
+                    if extra.get('link'):
+                        note += f'<p class="gz-note"><a class="gd-link" href="{r}{extra["link"][1]}">{e(extra["link"][0])} &rarr;</a></p>'
+                    strip = prod_strip(r, extra['use'], extra.get('screen', False), extra.get('label', 'What to use')) if extra.get('use') else ''
+                    tone = GZ_TONES[k % 4]
+                    flip = ' gz-flip' if k % 2 else ''
+                    gz += (f'<section class="gz-step{flip}" data-tone="{tone}" id="step-{k + 1}"><div class="gz-grid">'
+                           f'<div class="gz-txt"><span class="gz-n" aria-hidden="true">{k + 1}</span><h3>{e(t)}</h3><p>{e(x)}</p>{note}{strip}</div>'
+                           f'{gz_image(d, wi, n, extra)}</div></section>')
+                    k += 1
+            bits = f'<div class="gz-steps">{gz}</div>'
+            if ro.get('between'):
+                bt = ro['between']
+                groups = ''.join(f'<div><h4>{e(kk)}</h4><ul class="ticks">' + ''.join(f'<li>{e(x)}</li>' for x in v) + '</ul></div>' for kk, v in bt['groups'])
+                bits += f'<div class="gz-after"><details class="gd-fold"><summary>{e(bt["title"])}<small>{e(bt["sub"])}</small></summary><div class="gd-between">{groups}</div></details></div>'
+            out.append(f'<section class="gz-sec" id="routine"><div class="tp-in gz-head"><h2>{e(ro["title"])}</h2>' + (f'<p class="gd-lead">{e(ro["intro"])}</p>' if ro.get('intro') else '') + f'</div>{bits}</section>')
+            jump.append(('routine', ro.get('jump', ro['title'])))
+            ro = None
+    if d.get('routine') and ro is not None:
         for w in (ro.get('washes') or [ro['wash']]):
             steps = ''.join(one(n, st) for n, st in enumerate(w['steps'], 1))
             bits += f'''<div class="gd-washday"><h3>{e(w['title'])}<small>{e(w['sub'])}</small></h3><ol class="gd-steps">{steps}</ol></div>'''
@@ -307,7 +344,8 @@ def page(d):
         out.append(jara('end', r, d.get('jara')))
 
     jump_html = ''.join(f'<a href="#{a}">{e(b)}</a>' for a, b in jump)
-    body = f'''<section class="gd-hero">
+    hero_cls = 'gd-hero gz-hero' if d.get('layout') == 'guided' else 'gd-hero'
+    body = f'''<section class="{hero_cls}">
   <div class="gd-copy">
     <span class="eyebrow">{e(d['eyebrow'])}</span>
     <h1>{e(d['name'])}</h1>

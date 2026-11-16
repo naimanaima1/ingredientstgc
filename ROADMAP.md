@@ -141,7 +141,7 @@ Plan content lives in `content/guide-*.json` in this repo, not in a sheet. Movin
 - [ ] **Read the Scalp Actives sheet copy.** It is live as written, and several lines come close to the claim rules: "stimulates local scalp microcirculation", "counter follicle stress", "support root anchoring... hair density", "promising lab activity on hair follicle cells". The page carries a boundary note, but the wording is yours to decide. — *Owner*
 
 ## Plans batch (Nov 16)
-- Shipped: JARA prompts redesigned (quiet one-row band, readable type); Juicy wash and go reworked (ready cards, 10 consolidated steps with product swipes, heat protectant, gels by hold); Glass hair as a two-wash how-to; Moisture & protein as a winding timeline; new Winter arc lock plan.
+- Shipped: JARA prompts redesigned (quiet one-row band, readable type); Juicy wash and go reworked (ready cards, 10 consolidated steps with product swipes, heat protectant, gels by hold); Glass hair as a two-wash how-to; Moisture & protein as a winding timeline; new Winter arc lock-in plan.
 - Pending: book ad on Juicy wash and go (slot built, hidden until `book` title + link are set in content/guide-juicy.json).
 - Catalog gaps (shown as plain text until the CSV has them): Kenra Blow Dry Spray, Amika Blockade, Camille Rose Heat Tamer, Uncle Funky's Curly Magic. Doux Big Poppa has no ingredient list yet, so no polymer flag.
 - Experiments (noindex, unlinked): /programs/guided-test/ = colour-block guided steps with scroll highlight + partial email gate. Gate is a soft gate (content is in the page) and sends nothing until `GATE_ACTION` in scripts/guided_test.py is set to an email provider's form URL. A real dashboard = the provider's subscriber list.

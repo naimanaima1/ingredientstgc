@@ -462,5 +462,12 @@
    ],
    "note": "If your hair is badly damaged or chemically processed, a stylist may be the best first step."
   }
+ },
+ "book": {
+  "eyebrow": "Want more?",
+  "title": "The Wash and Go Guide",
+  "text": "Our full guide to wash and gos that last, with everything from this plan and more, in one place you can keep.",
+  "button": "Get the guide",
+  "url": "https://thegoodcoil.com/wash-and-go-guide"
  }
 }
