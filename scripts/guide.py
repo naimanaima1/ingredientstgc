@@ -186,6 +186,25 @@ def page(d):
     <a class="btn" href="{e(bkd['url'])}">{e(bkd.get('button', 'Get the book'))}</a>
   </div></aside>''')
 
+    # 4a. a winding week-by-week timeline: one idea at a time on a phone
+    if d.get('timeline'):
+        tl = d['timeline']
+        kit = ''
+        if tl.get('kit'):
+            kit = f'<div class="tl-kit">{prod_strip(r, tl["kit"]["use"], False, tl["kit"]["label"])}</div>'
+        lis, dots = '', ''
+        for n, it in enumerate(tl['items'], 1):
+            notes = ''.join(f'<p class="tl-note"><b>{e(a)}</b> {e(b)}</p>' for a, b in it.get('notes', []))
+            use = prod_strip(r, it['use'], False, it.get('label', 'What to use')) if it.get('use') else ''
+            lis += (f'<li class="tl-item" id="week-{n}"><span class="tl-dot" aria-hidden="true">{n}</span>'
+                    f'<div class="tl-card"><span class="tl-tag">Week {n} &middot; {e(it["tag"])}</span>'
+                    f'<h3>{e(it["title"])}</h3><p>{e(it["text"])}</p>{use}{notes}</div></li>')
+            dots += f'<button type="button" data-i="{n - 1}" aria-label="Week {n}: {e(it["title"])}"{" aria-current=true" if n == 1 else ""}>{n}</button>'
+        inner = (kit + f'<nav class="tl-path" aria-label="Weeks">{dots}</nav>'
+                 f'<ol class="tl-list">{lis}</ol><p class="rd-hint tl-hint" aria-hidden="true">Swipe for the next week &rarr;</p>')
+        out.append(section('weeks', tl['title'], tl.get('intro'), inner, 'gd-paper tl-sec'))
+        jump.append(('weeks', tl.get('jump', tl['title'])))
+
     # 4. a card per week (styles, or what each week does)
     if d.get('weeks'):
         wk = d['weeks']

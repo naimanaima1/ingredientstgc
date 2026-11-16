@@ -75,4 +75,35 @@
     }, { rootMargin: '-38% 0px -42% 0px', threshold: 0 });
     steps.forEach(function (s) { io.observe(s); });
   }
+
+  /* Week-by-week timeline: dots follow the swipe, tapping a dot jumps to that week. */
+  document.querySelectorAll('.tl-sec').forEach(function (sec) {
+    var list = sec.querySelector('.tl-list');
+    var items = sec.querySelectorAll('.tl-item');
+    var dots = sec.querySelectorAll('.tl-path button');
+    if (!list || !dots.length) return;
+    dots.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var it = items[+b.getAttribute('data-i')];
+        if (!it) return;
+        if (window.matchMedia('(max-width: 900px)').matches) {
+          list.scrollTo({ left: it.offsetLeft - list.offsetLeft, behavior: 'smooth' });
+        } else {
+          it.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+    });
+    if ('IntersectionObserver' in window) {
+      var io2 = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          var i = Array.prototype.indexOf.call(items, en.target);
+          dots.forEach(function (b, k) {
+            if (k === i) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
+          });
+        });
+      }, { root: null, threshold: 0.6 });
+      items.forEach(function (it) { io2.observe(it); });
+    }
+  });
 })();

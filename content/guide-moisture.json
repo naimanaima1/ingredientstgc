@@ -144,145 +144,6 @@
    ]
   }
  },
- "weeks": {
-  "title": "What each week is for",
-  "jump": "Week by week",
-  "intro": "Eight wash days. Conditioning stays the same throughout; the treatment is what moves.",
-  "items": [
-   [
-    "Deep conditioning",
-    "Your baseline. Find out how your hair answers plain, consistent conditioning."
-   ],
-   [
-    "Lipid support",
-    "Bring in the ceramide or lipid product. Note whether hair feels smoother, softer, coated, or no different."
-   ],
-   [
-    "Protein, or not",
-    "Only if your damage history and week 1 response point that way. See the next section."
-   ],
-   [
-    "Evaluate",
-    "Back to moisture. Take your week 4 photos and compare with the baseline."
-   ],
-   [
-    "Bond support",
-    "If you have color, bleach, relaxer or heat history. Follow the product's directions exactly."
-   ],
-   [
-    "Lipid support again",
-    "Repeat week 2. Have a look at buildup and how many products you are layering."
-   ],
-   [
-    "Protein check",
-    "Only if week 3 went well and your hair still seems to want it."
-   ],
-   [
-    "Consolidate",
-    "Final wash, final photos. Build your everyday routine out of whatever worked."
-   ]
-  ]
- },
- "use": {
-  "title": "What to use",
-  "jump": "What to use",
-  "intro": "Products by the job they do in this routine. Choose your own brands; these are the jobs to fill.",
-  "items": [
-   [
-    "Gentle cleanser",
-    "Takes off buildup without stripping everything you put in last week.",
-    "Once a week",
-    [
-     "TGC-063",
-     "TGC-065"
-    ]
-   ],
-   [
-    "Rinse-out conditioner",
-    "Slip and softness, every single wash. This is the one that prevents breakage.",
-    "Every wash",
-    [
-     "TGC-066",
-     "TGC-025"
-    ]
-   ],
-   [
-    "Deep conditioner",
-    "The heavier conditioning step, with time to sit.",
-    "Weekly",
-    [
-     "TGC-005",
-     "TGC-045"
-    ]
-   ],
-   [
-    "Leave-in",
-    "Keeps the conditioning going between washes.",
-    "Every wash",
-    [
-     "TGC-134",
-     "TGC-122"
-    ]
-   ],
-   [
-    "Lipid or ceramide product",
-    "Puts back the surface lipids that washing, heat and weather wear away.",
-    "Weeks 2 and 6",
-    [
-     "TGC-008"
-    ]
-   ],
-   [
-    "Protein treatment",
-    "Temporarily firms up hair that stretches too easily and snaps.",
-    "Week 3, and week 7 if it suited you",
-    [
-     "TGC-071",
-     "TGC-077"
-    ]
-   ],
-   [
-    "Bond treatment",
-    "For hair with color, bleach, relaxer or heat in its history.",
-    "Week 5, if that is you",
-    [
-     "TGC-007",
-     "TGC-010"
-    ]
-   ],
-   [
-    "Heat protectant",
-    "If you use heat at all.",
-    "Every time you use heat",
-    [
-     "TGC-120"
-    ]
-   ]
-  ]
- },
- "choose": {
-  "title": "When protein is worth it, and when it is not",
-  "jump": "About protein",
-  "intro": "Weeks 3 and 7 are a decision, not an instruction. Hair that does not need protein does not benefit from it, and can end up stiff.",
-  "items": [
-   [
-    "Worth doing",
-    "You have color, bleach, relaxer or regular heat in your history, you are seeing breakage, and protein has suited you before. Do week 3, see how week 4 goes, then decide about week 7."
-   ],
-   [
-    "Not worth doing",
-    "Little chemical or heat history and no clear breakage. Use those two weeks for conditioning instead. You are not missing anything."
-   ],
-   [
-    "If it goes wrong",
-    "If hair feels stiff, rough or hard to detangle after a protein treatment, do not repeat it. Go back to your moisturizing conditioner, look at buildup and handling, then reassess later."
-   ],
-   [
-    "What you cannot tell from feel",
-    "Stiff, limp, rough or coated hair all have several possible causes. Protein deficiency and protein overload are not things you can diagnose by touch, so treat these as observations to act on, not a diagnosis."
-   ]
-  ]
- },
  "ing": {
   "title": "What to look for on a conditioning label",
   "jump": "What to look for",
@@ -467,5 +328,161 @@
    ]
   ]
  },
- "order": 3
+ "order": 3,
+ "timeline": {
+  "title": "Your eight weeks",
+  "jump": "Week by week",
+  "intro": "One wash day a week. The conditioning stays the same all the way through, and only the treatment changes. Swipe through to see what each week is for.",
+  "kit": {
+   "label": "Your every-wash-day kit",
+   "use": [
+    [
+     "TGC-063",
+     "Gentle cleanser"
+    ],
+    [
+     "TGC-065",
+     "Gentle cleanser"
+    ],
+    [
+     "TGC-066",
+     "Rinse-out conditioner"
+    ],
+    [
+     "TGC-025",
+     "Rinse-out conditioner"
+    ],
+    [
+     "TGC-005",
+     "Deep conditioner"
+    ],
+    [
+     "TGC-045",
+     "Deep conditioner"
+    ],
+    [
+     "TGC-134",
+     "Leave-in"
+    ],
+    [
+     "TGC-122",
+     "Leave-in"
+    ],
+    [
+     "TGC-120",
+     "Heat protectant, if you use heat"
+    ]
+   ]
+  },
+  "items": [
+   {
+    "tag": "Moisture",
+    "title": "Deep conditioning",
+    "text": "Your baseline. Plain, steady conditioning first, so you can see how your hair does on its own."
+   },
+   {
+    "tag": "Lipids",
+    "title": "Lipid support",
+    "text": "Bring in your ceramide or lipid product. Notice whether your hair feels smoother, softer, coated, or no different.",
+    "use": [
+     [
+      "TGC-008",
+      "Ceramide or lipid"
+     ]
+    ]
+   },
+   {
+    "tag": "Your call",
+    "title": "Protein, or not",
+    "text": "Only if your hair has asked for it. This week is a decision, not an instruction.",
+    "use": [
+     [
+      "TGC-071",
+      "Protein treatment"
+     ],
+     [
+      "TGC-077",
+      "Protein treatment"
+     ]
+    ],
+    "notes": [
+     [
+      "Worth doing:",
+      "you have color, bleach, relaxer or regular heat in your history, you're seeing breakage, and protein has suited you before."
+     ],
+     [
+      "Not worth it:",
+      "little chemical or heat history and no clear breakage. Use the week for conditioning instead. You're not missing anything."
+     ],
+     [
+      "If it goes wrong:",
+      "stiff, rough or hard to detangle afterwards? Don't repeat it. Go back to your moisturizing conditioner, then look at buildup and handling."
+     ]
+    ]
+   },
+   {
+    "tag": "Check in",
+    "title": "Evaluate",
+    "text": "Back to moisture. Take your week 4 photos and compare them with your baseline.",
+    "notes": [
+     [
+      "Good to know:",
+      "stiff, limp, rough or coated hair all have several possible causes, and you can't diagnose protein overload by touch. Treat what you notice as clues, not a diagnosis."
+     ]
+    ]
+   },
+   {
+    "tag": "If it's you",
+    "title": "Bond support",
+    "text": "For hair with color, bleach, relaxer or heat in its history. Follow the product's directions exactly.",
+    "use": [
+     [
+      "TGC-007",
+      "Bond treatment"
+     ],
+     [
+      "TGC-010",
+      "Bond treatment"
+     ]
+    ]
+   },
+   {
+    "tag": "Lipids",
+    "title": "Lipid support again",
+    "text": "Same as week 2. Take a look at buildup and how many products you're layering.",
+    "use": [
+     [
+      "TGC-008",
+      "Ceramide or lipid"
+     ]
+    ]
+   },
+   {
+    "tag": "Your call",
+    "title": "Protein check",
+    "text": "Only if week 3 went well and your hair still seems to want it.",
+    "notes": [
+     [
+      "Remember:",
+      "hair that doesn't need protein doesn't benefit from it, and can end up stiff. If in doubt, condition."
+     ]
+    ]
+   },
+   {
+    "tag": "Wrap up",
+    "title": "Consolidate",
+    "text": "Final wash, final photos. Build your everyday routine out of whatever worked, and let go of whatever didn't."
+   }
+  ]
+ },
+ "jara": {
+  "track": [
+   "Want your eight weeks saved?",
+   "JARA keeps your notes, wash days and photos side by side, so week 8 is easy to compare with week 1."
+  ],
+  "end": [
+   "Keep what worked.",
+   "Log each wash day in JARA and see how your hair answers over time."
+  ]
+ }
 }
