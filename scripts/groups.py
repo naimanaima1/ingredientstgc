@@ -10,8 +10,9 @@ import build as B
 
 e = B.e
 
-# Families published so far. Add a name here once its rows have been reviewed.
-LIVE = ['Silicones']
+# Families published. Add a name here once its rows have been reviewed and it has a
+# how-to-spot list.
+LIVE = ['Silicones', 'Alcohols', 'Proteins', 'Scalp Actives', 'Surfactants & Cleansers']
 
 INTRO = {
     'Silicones': (
@@ -54,6 +55,32 @@ HOW_TO_SPOT = {
         ('Starts with Cyclo-', 'Cyclopentasiloxane. These evaporate.'),
         ('Contains -siloxane or -silane', 'Another way the same chemistry gets written.'),
         ('Contains Amino- or Amo-', 'Amodimethicone, Aminopropyl Dimethicone. The amino part is what makes them seek out damage.'),
+    ],
+    'Alcohols': [
+        ('Names ending in -yl alcohol', 'Cetyl, Cetearyl, Stearyl and Behenyl Alcohol are the fatty, softening kind. Despite the word, they are not drying.'),
+        ('Benzyl Alcohol', 'A preservative. Usually near the end of the list, in a small amount.'),
+        ('Alcohol Denat., SD Alcohol, Ethanol, Isopropyl Alcohol', 'The evaporating kind. Where they sit matters: near the top of the list means a lot, near the bottom means a trace.'),
+        ('The word "alcohol" alone is not the tell', 'Read the whole name. It tells you which of the three you are looking at.'),
+    ],
+    'Proteins': [
+        ('Starts with Hydrolyzed', 'Hydrolyzed Silk, Rice, Quinoa, Wheat or Keratin. The word after it is the source, and the source is a clue to how heavy it is.'),
+        ('Silk, Rice and Quinoa', 'The lightweight group.'),
+        ('Wheat and Keratin', 'The heavier group, the ones that patch damage and can leave hair stiff if overused.'),
+        ('Contains Amino Acids, or an amino acid name', 'Silk Amino Acids, Wheat Amino Acids, Arginine, Creatine. The smallest pieces.'),
+        ('Ends in -peptide or Tripeptide', 'Not the same thing. Peptides are counted separately from hydrolysed proteins on this site.'),
+    ],
+    'Scalp Actives': [
+        ('Niacinamide', 'Vitamin B3. Sometimes written as Niacinamide (Vitamin B3).'),
+        ('Caffeine', 'Written plainly.'),
+        ('Camellia Sinensis Leaf Extract', 'Green tea. EGCG is the part of it this family is about.'),
+        ('Names with -peptide and a number', 'Copper Tripeptide-1, Biotinoyl Tripeptide-1, Acetyl Tetrapeptide-3. Brand names such as Procapil and Capixyl sometimes appear in brackets.'),
+        ('Where it sits in the list', 'These are often used in small amounts, so low on the list is normal. Position alone does not tell you whether a product is any good.'),
+    ],
+    'Surfactants & Cleansers': [
+        ('Ends in -sulfate', 'Sodium Lauryl Sulfate and Sodium Laureth Sulfate. Note that Methosulfate, as in Behentrimonium Methosulfate, is a conditioning ingredient, not a cleanser.'),
+        ('Ends in -isethionate, -taurate, -betaine or -glucoside', 'The gentle group. Sodium Lauroyl Methyl Isethionate, Cocamidopropyl Betaine, Coco-Glucoside.'),
+        ('Near the top, after Water', 'In a shampoo, the cleanser is usually one of the first few ingredients.'),
+        ('Citric Acid, Tartaric Acid, Disodium or Tetrasodium EDTA', 'Chelators. They bind minerals from hard water and do not foam like cleansers.'),
     ],
 }
 
@@ -154,19 +181,21 @@ def page(family, rows, ids):
         note = (f'<p class="gp-soon">{how} ingredients named below have their own page yet. '
                 'Their rows are on the way, and the names here will become links as soon as they land.</p>')
 
-    body = f'''  <a class="crumb" href="../../properties/">← By property</a>
+    callouts = ''.join(f'<p class="gp-note">{e(t)}</p>' for t in NOTES.get(family, []))
+    body = f'''  <a class="crumb" href="../../groups/">← Ingredient families</a>
   <section class="gp-first">
     <span class="eyebrow"><span class="little-dot"></span>Ingredient family</span>
     <h1>{e(family)}</h1>
     <p class="gp-lead">{e(head)}</p>
-    <p class="lead">{e(lead)}</p>
+    {f'<p class="lead">{e(lead)}</p>' if lead else ''}
+    {callouts}
     {note}
   </section>
 {secs}  {spot_html}
 '''
     return B.shell('../../', f'{family} · The Good Coil Library',
                    f'The {len(rows)} kinds of {family.lower()} on hair-care labels, and what each one does.',
-                   body, f'groups/{family_slug(family)}/index.html')
+                   body, f'groups/{family_slug(family)}/index.html', 'groups')
 
 
 built = []
@@ -191,6 +220,19 @@ def build():
         made.append((family, family_slug(family), len(fam)))
     built = made
     if made:
+        index_page(made)
         print('### Ingredient family pages\n' + '\n'.join(
             f'- {f}: {n} kinds at /groups/{s}/' for f, s, n in made) + '\n')
     return made
+
+
+def index_page(made):
+    cards = ''.join(
+        f'<li><a href="{sl}/"><h2>{e(f)}</h2><p>{e(INTRO.get(f, ("", ""))[0])}</p><span>{n} kinds</span></a></li>'
+        for f, sl, n in made)
+    body = f'''  <section class="page-head"><span class="eyebrow"><span class="little-dot"></span>Ingredient families</span><h1>Kinds of ingredients</h1>
+  <p>Some ingredients go by one name but behave in different ways on coily hair. Each page takes one family apart, shows what to look for on a label, and links to the ingredients in it.</p></section>
+  <ul class="prop-list fam-list">{cards}</ul>'''
+    B.write('groups/index.html', B.shell('../', 'Ingredient families · The Good Coil Library',
+            'Silicones, alcohols, proteins, scalp actives and cleansers: the kinds in each family and what they do on coily hair.',
+            body, 'groups/index.html', 'groups'))

@@ -318,6 +318,7 @@ def shell(r, title, desc, body, path, current=''):
     <a href="{r}plans/" class="hide-sm"{cur('plans')}>Hair plans</a>
     <a href="{r}products/" class="hide-sm"{cur('products')}>Products</a>
     <a href="{r}properties/" class="hide-sm hide-md"{cur('props')}>By property</a>
+    <a href="{r}groups/" class="hide-sm hide-md"{cur('groups')}>Families</a>
     <a href="{r}ingredients/" class="hide-sm hide-md"{cur('ingredients')}>All ingredients</a>
   </nav>
 </header>
@@ -326,7 +327,7 @@ def shell(r, title, desc, body, path, current=''):
 </main>
 <footer class="site-footer">
   <div><a href="{r}" class="wordmark"><span class="brand-symbol" aria-hidden="true">◎</span> the<span class="brand-amp">good</span>coil</a><p>Good knowledge. Happy hair.<br>A journey that's yours.</p></div>
-  <nav class="footer-links" aria-label="Footer"><a href="{r}ingredients/">All ingredients</a><a href="{r}plans/">Hair plans</a><a href="{r}products/">Products</a><a href="{r}properties/">By property</a><a href="{r}about/">How we write</a><a href="{r}about/#affiliate">Affiliate disclosure</a><a href="https://thegoodcoil.com">The Good Coil</a><a href="https://itsjara.com">JARA hair journal</a></nav>
+  <nav class="footer-links" aria-label="Footer"><a href="{r}ingredients/">All ingredients</a><a href="{r}plans/">Hair plans</a><a href="{r}products/">Products</a><a href="{r}properties/">By property</a><a href="{r}groups/">Ingredient families</a><a href="{r}about/">How we write</a><a href="{r}about/#affiliate">Affiliate disclosure</a><a href="https://thegoodcoil.com">The Good Coil</a><a href="https://itsjara.com">JARA hair journal</a></nav>
   <div class="footer-bottom"><span>© {datetime.date.today().year} The Good Coil</span><span>Descriptions, not verdicts: every head of hair is different.</span><span>Educational guidance, not medical advice.</span></div>
 </footer>
 <script src="{r}assets/tips.js" data-root="{r}" defer></script>
