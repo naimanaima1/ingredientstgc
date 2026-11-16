@@ -135,23 +135,31 @@
  "weeks": {
   "title": "A different style each week",
   "jump": "Styles to try",
-  "intro": "Edges need a break from tension. Here is one style to try each week, so you are not wearing the same pull for eight weeks. Swap them around to suit you.",
+  "intro": "Edges need a break from tension. These four are the easiest to live in, and there are more below. Swap them around so you are not wearing the same pull for eight weeks.",
   "items": [
    [
     "Two-strand twists",
-    "Chunky, and started a little back from your hairline."
+    "Chunky, and started a little back from your hairline.",
+    "style-twists.jpg",
+    "Chunky two-strand twists parted off the hairline, resting over one shoulder."
    ],
    [
     "A low bun",
-    "Tied with a soft scrunchie, not a thin elastic."
+    "Tied with a soft scrunchie, not a thin elastic.",
+    "style-bun.jpg",
+    "Hair gathered into a soft low bun with the baby hairs left loose at the hairline."
    ],
    [
     "Wash-and-go",
-    "Edges left exactly as they dry."
+    "Edges left exactly as they dry.",
+    "style-washngo.jpg",
+    "A rounded wash-and-go with defined coils and the front curls left to fall forward."
    ],
    [
     "Bigger braids",
-    "The same style you like, in a larger size, taken out sooner."
+    "The same style you like, in a larger size, taken out sooner.",
+    "braids.jpg",
+    "Large cornrows braided straight back, sitting flat and loose at the hairline."
    ],
    [
     "A silk scarf",
@@ -169,7 +177,8 @@
     "A wig day, or a hair-down day",
     "Adjustable cap, no glue, no tight band. Or nothing at all."
    ]
-  ]
+  ],
+  "more": "More low-tension options"
  },
  "use": {
   "title": "What to use",

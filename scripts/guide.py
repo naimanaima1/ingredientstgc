@@ -64,8 +64,17 @@ def page(d):
     # 4. a card per week (styles, or what each week does)
     if d.get('weeks'):
         wk = d['weeks']
-        items = ''.join(f'<li><span>{n}</span><b>{e(t)}</b><p>{e(x)}</p></li>' for n, (t, x) in enumerate(wk['items'], 1))
-        out.append(section('weeks', wk['title'], wk.get('intro'), f'<ol class="gd-styles">{items}</ol>'))
+        shown = [i for i in wk['items'] if len(i) > 2]
+        rest = [i for i in wk['items'] if len(i) == 2]
+        cards = ''.join(
+            f'''<li><img src="{r}assets/img/{e(img)}" alt="{e(alt)}" width="799" height="1344" loading="lazy">
+          <b>{e(t)}</b><p>{e(x)}</p></li>''' for t, x, img, alt in shown)
+        html = f'<ul class="gd-styles2">{cards}</ul>' if cards else ''
+        if rest:
+            more = ''.join(f'<li><b>{e(t)}</b><p>{e(x)}</p></li>' for t, x in rest)
+            label = e(wk.get('more', 'More to try'))
+            html += f'<h3 class="gd-more-h">{label}</h3><ul class="gd-styles">{more}</ul>'
+        out.append(section('weeks', wk['title'], wk.get('intro'), html))
         jump.append(('weeks', wk.get('jump', wk['title'])))
 
     # 5. what to use

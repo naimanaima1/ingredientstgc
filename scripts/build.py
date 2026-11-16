@@ -176,6 +176,24 @@ def scalp_product(p):
     return step in SCALP_STEPS or 'scalp' in name
 
 
+def first_sentence(text, cap=190):
+    t = ' '.join((text or '').split())
+    m = re.search(r'(?<=[.!?])\s', t)
+    if m and m.start() > 40:
+        t = t[:m.start() + 1]
+    return t if len(t) <= cap else t[:cap].rsplit(' ', 1)[0] + '…'
+
+
+def tips_json():
+    """A slim lookup so any ingredient link anywhere can show a preview on hover."""
+    out = {}
+    for i in ing:
+        out[i['_slug']] = [i['_title'], (i.get('category') or '').strip(),
+                           first_sentence(i.get('what_it_does')), i['_tags'][:3]]
+    write('data/tips.json', json.dumps(out, ensure_ascii=False, separators=(',', ':')))
+    return len(out)
+
+
 def check_by_name(t):
     """Name patterns, used only for label words that have no ingredient row yet."""
     n = norm(t)
@@ -311,6 +329,7 @@ def shell(r, title, desc, body, path, current=''):
   <nav class="footer-links" aria-label="Footer"><a href="{r}ingredients/">All ingredients</a><a href="{r}plans/">Hair plans</a><a href="{r}products/">Products</a><a href="{r}properties/">By property</a><a href="{r}about/">How we write</a><a href="{r}about/#affiliate">Affiliate disclosure</a><a href="https://thegoodcoil.com">The Good Coil</a><a href="https://itsjara.com">JARA hair journal</a></nav>
   <div class="footer-bottom"><span>© {datetime.date.today().year} The Good Coil</span><span>Descriptions, not verdicts: every head of hair is different.</span><span>Educational guidance, not medical advice.</span></div>
 </footer>
+<script src="{r}assets/tips.js" data-root="{r}" defer></script>
 </body>
 </html>
 '''
@@ -584,6 +603,8 @@ def main():
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     counts = {i['id']: ingredient_page(i) for i in ing}
     index_page(counts)
+    tips_json()
+    write('assets/tips.js', open(os.path.join(ROOT, 'src', 'tips.js'), encoding='utf-8').read())
     import groups as GRP_PRE
     GRP_PRE.build()
     tags = property_pages()
