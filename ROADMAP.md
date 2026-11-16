@@ -69,6 +69,8 @@ Roughly in order of payoff per hour spent.
 - [x] ~~**Photos for the low-tension styles**~~ on the edge plan, and the longer-framed braids shot moved to the deep moisture hero.
 - [ ] **A photo for the silk scarf style**, the one the owner thinks is gettable. The other three (claw clip, flat twists, wig day) show a drawn tile instead, which looks deliberate, so this is optional rather than blocking. — *Owner*
 - [ ] **A dedicated hero image for Glass hair.** It currently borrows the wash-and-go shot that also appears as a style card on the edge plan. — *Owner*
+- [ ] **Glossary for Glass hair** (cuticle, cortex, porosity, film former, chelation, hydrolysed protein, ceramide, bond builder) and a short "your hair's condition" section (damage, porosity, density). — *Claude, when asked*
+- [ ] **Gloss shortlist products:** L'Oréal EverPure, Moroccanoil, JVN, Gisou go into the catalog on the next CSV pull; the shortlist on the Glass hair plan links them automatically once they match by name.
 - [ ] **Check the Glass hair copy.** Written by Claude from the Glass Coil document: the twelve-week rotation and product jobs follow the source, but the "what shine actually is" section and all the section copy are new writing. — *Owner review*
 - [ ] **Decide whether the five check groups are the right five.** Protein, ceramides, silicones, sulfates and peptides. Candidates to add or swap: drying alcohols, heavy oils/butters, fragrance/allergens, bond builders. Six is about the ceiling before it stops being quick. — *Owner decision*
 

@@ -8,7 +8,7 @@
  "eyebrow": "Guide · shine and smoothness",
  "go": "Start with the routine",
  "description": "What shine actually is on coily hair, a twelve-week rotation of moisture, strength and gloss treatments, and what to look for on a label.",
- "intro": "Shine is a surface effect. Smooth cuticles reflect light; rough ones scatter it. This plan works on the surface and the strength underneath, for twelve weeks, one treatment at a time.",
+ "intro": "Shine is a surface effect. Smooth cuticles reflect light; rough ones scatter it. The aim is not glass hair at any cost. It is the glossiest your coils can get, with healthy hair as the part that does not move.",
  "order": 4,
  "causes": {
   "title": "What shine actually is",
@@ -26,9 +26,9 @@
     "That is why coily hair will not look like glass the way pin-straight hair can, however good the routine. What it can look like is its own best version: juicy, wet-looking, catching light along the length."
    ],
    [
-    "Dryness and roughness are the fixable part",
-    "A strand short of water is stiffer and its cuticle sits rougher. A lubricated, flexible strand sits smoother.",
-    "This is the part a routine actually moves, and it is why the first four weeks here are conditioning rather than gloss."
+    "Softness has more than one source",
+    "Water keeps a strand flexible. Conditioning agents cut friction and improve how the surface feels. Lipids and film formers help smooth and protect the outside.",
+    "These are related, but they are not the same thing. Hair can feel soft from conditioning and still be damaged underneath, so the plan checks for breakage too."
    ],
    [
     "Buildup reads as dull, not shiny",
@@ -44,7 +44,7 @@
  },
  "stock": {
   "title": "Before you start",
-  "jump": "Before you start",
+  "jump": "Start",
   "intro": "Write these down today, in daylight, with photos. Check the same list at week 4, week 8 and week 12. Shine is hard to judge from memory.",
   "items": [
    [
@@ -56,8 +56,12 @@
     "Run a section through your fingers. Rough, squeaky, soft, waxy?"
    ],
    [
-    "How it feels wet",
-    "Does it stretch and spring back, or stretch and stay stretched?"
+    "Your hair's history",
+    "Colour, bleach, relaxer, regular heat? This decides whether the protein and bond weeks apply to you."
+   ],
+   [
+    "Breakage",
+    "Does hair snap while you detangle? Do you see short broken pieces after a wash day?"
    ],
    [
     "Where it tangles",
@@ -87,11 +91,11 @@
     ],
     [
      "Cleanse the scalp",
-     "Shampoo onto the scalp, massage with fingertips, let the lather rinse down the lengths. Repeat only if there is real buildup. Every third or fourth wash, use a clarifying or chelating shampoo instead."
+     "Shampoo onto the scalp, massage with fingertips, let the lather rinse down the lengths. Repeat only if there is real buildup. Some people need a clarifying wash every few weeks and some need it far less often. Use it when hair feels coated or dull, not by the calendar."
     ],
     [
      "This week's treatment",
-     "Moisture, ceramide, protein, bond or gloss, depending on the week. The rotation below says which. Follow its own label for timing."
+     "Moisture, ceramide, protein, bond or gloss, depending on the week. The twelve-week rotation says which. Follow its own label for timing, and if a treatment has two steps, do both."
     ],
     [
      "Rinse-out conditioner",
@@ -146,7 +150,7 @@
  },
  "rota": {
   "title": "Twelve weeks",
-  "jump": "Twelve weeks",
+  "jump": "12 weeks",
   "intro": "One treatment per wash day. This is a rotation, not a stack: it never asks you to do two of these in the same week.",
   "phases": [
    [
@@ -188,8 +192,8 @@
    ],
    [
     "5",
-    "Protein, only if needed",
-    "Skip this if week 1 to 4 showed your hair is soft and strong already."
+    "Protein, if indicated",
+    "Only if the checks in week 1 to 4 pointed to it. Skip it if your hair is strong and breaking little."
    ],
    [
     "6",
@@ -198,7 +202,7 @@
    ],
    [
     "7",
-    "Bond treatment, only if damaged",
+    "Bond treatment, if damaged",
     "Colour, bleach, heat or visible breakage. Otherwise skip."
    ],
    [
@@ -213,8 +217,8 @@
    ],
    [
     "10",
-    "Protein, only if needed",
-    "Same test as week 5."
+    "Protein if needed, otherwise moisture",
+    "Same checks as week 5."
    ],
    [
     "11",
@@ -226,12 +230,13 @@
     "Gloss treatment",
     "Final polish, then your week 12 photo."
    ]
-  ]
+  ],
+  "note": "If your hair is severely damaged or chemically processed, you may need a repair plan built around you. A twelve-week calendar is not a replacement for a stylist looking at substantial breakage."
  },
  "use": {
   "title": "What to use",
   "jump": "What to use",
-  "intro": "Products by the job they do in this plan. Pick your own brands; these are the jobs that need filling. You do not need one of everything at once.",
+  "intro": "Products by the job they do in this plan. You do not need one of everything. Six is enough for a very good shine routine: a gentle shampoo, a clarifying or chelating shampoo for when you need it, one moisturising conditioner or mask, one leave-in, one gel, and one finishing serum. Everything else is optional.",
   "items": [
    [
     "Gentle cleanser",
@@ -245,11 +250,19 @@
    ],
    [
     "Clarifying cleanser",
-    "Resets the surface. Gloss and shine products cannot work through a film of old product, so this one matters more on this plan than on others.",
-    "Every third or fourth wash",
+    "Resets the surface by lifting product residue and oils. Gloss and shine products cannot work through a film of old product.",
+    "When hair feels coated, not by the calendar",
     [
      "TGC-002",
      "TGC-023",
+     "TGC-003"
+    ]
+   ],
+   [
+    "Chelating cleanser",
+    "For mineral deposits from hard water, which clarifying shampoos do not always remove. Some products do both jobs.",
+    "When water is hard and hair looks dull",
+    [
      "TGC-003"
     ]
    ],
@@ -265,7 +278,7 @@
    ],
    [
     "Ceramide conditioning",
-    "Lipid support for the cuticle. The step that most changes how rough or smooth hair feels to your hand.",
+    "Lipid-supporting ingredients that sit alongside conditioning agents and help the feel and manageability of the strand. They do not replace a rinse-out or deep conditioner.",
     "Weeks 2, 6, 11",
     [
      "TGC-009",
@@ -275,8 +288,8 @@
    ],
    [
     "Protein treatment",
-    "Temporary reinforcement for damaged areas. Only if your hair asked for it.",
-    "Weeks 5 and 10, if needed",
+    "Temporary reinforcement for damaged areas, only if your hair asked for it. If the product comes in two steps, do both, then follow with a conditioner.",
+    "Weeks 5 and 10, if indicated",
     [
      "TGC-048",
      "TGC-071",
@@ -295,11 +308,10 @@
    ],
    [
     "Gloss treatment",
-    "The shine step. A cosmetic smoothing treatment, not a rebuild.",
+    "The shine step. A cosmetic smoothing treatment, not a rebuild. Pick one from the shortlist below.",
     "Weeks 4, 8 and 12",
     [
-     "TGC-119",
-     "TGC-117"
+     "TGC-119"
     ]
    ],
    [
@@ -324,7 +336,7 @@
    ],
    [
     "Finishing oil or serum",
-    "One or two drops on fully dry hair. This is the actual polish step, and the easiest one to overdo.",
+    "One or two drops on fully dry hair. This is the polish step, and the easiest one to overdo. A dimethicone-based serum is a finish, not a conditioner.",
     "On dry hair",
     [
      "TGC-117",
@@ -345,7 +357,7 @@
  },
  "choose": {
   "title": "One gloss, not three",
-  "jump": "One gloss, not three",
+  "jump": "Gloss",
   "intro": "Gloss treatments are the part of this plan people get wrong, usually by buying three and using them all on the same day. Here is how to think about it.",
   "items": [
    [
@@ -353,8 +365,8 @@
     "Pick a single gloss and use it on weeks 4, 8 and 12. Three treatments is enough to tell whether it does anything for you, and one product at a time is the only way to know which one worked."
    ],
    [
-    "Do not stack acids",
-    "Several gloss and lamination treatments are acidic, and some deposit colour. Using two in one wash day is not twice the shine; follow each product's own instructions and leave it at that."
+    "Check the directions",
+    "Several gloss and lamination treatments are acidic, and some are also conditioning masks. Follow each product's own instructions, and do not use two on the same wash day."
    ],
    [
     "It is a surface treatment",
@@ -364,11 +376,37 @@
     "The cheapest gloss is a clean strand",
     "A clarified, well-conditioned, well-clumped coil with two drops of oil on it will out-shine a glossed strand covered in four other products. Do the free part first."
    ]
-  ]
+  ],
+  "shortlist": {
+   "title": "The shortlist",
+   "items": [
+    [
+     "Rizos Curls Gloss + Repair Mask",
+     "Conditioning gloss"
+    ],
+    [
+     "L'Oréal EverPure Glossing Lamination Mask",
+     "Glossing treatment"
+    ],
+    [
+     "Moroccanoil High Shine Gloss Mask",
+     "Shine and conditioning"
+    ],
+    [
+     "JVN Revive Rapid Repair Bond Gloss",
+     "Bond-care and shine"
+    ],
+    [
+     "Gisou Honey Gloss Ceramide Therapy Mask",
+     "Ceramide and gloss-focused conditioning"
+    ]
+   ],
+   "note": "Choose one to start."
+  }
  },
  "ing": {
   "title": "What to look for on a label",
-  "jump": "What to look for",
+  "jump": "Labels",
   "intro": "These are the ingredient groups this plan leans on. Hover any name to see what it is, or follow it through to its page.",
   "items": [
    [
@@ -426,7 +464,7 @@
    ],
    [
     "Ceramides and lipids",
-    "Support for the lipid layer between cuticle cells. The step that most changes how rough or smooth hair feels to your hand.",
+    "Lipid-supporting ingredients that complement conditioning agents. A promising category, but the evidence for dramatic structural change from a consumer product is thinner than the marketing.",
     "promising",
     [
      [
@@ -495,7 +533,7 @@
  },
  "trouble": {
   "title": "If something feels off",
-  "jump": "If something feels off",
+  "jump": "Fixes",
   "items": [
    [
     "Dull and heavy, not shiny",
@@ -503,11 +541,11 @@
    ],
    [
     "Stiff, rough or snapping after a treatment",
-    "That reads like too much protein. Stop protein treatments, condition for a few washes and start again later with a longer gap."
+    "That reads like too much protein. Stop protein treatments, condition for a few washes, and start again later with a longer gap."
    ],
    [
-    "Soft and mushy, stretches and stays stretched",
-    "The opposite problem. One protein or bond treatment, then conditioning, then reassess after a few wash cycles."
+    "Weak and breaking when wet",
+    "Think about your history first: bleach, relaxer, heat. If that fits, try one protein or bond treatment, then condition, and see how it feels after a few washes. Stretchy hair on its own does not mean it needs protein."
    ],
    [
     "Shiny on day one, dull by day three",
@@ -551,6 +589,97 @@
     "The four kinds of silicone",
     "If you want to understand the finishing step",
     "groups/silicones/"
+   ]
+  ]
+ },
+ "techniques": {
+  "title": "The shine techniques",
+  "jump": "Techniques",
+  "intro": "Most of what makes coils look glossy is how they are styled, not what they are coated in. A clumped coil gives one long highlight. A cloud of separate strands gives a hundred small ones.",
+  "items": [
+   [
+    "Section smaller",
+    "Four to eight sections, more if your hair is dense.",
+    "Smaller sections spread product evenly and cut the urge to rake through the same hair again and again."
+   ],
+   [
+    "Clump the coils",
+    "Start with soaking wet hair. Leave-in in small sections, then smooth gel over each section with praying hands. Use your fingers or a suitable curl brush to group the coils, then stop touching them.",
+    "Raking after the coils have clumped breaks them back apart."
+   ],
+   [
+    "Use gentle tension",
+    "Smoothing the gel on with a little tension gives a sleeker result. Praying hands, finger smoothing or a styling brush all work.",
+    "Never pull hard, especially around the hairline."
+   ],
+   [
+    "Diffuse gently",
+    "Low or medium airflow, moderate heat, and leave the coils alone while they dry. Finish with cool air if you like. Be fully dry before you sleep.",
+    ""
+   ],
+   [
+    "Finish with a serum, if you want one",
+    "Leave-in on wet hair, then gel or mousse, then dry completely. Scrunch out the cast. One or two drops of serum on the outside and the ends.",
+    "The serum is a finish. It is not a replacement for conditioning."
+   ],
+   [
+    "Protect it at night",
+    "Satin bonnet or pillowcase, loose twists, ends tucked in. No tight pineapple.",
+    "Hair should not have to fight cotton bedding every night."
+   ]
+  ]
+ },
+ "strength": {
+  "title": "Three kinds of strengthening",
+  "jump": "Strength",
+  "intro": "Protein, amino-acid and bond-building treatments are often sold as the same thing. They are not interchangeable.",
+  "items": [
+   [
+    "Protein treatments",
+    "Hydrolysed proteins that cling to the strand and can fill in damaged spots for a while.",
+    "They suit hair that is weak, breaking and has a damage history. Too much leaves hair stiff and rough."
+   ],
+   [
+    "Amino-acid treatments",
+    "Smaller building blocks, often paired with conditioning.",
+    "Sold as gentler than protein. How hair responds is individual, so judge by your own results."
+   ],
+   [
+    "Bond-building treatments",
+    "Formulas that claim to work on the chemistry inside the fibre, which differs by brand.",
+    "For colour, bleach, heat or visible breakage. Not a routine step for hair that is not damaged."
+   ],
+   [
+    "How to tell what your hair needs",
+    "Look at several things together: breakage while detangling, hair that feels weak when wet, a history of bleach, relaxer or heat, and how hair feels after a treatment.",
+    "Stronger-feeling after a treatment is a good sign. Stiff and rough means back off. A wet stretch test alone is not reliable, because wet hair naturally stretches."
+   ]
+  ]
+ },
+ "climate": {
+  "title": "Water and weather",
+  "jump": "Water",
+  "intro": "A good routine can still look dull if the water or the air is working against it.",
+  "items": [
+   [
+    "Hard water",
+    "Minerals can leave deposits that make hair look dull and feel rough. A chelating shampoo targets those. A clarifying shampoo targets product and oil. Some products do both, and you do not automatically need two.",
+    ""
+   ],
+   [
+    "High humidity",
+    "Humectants such as glycerin pull water from the air, and hair can swell and frizz. A good gel or film former holds the coil clumped.",
+    "How well a humectant performs depends on the whole formula and the weather."
+   ],
+   [
+    "Dry weather",
+    "Lean on conditioning and a suitable leave-in rather than more humectants.",
+    ""
+   ],
+   [
+    "Hot weather",
+    "Lighter products may feel better, and you may need fewer layers.",
+    ""
    ]
   ]
  }

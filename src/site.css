@@ -844,3 +844,14 @@ a.gp-ing:hover{background:var(--ink);color:var(--paper)}
 .jara-shot img{width:100%;height:auto;display:block;aspect-ratio:1/1;object-fit:cover}
 .jara-shot:hover{outline:2px solid var(--cobalt);outline-offset:2px}
 @media(max-width:860px){.jara-shot{max-width:100%}}
+
+/* ro-note, gloss shortlist */
+.ro-note{margin:22px 0 0!important;padding:14px 18px;background:var(--blue-mist);border:1px solid var(--ink);font-size:15px!important;line-height:1.55!important;max-width:62ch}
+.gd-short-h{font-size:22px;letter-spacing:-.03em;margin:56px 0 12px!important}
+.gd-short{list-style:none;padding:0;margin:0;border-top:1px solid var(--ink)}
+.gd-short li{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:4px 20px;padding:13px 2px;border-bottom:1px solid var(--line);align-items:baseline}
+.gd-short b{font-size:16.5px;letter-spacing:-.02em}
+.gd-short b a{border-bottom:1px solid currentColor}
+.gd-short span{font-size:15px;color:var(--muted)}
+.gd-short-n{margin:14px 0 0!important;font-size:15px!important;font-weight:700}
+@media(max-width:700px){.gd-short li{grid-template-columns:minmax(0,1fr)}}

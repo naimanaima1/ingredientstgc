@@ -4,7 +4,7 @@ One section per question, in a single column, plain language. Content files are
 content/guide-*.json; every section except the hero is optional, so a plan that has
 no "causes" or no weekly schedule simply leaves that key out.
 """
-import json, os, glob
+import json, re, os, glob
 import build as B
 
 e = B.e
@@ -51,6 +51,28 @@ def jara(where, r='../../'):
       <p>One payment, no subscription.</p></div>
   </div></section>'''
 
+
+
+def explainer(d, key, id_, cls=''):
+    c = d.get(key)
+    if not c:
+        return None
+    items = ''.join(
+        f'<li><h3>{e(i[0])}</h3><p>{e(i[1])}</p>' + (f'<p class="gd-why">{e(i[2])}</p>' if len(i) > 2 and i[2] else '') + '</li>'
+        for i in c['items'])
+    return section(id_, c['title'], c.get('intro'), f'<ul class="gd-causes">{items}</ul>', cls), (id_, c.get('jump', c['title']))
+
+def shortlist(r, rows):
+    """Name + purpose rows. A name links to its product page when the catalog has it
+    (so rows light up after a later catalog pull), and stays plain text until then."""
+    def norm(x): return re.sub(r'[^a-z0-9]', '', x.lower().replace('é', 'e'))
+    idx = {norm(B.product_full_name(p)): p for p in B.products}
+    li = []
+    for name, purpose in rows:
+        p = idx.get(norm(name)) or next((q for k, q in idx.items() if norm(name) in k or k in norm(name)), None)
+        nm = f'<a href="{r}products/{p["_slug"]}/">{e(name)}</a>' if p else e(name)
+        li.append(f'<li><b>{nm}</b><span>{e(purpose)}</span></li>')
+    return f'<ul class="gd-short">{"".join(li)}</ul>'
 
 def section(id_, title, intro, inner, cls=''):
     return f'''<section class="gd-sec {cls}" id="{id_}"><div class="tp-in">
@@ -113,6 +135,10 @@ def page(d):
                            f'<ul class="gd-styles2">{cards}</ul>'))
         jump.append(('weeks', wk.get('jump', wk['title'])))
 
+    x = explainer(d, 'techniques', 'tech')
+    if x:
+        out.append(x[0]); jump.append(x[1])
+
     # 4b. a twelve-week treatment rotation (glass hair)
     if d.get('rota'):
         ro = d['rota']
@@ -123,6 +149,8 @@ def page(d):
             f'<li><span class="ro-n">{e(n)}</span><b>{e(t)}</b><p>{e(w)}</p></li>'
             for n, t, w in ro['items'])
         inner = (f'<ol class="ro-phases">{ph}</ol>' if ph else '') + f'<ol class="ro-weeks">{rows}</ol>'
+        if ro.get('note'):
+            inner += f'<p class="ro-note">{e(ro["note"])}</p>'
         out.append(section('rota', ro['title'], ro.get('intro'), inner))
         jump.append(('rota', ro.get('jump', ro['title'])))
 
@@ -139,6 +167,10 @@ def page(d):
         out.append(section('use', u['title'], u.get('intro'), f'<ul class="gd-use">{rows}</ul>', 'gd-paper'))
         jump.append(('use', u.get('jump', u['title'])))
 
+    x = explainer(d, 'strength', 'strength', 'gd-paper')
+    if x:
+        out.append(x[0]); jump.append(x[1])
+
     # 6. how many at once
     if d.get('choose'):
         ch = d['choose']
@@ -147,6 +179,7 @@ def page(d):
         out.append(f'''<section class="gd-sec" id="choose"><div class="tp-in">
   <h2>{e(ch['title'])}</h2>{lead}
   <div class="gd-choices">{paras}</div>
+  {(f'<h3 class="gd-short-h">{e(ch["shortlist"]["title"])}</h3>' + shortlist(r, ch["shortlist"]["items"]) + f'<p class="gd-short-n">{e(ch["shortlist"]["note"])}</p>') if ch.get("shortlist") else ''}
 </div></section>''')
         jump.append(('choose', ch.get('jump', ch['title'])))
 
@@ -156,6 +189,10 @@ def page(d):
         items = ''.join(f'''<li><div class="gd-job"><b>{e(n)}</b><span class="ev ev-{k}">{e(LABELS[k])}</span></div><p>{e(t)}</p><p class="tp-links">{links(r, ls)}</p></li>''' for n, t, k, ls in g['items'])
         out.append(section('label', g['title'], g.get('intro'), f'<ul class="gd-ing">{items}</ul>', 'gd-mist'))
         jump.append(('label', g.get('jump', g['title'])))
+
+    x = explainer(d, 'climate', 'climate')
+    if x:
+        out.append(x[0]); jump.append(x[1])
 
     # 8. troubleshooting
     if d.get('trouble'):
