@@ -157,3 +157,4 @@ Plan content lives in `content/guide-*.json` in this repo, not in a sheet. Movin
 - Peptides family page live (GRP-020 to GRP-022, replaces old GRP-014 under Scalp Actives). Scalp Actives narrowed to Niacinamide, Caffeine, Green Tea/EGCG, with a link to the Peptides guide. Open: sh-Oligopeptide-78 (K18) needs an ingredient row so it links; the sheet needs the same rows (and GROUPS_CSV_URL secret) so a nightly pull does not undo this.
 
 - Label check: parabens + EU review list (scripts/watchlist.py). Name-based, automatic, no sheet work. Explainer at /label-check/. Chip wording to be reviewed by owner.
+- Label check changed to parabens + phthalates (EU review list removed at owner request). Formaldehyde releasers (e.g. Quaternium-15) to flag later.

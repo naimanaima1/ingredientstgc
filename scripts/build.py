@@ -151,7 +151,7 @@ CHECK_GROUPS = [
     ('sulfate', 'Sulfates', 'Strong cleansing agents, the kind that make a shampoo lather hard.'),
     ('peptide', 'Peptides', 'Short amino-acid chains. Not the same thing as a hydrolysed protein.'),
     ('paraben', 'Parabens', 'Preservatives whose names end in -paraben. The EU treats each one differently.'),
-    ('eu-review', 'On the EU review list', "Ingredients the European Commission is reviewing for possible endocrine-disrupting properties. Under review, not proven harmful."),
+    ('phthalate', 'Phthalates', 'Chemicals used to carry fragrance and soften plastics. Names end in -phthalate.'),
 ]
 
 # Tags that describe where an ingredient is used rather than what a product is for.
@@ -339,7 +339,7 @@ def shell(r, title, desc, body, path, current=''):
 <footer class="site-footer">
   <form class="foot-search" action="{r}ingredients/" method="get" role="search"><label for="fq">Look up an ingredient</label><input id="fq" name="q" type="search" placeholder="Try glycerin, BTAC or shea" autocomplete="off"><button type="submit">Search</button></form>
   <div><a href="{r}" class="wordmark"><span class="brand-symbol" aria-hidden="true">◎</span> the<span class="brand-amp">good</span>coil</a><p>Good knowledge. Happy hair.<br>A journey that's yours.</p></div>
-  <nav class="footer-links" aria-label="Footer"><a href="{r}ingredients/">All ingredients</a><a href="{r}plans/">Hair plans</a><a href="{r}products/">Products</a><a href="{r}properties/">By property</a><a href="{r}groups/">Ingredient families</a><a href="{r}label-check/">Parabens &amp; EU review list</a><a href="{r}about/">How we write</a><a href="{r}about/#affiliate">Affiliate disclosure</a><a href="{utm('https://thegoodcoil.com', 'footer', 'ecosystem')}">The Good Coil</a><a href="{utm('https://itsjara.com', 'footer')}">JARA hair journal</a></nav>
+  <nav class="footer-links" aria-label="Footer"><a href="{r}ingredients/">All ingredients</a><a href="{r}plans/">Hair plans</a><a href="{r}products/">Products</a><a href="{r}properties/">By property</a><a href="{r}groups/">Ingredient families</a><a href="{r}label-check/">Parabens &amp; phthalates</a><a href="{r}about/">How we write</a><a href="{r}about/#affiliate">Affiliate disclosure</a><a href="{utm('https://thegoodcoil.com', 'footer', 'ecosystem')}">The Good Coil</a><a href="{utm('https://itsjara.com', 'footer')}">JARA hair journal</a></nav>
   <div class="footer-bottom"><span>© {datetime.date.today().year} The Good Coil</span><span>Descriptions, not verdicts: every head of hair is different.</span><span>Educational guidance, not medical advice.</span></div>
 </footer>
 <script src="{r}assets/tips.js" data-root="{r}" defer></script>
