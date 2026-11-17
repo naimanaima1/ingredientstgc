@@ -1,0 +1,81 @@
+[
+  {
+    "w": 390,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "13 distinct text sizes. A scale has 6 to 9 steps: 58, 28, 27, 24, 22, 20, 17, 16, 15, 14, 13, 12, 11",
+      "8 small letter-spaced uppercase labels. An eyebrow over every section stops meaning anything.",
+      "No action in the first 390×844 screen (outside the nav). The one action should be visible without scrolling."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "99%",
+        "Instrument Serif": "1%"
+      },
+      "sizes": [
+        58,
+        28,
+        27,
+        24,
+        22,
+        20,
+        17,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 16,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 22,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1440,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "13 distinct text sizes. A scale has 6 to 9 steps: 100.8, 34, 31, 28, 24, 20, 17, 16, 15, 14, 13, 12, 11",
+      "9 small letter-spaced uppercase labels. An eyebrow over every section stops meaning anything.",
+      "No action in the first 1440×900 screen (outside the nav). The one action should be visible without scrolling."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "99%",
+        "Instrument Serif": "1%"
+      },
+      "sizes": [
+        100.8,
+        34,
+        31,
+        28,
+        24,
+        20,
+        17,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 16.4,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 21,
+      "cardGrids": 0,
+      "defaultIcons": 0,
+      "focusStops": 45
+    }
+  }
+]

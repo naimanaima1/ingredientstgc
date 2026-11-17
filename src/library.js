@@ -33,6 +33,12 @@
     if (n.includes('sulfate') && !n.includes('methosulfate') && !n.includes('sulfosuccinate') && /(lauryl|laureth|coco|myreth|coceth|decyl)/.test(n)) return 'sulfate';
     return null;
   }
+  function namesOf(t) {
+    const n = norm(t), out = [], g = byName(t);
+    if (g) out.push(g);
+    (LIB.watch || []).forEach(([k, src]) => { if (!out.includes(k) && new RegExp(src).test(n)) out.push(k); });
+    return out;
+  }
   function strip(found) {
     const cells = LIB.checks.map(([k, label, desc]) => {
       const hits = found[k] || [];
@@ -102,7 +108,7 @@
     stop(); card.classList.add('mine');
     nameEl.innerHTML = source ? `<a href="${LIB.root}products/${source.s}/">${esc(source.n)}</a>` : 'Your label';
     const found = items.map(t => [t, lookup(t)]);
-    wordsEl.innerHTML = found.map(([t, h]) => h ? `<a href="${LIB.root}${h[0]}/" data-g="${h[2].join(" ")}"${h[3].length ? ` data-c="${h[3].join(' ')}"` : ''}>${esc(t)}</a>` : `<span${byName(t) ? ` data-c="${byName(t)}"` : ''}>${esc(t)}</span>`).join(', ') + '.';
+    wordsEl.innerHTML = found.map(([t, h]) => h ? `<a href="${LIB.root}${h[0]}/" data-g="${h[2].join(" ")}"${h[3].length ? ` data-c="${h[3].join(' ')}"` : ''}>${esc(t)}</a>` : `<span${namesOf(t).length ? ` data-c="${namesOf(t).join(' ')}"` : ''}>${esc(t)}</span>`).join(', ') + '.';
     const seen = new Set(found.filter(f => f[1]).map(f => f[1][0]));
     const rows = G.map(g => { const m = []; found.forEach(([t, h]) => { if (h && h[2].includes(g[0]) && !m.some(x => x[0] === h[0])) m.push(h); });
       return m.length ? [g[0], m] : null; }).filter(Boolean);
@@ -110,7 +116,7 @@
     foot.innerHTML = `<b>${seen.size} of ${items.length}</b> in our library · grey words aren't in it yet`;
     const checks = {};
     found.forEach(([t, h]) => {
-      const gs = h ? h[3] : (byName(t) ? [byName(t)] : []);
+      const gs = h ? h[3] : namesOf(t);
       gs.forEach(g => {
         checks[g] = checks[g] || [];
         const txt = h ? `<a href="${LIB.root}${h[0]}/">${esc(h[1])}</a>` : esc(t);

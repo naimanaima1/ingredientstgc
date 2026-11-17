@@ -1,0 +1,163 @@
+[
+  {
+    "w": 390,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "14 distinct text sizes. A scale has 6 to 9 steps: 44, 32, 26, 25, 24, 22, 20, 19, 18, 16, 15, 14, 13, 12"
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "99%",
+        "Instrument Serif": "1%"
+      },
+      "sizes": [
+        44,
+        32,
+        26,
+        25,
+        24,
+        22,
+        20,
+        19,
+        18,
+        16,
+        15,
+        14,
+        13,
+        12
+      ],
+      "body": 16.2,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 51,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 768,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "16 distinct text sizes. A scale has 6 to 9 steps: 44, 32, 31, 30, 28, 24, 22, 20, 19, 18, 16, 15, 14, 13, 12, 11"
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "99%",
+        "Instrument Serif": "1%"
+      },
+      "sizes": [
+        44,
+        32,
+        31,
+        30,
+        28,
+        24,
+        22,
+        20,
+        19,
+        18,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 16.2,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 44,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1280,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "17 distinct text sizes. A scale has 6 to 9 steps: 69.12, 48.64, 32, 31, 30, 28, 24, 22, 20, 19, 18, 16, 15, 14, 13, 12, 11"
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "99%",
+        "Instrument Serif": "1%"
+      },
+      "sizes": [
+        69.12,
+        48.64,
+        32,
+        31,
+        30,
+        28,
+        24,
+        22,
+        20,
+        19,
+        18,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 16.2,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 41,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1440,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "17 distinct text sizes. A scale has 6 to 9 steps: 77.76, 52, 32, 31, 30, 28, 24, 22, 20, 19, 18, 16, 15, 14, 13, 12, 11"
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "99%",
+        "Instrument Serif": "1%"
+      },
+      "sizes": [
+        77.76,
+        52,
+        32,
+        31,
+        30,
+        28,
+        24,
+        22,
+        20,
+        19,
+        18,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 16.2,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 41,
+      "cardGrids": 0,
+      "defaultIcons": 0,
+      "focusStops": 45
+    }
+  }
+]

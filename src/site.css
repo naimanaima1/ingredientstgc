@@ -1013,3 +1013,9 @@ a.gp-ing:hover{background:var(--ink);color:var(--paper)}
 .foot-search input{flex:1 1 220px;min-height:46px;border:2px solid currentColor;border-radius:999px;padding:0 18px;font:600 16px Manrope,sans-serif;background:#fff;color:var(--ink)}
 .foot-search button{min-height:46px;padding:0 22px;border-radius:999px;border:0;background:var(--cobalt);color:var(--paper);font:800 15px Manrope,sans-serif;cursor:pointer}
 .foot-search input:focus-visible,.foot-search button:focus-visible{outline:3px solid var(--citrus);outline-offset:2px}
+
+.wl-note{margin:22px 0 0;max-width:44ch;border-left:4px solid var(--cobalt);background:var(--blue-mist);padding:14px 18px;font-size:15px;line-height:1.6}
+.wl-note p{margin:0 0 8px}.wl-note a{text-underline-offset:3px}.wl-note .fine{font-size:13px;margin:0}
+.wl-list{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.wl-list li{border:1px solid var(--ink);border-radius:999px;padding:6px 14px;font-size:15px;font-weight:600}
+.wl-list a{text-underline-offset:3px}

@@ -1,0 +1,155 @@
+[
+  {
+    "w": 390,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "Running text under 15px: 14px \"Every ingredient by what it is\"; 14px \"43 labels read so far, each de\"; 14px \"What is going on, what to do e\"",
+      "8 small letter-spaced uppercase labels. An eyebrow over every section stops meaning anything.",
+      "No action in the first 390×844 screen (outside the nav). The one action should be visible without scrolling."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "99%",
+        "Instrument Serif": "1%"
+      },
+      "sizes": [
+        60,
+        46,
+        28,
+        24,
+        22,
+        18,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 14.6,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 7,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 768,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "Running text under 15px: 14px \"Every ingredient by what it is\"; 14px \"43 labels read so far, each de\"; 14px \"What is going on, what to do e\"",
+      "9 small letter-spaced uppercase labels. An eyebrow over every section stops meaning anything.",
+      "No action in the first 768×1024 screen (outside the nav). The one action should be visible without scrolling."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "99%",
+        "Instrument Serif": "1%"
+      },
+      "sizes": [
+        60,
+        46,
+        31,
+        28,
+        24,
+        18,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 15.1,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 7,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1280,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "Running text under 15px: 14px \"Every ingredient by what it is\"; 14px \"43 labels read so far, each de\"; 14px \"What is going on, what to do e\"",
+      "9 small letter-spaced uppercase labels. An eyebrow over every section stops meaning anything.",
+      "No action in the first 1280×900 screen (outside the nav). The one action should be visible without scrolling."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "99%",
+        "Instrument Serif": "1%"
+      },
+      "sizes": [
+        71.68,
+        60,
+        31,
+        28,
+        24,
+        18,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 15.1,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 6,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1440,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "Running text under 15px: 14px \"Every ingredient by what it is\"; 14px \"43 labels read so far, each de\"; 14px \"What is going on, what to do e\"",
+      "9 small letter-spaced uppercase labels. An eyebrow over every section stops meaning anything.",
+      "No action in the first 1440×900 screen (outside the nav). The one action should be visible without scrolling."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "99%",
+        "Instrument Serif": "1%"
+      },
+      "sizes": [
+        80.64,
+        60,
+        31,
+        28,
+        24,
+        18,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 15.1,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 6,
+      "cardGrids": 0,
+      "defaultIcons": 0,
+      "focusStops": 21
+    }
+  }
+]

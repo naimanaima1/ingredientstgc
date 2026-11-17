@@ -1,0 +1,162 @@
+[
+  {
+    "w": 390,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "13 distinct text sizes. A scale has 6 to 9 steps: 60, 46, 28, 24, 22, 20, 17, 16, 15, 14, 13, 12, 11",
+      "Running text under 15px: 14px \"Most conditioners and leave-in\"; 14px \"Lipids like the ones between t\"; 14px \"Coating ingredients that add s\"",
+      "24 colour gradients. A gradient is a seasoning, not a surface."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "100%",
+        "Instrument Serif": "0%"
+      },
+      "sizes": [
+        60,
+        46,
+        28,
+        24,
+        22,
+        20,
+        17,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 14.3,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 14,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 768,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "14 distinct text sizes. A scale has 6 to 9 steps: 60, 46, 31, 28, 24, 20, 18, 17, 16, 15, 14, 13, 12, 11",
+      "Running text under 15px: 14px \"Most conditioners and leave-in\"; 14px \"Lipids like the ones between t\"; 14px \"Coating ingredients that add s\"",
+      "24 colour gradients. A gradient is a seasoning, not a surface."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "100%",
+        "Instrument Serif": "0%"
+      },
+      "sizes": [
+        60,
+        46,
+        31,
+        28,
+        24,
+        20,
+        18,
+        17,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 14.6,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 13,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1280,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "14 distinct text sizes. A scale has 6 to 9 steps: 71.68, 60, 31, 28, 24, 20, 18, 17, 16, 15, 14, 13, 12, 11",
+      "Running text under 15px: 14px \"Most conditioners and leave-in\"; 14px \"Lipids like the ones between t\"; 14px \"Coating ingredients that add s\"",
+      "24 colour gradients. A gradient is a seasoning, not a surface."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "100%",
+        "Instrument Serif": "0%"
+      },
+      "sizes": [
+        71.68,
+        60,
+        31,
+        28,
+        24,
+        20,
+        18,
+        17,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 14.6,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 13,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1440,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "14 distinct text sizes. A scale has 6 to 9 steps: 80.64, 60, 31, 28, 24, 20, 18, 17, 16, 15, 14, 13, 12, 11",
+      "Running text under 15px: 14px \"Most conditioners and leave-in\"; 14px \"Lipids like the ones between t\"; 14px \"Coating ingredients that add s\"",
+      "24 colour gradients. A gradient is a seasoning, not a surface."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "100%",
+        "Instrument Serif": "0%"
+      },
+      "sizes": [
+        80.64,
+        60,
+        31,
+        28,
+        24,
+        20,
+        18,
+        17,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 14.6,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 12,
+      "cardGrids": 0,
+      "defaultIcons": 0,
+      "focusStops": 45
+    }
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "w": 390,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope, Instrument Serif. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "13 distinct text sizes. A scale has 6 to 9 steps: 58, 42, 32, 24, 22, 20, 18, 17, 16, 15, 14, 13, 12",
+      "12 small letter-spaced uppercase labels. An eyebrow over every section stops meaning anything.",
+      "Marketing cliché: \"your journey\". Is there a more specific way to say it?",
+      "Three features of \"The Paper Edition\" (warm off-white ground, an italic word in the headline, a serif display headline). One more and it is the face."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "90%",
+        "Instrument Serif": "10%"
+      },
+      "sizes": [
+        58,
+        42,
+        32,
+        24,
+        22,
+        20,
+        18,
+        17,
+        16,
+        15,
+        14,
+        13,
+        12
+      ],
+      "body": 17.1,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 28,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1440,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope, Instrument Serif. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "15 distinct text sizes. A scale has 6 to 9 steps: 76, 58, 52, 31, 28, 24, 20, 18, 17, 16, 15, 14, 13, 12, 11",
+      "13 small letter-spaced uppercase labels. An eyebrow over every section stops meaning anything.",
+      "No action in the first 1440×900 screen (outside the nav). The one action should be visible without scrolling.",
+      "Marketing cliché: \"your journey\". Is there a more specific way to say it?",
+      "Three features of \"The Paper Edition\" (warm off-white ground, an italic word in the headline, a serif display headline). One more and it is the face."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "90%",
+        "Instrument Serif": "10%"
+      },
+      "sizes": [
+        76,
+        58,
+        52,
+        31,
+        28,
+        24,
+        20,
+        18,
+        17,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 17.1,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 26,
+      "cardGrids": 0,
+      "defaultIcons": 0,
+      "focusStops": 35
+    }
+  }
+]

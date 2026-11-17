@@ -1,0 +1,176 @@
+[
+  {
+    "w": 390,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "15 distinct text sizes. A scale has 6 to 9 steps: 44, 32, 26, 25, 24, 22, 20, 19, 18, 16, 15, 14, 13, 12, 11.5",
+      "23 text elements at 11px: 11.5px \"Gentle cleanser\"; 11.5px \"Gentle cleanser\"; 11.5px \"Rinse-out conditioner\"",
+      "14 small letter-spaced uppercase labels. An eyebrow over every section stops meaning anything."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "99%",
+        "Instrument Serif": "1%"
+      },
+      "sizes": [
+        44,
+        32,
+        26,
+        25,
+        24,
+        22,
+        20,
+        19,
+        18,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11.5
+      ],
+      "body": 16.1,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 65,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 768,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "18 distinct text sizes. A scale has 6 to 9 steps: 44, 32, 31, 30, 28, 26, 24, 22, 20, 19, 18, 16, 15, 14, 13, 12, 11.5, 11",
+      "24 text elements at 11px: 11px \"Library\"; 11.5px \"Gentle cleanser\"; 11.5px \"Gentle cleanser\"",
+      "15 small letter-spaced uppercase labels. An eyebrow over every section stops meaning anything."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "99%",
+        "Instrument Serif": "1%"
+      },
+      "sizes": [
+        44,
+        32,
+        31,
+        30,
+        28,
+        26,
+        24,
+        22,
+        20,
+        19,
+        18,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11.5,
+        11
+      ],
+      "body": 16.2,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 58,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1280,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "18 distinct text sizes. A scale has 6 to 9 steps: 69.12, 48.64, 32, 31, 30, 28, 24, 22, 20, 19, 18, 16, 15, 14, 13, 12, 11.5, 11",
+      "24 text elements at 11px: 11px \"Library\"; 11.5px \"Gentle cleanser\"; 11.5px \"Gentle cleanser\"",
+      "15 small letter-spaced uppercase labels. An eyebrow over every section stops meaning anything."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "99%",
+        "Instrument Serif": "1%"
+      },
+      "sizes": [
+        69.12,
+        48.64,
+        32,
+        31,
+        30,
+        28,
+        24,
+        22,
+        20,
+        19,
+        18,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11.5,
+        11
+      ],
+      "body": 16.2,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 55,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1440,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "18 distinct text sizes. A scale has 6 to 9 steps: 77.76, 52, 32, 31, 30, 28, 24, 22, 20, 19, 18, 16, 15, 14, 13, 12, 11.5, 11",
+      "24 text elements at 11px: 11px \"Library\"; 11.5px \"Gentle cleanser\"; 11.5px \"Gentle cleanser\"",
+      "15 small letter-spaced uppercase labels. An eyebrow over every section stops meaning anything."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "99%",
+        "Instrument Serif": "1%"
+      },
+      "sizes": [
+        77.76,
+        52,
+        32,
+        31,
+        30,
+        28,
+        24,
+        22,
+        20,
+        19,
+        18,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11.5,
+        11
+      ],
+      "body": 16.2,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 55,
+      "cardGrids": 0,
+      "defaultIcons": 0,
+      "focusStops": 45
+    }
+  }
+]

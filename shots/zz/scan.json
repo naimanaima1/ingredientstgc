@@ -1,0 +1,186 @@
+[
+  {
+    "w": 390,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "18 distinct text sizes. A scale has 6 to 9 steps: 44, 32, 27, 26, 25, 24, 22, 20, 19, 18, 17, 16.5, 16, 15, 14.5, 14, 13, 12",
+      "Running text under 15px: 14px \"One payment, no subscription. \"; 14.5px \"Get cleansing and conditioning\"; 14.5px \"Add protein or bond treatments\""
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "100%",
+        "Instrument Serif": "0%"
+      },
+      "sizes": [
+        44,
+        32,
+        27,
+        26,
+        25,
+        24,
+        22,
+        20,
+        19,
+        18,
+        17,
+        16.5,
+        16,
+        15,
+        14.5,
+        14,
+        13,
+        12
+      ],
+      "body": 16.1,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 70,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 768,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "20 distinct text sizes. A scale has 6 to 9 steps: 44, 32, 31, 30, 28, 27, 24, 22, 20, 19, 18, 17, 16.5, 16, 15, 14.5, 14, 13, 12, 11",
+      "Running text under 15px: 14px \"One payment, no subscription. \"; 14.5px \"Get cleansing and conditioning\"; 14.5px \"Add protein or bond treatments\"",
+      "7 small letter-spaced uppercase labels. An eyebrow over every section stops meaning anything."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "100%",
+        "Instrument Serif": "0%"
+      },
+      "sizes": [
+        44,
+        32,
+        31,
+        30,
+        28,
+        27,
+        24,
+        22,
+        20,
+        19,
+        18,
+        17,
+        16.5,
+        16,
+        15,
+        14.5,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 16.1,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 68,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1280,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "21 distinct text sizes. A scale has 6 to 9 steps: 69.12, 48.64, 34, 32, 31, 30, 28, 24, 22, 20, 19, 18, 17, 16.5, 16, 15, 14.5, 14, 13, 12, 11",
+      "Running text under 15px: 14px \"One payment, no subscription. \"; 14.5px \"Get cleansing and conditioning\"; 14.5px \"Add protein or bond treatments\"",
+      "7 small letter-spaced uppercase labels. An eyebrow over every section stops meaning anything."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "100%",
+        "Instrument Serif": "0%"
+      },
+      "sizes": [
+        69.12,
+        48.64,
+        34,
+        32,
+        31,
+        30,
+        28,
+        24,
+        22,
+        20,
+        19,
+        18,
+        17,
+        16.5,
+        16,
+        15,
+        14.5,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 16.1,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 66,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1440,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "21 distinct text sizes. A scale has 6 to 9 steps: 77.76, 52, 34, 32, 31, 30, 28, 24, 22, 20, 19, 18, 17, 16.5, 16, 15, 14.5, 14, 13, 12, 11",
+      "Running text under 15px: 14px \"One payment, no subscription. \"; 14.5px \"Get cleansing and conditioning\"; 14.5px \"Add protein or bond treatments\"",
+      "7 small letter-spaced uppercase labels. An eyebrow over every section stops meaning anything."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "100%",
+        "Instrument Serif": "0%"
+      },
+      "sizes": [
+        77.76,
+        52,
+        34,
+        32,
+        31,
+        30,
+        28,
+        24,
+        22,
+        20,
+        19,
+        18,
+        17,
+        16.5,
+        16,
+        15,
+        14.5,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 16.1,
+      "hues": [
+        60,
+        240
+      ],
+      "boxes": 66,
+      "cardGrids": 0,
+      "defaultIcons": 0,
+      "focusStops": 45
+    }
+  }
+]

@@ -1,0 +1,115 @@
+[
+  {
+    "w": 390,
+    "fails": [
+      "Page scrolls sideways at 896px (content 896px wide). Sticking out: <img> 848px wide, right edge at 896; <img> 848px wide, right edge at 896; <img> 848px wide, right edge at 896. Often 100vw, a fixed width, or an unwrapped long word.",
+      "Control label wraps onto two lines: \"Ingredient families\"; \"The Good Coil\". Give it room or shorten it.",
+      "Broken image x6: ../assets/img/hairline.jpg, ../assets/img/ends.jpg, ../assets/img/braids-long.jpg"
+    ],
+    "warns": [
+      "Largest text is 32px against 16px body (2.0x). Nothing owns the first screen.",
+      "No action in the first 896×1940 screen (outside the nav). The one action should be visible without scrolling."
+    ],
+    "facts": {
+      "fonts": {
+        "Times New Roman": "100%"
+      },
+      "sizes": [
+        32,
+        24,
+        16
+      ],
+      "body": 16,
+      "hues": [
+        240
+      ],
+      "boxes": 0,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 768,
+    "fails": [
+      "Page scrolls sideways at 768px (content 896px wide). Sticking out: <img> 848px wide, right edge at 896; <img> 848px wide, right edge at 896; <img> 848px wide, right edge at 896. Often 100vw, a fixed width, or an unwrapped long word.",
+      "Control label wraps onto two lines: \"The Good Coil\". Give it room or shorten it.",
+      "Broken image x6: ../assets/img/hairline.jpg, ../assets/img/ends.jpg, ../assets/img/braids-long.jpg"
+    ],
+    "warns": [
+      "Largest text is 32px against 16px body (2.0x). Nothing owns the first screen.",
+      "No action in the first 768×1024 screen (outside the nav). The one action should be visible without scrolling."
+    ],
+    "facts": {
+      "fonts": {
+        "Times New Roman": "100%"
+      },
+      "sizes": [
+        32,
+        24,
+        16
+      ],
+      "body": 16,
+      "hues": [
+        240
+      ],
+      "boxes": 0,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1280,
+    "fails": [
+      "Broken image x6: ../assets/img/hairline.jpg, ../assets/img/ends.jpg, ../assets/img/braids-long.jpg"
+    ],
+    "warns": [
+      "Largest text is 32px against 16px body (2.0x). Nothing owns the first screen.",
+      "No action in the first 1280×900 screen (outside the nav). The one action should be visible without scrolling."
+    ],
+    "facts": {
+      "fonts": {
+        "Times New Roman": "100%"
+      },
+      "sizes": [
+        32,
+        24,
+        16
+      ],
+      "body": 16,
+      "hues": [
+        240
+      ],
+      "boxes": 0,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1440,
+    "fails": [
+      "Broken image x6: ../assets/img/hairline.jpg, ../assets/img/ends.jpg, ../assets/img/braids-long.jpg"
+    ],
+    "warns": [
+      "Largest text is 32px against 16px body (2.0x). Nothing owns the first screen.",
+      "No action in the first 1440×900 screen (outside the nav). The one action should be visible without scrolling."
+    ],
+    "facts": {
+      "fonts": {
+        "Times New Roman": "100%"
+      },
+      "sizes": [
+        32,
+        24,
+        16
+      ],
+      "body": 16,
+      "hues": [
+        240
+      ],
+      "boxes": 0,
+      "cardGrids": 0,
+      "defaultIcons": 0,
+      "focusStops": 25
+    }
+  }
+]

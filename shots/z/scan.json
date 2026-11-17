@@ -1,0 +1,106 @@
+[
+  {
+    "w": 390,
+    "fails": [],
+    "warns": [],
+    "facts": {
+      "fonts": {
+        "sans": "91%",
+        "Roboto-Regular": "9%"
+      },
+      "sizes": [
+        22.5,
+        15,
+        14.25,
+        13.995,
+        12
+      ],
+      "body": null,
+      "hues": [
+        210
+      ],
+      "boxes": 1,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 768,
+    "fails": [],
+    "warns": [
+      "Largest text is 24px against 16px body (1.5x). Nothing owns the first screen."
+    ],
+    "facts": {
+      "fonts": {
+        "sans": "91%",
+        "Arial": "9%"
+      },
+      "sizes": [
+        24,
+        15,
+        13.125,
+        12
+      ],
+      "body": null,
+      "hues": [
+        210
+      ],
+      "boxes": 0,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1280,
+    "fails": [],
+    "warns": [
+      "Largest text is 24px against 16px body (1.5x). Nothing owns the first screen."
+    ],
+    "facts": {
+      "fonts": {
+        "sans": "91%",
+        "Arial": "9%"
+      },
+      "sizes": [
+        24,
+        15,
+        13.125,
+        12
+      ],
+      "body": null,
+      "hues": [
+        210
+      ],
+      "boxes": 0,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1440,
+    "fails": [],
+    "warns": [
+      "Largest text is 24px against 16px body (1.5x). Nothing owns the first screen."
+    ],
+    "facts": {
+      "fonts": {
+        "sans": "91%",
+        "Arial": "9%"
+      },
+      "sizes": [
+        24,
+        15,
+        13.125,
+        12
+      ],
+      "body": null,
+      "hues": [
+        210
+      ],
+      "boxes": 0,
+      "cardGrids": 0,
+      "defaultIcons": 0,
+      "focusStops": 3
+    }
+  }
+]

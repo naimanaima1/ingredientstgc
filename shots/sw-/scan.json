@@ -1,0 +1,125 @@
+[
+  {
+    "w": 390,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "99%",
+        "Instrument Serif": "1%"
+      },
+      "sizes": [
+        40,
+        24,
+        22,
+        19,
+        16,
+        15,
+        14,
+        13,
+        12
+      ],
+      "body": null,
+      "hues": [],
+      "boxes": 3,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 768,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "99%",
+        "Instrument Serif": "1%"
+      },
+      "sizes": [
+        58,
+        31,
+        28,
+        24,
+        21,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": null,
+      "hues": [],
+      "boxes": 3,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1280,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "99%",
+        "Instrument Serif": "1%"
+      },
+      "sizes": [
+        58,
+        31,
+        28,
+        24,
+        21,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": null,
+      "hues": [],
+      "boxes": 2,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1440,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "99%",
+        "Instrument Serif": "1%"
+      },
+      "sizes": [
+        58,
+        31,
+        28,
+        24,
+        21,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": null,
+      "hues": [],
+      "boxes": 2,
+      "cardGrids": 0,
+      "defaultIcons": 0,
+      "focusStops": 23
+    }
+  }
+]

@@ -50,8 +50,8 @@ def pick_example():
 
 
 def library_js(R=''):
-    keys = {k: [v['_slug'], v['_title'], groups_of(v), [g for g, _, _ in B.CHECK_GROUPS if g in v['_tags']]] for k, v in B.keys.items()}
-    data = {'root': R, 'keys': keys, 'groups': [[k, n, h, c] for k, n, h, c in GROUPS], 'checks': [[k, n, d] for k, n, d in B.CHECK_GROUPS]}
+    keys = {k: [v['_slug'], v['_title'], groups_of(v), B.groups_for(v['inci_name'], v)] for k, v in B.keys.items()}
+    data = {'root': R, 'keys': keys, 'groups': [[k, n, h, c] for k, n, h, c in GROUPS], 'checks': [[k, n, d] for k, n, d in B.CHECK_GROUPS], 'watch': __import__('watchlist').js_rules()}
     js = 'window.LIB=' + json.dumps(data, ensure_ascii=False, separators=(',', ':')) + ';\n' + open(B.os.path.join(B.ROOT, 'src', 'library.js'), encoding='utf-8').read()
     B.write('assets/library.js', js)
 

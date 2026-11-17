@@ -1,0 +1,137 @@
+[
+  {
+    "w": 390,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "Marketing cliché: \"all-in-one\". Is there a more specific way to say it?"
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "100%",
+        "Instrument Serif": "0%"
+      },
+      "sizes": [
+        46,
+        24,
+        22,
+        18,
+        17,
+        16,
+        14,
+        13,
+        12
+      ],
+      "body": 17,
+      "hues": [
+        240
+      ],
+      "boxes": 139,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 768,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "Marketing cliché: \"all-in-one\". Is there a more specific way to say it?"
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "100%",
+        "Instrument Serif": "0%"
+      },
+      "sizes": [
+        46,
+        31,
+        28,
+        24,
+        18,
+        17,
+        16,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 17,
+      "hues": [
+        240
+      ],
+      "boxes": 139,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1280,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "Marketing cliché: \"all-in-one\". Is there a more specific way to say it?"
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "100%",
+        "Instrument Serif": "0%"
+      },
+      "sizes": [
+        70.4,
+        31,
+        28,
+        24,
+        18,
+        17,
+        16,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 17,
+      "hues": [
+        240
+      ],
+      "boxes": 138,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1440,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "Marketing cliché: \"all-in-one\". Is there a more specific way to say it?"
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "100%",
+        "Instrument Serif": "0%"
+      },
+      "sizes": [
+        79.2,
+        31,
+        28,
+        24,
+        18,
+        17,
+        16,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 17,
+      "hues": [
+        240
+      ],
+      "boxes": 138,
+      "cardGrids": 0,
+      "defaultIcons": 0,
+      "focusStops": 45
+    }
+  }
+]

@@ -1,0 +1,137 @@
+[
+  {
+    "w": 390,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope, Instrument Serif. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "Running text under 15px: 14px \"Draws water toward itself and \"; 14px \"Oils, butters and other fatty \"; 14px \"Leaves a thin, flexible film o\""
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "98%",
+        "Instrument Serif": "2%"
+      },
+      "sizes": [
+        46,
+        30,
+        24,
+        22,
+        17,
+        16,
+        14,
+        13,
+        12
+      ],
+      "body": 14.5,
+      "hues": [
+        240
+      ],
+      "boxes": 14,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 768,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope, Instrument Serif. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "Running text under 15px: 14px \"Draws water toward itself and \"; 14px \"Oils, butters and other fatty \"; 14px \"Leaves a thin, flexible film o\""
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "98%",
+        "Instrument Serif": "2%"
+      },
+      "sizes": [
+        46,
+        31,
+        30,
+        28,
+        24,
+        17,
+        16,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 14.5,
+      "hues": [
+        240
+      ],
+      "boxes": 14,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1280,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope, Instrument Serif. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "Running text under 15px: 14px \"Draws water toward itself and \"; 14px \"Oils, butters and other fatty \"; 14px \"Leaves a thin, flexible film o\""
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "98%",
+        "Instrument Serif": "2%"
+      },
+      "sizes": [
+        70.4,
+        31,
+        30,
+        28,
+        24,
+        17,
+        16,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 14.5,
+      "hues": [
+        240
+      ],
+      "boxes": 13,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1440,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope, Instrument Serif. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "Running text under 15px: 14px \"Draws water toward itself and \"; 14px \"Oils, butters and other fatty \"; 14px \"Leaves a thin, flexible film o\""
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "98%",
+        "Instrument Serif": "2%"
+      },
+      "sizes": [
+        79.2,
+        31,
+        30,
+        28,
+        24,
+        17,
+        16,
+        14,
+        13,
+        12,
+        11
+      ],
+      "body": 14.5,
+      "hues": [
+        240
+      ],
+      "boxes": 13,
+      "cardGrids": 0,
+      "defaultIcons": 0,
+      "focusStops": 27
+    }
+  }
+]

@@ -1,0 +1,137 @@
+[
+  {
+    "w": 390,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope, Instrument Serif. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "7 small letter-spaced uppercase labels. An eyebrow over every section stops meaning anything.",
+      "No action in the first 390×844 screen (outside the nav). The one action should be visible without scrolling."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "72%",
+        "Instrument Serif": "28%"
+      },
+      "sizes": [
+        46,
+        28,
+        24,
+        22,
+        17,
+        16,
+        13,
+        12
+      ],
+      "body": 15.1,
+      "hues": [
+        240
+      ],
+      "boxes": 2,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 768,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope, Instrument Serif. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "8 small letter-spaced uppercase labels. An eyebrow over every section stops meaning anything.",
+      "No action in the first 768×1024 screen (outside the nav). The one action should be visible without scrolling."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "73%",
+        "Instrument Serif": "27%"
+      },
+      "sizes": [
+        46,
+        31,
+        28,
+        24,
+        22,
+        17,
+        16,
+        13,
+        12,
+        11
+      ],
+      "body": 15.1,
+      "hues": [
+        240
+      ],
+      "boxes": 2,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1280,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope, Instrument Serif. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "8 small letter-spaced uppercase labels. An eyebrow over every section stops meaning anything.",
+      "No action in the first 1280×900 screen (outside the nav). The one action should be visible without scrolling."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "74%",
+        "Instrument Serif": "26%"
+      },
+      "sizes": [
+        70.4,
+        31,
+        28,
+        24,
+        22,
+        17,
+        16,
+        13,
+        12,
+        11
+      ],
+      "body": 15.1,
+      "hues": [
+        240
+      ],
+      "boxes": 1,
+      "cardGrids": 0,
+      "defaultIcons": 0
+    }
+  },
+  {
+    "w": 1440,
+    "fails": [],
+    "warns": [
+      "Default-reach font: Manrope, Instrument Serif. If DIRECTION.md does not say why this face and not another, it is the default talking.",
+      "8 small letter-spaced uppercase labels. An eyebrow over every section stops meaning anything.",
+      "No action in the first 1440×900 screen (outside the nav). The one action should be visible without scrolling."
+    ],
+    "facts": {
+      "fonts": {
+        "Manrope": "74%",
+        "Instrument Serif": "26%"
+      },
+      "sizes": [
+        79.2,
+        31,
+        28,
+        24,
+        22,
+        17,
+        16,
+        13,
+        12,
+        11
+      ],
+      "body": 15.1,
+      "hues": [
+        240
+      ],
+      "boxes": 1,
+      "cardGrids": 0,
+      "defaultIcons": 0,
+      "focusStops": 24
+    }
+  }
+]
