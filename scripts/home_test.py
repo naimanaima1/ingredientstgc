@@ -76,10 +76,10 @@ def build(out='', root='', test=False):
         html = html.replace('</head>', '<meta name="robots" content="noindex">\n</head>')
     B.write(out + 'index.html', html)
 
-    keys = {k: [v['_slug'], v['_title'], [g for g, _, _ in B.CHECK_GROUPS if g in v['_tags']]]
+    keys = {k: [v['_slug'], v['_title'], B.groups_for(v['inci_name'], v)]
             for k, v in B.keys.items()}
     js = ('window.TLIB=' + json.dumps(
-        {'root': root, 'keys': keys, 'checks': [[k, n, d] for k, n, d in B.CHECK_GROUPS]},
+        {'root': root, 'keys': keys, 'checks': [[k, n, d] for k, n, d in B.CHECK_GROUPS], 'watch': __import__('watchlist').js_rules()},
         ensure_ascii=False, separators=(',', ':')) + ';\n'
         + open(B.os.path.join(B.ROOT, 'src', 'home-test.js'), encoding='utf-8').read())
     B.write('assets/home-test.js', js)

@@ -36,6 +36,13 @@
     return null;
   }
 
+  function namesOf(t) {
+    var n = norm(t), out = [], g = byName(t);
+    if (g) out.push(g);
+    (L.watch || []).forEach(function (w) { if (out.indexOf(w[0]) === -1 && new RegExp(w[1]).test(n)) out.push(w[0]); });
+    return out;
+  }
+
   var answers = document.getElementById('t-answers'),
       note = document.getElementById('t-note'),
       more = document.getElementById('t-more'),
@@ -80,7 +87,7 @@
     found.forEach(function (pair) {
       var t = pair[0], h = pair[1];
       if (h) known++;
-      var gs = h ? h[2] : (byName(t) ? [byName(t)] : []);
+      var gs = h ? h[2] : namesOf(t);
       gs.forEach(function (g) {
         hits[g] = hits[g] || [];
         var html = h ? '<a href="' + ROOT + h[0] + '/">' + esc(h[1]) + '</a>' : esc(t);
