@@ -1,5 +1,5 @@
 """Homepage: a working label decoder with a guided walk-through of one real label, then three doors
-(ingredients, products, hair plans). The example label and its groups are rendered in the HTML, so
+(ingredients, products, hair edits). The example label and its groups are rendered in the HTML, so
 the page reads fine without JavaScript; assets/library.js adds the walk-through and decoding.
 """
 import json, re
@@ -191,7 +191,7 @@ def build(out='', root='', quiet=True):
 </section>
 
 <div class="wrap home-rest"><section class="doors2" aria-label="Where to go next">
-  <a class="door door-photo" href="{R}plans/"><span class="door-n">{len(plans)}</span><h2>My Hair Plans</h2><p>Personalized routines and educational plans: what is going on, what to do each week, and what to look for on a label.</p>
+  <a class="door door-photo" href="{R}plans/"><span class="door-n">{len(plans)}</span><h2>My Hair Edits</h2><p>Personalized routines and educational plans: what is going on, what to do each week, and what to look for on a label.</p>
     <img src="{R}assets/img/ends.jpg" alt="A woman with long dark curls holds the ends of a curl between her fingers." width="799" height="1344" loading="lazy">
     <span class="door-go">See the plans →</span></a>
   <a class="door" href="{R}products/"><span class="door-n">{n_products}</span><h2>Product Finder</h2><p>Popular products, with {len(B.labels)} labels read so far, each decoded ingredient by ingredient.</p>

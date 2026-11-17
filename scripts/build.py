@@ -328,18 +328,18 @@ def shell(r, title, desc, body, path, current=''):
     <a href="{r}#find" class="hide-sm"{cur('home')}>Label Decoder</a>
     <a href="{r}ingredients/" class="hide-sm"{cur('ingredients')}>Ingredients</a>
     <a href="{r}products/" class="hide-sm"{cur('products')}>Products</a>
-    <a href="{r}plans/" class="hide-sm"{cur('plans')}>Hair Plans</a>
+    <a href="{r}plans/" class="hide-sm"{cur('plans')}>Hair Edits</a>
     <a class="nav-cta" href="{utm(QUIZ_URL, 'nav_cta', 'hair_quiz')}">Take Hair Quiz</a>
   </nav>
 </header>
-<nav class="subnav" aria-label="Library sections"><a href="{r}#find">Label Decoder</a><a href="{r}ingredients/">Ingredients</a><a href="{r}products/">Products</a><a href="{r}plans/">Hair Plans</a></nav>
+<nav class="subnav" aria-label="Library sections"><a href="{r}#find">Label Decoder</a><a href="{r}ingredients/">Ingredients</a><a href="{r}products/">Products</a><a href="{r}plans/">Hair Edits</a></nav>
 <main id="main" class="wrap">
 {body}
 </main>
 <footer class="site-footer">
   <form class="foot-search" action="{r}ingredients/" method="get" role="search"><label for="fq">Look up an ingredient</label><input id="fq" name="q" type="search" placeholder="Try glycerin, BTAC or shea" autocomplete="off"><button type="submit">Search</button></form>
   <div><a href="{r}" class="wordmark"><span class="brand-symbol" aria-hidden="true">◎</span> the<span class="brand-amp">good</span>coil</a><p>Good knowledge. Happy hair.<br>A journey that's yours.</p></div>
-  <nav class="footer-links" aria-label="Footer"><a href="{r}ingredients/">All ingredients</a><a href="{r}plans/">Hair plans</a><a href="{r}products/">Products</a><a href="{r}properties/">By property</a><a href="{r}groups/">Ingredient families</a><a href="{r}label-check/">Parabens &amp; phthalates</a><a href="{r}about/">How we write</a><a href="{r}about/#affiliate">Affiliate disclosure</a><a href="{utm('https://thegoodcoil.com', 'footer', 'ecosystem')}">The Good Coil</a><a href="{utm('https://itsjara.com', 'footer')}">JARA hair journal</a></nav>
+  <nav class="footer-links" aria-label="Footer"><a href="{r}ingredients/">All ingredients</a><a href="{r}plans/">Hair edits</a><a href="{r}products/">Products</a><a href="{r}properties/">By property</a><a href="{r}groups/">Ingredient families</a><a href="{r}label-check/">Parabens &amp; phthalates</a><a href="{r}about/">How we write</a><a href="{r}about/#affiliate">Affiliate disclosure</a><a href="{utm('https://thegoodcoil.com', 'footer', 'ecosystem')}">The Good Coil</a><a href="{utm('https://itsjara.com', 'footer')}">JARA hair journal</a></nav>
   <div class="footer-bottom"><span>© {datetime.date.today().year} The Good Coil</span><span>Descriptions, not verdicts: every head of hair is different.</span><span>Educational guidance, not medical advice.</span></div>
 </footer>
 <script src="{r}assets/tips.js" data-root="{r}" defer></script>
@@ -698,7 +698,7 @@ def main():
     ecosystem_tests.build()
     extras(tags, plan_urls)
     checks(counts)
-    text = '### Hair plans\n' + (f'{len(plan_urls)} plans built.\n' + '\n'.join(plan_notes) if plan_urls else 'No programs found.') + '\n'
+    text = '### Hair edits\n' + (f'{len(plan_urls)} plans built.\n' + '\n'.join(plan_notes) if plan_urls else 'No programs found.') + '\n'
     print(text)
     if os.environ.get('GITHUB_STEP_SUMMARY'):
         with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as fh:

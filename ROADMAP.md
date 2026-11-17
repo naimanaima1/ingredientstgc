@@ -158,3 +158,8 @@ Plan content lives in `content/guide-*.json` in this repo, not in a sheet. Movin
 
 - Label check: parabens + EU review list (scripts/watchlist.py). Name-based, automatic, no sheet work. Explainer at /label-check/. Chip wording to be reviewed by owner.
 - Label check changed to parabens + phthalates (EU review list removed at owner request). Formaldehyde releasers (e.g. Quaternium-15) to flag later.
+
+## Hair edits (was "Hair plans")
+- Visible wording changed to "Hair edits" (nav, footer, home, index). URLs stay /plans/. The "Edge growth plan" name is unchanged.
+- Planned edit: **The Good Coil picks** (owner's first list, 17 Nov, not ready): SEHT shampoo, Briogeo Don't Despair, SEHT conditioner, Biolage Hydra Source, Nature's Blessing, Kinky Curly, Curlsmith bond repair, The Doux mousse, Eco Slay jello shot, silk scrunchies, Big Poppa gel, Matrix Food for Soft oil, Mizani scalp, Redken All Soft, Biolage multi-benefit spray or L'Oreal Ever Pure, Ordinary scalp serum, scalp exfoliation (may trim). Needs catalog rows and affiliate disclosure.
+- Full family map: docs/FAMILIES.md.

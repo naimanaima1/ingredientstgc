@@ -50,6 +50,7 @@ NOTES = {
     ],
     'Surfactants & Cleansers': [
         'Chelators (citric acid, tartaric acid, EDTA) bind minerals from hard water. They are not foaming detergents like sulfates.',
+        '"Sulfate-free" does not, by itself, tell you how gentle a shampoo will feel. Sodium C14-16 olefin sulfonate, for example, is not a sulfate, but it is a stronger anionic cleanser than the mild ones above, and a shampoo built on it can feel more stripping. Check which cleanser comes first on the label.',
     ],
 }
 

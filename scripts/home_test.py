@@ -52,7 +52,7 @@ def build(out='', root='', test=False):
   <nav class="t-doors" aria-label="The rest of the library">
     <a href="{root}ingredients/"><b>{n_ing}</b><span>Ingredients</span><em>Each one by what it is and what it does.</em></a>
     <a href="{root}products/"><b>{n_prod}</b><span>Products</span><em>{n_lab} labels read, ingredient by ingredient.</em></a>
-    <a href="{root}plans/"><b>{n_plan}</b><span>Hair plans</span><em>What to do each week, and what to look for.</em></a>
+    <a href="{root}plans/"><b>{n_plan}</b><span>Hair edits</span><em>What to do each week, and what to look for.</em></a>
   </nav>
 
   <details class="t-paste">
