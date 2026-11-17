@@ -10,12 +10,14 @@ e = B.e
 
 PARABEN = 'paraben'
 PHTH = 'phthalate'
+STRONG = 'strong-cleanser'
 
 SRC_358 = 'https://www.legislation.gov.uk/eur/2014/358/data.html'
 SRC_1004 = 'https://www.legislation.gov.uk/eur/2014/1004'
 EUR = 'https://eur-lex.europa.eu/eli/reg/2009/1223/oj'
 
 PARABEN_RX = re.compile(r'paraben')
+STRONG_RX = re.compile(r'olefin sulfonate')
 PHTH_RX = re.compile(r'^(?!.*(tere|iso)phthalate).*phthalate$')
 
 PARABEN_STATUS = {
@@ -37,11 +39,13 @@ def groups(*names):
             out.append(PARABEN)
         if PHTH_RX.search(n) and PHTH not in out:
             out.append(PHTH)
+        if STRONG_RX.search(n) and STRONG not in out:
+            out.append(STRONG)
     return out
 
 
 def js_rules():
-    return [[PARABEN, 'paraben'], [PHTH, PHTH_RX.pattern]]
+    return [[PARABEN, 'paraben'], [PHTH, PHTH_RX.pattern], [STRONG, 'olefin sulfonate']]
 
 
 def paraben_kind(name):
@@ -79,6 +83,8 @@ def ingredient_note(g):
         else:
             what = f'Some phthalates are banned in cosmetics in the EU ({PHTH_BANNED}). Rules differ for each one.'
         bits.append(f'<p><b>A phthalate.</b> {e(what)} <a href="{EUR}" rel="noopener">Source</a></p>')
+    if STRONG in gs:
+        bits.append('<p><b>A stronger cleanser.</b> Not a sulfate, but a high-detergency cleanser. "Sulfate-free" does not by itself mean gentle. A shampoo built on it can feel more stripping on dry or tightly coiled hair.</p>')
     return f'<aside class="wl-note" aria-label="Label check">{"".join(bits)}<p class="fine"><a href="../label-check/">About these label checks</a></p></aside>'
 
 

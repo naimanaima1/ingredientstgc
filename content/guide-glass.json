@@ -92,7 +92,7 @@
        "label": "Glossing masks, pick one",
        "use": [
         [
-         "TGC-119",
+         "TGC-157",
          "Conditioning gloss"
         ],
         [
@@ -148,7 +148,7 @@
        "label": "Glosses, pick one to start",
        "use": [
         [
-         "TGC-119",
+         "TGC-157",
          "Conditioning gloss"
         ],
         [

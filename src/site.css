@@ -1019,3 +1019,7 @@ a.gp-ing:hover{background:var(--ink);color:var(--paper)}
 .wl-list{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
 .wl-list li{border:1px solid var(--ink);border-radius:999px;padding:6px 14px;font-size:15px;font-weight:600}
 .wl-list a{text-underline-offset:3px}
+
+.edits-hl{background:var(--blue-mist);padding:22px 24px;margin:0 0 36px;max-width:60ch}
+.edits-hl h2{margin:6px 0 8px;font-size:22px;letter-spacing:-.02em}.edits-hl p{margin:0;font-size:16px;line-height:1.6}
+.plans-h{font-size:22px;letter-spacing:-.02em;margin:0 0 16px}

@@ -188,7 +188,7 @@ def home_page():
 <div class="et-card"><h3>Quiz slot 3</h3><p>Name and one-line promise to confirm.</p></div></div></div></section>
 
 <section class="et-ink"><div class="et-in et-two"><div><span class="eyebrow">2 &middot; Your hair routine</span><h2>Your plan lives in the Library.</h2></div>
-<div><p>Every quiz result points to a hair edit, with the products and ingredients behind it explained.</p>
+<div><p>Every quiz result points to a hair plan, with the products and ingredients behind it explained.</p>
 <a class="et-btn" href="{u('https://library.thegoodcoil.com', 'home_test', 'library', 'section')}">Open the Library</a></div></div></section>
 
 <section class="et-paper"><div class="et-in et-two"><div><span class="eyebrow">3 &middot; Track your progress</span><h2>Keep the record in JARA.</h2></div>
@@ -207,7 +207,7 @@ def home_page():
 
 <section class="et-paper" id="results"><div class="et-in"><span class="eyebrow">Quiz results page (mock-up)</span><h2>Your hair profile.</h2>
 <div class="et-card"><h3>Example: medium-porosity, tight coils</h3><p>You hold moisture best with layered leave-ins, and heavy products can weigh your coils down.</p></div>
-<div class="et-quiz"><h3>Unlock your full routine</h3><p>Pop in your email and we'll send your routine and a link to your matching hair edit.</p>
+<div class="et-quiz"><h3>Unlock your full routine</h3><p>Pop in your email and we'll send your routine and a link to your matching hair plan.</p>
 <form class="et-form" method="post" action="" onsubmit="event.preventDefault();this.nextElementSibling.textContent='Test mode: nothing was sent.'"><input type="hidden" name="source" value="quiz_result"><label for="qe" style="position:absolute;left:-9999px">Email</label><input id="qe" type="email" required placeholder="you@email.com"><button class="et-btn" type="submit">Send my routine</button></form><p class="et-note" role="status"></p></div>
 <p style="margin:28px 0 12px;font-weight:800">Your next step</p>
 <div class="et-two">

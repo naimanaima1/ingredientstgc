@@ -1,4 +1,4 @@
-"""Hair edits: guide-shaped pages at /plans/<slug>/, plus the /plans/ index.
+"""Hair plans: guide-shaped pages at /plans/<slug>/, plus the /plans/ index.
 
 One section per question, in a single column, plain language. Content files are
 content/guide-*.json; every section except the hero is optional, so a plan that has
@@ -369,7 +369,7 @@ def page(d):
 <nav class="gd-jump" aria-label="On this page">{jump_html}</nav>
 {''.join(out)}
 <script src="{r}assets/guide.js" defer></script>
-<p class="source tp-in tp-source"><span>The Good Coil hair edit · Ref {e(d['id'])}</span><a href="{r}plans/">All hair edits</a><a href="{r}about/">How we write these</a></p>'''
+<p class="source tp-in tp-source"><span>The Good Coil hair plan · Ref {e(d['id'])}</span><a href="{r}plans/">All hair plans</a><a href="{r}about/">How we write these</a></p>'''
     html = B.shell(r, f"{d['name']} · The Good Coil", d.get('description', d['tagline']), body, f"plans/{d['slug']}/", 'plans')
     html = html.replace('<main id="main" class="wrap">', '<main id="main" class="gd">', 1)
     B.write(f"plans/{d['slug']}/index.html", html)
@@ -377,11 +377,13 @@ def page(d):
 
 def index_page(guides):
     cards = ''.join(f'''<li><a href="{g['slug']}/"><img src="../assets/img/{e(g['image'])}" alt="" width="848" height="1424" loading="lazy"><span class="eyebrow">{e(g['eyebrow'].split(' · ')[-1])}</span><h2>{e(g['name'])}</h2><p><em>{e(g['tagline'])}</em></p></a></li>''' for g in guides)
-    body = f'''  <section class="page-head"><span class="eyebrow"><span class="little-dot"></span>The Good Coil</span><h1>Hair edits</h1>
+    body = f'''  <section class="page-head"><span class="eyebrow"><span class="little-dot"></span>The Good Coil</span><h1>Hair plans</h1>
   <p>{len(guides)} guides: what is going on, what to do each week, and what to look for on a label. Steps are jobs, not brands, so you can follow them with what you already own.</p></section>
+  <section class="edits-hl"><span class="eyebrow">Edits</span><h2>Quick edits</h2><p>Short, hand-picked shortlists you can shop in one go. The first one, The Good Coil picks, is coming soon.</p></section>
+  <h2 class="plans-h">Plans</h2>
   <ul class="plan-cards">{cards}</ul>
   <p class="fine">These are guides to cosmetic hair care, not medical advice. For hair loss, scalp conditions or allergies, talk to a dermatologist or doctor.</p>'''
-    B.write('plans/index.html', B.shell('../', 'Hair edits · The Good Coil', f'{len(guides)} hair-care guides from The Good Coil: edges, length retention, moisture, shine, wash and goes and winter care.', body, 'plans/', 'plans'))
+    B.write('plans/index.html', B.shell('../', 'Hair plans · The Good Coil', f'{len(guides)} hair-care guides from The Good Coil: edges, length retention, moisture, shine, wash and goes and winter care.', body, 'plans/', 'plans'))
 
 REDIRECTS = {'healthy-edges': 'edge-growth-plan', 'deep-moisture-protein-balance': 'moisture-and-protein', 'mega-growth-retention': 'mega-growth-and-retention'}
 
