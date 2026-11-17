@@ -240,6 +240,17 @@ def build():
         B.write(f'groups/{family_slug(family)}/index.html', page(family, fam, ids))
         made.append((family, family_slug(family), len(fam)))
     built = made
+    # Diagnostics for the build log: which ingredients sit in no family, and which family names have no row.
+    inf = {gid for r in rows if (r.get('ingredient_family') or '').strip() in LIVE for gid, _ in parse_members(r.get('linked_inci_ids')) if gid}
+    free = [i for i in B.ing if i['id'] not in inf]
+    print('### Ingredients in no family page (id | page name | category)\n' + '\n'.join(
+        f"- {i['id']} | {i['_title']} | {(i.get('category') or '').strip()}" for i in free) + '\n')
+    miss = []
+    for r in rows:
+        for gid, nm in parse_members(r.get('linked_inci_ids')):
+            if not (ids.get(gid) if gid else None) and not B.lookup(nm):
+                miss.append(f"- {r.get('ingredient_family')}: {nm}")
+    print('### Family names with no ingredient row\n' + ('\n'.join(miss) or '- none') + '\n')
     if made:
         index_page(made)
         print('### Ingredient family pages\n' + '\n'.join(
