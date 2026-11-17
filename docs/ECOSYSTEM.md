@@ -5,7 +5,7 @@ Quiz (thegoodcoil.com) -> Your result + matching Hair Plan (library) -> Products
 
 | Site | Job | The one action |
 |---|---|---|
-| thegoodcoil.com | Discover your hair. Sell the $5-$25 guides. | Take the Hair Quiz (https://thegoodcoil.com/routine-builder) |
+| thegoodcoil.com | Discover your hair. Sell the $5-$25 guides. | Take the Hair Quiz (https://thegoodcoil.com/what-does-my-hair-need) |
 | library.thegoodcoil.com | The quiz's next step: plan, products, ingredients | Save the plan to JARA |
 | itsjara.com | Keep the record | Try JARA free |
 
@@ -13,12 +13,12 @@ Library destinations: My Hair Plans, Product Finder, Ingredient Guide (nav label
 All three sites carry the 32px top bar: The Good Coil | Ingredient Library | JARA Hair Tracker.
 
 ## UTM rules
-`utm_source` = the site the link is on (library, goodcoil, jara). `utm_medium` = where on the page (utility_bar, nav_cta, plan_cta, plan_resource, quiz_results, footer, home_banner, label_decoder). `utm_campaign` = the goal (jara_beta, routine_quiz, ecosystem, ebook, jara_freebie). `utm_content` = plan or section. The library does this already (see `B.utm` in scripts/build.py).
+`utm_source` = the site the link is on (library, goodcoil, jara). `utm_medium` = where on the page (utility_bar, nav_cta, plan_cta, plan_resource, quiz_results, footer, home_banner, label_decoder). `utm_campaign` = the goal (jara_beta, hair_quiz, ecosystem, ebook, jara_freebie). `utm_content` = plan or section. The library does this already (see `B.utm` in scripts/build.py).
 
 ## Email system (set up once in one provider; every form sends a `source` tag)
 | Entry | Tag | First email | Next action |
 |---|---|---|---|
-| Routine Quiz result | quiz_result + hair profile | Your routine + your plan link | Open the plan, then "Try JARA free" |
+| Hair quiz result | quiz_result + hair profile | Your routine + your plan link | Open the plan, then "Try JARA free" |
 | Free JARA tracker | jara_freebie | The printable + how to start | Day 3: try JARA free (log last wash day) |
 | Wash and Go Guide ($10) | buyer_washngo | Download + receipt | Day 2: the matching plan; Day 5: JARA |
 | JARA purchase | jara_buyer | Welcome + how to log a first wash day | Day 7: monthly photo reminder |
@@ -32,9 +32,9 @@ Studio artwork gets its own page so it is not mixed in with hair tools.
 ## Prompt for the Hostinger AI (thegoodcoil.com)
 Paste this as-is:
 
-> I run three connected sites: thegoodcoil.com (this one), library.thegoodcoil.com and itsjara.com. Please make this site the "discover" front door of one simple path: Routine Builder quiz -> Library hair plan -> Products and ingredients -> Track in JARA. Keep our brand: warm paper background (#F8F7F2), ink text (#432731), cobalt buttons (#2548D7), citrus accent (#DCF473), blue mist (#DCE6F0), Manrope for text and Instrument Serif italic for big headlines. Lots of whitespace, pill-shaped buttons, no popups on first load.
+> I run three connected sites: thegoodcoil.com (this one), library.thegoodcoil.com and itsjara.com. Please make this site the "discover" front door of one simple path: Hair quiz (what does my hair need?) -> Library hair plan -> Products and ingredients -> Track in JARA. Keep our brand: warm paper background (#F8F7F2), ink text (#432731), cobalt buttons (#2548D7), citrus accent (#DCF473), blue mist (#DCE6F0), Manrope for text and Instrument Serif italic for big headlines. Lots of whitespace, pill-shaped buttons, no popups on first load.
 > 1. Add a 32px bar at the very top of every page with three links: "The Good Coil" -> https://thegoodcoil.com, "Ingredient Library" -> https://library.thegoodcoil.com?utm_source=goodcoil&utm_medium=utility_bar&utm_campaign=ecosystem, "JARA Hair Tracker" -> https://itsjara.com?utm_source=goodcoil&utm_medium=utility_bar&utm_campaign=jara_beta.
-> 2. Homepage order: (a) hero with one main button, "Take Your Hair Quiz" (it goes to https://thegoodcoil.com/routine-builder); (b) two short lines on our approach; (c) "Discover your hair": featured quizzes; (d) "Your hair routine": introduce the Library with a button to https://library.thegoodcoil.com?utm_source=goodcoil&utm_medium=home_section&utm_campaign=library; (e) "Track your progress": introduce JARA with a "Try JARA free" button to https://itsjara.com?utm_source=goodcoil&utm_medium=home_section&utm_campaign=jara_beta; (f) "Hair-care resources": ebooks and a link to Studio; (g) real reviews only (leave this out until we have real ones); (h) a final JARA call to action.
+> 2. Homepage order: (a) hero with one main button, "Take Your Hair Quiz" (it goes to https://thegoodcoil.com/what-does-my-hair-need); (b) two short lines on our approach; (c) "Discover your hair": featured quizzes; (d) "Your hair routine": introduce the Library with a button to https://library.thegoodcoil.com?utm_source=goodcoil&utm_medium=home_section&utm_campaign=library; (e) "Track your progress": introduce JARA with a "Try JARA free" button to https://itsjara.com?utm_source=goodcoil&utm_medium=home_section&utm_campaign=jara_beta; (f) "Hair-care resources": ebooks and a link to Studio; (g) real reviews only (leave this out until we have real ones); (h) a final JARA call to action.
 > 3. Quiz results: show the hair profile first. Then ask for email to send the full routine plus the link to the matching Library hair plan. On the confirmation view show two cards: "Master Your Styling: The Wash & Go Guide ($10)" -> https://thegoodcoil.com/wash-and-go-guide and "Track Your Results in JARA" -> https://itsjara.com/try?utm_source=goodcoil&utm_medium=quiz_results&utm_campaign=jara_beta. Save the email with a tag "source=quiz_result" and the hair profile answers.
 > 4. Create a "Studio" page and menu link for all $5-$25 artwork. Remove artwork cards from the quiz and ebook pages. If checkout allows it, add a $5 wallpaper order bump checkbox at the $10 ebook checkout.
 > 5. After every ebook purchase, the confirmation page and email should link to one next step: the matching Library plan, then JARA.

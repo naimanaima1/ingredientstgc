@@ -186,7 +186,7 @@ def build(out='', root='', quiet=True):
       {controls}
     </div>
     <div class="band-card">{card}
-    <p class="bridge"><span>Not sure what your hair needs right now?</span> <a href="{B.utm(B.QUIZ_URL, 'label_decoder', 'routine_quiz')}">Take the 2-minute Routine Quiz &rarr;</a></p></div>
+    <p class="bridge"><span>Not sure what your hair needs right now?</span> <a href="{B.utm(B.QUIZ_URL, 'label_decoder', 'hair_quiz')}">Take the 2-minute hair quiz &rarr;</a></p></div>
   </div>
 </section>
 

@@ -291,7 +291,7 @@ def ordinal(n):
 
 ICON = '<svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'
 
-QUIZ_URL = 'https://thegoodcoil.com/routine-builder'
+QUIZ_URL = 'https://thegoodcoil.com/what-does-my-hair-need'
 def utm(url, medium, campaign='jara_beta', content=''):
     """Add tracking to links that leave this site, so each other site can see where a visit came from."""
     base, _, frag = url.partition('#')
@@ -326,7 +326,7 @@ def shell(r, title, desc, body, path, current=''):
     <a href="{r}ingredients/" class="hide-sm"{cur('ingredients')}>Ingredients</a>
     <a href="{r}products/" class="hide-sm"{cur('products')}>Products</a>
     <a href="{r}plans/" class="hide-sm"{cur('plans')}>Hair Plans</a>
-    <a class="nav-cta" href="{utm(QUIZ_URL, 'nav_cta', 'routine_quiz')}">Take Hair Quiz</a>
+    <a class="nav-cta" href="{utm(QUIZ_URL, 'nav_cta', 'hair_quiz')}">Take Hair Quiz</a>
   </nav>
 </header>
 <nav class="subnav" aria-label="Library sections"><a href="{r}#find">Label Decoder</a><a href="{r}ingredients/">Ingredients</a><a href="{r}products/">Products</a><a href="{r}plans/">Hair Plans</a></nav>
@@ -334,6 +334,7 @@ def shell(r, title, desc, body, path, current=''):
 {body}
 </main>
 <footer class="site-footer">
+  <form class="foot-search" action="{r}ingredients/" method="get" role="search"><label for="fq">Look up an ingredient</label><input id="fq" name="q" type="search" placeholder="Try glycerin, BTAC or shea" autocomplete="off"><button type="submit">Search</button></form>
   <div><a href="{r}" class="wordmark"><span class="brand-symbol" aria-hidden="true">◎</span> the<span class="brand-amp">good</span>coil</a><p>Good knowledge. Happy hair.<br>A journey that's yours.</p></div>
   <nav class="footer-links" aria-label="Footer"><a href="{r}ingredients/">All ingredients</a><a href="{r}plans/">Hair plans</a><a href="{r}products/">Products</a><a href="{r}properties/">By property</a><a href="{r}groups/">Ingredient families</a><a href="{r}about/">How we write</a><a href="{r}about/#affiliate">Affiliate disclosure</a><a href="{utm('https://thegoodcoil.com', 'footer', 'ecosystem')}">The Good Coil</a><a href="{utm('https://itsjara.com', 'footer')}">JARA hair journal</a></nav>
   <div class="footer-bottom"><span>© {datetime.date.today().year} The Good Coil</span><span>Descriptions, not verdicts: every head of hair is different.</span><span>Educational guidance, not medical advice.</span></div>
@@ -417,7 +418,7 @@ def ingredient_page(g):
     hair = col(g, 'hair_type_notes', 'hair_type_porosity_fit')
     if hair:
         sections.append(f'''<section class="section" id="hair">
-    <div class="intro"><span class="eyebrow">Hair types</span><h2>Notes for different hair</h2></div>
+    <div class="intro"><span class="eyebrow">Hair types</span><h2>Ideal for</h2></div>
     <div class="hair"><p>{e(hair)}</p><small>General patterns from our research, not rules. Hair of the same type can respond differently, so your own results count most.</small></div>
   </section>''')
 
@@ -469,12 +470,19 @@ def ingredient_page(g):
     <nav class="related" aria-label="Related ingredients">{rel}</nav>
   </section>''')
 
+    ORDER = ['id="why"', 'id="research"', 'id="good"', 'id="across"', 'id="hair"']
+    def rank(h):
+        for k, o in enumerate(ORDER):
+            if o in h[:80]:
+                return k
+        return len(ORDER)
+    sections.sort(key=rank)
     links = ''.join([
         '<a href="#why">Why your curls care</a>' if deep else '',
-        '<a href="#good">Good to know</a>' if (g.get('buildup_sensitivity_notes') or howto) else '',
-        '<a href="#hair">Hair types</a>' if hair else '',
         '<a href="#research">The research</a>' if evid else '',
+        '<a href="#good">Good to know</a>' if (g.get('buildup_sensitivity_notes') or howto) else '',
         f'<a href="#across">Found in {len(hits)} product{"s" if len(hits) != 1 else ""}</a>' if hits else '',
+        '<a href="#hair">Ideal for</a>' if hair else '',
     ])
     names = []
     for n in [g['inci_name']] + g['_aliases']:
@@ -525,6 +533,7 @@ def index_page(counts):
 const n=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
 function run(){{const v=n(q.value);let k=0;list.forEach(li=>{{const ok=(!v||li.dataset.q.includes(v))&&(!tag||li.dataset.tags.split('|').includes(tag));li.hidden=!ok;if(ok)k++}});count.textContent=k+' of {len(ing)} ingredients';none.hidden=k>0}}
 q.addEventListener('input',run);chips.forEach(c=>c.addEventListener('click',()=>{{tag=c.dataset.tag;chips.forEach(x=>x.setAttribute('aria-pressed',x===c));run()}}));
+const pq=new URLSearchParams(location.search).get('q');if(pq){{q.value=pq;run()}}
 if(location.hash==='#find')q.focus();}})();
 </script>'''
     write('ingredients/index.html', shell('../', 'All ingredients · The Good Coil Library', 'A library of hair-care ingredients, each described by what it is and what it does, with notes for different hair. No scores, no verdicts.', body, 'ingredients/', 'ingredients'))
@@ -627,9 +636,14 @@ def checks(counts):
                 unknown[k] = unknown.get(k, 0) + 1
     recognised = sum(1 for _, items in labels for t in items if lookup(t))
     total = sum(len(items) for _, items in labels)
+    names = [f"- {i['id']} {i.get('inci_name','')}: H1 \"{col(i, 'display_name') or (i.get('common_name') or '').strip() or i['_title']}\" (from {'display_name' if col(i, 'display_name') else 'common_name'}); sheet columns: {len(i)}" for i in ing if 'Behentrim' in i['inci_name'] or 'BTMS' in (i.get('common_name') or '')]
+    cats = {}
+    for i in ing:
+        cats.setdefault((i.get('category') or '').strip() or '(none)', []).append(i['id'])
+    catlines = [f'- {c}: {len(v)}' for c, v in sorted(cats.items(), key=lambda kv: -len(kv[1]))]
     report = ['## Build report', f'{len(ing)} ingredients, {len(labels)} labels, {recognised} of {total} label entries recognised.', '',
-              '### Wording to review (not changed)'] + (notes or ['- none']) + ['', '### Most common label words without an ingredient row'] + \
-             [f'- {k} ({n})' for k, n in sorted(unknown.items(), key=lambda kv: -kv[1])[:25]]
+              '### Page names (sample)'] + names + ['', '### Ingredients per category'] + catlines + ['', '### Wording to review (not changed)'] + (notes or ['- none']) + ['', '### Most common label words without an ingredient row'] + \
+             [f'- {k} ({n})' for k, n in sorted(unknown.items(), key=lambda kv: -kv[1])[:60]]
     text = '\n'.join(report) + '\n'
     print(text)
     if os.environ.get('GITHUB_STEP_SUMMARY'):

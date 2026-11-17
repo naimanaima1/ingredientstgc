@@ -168,7 +168,7 @@ def jara_page():
     B.write('programs/jara-landing-test/index.html', html.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">', 1))
 
 def home_page():
-    q = 'https://thegoodcoil.com/routine-builder'
+    q = 'https://thegoodcoil.com/what-does-my-hair-need'
     body = f'''
 <section class="et-paper"><div class="et-in et-hero"><div>
 <span class="eyebrow">The Good Coil</span>
@@ -183,7 +183,7 @@ def home_page():
 
 <section class="et-paper" id="quiz"><div class="et-in"><span class="eyebrow">1 &middot; Discover your hair</span><h2>Start with a quiz.</h2>
 <div class="et-three">
-<div class="et-card"><h3>Routine Quiz</h3><p>Two minutes. Your hair profile and a routine to try first.</p><p style="margin-top:14px"><a class="et-btn" href="https://thegoodcoil.com/routine-builder">Start the quiz</a></p></div>
+<div class="et-card"><h3>Hair Quiz: what does my hair need?</h3><p>Two minutes. Your hair profile and a routine to try first.</p><p style="margin-top:14px"><a class="et-btn" href="https://thegoodcoil.com/what-does-my-hair-need">Start the quiz</a></p></div>
 <div class="et-card"><h3>Quiz slot 2</h3><p>Name and one-line promise to confirm.</p></div>
 <div class="et-card"><h3>Quiz slot 3</h3><p>Name and one-line promise to confirm.</p></div></div></div></section>
 
