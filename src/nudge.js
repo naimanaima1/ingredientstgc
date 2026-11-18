@@ -4,7 +4,7 @@
    and never on test or noindex pages. The wording matches the page:
      plan pages        → schedule this plan in JARA
      ingredient pages  → track how your hair responds to <ingredient>
-     everything else   → the free printable tracker
+     everything else   → try JARA free, printable as the backup
    Every link carries utm_medium=popup so visits show up separately in analytics. */
 (function () {
   var KEY = 'tgc_nudge';            // stores the time it was last shown or dismissed
@@ -50,11 +50,11 @@
       alt: 'Prefer paper? Get the free printable', altUrl: 'https://itsjara.com/free-hair-tracker'
     },
     general: {
-      eyebrow: 'Free printable',
-      head: 'Stop growing your hair <em>on memory</em>',
-      text: 'A free wash log, length chart and trim tracker. Print it, pin it up, and see what works.',
-      cta: 'Get the free tracker', url: 'https://itsjara.com/free-hair-tracker',
-      alt: 'Or try the JARA app free for 14 days', altUrl: 'https://itsjara.com/beta'
+      eyebrow: '',
+      head: 'Track your <em>hair journey</em> in JARA',
+      text: 'A hair journal for every wash, every product combo, and every inch you keep.',
+      cta: 'Try JARA free', url: 'https://itsjara.com/beta',
+      alt: 'Or grab the free printable tracker', altUrl: 'https://itsjara.com/free-hair-tracker'
     }
   }[kind];
 
@@ -86,7 +86,7 @@
     card.setAttribute('aria-label', 'JARA hair tracker');
     card.innerHTML =
       '<button class="nudge-x" type="button" aria-label="Close">\u00d7</button>' +
-      '<span class="eyebrow"><span class="little-dot"></span>' + COPY.eyebrow + '</span>' +
+      (COPY.eyebrow ? '<span class="eyebrow"><span class="little-dot"></span>' + COPY.eyebrow + '</span>' : '') +
       '<h2>' + COPY.head + '</h2>' +
       '<p>' + COPY.text + '</p>' +
       '<a class="btn nudge-go" href="' + link(COPY.url, 'primary') + '">' + COPY.cta + '</a>' +
