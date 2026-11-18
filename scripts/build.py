@@ -344,6 +344,7 @@ def shell(r, title, desc, body, path, current=''):
   <div class="footer-bottom"><span>© {datetime.date.today().year} The Good Coil</span><span>Descriptions, not verdicts: every head of hair is different.</span><span>Educational guidance, not medical advice.</span></div>
 </footer>
 <script src="{r}assets/tips.js" data-root="{r}" defer></script>
+<script src="{r}assets/nudge.js" defer></script>
 </body>
 </html>
 '''
@@ -667,6 +668,7 @@ def main():
     index_page(counts)
     tips_json()
     write('assets/tips.js', open(os.path.join(ROOT, 'src', 'tips.js'), encoding='utf-8').read())
+    write('assets/nudge.js', open(os.path.join(ROOT, 'src', 'nudge.js'), encoding='utf-8').read())
     write('assets/guide.js', open(os.path.join(ROOT, 'src', 'guide.js'), encoding='utf-8').read())
     import groups as GRP_PRE
     GRP_PRE.build()
