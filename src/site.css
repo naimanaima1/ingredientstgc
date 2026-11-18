@@ -1023,3 +1023,17 @@ a.gp-ing:hover{background:var(--ink);color:var(--paper)}
 .edits-hl{background:var(--blue-mist);padding:22px 24px;margin:0 0 36px;max-width:60ch}
 .edits-hl h2{margin:6px 0 8px;font-size:22px;letter-spacing:-.02em}.edits-hl p{margin:0;font-size:16px;line-height:1.6}
 .plans-h{font-size:22px;letter-spacing:-.02em;margin:0 0 16px}
+
+/* JARA nudge (src/nudge.js): small slide-in card, bottom right; full-width sheet on phones */
+.nudge{position:fixed;right:24px;bottom:24px;z-index:50;width:360px;max-width:calc(100vw - 32px);background:var(--paper);border:1px solid var(--ink);box-shadow:6px 6px 0 var(--citrus);padding:22px 22px 18px;transform:translateY(24px);opacity:0;transition:transform .3s ease,opacity .3s ease}
+.nudge.in{transform:none;opacity:1}
+.nudge .eyebrow{font-size:11px;color:var(--cobalt);margin-right:30px}
+.nudge h2{font-size:22px;line-height:1.15;letter-spacing:-.03em;margin:10px 0 8px;padding-right:24px}
+.nudge h2 em{color:var(--cobalt)}
+.nudge p{font-size:14px;line-height:1.55;color:var(--muted)}
+.nudge .btn{display:block;text-align:center;margin-top:14px;background:var(--ink);color:var(--paper);padding:12px 18px;border-radius:999px;font-weight:700;font-size:15px}
+.nudge .btn:hover{background:var(--cobalt)}
+.nudge-alt{display:block;text-align:center;margin-top:10px;font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.nudge-x{position:absolute;top:10px;right:10px;width:36px;height:36px;border:0;background:none;font-size:24px;line-height:1;color:var(--ink);cursor:pointer;border-radius:50%}
+.nudge-x:hover{background:var(--blue-mist)}
+@media(max-width:600px){.nudge{right:0;left:0;bottom:0;width:auto;max-width:none;border-width:1px 0 0;box-shadow:0 -4px 0 var(--citrus);padding:18px 20px 16px}.nudge h2{font-size:19px}}
