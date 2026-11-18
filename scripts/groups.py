@@ -267,7 +267,7 @@ def lvl_badge(r, lv, sc):
     if g in lv:
         top = max(lv.values())
         bg = tone(lv[g], top)[0]
-        return f'<span class="gp-lvl" style="border-color:{bg}">Level {lv[g]} of {top} · {e(sc["axis"])}</span>'
+        return f'<span class="gp-lvl" style="--c:{bg}">Level {lv[g]} of {top} · {e(sc["axis"])}</span>'
     return '<span class="gp-lvl is-support">Supporting ingredient · no level</span>'
 
 
@@ -301,7 +301,7 @@ def page(family, rows, ids):
         top = max(lv.values()) if lv else 0
         if top:
             segs = ''.join(
-                f'<li><a href="#{family_slug(r["sub_classification"])}" style="border-color:{tone(lv[r["group_id"]], top)[0]}"><b>Level {lv[r["group_id"]]}</b><span>{e(short_name(r["sub_classification"]))}</span></a></li>'
+                f'<li><a href="#{family_slug(r["sub_classification"])}" style="--c:{tone(lv[r["group_id"]], top)[0]}"><b>Level {lv[r["group_id"]]}</b><span>{e(short_name(r["sub_classification"]))}</span></a></li>'
                 for r in rows if r.get('group_id') in lv)
             dial = f'''<div class="gp-scale"><p class="gp-scale-t">{e(sc["axis"])}, from level 1 to level {top}</p>
     <ol>{segs}</ol><p class="gp-scale-ends"><span>&larr; {e(sc["low"])}</span><span>{e(sc["high"])} &rarr;</span></p></div>'''
