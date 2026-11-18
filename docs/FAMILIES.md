@@ -61,3 +61,17 @@ Zinc Pyrithione · Sodium Cocoyl Isethionate · Decyl Glucoside.
 3. Conditioning Agents, Humectants, Film formers, Heat protectant.
 4. Peptides vs protein vs bond repair explainer.
 5. Hydration / Moisture / "What your hair needs" quiz-style page.
+
+## Ingredients that belong in two families (18 Nov)
+
+Rule: **an ingredient can be listed in every family where it does real work, but it has one "home" family.**
+- The home page tells the full story. The other page shows it as a short row with a link ("See Ceramides for how these fit together").
+- The build already allows this: `linked_inci_ids` can repeat an ID across families (today: fatty alcohols, polyquats, phytosphingosine, squalane, creatine, gluconolactone).
+- Pick the home by *what the ingredient does to the hair*, not where it is applied. Examples: Cetearyl alcohol -> Conditioning Agents (Alcohols page explains fatty vs drying). Polyquaterniums -> Film Formers. Squalane -> Lipids. Creatine -> Bond Builders (also listed under Proteins so people looking for protein find it). Gluconolactone -> Humectants (Scalp Actives and Chelators link back).
+- Peptides vs Scalp Actives: peptides stay on the Peptides page; Scalp Actives only lists a peptide if it is used for scalp care, with a link.
+
+## Pages to prep next
+
+**Bond Builders** (sheet row GRP-017, ING-017/018/019, K18 peptide on Peptides). Best as one explainer: protein vs peptide vs bond builder, who each suits. Needs: ING-018/019 ingredient pages checked, one product example each.
+
+**Antioxidants** (new family, not in the sheet yet). Candidates already in the database: Tocopherol (ING-066), Camellia Sinensis / green tea (ING-049), Rosemary leaf extract (ING-091). Likely missing: ascorbic acid and derivatives, ferulic acid, resveratrol, BHT. Keep the copy to what they do in a formula (protect oils and the formula from going off; skin-care antioxidant role) and avoid growth or "anti-ageing for hair" claims until reviewed. Green tea and rosemary keep Scalp Actives as a second home.
