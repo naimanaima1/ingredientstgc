@@ -51,7 +51,42 @@ def jara(where, r='../../', over=None):
         steps = (f'<ol class="jara-next" aria-label="What to do next"><li>Follow the plan</li>'
                  f'<li><a href="{r}products/">Explore products</a></li><li>Track it in JARA</li></ol>')
         return jara_card(r, head, text, 'jara-save', 'Try JARA free', steps)
-    return jara_card(r, head, text, 'jara-end')
+    return track_choice(r)
+
+
+# How to keep going after reading a plan: the matching care plan in JARA (when there is one)
+# and a free printable to do it by hand. Printables live on itsjara.com behind a short email
+# form; plans without their own printable get the wash day toolkit.
+TRACK = {
+    'winter-arc-lock-in': ('Winter Moisture & Softness', ('Winter Arc Lock-In', '/winter-arc-lock-in',
+        'A free 4-page printable: the four locks, a 12-week tracker and photo check-ins.')),
+    'mega-growth-and-retention': ('Length Retention', ('Length Check Challenge', '/length-check-challenge',
+        'A free 4-page printable: five check-ins, back-view landmarks and a chart of the length you kept.')),
+    'moisture-and-protein': ('Damage Recovery & Strengthening', None),
+}
+TOOLKIT = ('wash day toolkit', '/free-hair-tracker',
+           'A free printable wash log, length chart and trim tracker. Print it and fill it in after each wash.')
+
+
+def track_choice(r):
+    slug = SLUG[0]
+    plan, sheet = TRACK.get(slug, (None, None))
+    name, path, blurb = sheet or TOOLKIT
+    if plan:
+        app = (f'Choose the <b>{e(plan)}</b> care plan in JARA (Me → Reminders) and it reminds you when '
+               'treatments are due. Log each wash in seconds and see which days went best.')
+    else:
+        app = ('Log each wash day with your products and a photo, set reminders for this plan\'s steps, '
+               'and JARA shows you which routine gives you your best days.')
+    go = B.utm(JARA_URL + '/try', 'plan_end', content=f'{slug}_app')
+    dl = B.utm(JARA_URL + path, 'plan_end', 'printables', f'{slug}_print')
+    return f'''<aside class="jara track" aria-label="Track this plan"><div class="track-in">
+    <h2>Track this plan <em>your way</em></h2>
+    <div class="track-opts">
+      <div class="track-opt track-app"><span class="eyebrow">In the app</span><h3>Track it in JARA</h3><p>{app}</p><a class="btn" href="{go}">Try JARA free</a></div>
+      <div class="track-opt track-hand"><span class="eyebrow">On paper</span><h3>Track it by hand</h3><p>{e(blurb)}</p><a class="btn btn-line" href="{dl}">Get the free {e(name)}</a></div>
+    </div>
+  </div></aside>'''
 
 
 def explainer(d, key, id_, cls=''):
