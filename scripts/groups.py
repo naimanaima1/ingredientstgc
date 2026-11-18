@@ -231,7 +231,7 @@ def paragraphs(cell):
 # listed in `levels` are shown as supporting ingredients, with no level.
 SCALES = {
     'Surfactants & Cleansers': {'axis': 'Cleansing strength', 'low': 'Gentlest', 'high': 'Strongest',
-                                'levels': {'GRP-016': 1, 'GRP-024': 2, 'GRP-023': 3, 'GRP-015': 4}},
+                                'levels': {'GRP-016': 1, 'GRP-023': 2, 'GRP-015': 3}},
     'Silicones': {'axis': 'Buildup', 'low': 'Rinses out', 'high': 'Stays until you clarify',
                   'levels': {'GRP-001': 1, 'GRP-002': 2, 'GRP-003': 3, 'GRP-004': 4}},
     'Alcohols': {'axis': 'Drying', 'low': 'Softening', 'high': 'Drying',
@@ -243,8 +243,7 @@ SCALES = {
 }
 # Catalog products shown as examples under a group (owner's picks, 18 Nov).
 EXAMPLES = {
-    'GRP-016': ['TGC-096'],
-    'GRP-024': ['TGC-154'],
+    'GRP-016': ['TGC-096', 'TGC-154'],
     'GRP-023': ['TGC-001', 'TGC-135'],
     'GRP-015': ['TGC-024', 'TGC-036'],
 }
