@@ -2,13 +2,13 @@
  "id": "GUIDE-WINTER",
  "slug": "winter-arc-lock-in",
  "name": "Winter arc lock-in",
- "tagline": "Four things to lock in before the cold gets to your hair.",
+ "tagline": "Five things to lock in before the cold gets to your hair.",
  "image": "style-twists.jpg",
  "image_alt": "Chunky two-strand twists parted off the hairline, resting over one shoulder.",
  "eyebrow": "Guide · winter hair care",
- "go": "Start with the four locks",
- "description": "Four winter hair-care moves: a calm scalp routine, ceramides, warm conditioner, and getting your vitamin D, iron and ferritin checked.",
- "intro": "Cold air outside, dry heat inside, hats and scarves rubbing your hair all day. Winter is a lot. This plan is four simple locks to go all in on this season, one at a time.",
+ "go": "Start with the five locks",
+ "description": "Five winter hair-care moves: a calm scalp routine, a gentler cleanser, ceramides, warm conditioner, and getting your vitamin D, iron and ferritin checked.",
+ "intro": "Cold air outside, dry heat inside, hats and scarves rubbing your hair all day. Winter is a lot. This plan is five simple locks to go all in on this season, one at a time.",
  "order": 6,
  "causes": {
   "title": "Why winter is hard on hair",
@@ -33,18 +33,18 @@
    [
     "Less of everything else",
     "Less sleep, more stress, a heavier schedule.",
-    "Your body and your hair feel it too, which is why the fourth lock is a check-up."
+    "Your body and your hair feel it too, which is why the last lock is a check-up."
    ]
   ]
  },
  "routine": {
-  "title": "The four locks",
-  "jump": "The four locks",
-  "intro": "You don't have to do all four on day one. Start with the one that feels easiest and add the next.",
+  "title": "The five locks",
+  "jump": "The five locks",
+  "intro": "You don't have to do all five on day one. Start with the one that feels easiest and add the next.",
   "washes": [
    {
     "title": "Lock it in",
-    "sub": "Four steps",
+    "sub": "Five steps",
     "steps": [
      [
       "Look after your scalp",
@@ -60,6 +60,24 @@
         [
          "The Ordinary scalp serum",
          "Green tea serum"
+        ]
+       ]
+      }
+     ],
+     [
+      "Wash with a gentler cleanser",
+      "Cold air and dry heat already pull moisture out of your hair, and a strong shampoo adds to that. For your regular winter washes, look for a level 1 cleanser, one built on mild cleansers like isethionates, taurates or glucosides. Save stronger ones for an occasional reset. Remember that \"sulfate-free\" doesn't always mean gentle, so check which cleanser comes first on the label.",
+      {
+       "note": "If your hair feels coated and your products stop working, a stronger clarifying wash now and then is fine. Just follow it with a deep conditioner.",
+       "link": [
+        "See the cleanser levels, from 1 (gentlest) to 4 (strongest)",
+        "groups/surfactants-cleansers/"
+       ],
+       "label": "A level 1 shampoo to try",
+       "use": [
+        [
+         "TGC-096",
+         "Level 1 shampoo"
         ]
        ]
       }

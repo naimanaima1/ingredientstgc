@@ -12,7 +12,8 @@ e = B.e
 
 # Families published. Add a name here once its rows have been reviewed and it has a
 # how-to-spot list.
-LIVE = ['Silicones', 'Alcohols', 'Proteins', 'Scalp Actives', 'Peptides', 'Surfactants & Cleansers']
+LIVE = ['Silicones', 'Alcohols', 'Proteins', 'Scalp Actives', 'Peptides', 'Surfactants & Cleansers',
+        'Conditioning Agents', 'Humectants', 'Ceramides', 'Lipids', 'Oils & Butters', 'Film Formers']
 
 INTRO = {
     'Silicones': (
@@ -37,6 +38,24 @@ INTRO = {
     'Surfactants & Cleansers': (
         'Cleansing is a dial, not an all-or-nothing choice: gentle non-sulfate cleansers protect weekly moisture, while sulfates and chelators reset heavy buildup.',
         ''),
+    'Conditioning Agents': (
+        'Slip comes from conditioning agents: cationic agents like BTMS smooth and detangle, fatty alcohols make the cream, and polyquats add a light conditioning film.',
+        ''),
+    'Humectants': (
+        'Humectants pull water toward your hair: light sugars hydrate without stickiness, classics like glycerin do the heavy lifting, and plant gels add slip and hold.',
+        ''),
+    'Ceramides': (
+        'Ceramides are lipids that sit between the cuticle scales: named ceramides do the work, building blocks like phytosphingosine support them, and pseudo-ceramides are look-alikes.',
+        ''),
+    'Lipids': (
+        'Lipids are the fats in and on hair: ceramides are one kind, cholesterol and phospholipids are others, and none of them is just another name for a plant oil.',
+        ''),
+    'Oils & Butters': (
+        'Oils and butters seal moisture in: light oils soften without weight, richer oils cushion dry strands, and butters and occlusives lock it in until you wash.',
+        ''),
+    'Film Formers': (
+        'Film formers wrap hair in a thin, flexible layer: conditioning polyquats add slip and frizz control, hold polymers set the curl, and gel thickeners give a gel its body.',
+        ''),
 }
 
 # Callouts the owner asked for on specific family pages. Not rendered yet: they go in
@@ -54,9 +73,28 @@ NOTES = {
     ],
 }
 
+NOTES.update({
+    'Humectants': [
+        'Humectants work with the air around you. In high humidity they can add frizz, and in very dry air glycerin can pull moisture out of your hair. Seal with a leave-in or oil, and check the forecast on wash day.',
+    ],
+    'Ceramides': [
+        'A front-of-pack "ceramide complex" does not tell you which ceramides are inside. Look for the specific names on the label: Ceramide NP, AP or EOP.',
+    ],
+    'Lipids': [
+        'Ceramides are one type of lipid. Cholesterol and phospholipids are other types. They are different from plant oils, and a formula can combine them.',
+    ],
+    'Conditioning Agents': [
+        'Behentrimonium Methosulfate has "sulfate" in its name but is a conditioning agent, not a sulfate cleanser.',
+    ],
+})
+
 # Links between families: (text before, link text, family slug)
 CROSS = {
     'Scalp Actives': ('Looking for Procapil™, Capixyl™, or Copper Peptides? ', 'Explore our Peptides guide', 'peptides'),
+    'Ceramides': ('Ceramides are one kind of lipid. ', 'Explore Lipids', 'lipids'),
+    'Lipids': ('Looking at plant oils? ', 'Explore Oils & Butters', 'oils-butters'),
+    'Conditioning Agents': ('Fatty alcohols and polyquats have their own pages: ', 'Alcohols', 'alcohols'),
+    'Film Formers': ('Plant gels sit under ', 'Humectants', 'humectants'),
 }
 
 HOW_TO_SPOT = {
@@ -91,6 +129,39 @@ HOW_TO_SPOT = {
         ('Procapil™ and Capixyl™', 'Brand names for scalp complexes. On a label you will usually see the peptide name instead, sometimes with the brand in brackets.'),
         ('sh-Oligopeptide-78', 'The bond-repair peptide behind K18. It is a repair ingredient for the strand, not a scalp one.'),
         ('Where it sits in the list', 'Peptides are used in small amounts, so low on the list is normal. Position alone does not tell you whether a product is any good.'),
+    ],
+    'Conditioning Agents': [
+        ('Starts with Behentrimonium or Cetrimonium', 'The cationic conditioning agents. Behentrimonium Methosulfate is not a sulfate cleanser.'),
+        ('Ends in -yl alcohol', 'Cetyl, Cetearyl, Stearyl and Behenyl Alcohol. The creamy base of a conditioner.'),
+        ('Starts with Polyquaternium-', 'Conditioning polymers. The number tells you which one.'),
+    ],
+    'Humectants': [
+        ('Glycerin, Panthenol, Hyaluronic Acid or Sodium Hyaluronate', 'The classic humectants.'),
+        ('Betaine, Trehalose', 'The light, non-sticky ones.'),
+        ('Ends in -diol or -glycol', 'Propanediol, Butylene Glycol. Lightweight carriers that also hold water.'),
+        ('Gums, extracts and seeds', 'Chia, Xanthan Gum, Pectin, Marshmallow Root, Slippery Elm. The plant gels.'),
+    ],
+    'Ceramides': [
+        ('Ceramide NP, AP, EOP', 'The named ceramides. Older labels may call them Ceramide 3, 6-II and 1.'),
+        ('Phytosphingosine', 'A building block that sits next to ceramides in fuller formulas.'),
+        ('Ends in -amide with Stearamide or Lauramide', 'Pseudo-ceramides, the look-alikes.'),
+    ],
+    'Lipids': [
+        ('Cholesterol', 'Written plainly.'),
+        ('Phospholipids, Lecithin, Hydrogenated Lecithin', 'Lipids that come from lecithin.'),
+        ('Linoleic, Oleic, Stearic Acid', 'Fatty acids, often listed one by one.'),
+        ('Squalane', 'A lightweight, stable lipid.'),
+    ],
+    'Oils & Butters': [
+        ('Contains Oil or Seed Oil', 'Grapeseed, Sweet Almond, Olive, Pumpkin Seed. The Latin name is on the label, with the common name sometimes in brackets.'),
+        ('Contains Butter', 'Shea (Butyrospermum Parkii) Butter is the common one.'),
+        ('Paraffinum Liquidum', 'Mineral oil. It sits on top of the strand.'),
+        ('Where it sits in the list', 'A butter or oil near the top is a big part of the formula. Near the bottom it is a trace.'),
+    ],
+    'Film Formers': [
+        ('Starts with Polyquaternium-', 'Conditioning polymers. Polyquaternium-69 is the hold type.'),
+        ('PVP', 'A classic styling resin.'),
+        ('Carbomer', 'The gel thickener.'),
     ],
     'Surfactants & Cleansers': [
         ('Ends in -sulfate', 'Sodium Lauryl Sulfate and Sodium Laureth Sulfate. Note that Methosulfate, as in Behentrimonium Methosulfate, is a conditioning ingredient, not a cleanser.'),
@@ -156,9 +227,84 @@ def paragraphs(cell):
     return parts
 
 
+# Families whose sections run along a scale. Section order is the scale order. Group ids not
+# listed in `levels` are shown as supporting ingredients, with no level.
+SCALES = {
+    'Surfactants & Cleansers': {'axis': 'Cleansing strength', 'low': 'Gentlest', 'high': 'Strongest',
+                                'levels': {'GRP-016': 1, 'GRP-024': 2, 'GRP-023': 3, 'GRP-015': 4}},
+    'Silicones': {'axis': 'Buildup', 'low': 'Rinses out', 'high': 'Stays until you clarify',
+                  'levels': {'GRP-001': 1, 'GRP-002': 2, 'GRP-003': 3, 'GRP-004': 4}},
+    'Alcohols': {'axis': 'Drying', 'low': 'Softening', 'high': 'Drying',
+                 'levels': {'GRP-005': 1, 'GRP-006': 2, 'GRP-007': 3}},
+    'Proteins': {'axis': 'Weight', 'low': 'Lightest', 'high': 'Heaviest',
+                 'levels': {'GRP-008': 1, 'GRP-009': 2, 'GRP-010': 3}},
+    'Oils & Butters': {'axis': 'Richness', 'low': 'Lightest', 'high': 'Richest',
+                       'levels': {'GRP-040': 1, 'GRP-041': 2, 'GRP-042': 3}},
+}
+# Catalog products shown as examples under a group (owner's picks, 18 Nov).
+EXAMPLES = {
+    'GRP-016': ['TGC-096'],
+    'GRP-024': ['TGC-154'],
+    'GRP-023': ['TGC-001', 'TGC-135'],
+    'GRP-015': ['TGC-024', 'TGC-036'],
+}
+STOPS = [('#DCF473', '#432731'), ('#DCE6F0', '#432731'), ('#2548D7', '#fff'), ('#432731', '#fff')]
+
+
+def tone(level, top):
+    i = 0 if top <= 1 else round((level - 1) / (top - 1) * 3)
+    return STOPS[i]
+
+
+def short_name(sub):
+    return re.sub(r'\s*\(.*$', '', sub).strip()
+
+
+def lvl_badge(r, lv, sc):
+    if not sc:
+        return ''
+    g = r.get('group_id')
+    if g in lv:
+        top = max(lv.values())
+        bg, fg = tone(lv[g], top)
+        return f'<span class="gp-lvl" style="background:{bg};color:{fg}">Level {lv[g]} of {top} · {e(sc["axis"])}</span>'
+    return '<span class="gp-lvl is-support">Supporting ingredient · no level</span>'
+
+
+def example_html(gid):
+    ids_ = EXAMPLES.get(gid)
+    if not ids_:
+        return ''
+    byid = {p['id']: p for p in B.products}
+    links = []
+    for i in ids_:
+        p = byid.get(i)
+        if not p:
+            continue
+        nm = (p['name'] or '').strip()
+        br = (p.get('brand') or '').strip()
+        full = nm if nm.lower().startswith(br.lower()) else f'{br} {nm}'.strip()
+        links.append(f'<a href="../../products/{p["_slug"]}/">{e(full)}</a>')
+    if not links:
+        return ''
+    return f'<p class="gp-ex"><b>Shampoos in our catalog built on this kind of cleanser</b>{"".join(links)}</p>'
+
+
 def page(family, rows, ids):
     head, lead = INTRO.get(family, (family, ''))
     secs = ''
+    sc = SCALES.get(family)
+    lv = {}
+    dial = ''
+    if sc:
+        lv = {r['group_id']: sc['levels'][r['group_id']] for r in rows if r.get('group_id') in sc['levels']}
+        top = max(lv.values()) if lv else 0
+        if top:
+            segs = ''.join(
+                f'<li><a href="#{family_slug(r["sub_classification"])}" style="background:{tone(lv[r["group_id"]], top)[0]};color:{tone(lv[r["group_id"]], top)[1]}"><b>Level {lv[r["group_id"]]}</b><span>{e(short_name(r["sub_classification"]))}</span></a></li>'
+                for r in rows if r.get('group_id') in lv)
+            dial = f'''<div class="gp-scale"><p class="gp-scale-t">{e(sc["axis"])}, from level 1 to level {top}</p>
+    <ol>{segs}</ol><p class="gp-scale-ends"><span>&larr; {e(sc["low"])}</span><span>{e(sc["high"])} &rarr;</span></p></div>'''
     for n, r in enumerate(rows, 1):
         ps = paragraphs(r.get('how_it_behaves_on_coily_hair'))
         long_p = ps[0] if ps else ''
@@ -170,11 +316,12 @@ def page(family, rows, ids):
         secs += f'''  <section class="gp-sec" id="{family_slug(r['sub_classification'])}">
     <div class="gp-num"><span>{n:02d}</span></div>
     <div class="gp-body">
-      <h2>{e(r['sub_classification'])}</h2>
+      {lvl_badge(r, lv, sc)}<h2>{e(r['sub_classification'])}</h2>
       {f'<p class="gp-short">{e(short_p)}</p>' if short_p else ''}
       <p class="gp-long">{e(long_p)}</p>
       <div class="gp-ings">{member_html(members, ids)}</div>
       {f'<p class="gp-guide"><b>On the hair</b>{e(guide)}</p>' if guide else ''}
+      {example_html(r.get('group_id'))}
     </div>
   </section>
 '''
@@ -212,6 +359,7 @@ def page(family, rows, ids):
     {f'<p class="lead">{e(lead)}</p>' if lead else ''}
     {callouts}
     {note}
+    {dial}
   </section>
 {secs}  {spot_html}
 '''
@@ -267,5 +415,5 @@ def index_page(made):
   <p>Some ingredients go by one name but behave in different ways on coily hair. Each page takes one family apart, shows what to look for on a label, and links to the ingredients in it.</p></section>
   <ul class="prop-list fam-list">{cards}</ul>'''
     B.write('groups/index.html', B.shell('../', 'Ingredient families · The Good Coil Library',
-            'Silicones, alcohols, proteins, scalp actives and cleansers: the kinds in each family and what they do on coily hair.',
+            'Cleansers, conditioning agents, humectants, ceramides, lipids, oils, silicones and more: the kinds in each family and what they do on coily hair.',
             body, 'groups/index.html', 'groups'))
