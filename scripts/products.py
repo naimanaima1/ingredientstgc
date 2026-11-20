@@ -125,6 +125,16 @@ def build():
     for p in prods:
         if step_of(p) != 'tool':
             product_page(p)
+            # Short, permanent address by catalog id (/p/tgc-001/) so JARA can link a Stash product
+            # to its page without knowing the slug. Keeps the query string (UTM tags, visitor ids).
+            dest = f"../../products/{p['_slug']}/"
+            B.write(f"p/{p['id'].lower()}/index.html", f'''<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>{e(B.product_full_name(p))}</title>
+<link rel="canonical" href="{B.SITE}/products/{p['_slug']}/"><meta name="robots" content="noindex">
+<script>location.replace({json.dumps(dest)} + location.search + location.hash)</script>
+<noscript><meta http-equiv="refresh" content="0; url={dest}"></noscript></head>
+<body><a href="{dest}">Continue</a></body></html>
+''')
     index_page(prods)
     data = {
         'generated': B.datetime.datetime.now(B.datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
