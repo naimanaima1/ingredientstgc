@@ -39,21 +39,21 @@
       eyebrow: 'Make it stick',
       head: 'Schedule <em>this plan</em> in JARA',
       text: 'Get a reminder for each step, log wash days in seconds, and see if it is working by week 4.',
-      cta: 'Start 14 days free', url: 'https://itsjara.com/beta',
+      cta: 'Start 14 days free', url: 'https://itsjara.com/',
       alt: 'Or grab the free printable tracker', altUrl: 'https://itsjara.com/free-hair-tracker'
     },
     ingredient: {
       eyebrow: 'Curious if it works for you?',
       head: 'Track how your hair responds to <em>' + esc(title || 'this ingredient') + '</em>',
       text: 'JARA links each product to your wash-day ratings, so you can see which ingredients your hair actually likes.',
-      cta: 'Try JARA free', url: 'https://itsjara.com/beta',
+      cta: 'Try JARA free', url: 'https://itsjara.com/',
       alt: 'Prefer paper? Get the free printable', altUrl: 'https://itsjara.com/free-hair-tracker'
     },
     general: {
       eyebrow: '',
       head: 'Track your <em>hair journey</em> in JARA',
       text: 'A hair journal for every wash, every product combo, and every inch you keep.',
-      cta: 'Try JARA free', url: 'https://itsjara.com/beta',
+      cta: 'Try JARA free', url: 'https://itsjara.com/',
       alt: 'Or grab the free printable tracker', altUrl: 'https://itsjara.com/free-hair-tracker'
     }
   }[kind];
@@ -83,7 +83,7 @@
     card = document.createElement('aside');
     card.className = 'nudge';
     card.setAttribute('role', 'dialog');
-    card.setAttribute('aria-label', 'JARA hair tracker');
+    card.setAttribute('aria-label', 'JARA hair journal');
     card.innerHTML =
       '<button class="nudge-x" type="button" aria-label="Close">\u00d7</button>' +
       (COPY.eyebrow ? '<span class="eyebrow"><span class="little-dot"></span>' + COPY.eyebrow + '</span>' : '') +

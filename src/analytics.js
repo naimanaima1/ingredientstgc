@@ -35,6 +35,20 @@
     });
   }
 
+  // Links to JARA carry this visitor's PostHog ids (ph_did, ph_sid), so itsjara.com counts the
+  // same person instead of a new one. Added at click time, so the ids are always current.
+  document.addEventListener('click', function (ev) {
+    var a = ev.target && ev.target.closest ? ev.target.closest('a[href*="itsjara.com"]') : null;
+    if (!a || !window.posthog || !posthog.get_distinct_id) return;
+    try {
+      var u = new URL(a.href);
+      u.searchParams.set('ph_did', posthog.get_distinct_id());
+      var sid = posthog.get_session_id && posthog.get_session_id();
+      if (sid) u.searchParams.set('ph_sid', sid);
+      a.href = u.toString();
+    } catch (e) { /* leave the link as it was */ }
+  }, true);
+
   window.tgcTrack = function (name, props) {
     try {
       if (window.gtag) gtag('event', name, props || {});

@@ -323,7 +323,7 @@ def shell(r, title, desc, body, path, current=''):
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="eco-bar"><nav aria-label="The Good Coil sites"><a href="{utm('https://thegoodcoil.com', 'utility_bar', 'ecosystem')}">The Good Coil</a><a href="{r}" aria-current="true">Ingredient Library</a><a href="{utm('https://itsjara.com', 'utility_bar', 'jara_beta')}">JARA Hair Tracker</a></nav></div>
+<div class="eco-bar"><nav aria-label="The Good Coil sites"><a href="{utm('https://thegoodcoil.com', 'utility_bar', 'ecosystem')}">The Good Coil</a><a href="{r}" aria-current="true">Ingredient Library</a><a href="{utm('https://itsjara.com', 'utility_bar', 'jara_beta')}">JARA hair journal</a></nav></div>
 <header class="site-header">
   <a href="{r}" class="wordmark" aria-label="The Good Coil Library home"><span class="brand-symbol" aria-hidden="true">◎</span> the<span class="brand-amp">good</span>coil<span class="wordmark-sub">Library</span></a>
   <nav class="nav" aria-label="Main">
