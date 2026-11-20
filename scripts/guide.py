@@ -153,10 +153,76 @@ def gz_image(d, wi, n, extra):
     """Step picture slot. Uses src/img/<slug>-w<wash>-s<step>.jpg (or extra['image']) when it exists;
     otherwise a designed colour panel, so the layout already reads as finished and a photo can drop in."""
     fn = extra.get('image') or f"{d['slug']}-w{wi}-s{n}.jpg"
-    if os.path.exists(os.path.join(B.ROOT, 'src', 'img', fn)):
+    path = os.path.join(B.ROOT, 'src', 'img', fn)
+    if os.path.exists(path):
         alt = extra.get('image_alt', '')
-        return f'<figure class="gz-img"><img src="../../assets/img/{e(fn)}" alt="{e(alt)}" width="1200" height="1200" loading="lazy"></figure>'
+        w, h = 1200, 1200
+        try:
+            from PIL import Image
+            with Image.open(path) as im:
+                w, h = im.size
+        except Exception:
+            pass
+        tall = ' gz-tall' if h > w * 1.15 else ''
+        pos = f' style="object-position:{e(extra["image_pos"])}"' if extra.get('image_pos') else ''
+        return f'<figure class="gz-img{tall}"><img src="../../assets/img/{e(fn)}" alt="{e(alt)}" width="{w}" height="{h}" loading="lazy"{pos}></figure>'
     return '<figure class="gz-img gz-ph" aria-hidden="true"><i></i><i></i><i></i></figure>'
+
+def _ing_link(r, name):
+    """Link an ingredient name to its library page when we have it."""
+    i = B.lookup(name) if hasattr(B, 'lookup') else None
+    return f'<a href="{r}{i["_slug"]}/">{e(name)}</a>' if i else e(name)
+
+def gz_blocks(r, extra):
+    """The deeper layer of a guided step: subhead, more paragraphs, swipe cards, folds,
+    a myth callout, a this-vs-that pair and the lock-in. All plain HTML, no script needed."""
+    out = ''
+    for x in extra.get('more', []):
+        out += f'<p>{e(x)}</p>'
+    for b in extra.get('blocks', []):
+        t = b.get('type')
+        if t == 'h':
+            out += f'<h4 class="gz-sub">{e(b["text"])}</h4>'
+        elif t == 'quote':
+            out += f'<blockquote class="gz-quote"><p>{e(b["text"])}</p></blockquote>'
+        elif t == 'p':
+            out += f'<p>{e(b["text"])}</p>'
+        elif t == 'myth':
+            out += (f'<aside class="gz-myth"><span class="gz-kicker">{e(b.get("kicker", "Myth"))}</span>'
+                    f'<b>{e(b["title"])}</b>' + ''.join(f'<p>{e(x)}</p>' for x in b.get('paras', [])) + '</aside>')
+        elif t == 'chips':
+            chips = ''.join(f'<li>{_ing_link(r, c) if b.get("link_ing") else e(c)}</li>' for c in b['items'])
+            out += f'<div class="gz-chips"><span class="pc-label">{e(b["title"])}</span><ul>{chips}</ul>' + (f'<p class="gz-note">{e(b["note"])}</p>' if b.get('note') else '') + '</div>'
+        elif t == 'cards':
+            cards = ''
+            for n, it in enumerate(b['items'], 1):
+                head, body = it[0], it[1]
+                tag = it[2] if len(it) > 2 else ''
+                hl = _ing_link(r, head) if b.get('link_ing') else e(head)
+                cards += (f'<li><span class="gz-card-n">{n:02d}</span>' + (f'<span class="gz-card-tag">{e(tag)}</span>' if tag else '')
+                          + f'<b>{hl}</b><p>{e(body)}</p></li>')
+            out += (f'<div class="gz-cards"><div class="gz-cards-head"><span class="pc-label">{e(b["title"])}</span>'
+                    f'<span class="gz-swipe" aria-hidden="true">Swipe &rarr;</span></div>'
+                    f'<ul aria-label="{e(b["title"])}">{cards}</ul></div>')
+        elif t == 'vs':
+            cols = ''.join(f'<div><span class="gz-kicker">{e(a)}</span><p>{e(c)}</p></div>' for a, c in b['items'])
+            out += f'<div class="gz-vs">{cols}</div>' + (f'<p class="gz-note">{e(b["note"])}</p>' if b.get('note') else '')
+        elif t == 'fold':
+            inner = ''.join(f'<p>{e(x)}</p>' for x in b.get('paras', []))
+            if b.get('list'):
+                inner += '<ul class="gz-dl">' + ''.join(f'<li><b>{_ing_link(r, a) if b.get("link_ing") else e(a)}</b> {e(c)}</li>' for a, c in b['list']) + '</ul>'
+            if b.get('steps'):
+                inner += '<ol class="gz-how">' + ''.join(f'<li>{e(x)}</li>' for x in b['steps']) + '</ol>'
+            for x in b.get('after', []):
+                inner += f'<p>{e(x)}</p>'
+            out += (f'<details class="gz-fold"><summary>{e(b["title"])}' + (f'<small>{e(b["sub"])}</small>' if b.get('sub') else '')
+                    + f'</summary><div class="gz-fold-in">{inner}</div></details>')
+        elif t == 'edit':
+            out += prod_strip(r, b['use'], False, b.get('label', 'What to use'))
+    return out
+
+def gz_lockin(extra):
+    return (f'<p class="gz-lock"><span class="gz-kicker">The lock-in</span>{e(extra["lockin"])}</p>' if extra.get('lockin') else '')
 
 def section(id_, title, intro, inner, cls=''):
     return f'''<section class="gd-sec {cls}" id="{id_}"><div class="tp-in">
@@ -239,8 +305,13 @@ def page(d):
                     strip = prod_strip(r, extra['use'], extra.get('screen', False), extra.get('label', 'What to use')) if extra.get('use') else ''
                     tone = GZ_TONES[k % 4]
                     flip = ' gz-flip' if k % 2 else ''
-                    gz += (f'<section class="gz-step{flip}" data-tone="{tone}" id="step-{k + 1}"><div class="gz-grid">'
-                           f'<div class="gz-txt"><span class="gz-n" aria-hidden="true">{k + 1}</span><h3>{e(t)}</h3><p>{e(x)}</p>{note}{strip}</div>'
+                    rich = gz_blocks(r, extra)
+                    long_ = ' gz-long' if rich else ''
+                    dek = f'<p class="gz-dek"><em>{e(extra["dek"])}</em></p>' if extra.get('dek') else ''
+                    # a rich step reads: lead, deeper layer, products, lock-in, then the small print
+                    body_ = (f'<p>{e(x)}</p>{rich}{strip}{gz_lockin(extra)}{note}' if rich else f'<p>{e(x)}</p>{note}{strip}{gz_lockin(extra)}')
+                    gz += (f'<section class="gz-step{flip}{long_}" data-tone="{tone}" id="step-{k + 1}"><div class="gz-grid">'
+                           f'<div class="gz-txt"><span class="gz-n" aria-hidden="true">{k + 1:02d}</span>{f'<span class="gz-kicker gz-chapter">{e(ro["chapter"])} {k + 1:02d}</span>' if ro.get('chapter') else ''}<h3>{e(t)}</h3>{dek}{body_}</div>'
                            f'{gz_image(d, wi, n, extra)}</div></section>')
                     k += 1
             bits = f'<div class="gz-steps">{gz}</div>'

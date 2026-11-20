@@ -6,9 +6,9 @@
  "image": "style-twists.jpg",
  "image_alt": "Chunky two-strand twists parted off the hairline, resting over one shoulder.",
  "eyebrow": "Guide · winter hair care",
- "go": "Start with the five locks",
- "description": "Five winter hair-care moves: a calm scalp routine, a gentler cleanser, ceramides, warm conditioner, and getting your vitamin D, iron and ferritin checked.",
- "intro": "Cold air outside, dry heat inside, hats and scarves rubbing your hair all day. Winter is a lot. This plan is five simple locks to go all in on this season, one at a time.",
+ "go": "Start with the five habits",
+ "description": "Five winter hair-care habits: a scalp routine worth sticking to, a gentler cleanser, lipids and sealed ends, warm conditioning, and getting your levels checked. Built for length retention.",
+ "intro": "Cold air outside, dry heat inside, hats and scarves rubbing your hair all day. Winter is a lot. This plan is five habits to go all in on this season, one at a time. The goal isn't a new head of hair by spring. It's keeping the hair you grow.",
  "order": 6,
  "causes": {
   "title": "Why winter is hard on hair",
@@ -38,37 +38,175 @@
   ]
  },
  "routine": {
-  "title": "The five locks",
-  "jump": "The five locks",
-  "intro": "You don't have to do all five on day one. Start with the one that feels easiest and add the next.",
+  "title": "The five habits for winterizing your hair care",
+  "jump": "The five habits",
+  "intro": "You don't have to overhaul your routine overnight. Start with one habit, get comfortable with it, and build from there.",
   "washes": [
    {
     "title": "Lock it in",
-    "sub": "Five steps",
+    "sub": "Five habits",
     "steps": [
      [
       "Look after your scalp",
-      "Add a leave-on scalp serum with green tea extract (EGCG), like The Ordinary's, to a calm, consistent scalp routine. Green tea may help slow winter shedding and keep your scalp comfortable. Part your hair, apply a little to the scalp, and massage gently with your fingertips.",
+      "Your scalp deserves the same intentional care as the rest of your skin. Between protective styling, product buildup, sweat and environmental changes, it's easy to focus so much on your strands that you forget what's happening underneath.",
       {
-       "note": "The research on green tea is early, so think of it as support, not a cure. If you notice a lot more shedding than usual, or patchy thinning, see a doctor or dermatologist first.",
-       "link": [
-        "Read about green tea, caffeine, niacinamide and the other scalp actives",
-        "groups/scalp-actives/"
+       "dek": "Healthy-looking hair starts with a scalp-care routine worth sticking to.",
+       "image_alt": "Hands holding a dropper bottle of The Ordinary Multi-Peptide Serum for Hair Density against dark wood.",
+       "more": [
+        "Start with consistency. Keep your scalp clean, pay attention to itching or irritation, and consider adding a leave-on scalp serum with ingredients such as caffeine, green tea extract or peptides."
        ],
-       "label": "A simple serum to start with",
-       "use": [
-        [
-         "The Ordinary scalp serum",
-         "Green tea serum"
-        ]
+       "blocks": [
+        {
+         "type": "cards",
+         "title": "Six scalp ingredients, decoded",
+         "link_ing": true,
+         "items": [
+          [
+           "Caffeine",
+           "One of the more studied cosmetic ingredients for hair-density products. Lab research and some human studies suggest potential benefits for follicle activity, although the clinical evidence is still developing.",
+           "Most studied"
+          ],
+          [
+           "Green tea extract (EGCG)",
+           "A source of antioxidant compounds that have attracted attention for their potential role in follicle signalling and scalp health.",
+           "Antioxidant"
+          ],
+          [
+           "Capixyl",
+           "A branded combination of acetyl tetrapeptide-3 and red clover extract, used in scalp formulas designed to support the appearance of fuller-looking hair.",
+           "Peptide complex"
+          ],
+          [
+           "Redensyl",
+           "A branded ingredient complex that includes plant-derived components and a stabilised green-tea-related ingredient. Often found in products targeting hair density.",
+           "Plant complex"
+          ],
+          [
+           "Procapil",
+           "A combination of biotinyl-GHK, apigenin and oleanolic acid, formulated for scalp and hair-density products.",
+           "Peptide complex"
+          ],
+          [
+           "Aminexil",
+           "Also known as diaminopyrimidine oxide. Used in certain anti-hair-fall cosmetic formulas and linked to research on changes around the hair follicle. It is not minoxidil.",
+           "Not minoxidil"
+          ]
+         ]
+        },
+        {
+         "type": "quote",
+         "text": "Look at the complete formula, not one headline ingredient."
+        },
+        {
+         "type": "p",
+         "text": "These ingredients take different approaches to scalp care, and the evidence behind each one varies. If you're shopping for a serum, compare whole formulas."
+        },
+        {
+         "type": "edit",
+         "label": "The serum edit",
+         "use": [
+          [
+           "TGC-064",
+           "Peptides + caffeine",
+           "Redensyl, Procapil, Capixyl, Baicapil and 1% caffeine in one lightweight serum."
+          ],
+          [
+           "The INKEY List Caffeine Stimulating Scalp Treatment",
+           "Caffeine-focused",
+           "1% caffeine and 1% Redensyl, used overnight and rinsed out before you wash."
+          ],
+          [
+           "L'Oréal Paris Elvive Fall Resist Aminexil Serum",
+           "Aminexil",
+           "1.5% Aminexil with caffeine and arginine. Called Full Resist in the UK, so check your local label."
+          ],
+          [
+           "California Naturals Re:GRO Anti-Thinning Scalp Serum",
+           "Capixyl",
+           "5% Capixyl with caffeine, biotin and rosemary oil. Rosemary oil and rosemary extract are different ingredients."
+          ]
+         ]
+        },
+        {
+         "type": "fold",
+         "title": "How to use a scalp serum",
+         "sub": "Sections, fingertips, consistency",
+         "steps": [
+          "Part your hair into sections.",
+          "Apply the serum directly to your scalp, following the product's instructions.",
+          "Massage gently with your fingertips. No nails.",
+          "Repeat on the schedule the product gives. Consistency matters more than a generous amount once in a while."
+         ],
+         "after": [
+          "Give a new product time to fit into your routine, and pay attention to how your scalp responds."
+         ]
+        }
+       ],
+       "lockin": "Make scalp care a regular part of your routine, not something you remember only when your hair starts acting up.",
+       "note": "If shedding becomes noticeably heavier, keeps going, or turns into patchy thinning, see a dermatologist. They can find the cause and talk you through treatments.",
+       "link": [
+        "Explore the scalp-care ingredients: caffeine, green tea, peptides, Aminexil and more",
+        "groups/scalp-actives/"
        ]
       }
      ],
      [
       "Wash with a gentler cleanser",
-      "Cold air and dry heat already pull moisture out of your hair, and a strong shampoo adds to that. For your regular winter washes, look for a level 1 cleanser, one built on mild cleansers like isethionates, taurates or glucosides. Save stronger ones for an occasional reset. Remember that \"sulfate-free\" doesn't always mean gentle, so check which cleanser comes first on the label.",
+      "There's a difference between keeping your hair clean and over-cleansing it. The sweet spot is a wash routine that removes sweat, oil, dead skin cells and product buildup without leaving your lengths stripped or hard to manage.",
       {
-       "note": "If your hair feels coated and your products stop working, a stronger clarifying wash now and then is fine. Just follow it with a deep conditioner.",
+       "dek": "Clean hair is part of a healthy hair routine. Yes, even in winter.",
+       "image_alt": "Washing coily hair at a bathroom sink, lather worked into the scalp with fingertips.",
+       "more": [
+        "For many people with textured hair, washing about once a week is a useful starting point. Your ideal schedule depends on your scalp, workouts, styling products, protective styles and how your hair responds.",
+        "In twists, braids or another protective style? Your scalp still needs regular cleansing. Buildup doesn't become beneficial just because your hair is tucked away."
+       ],
+       "blocks": [
+        {
+         "type": "myth",
+         "kicker": "Shampoo myth",
+         "title": "Sulfate-free doesn't automatically mean gentle.",
+         "paras": [
+          "A shampoo's cleansing strength depends on its surfactant blend, concentration, formula and conditioning ingredients. Some sulfate-free shampoos are quite strong, and some shampoos with sulfates are formulated to cleanse comfortably."
+         ]
+        },
+        {
+         "type": "chips",
+         "title": "For regular winter washes, look for",
+         "items": [
+          "Isethionates",
+          "Taurates",
+          "Glucosides"
+         ],
+         "note": "These mild cleansers are common in gentler formulas. Check which one comes first on the label."
+        },
+        {
+         "type": "h",
+         "text": "Scalp first, lengths second"
+        },
+        {
+         "type": "p",
+         "text": "Your shampoo should do most of its work at the scalp. Apply it in sections, massage with your fingertips, and let the lather run through your lengths as you rinse. No need to pile your hair on top of your head and scrub it together."
+        },
+        {
+         "type": "fold",
+         "title": "Don't forget to clarify",
+         "sub": "When your products stop working",
+         "paras": [
+          "If your hair starts to feel coated, your scalp feels congested, or your usual products suddenly seem less effective, it may be time for a stronger cleansing wash.",
+          "A clarifying shampoo removes built-up styling products, oils and residue. How often you need one depends on how much buildup your routine creates.",
+          "Follow a stronger cleanse with a good conditioner or mask to bring back slip and make detangling easier."
+         ]
+        },
+        {
+         "type": "fold",
+         "title": "Itching, redness or flakes that won't quit?",
+         "sub": "It may not be dryness",
+         "paras": [
+          "Persistent itching, redness or flaking can point to a scalp condition such as seborrheic dermatitis. Adding more oil isn't always the answer. Sometimes the scalp needs a targeted treatment shampoo, so ask a dermatologist."
+         ]
+        }
+       ],
+       "lockin": "Choose a gentle shampoo you can comfortably use as part of your regular routine, and keep a stronger clarifier in rotation for when buildup calls for it.",
        "link": [
         "See the cleanser levels, from 1 (gentlest) to 4 (strongest)",
         "groups/surfactants-cleansers/"
@@ -83,44 +221,264 @@
       }
      ],
      [
-      "Add ceramides",
-      "Use a conditioner, mask or leave-in with ceramides to support the lipids on the surface of your hair. Winter is a great time to do this weekly. It works alongside your regular conditioner, it doesn't replace it.",
+      "Give your strands their lipids, and seal those ends",
+      "If there's one thing winter hair needs, it's extra help managing friction. Hair isn't just a bundle of strands waiting to be soaked in moisture. Each strand has a protective outer cuticle, internal protein structures and lipid-rich parts that shape how it behaves.",
       {
-       "label": "With ceramides",
-       "use": [
-        [
-         "TGC-008",
-         "Ceramide mask"
-        ],
-        [
-         "TGC-009",
-         "Ceramide leave-in"
-        ],
-        [
-         "TGC-128",
-         "Ceramide leave-in"
-        ]
-       ]
+       "dek": "This is where your conditioning routine gets serious.",
+       "image_alt": "Hands holding a jar of Briogeo Don't Despair, Repair! deep conditioning mask against dark wood.",
+       "blocks": [
+        {
+         "type": "fold",
+         "title": "Inside a strand: the cell membrane complex",
+         "sub": "The science, in two minutes",
+         "paras": [
+          "One especially interesting part of hair anatomy is the cell membrane complex (CMC). It binds the cells of the hair fibre together and plays an important role in how water moves through the strand and how the strand handles stress.",
+          "The outer lipid layer also shapes how hair interacts with its environment.",
+          "When these structures are damaged by chemical processing, heat, the weather or everyday wear, hair can become rougher, harder to detangle and more likely to break. That's why conditioning is about more than how soft your hair feels right after wash day."
+         ]
+        },
+        {
+         "type": "h",
+         "text": "Look beyond the hero ingredient"
+        },
+        {
+         "type": "p",
+         "text": "Ceramides are an interesting addition to hair care because they belong to the wider family of lipids linked to the hair's protective structures. But when you shop for a conditioner, look at the whole formula."
+        },
+        {
+         "type": "cards",
+         "title": "What a well-built conditioner combines",
+         "link_ing": true,
+         "items": [
+          [
+           "Fatty alcohols",
+           "Cetyl, stearyl and cetearyl alcohol give a smooth, conditioning texture. They are not the same as drying alcohols.",
+           "Texture"
+          ],
+          [
+           "Cationic conditioners",
+           "Behentrimonium chloride and cetrimonium chloride condition, cut static and help detangling.",
+           "Detangling"
+          ],
+          [
+           "Silicones",
+           "Dimethicone and amodimethicone form lubricating films that improve slip, smoothness and manageability.",
+           "Slip"
+          ],
+          [
+           "Emollient oils",
+           "Soften the surface of the hair and add lubrication.",
+           "Softness"
+          ],
+          [
+           "Ceramides",
+           "A useful lipid-focused addition to a conditioning formula.",
+           "Lipids"
+          ]
+         ]
+        },
+        {
+         "type": "p",
+         "text": "The combination matters. A conditioner that gives you real slip and easier detangling can beat a product with one impressive ingredient on the front of the bottle."
+        },
+        {
+         "type": "edit",
+         "label": "The ceramide edit",
+         "use": [
+          [
+           "TGC-008",
+           "Weekly mask",
+           "A mask to add to your weekly conditioning routine."
+          ],
+          [
+           "TGC-009",
+           "Leave-in",
+           "Conditioning support between washes."
+          ],
+          [
+           "TGC-128",
+           "Leave-in mist",
+           "Another way to bring the range's ceramides into your routine."
+          ]
+         ]
+        },
+        {
+         "type": "h",
+         "text": "Now, let's talk about those ends"
+        },
+        {
+         "type": "p",
+         "text": "If you wear your hair natural, you already know the ends need the most attention. They're the oldest part of your hair, have taken the most wear, and are the most likely to tangle and rub."
+        },
+        {
+         "type": "quote",
+         "text": "Think of sealing as giving each strand a thin protective jacket."
+        },
+        {
+         "type": "vs",
+         "items": [
+          [
+           "Conditioning",
+           "Improves slip, softness and manageability, mostly on wash day."
+          ],
+          [
+           "Sealing",
+           "Adds a lubricating coat that cuts friction and helps protect the ends all week."
+          ]
+         ],
+         "note": "Neither needs every ingredient to get inside the hair to work. You're not adding water when you seal; you're helping the ends stay supple, separate easily and stop catching on each other."
+        },
+        {
+         "type": "cards",
+         "title": "Four ways to seal",
+         "items": [
+          [
+           "Silicones: the slip specialists",
+           "Dimethicone and amodimethicone form films that improve slip, reduce friction, smooth the cuticle and add shine. Coily strands naturally wrap around each other, so that lubrication is especially useful. Use a little over your leave-in, on the last few inches.",
+           "Most slip"
+          ],
+          [
+           "Squalane: lightweight",
+           "A hydrogenated, more stable form of squalene, a lipid naturally found in sebum. It softly coats the strand without the heavy feel of some oils. A few drops is enough to start.",
+           "Lightest"
+          ],
+          [
+           "Plant oils: choose your formula",
+           "They aren't interchangeable. Coconut oil can get inside the hair and reduce protein loss, which makes it a good pre-wash treatment on your lengths. Other oils can work as finishers, depending on your hair.",
+           "Pre-wash pick"
+          ],
+          [
+           "Grease: don't underestimate the classics",
+           "Petrolatum and mineral oil have a long history in textured-hair routines for a reason: they lubricate the surface and reduce friction. Great for very dry ends or twists. Warm a little between your palms first.",
+           "Most hold"
+          ]
+         ]
+        },
+        {
+         "type": "fold",
+         "title": "How to seal your ends",
+         "sub": "Six steps, one product",
+         "steps": [
+          "Condition and detangle your hair first.",
+          "Apply your usual leave-in conditioner.",
+          "Choose one finishing product: a silicone serum, squalane, a plant oil or hair grease.",
+          "Spread a small amount between your palms.",
+          "Smooth it over your ends, section by section.",
+          "Reapply when your ends start to feel rough or catch on each other."
+         ],
+         "after": [
+          "You don't need to layer every oil and serum you own. Choose one and see how your hair responds."
+         ]
+        }
+       ],
+       "lockin": "Conditioning and sealing are two parts of one strategy. First give your hair slip and softness, then use a finishing product to cut friction through the week."
       }
      ],
      [
       "Warm up your conditioner",
-      "Cold conditioner is stiff and hard to spread. Stand the bottle or tub in a bowl of warm (not hot) water for a few minutes first, or use a heat cap. It will spread more easily and feel like a treat. Never microwave a bottle.",
+      "There's something about a warm conditioning treatment that makes winter wash day feel more luxurious, and there's some interesting science behind it. Temperature can change how certain ingredients interact with the hair, and research on hair oils has shown that heat can help some oils penetrate under particular conditions.",
       {
-       "label": "Heat cap",
-       "use": [
-        [
-         "TGC-091",
-         "Thermal heat cap"
-        ]
-       ]
+       "dek": "Make wash day feel like a treatment, not a chore.",
+       "image_alt": "Wearing a pink thermal heat cap over the hair while conditioning, in a pink robe.",
+       "more": [
+        "Coconut oil is especially interesting: its structure gives it an affinity for hair proteins, so it can get inside the fibre and help reduce protein loss."
+       ],
+       "blocks": [
+        {
+         "type": "quote",
+         "text": "Not every conditioning ingredient needs to penetrate the hair to be useful."
+        },
+        {
+         "type": "p",
+         "text": "Many of the ingredients that make a conditioner work act mainly on the surface, where they improve slip, smoothness and manageability. A silicone film that reduces friction is doing its job even if it never reaches the inside of the strand."
+        },
+        {
+         "type": "cards",
+         "title": "Try a warm conditioning ritual",
+         "items": [
+          [
+           "For oils",
+           "Using coconut oil before you shampoo? Warm a small amount gently in a bowl of warm water, apply it to your lengths and ends, and leave it for a reasonable time before you wash. Never apply oil that feels hot.",
+           "Pre-wash"
+          ],
+          [
+           "For conditioner and masks",
+           "If the product allows it, stand the closed bottle or tub in a bowl of warm water for a few minutes. Thick formulas come out and spread more easily. Never microwave a bottle.",
+           "Wash day"
+          ],
+          [
+           "With a heat cap",
+           "A thermal cap holds gentle warmth while you condition. Follow the cap's instructions and the product's treatment time, and skip the heat if your scalp is irritated or sensitive.",
+           "Gentle heat"
+          ]
+         ]
+        },
+        {
+         "type": "edit",
+         "label": "The heat-cap edit",
+         "use": [
+          [
+           "TGC-091",
+           "Thermal heat cap"
+          ]
+         ]
+        }
+       ],
+       "lockin": "Gentle warmth makes conditioning more enjoyable and may help some treatments work. Keep it comfortable, follow the directions, and let the formula do its job."
       }
      ],
      [
       "Get your levels checked",
-      "Ask your doctor about checking your vitamin D, iron and ferritin. These are some of the things doctors look at when someone is concerned about shedding or tired hair. Please get tested before you supplement. Too much iron can be harmful, and only a test tells you what you actually need.",
+      "Hair shedding has many possible causes, and sometimes the missing piece isn't another product. It's something happening inside your body: nutritional deficiencies, hormonal changes, thyroid conditions, illness and stress can all play a part.",
       {
-       "note": "We can't tell you what's going on in your body from your hair, and a product can't replace a blood test. This is a conversation to have with your doctor."
+       "dek": "Sometimes your hair routine needs to reach beyond your bathroom cabinet.",
+       "more": [
+        "If you've noticed persistent or unusual shedding, ask a healthcare professional whether bloodwork makes sense for you."
+       ],
+       "blocks": [
+        {
+         "type": "cards",
+         "title": "What your doctor may consider",
+         "items": [
+          [
+           "Complete blood count (CBC)",
+           "Helps check for anemia and other blood-related concerns.",
+           "Blood"
+          ],
+          [
+           "Ferritin",
+           "Shows how much iron your body has stored.",
+           "Iron stores"
+          ],
+          [
+           "Thyroid testing",
+           "Thyroid problems can contribute to hair changes.",
+           "Hormones"
+          ],
+          [
+           "Vitamin D",
+           "Testing may make sense depending on your history and risk factors.",
+           "Vitamin"
+          ],
+          [
+           "B12, folate and zinc",
+           "Considered when there's a reason to suspect a deficiency.",
+           "If needed"
+          ]
+         ]
+        },
+        {
+         "type": "myth",
+         "kicker": "Before you supplement",
+         "title": "Test first. Iron especially.",
+         "paras": [
+          "Low iron stores can matter when you're looking into shedding, but taking iron without knowing your levels isn't a good plan. Too much iron can be harmful.",
+          "The same goes for vitamin D and other supplements. Correcting a real deficiency matters for your health, but taking more than you need isn't a shortcut to longer or thicker hair. And there's no single ferritin number that guarantees growth."
+         ]
+        }
+       ],
+       "lockin": "If something about your shedding has changed, look into it. A thoughtful conversation with your doctor beats guessing which supplement to add next.",
+       "note": "We can't tell what's going on in your body from your hair, and no product replaces a blood test. Think of this habit as getting informed about your health, not chasing ideal numbers."
       }
      ]
     ]
@@ -128,24 +486,29 @@
   ],
   "between": {
    "title": "Every day this winter",
-   "sub": "Small habits",
+   "sub": "The little things add up",
    "groups": [
     [
      "Morning",
      [
-      "Check your ends. If they feel dry, add a little leave-in.",
-      "Wear a satin-lined hat or put a scarf over a satin cap."
+      "Check your ends. If they feel rough, add a little leave-in or finishing serum.",
+      "Choose satin- or silk-lined hats when you can.",
+      "Wearing a scarf? Add a satin layer underneath to cut rubbing.",
+      "Keep protective styles comfortable, with no extra tension around your hairline."
      ]
     ],
     [
      "Night",
      [
-      "Satin bonnet or pillowcase.",
-      "Loose styles. Nothing tight on cold, dry hair."
+      "Satin bonnet or a silk or satin pillowcase.",
+      "Keep styles loose enough to avoid tension.",
+      "Tuck exposed ends into a protective style or cover them.",
+      "Give your scalp some attention, especially after hats or a workout."
      ]
     ]
    ]
-  }
+  },
+  "chapter": "Habit"
  },
  "trouble": {
   "title": "If something feels off",
@@ -170,9 +533,11 @@
   ]
  },
  "end": {
-  "title": "By the end of winter",
+  "title": "The winter hair-care lock-in",
   "notes": [
-   "Winter is a season, and your hair will bounce back. Keep whichever locks you liked, drop the ones you didn't, and keep your photos from December to compare."
+   "You don't need a completely new head of hair by spring. You need a routine that helps you keep the hair you're growing.",
+   "Keep your scalp clean and comfortable. Condition consistently. Give your ends the lubrication they need. Be thoughtful about heat, friction and the products you use.",
+   "Five habits. A little more intention. Because the real winter hair flex isn't just growth. It's retention."
   ],
   "list": [
    "Your scalp feels comfortable",
