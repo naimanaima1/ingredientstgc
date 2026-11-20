@@ -1137,3 +1137,6 @@ a.gp-ing:hover{background:var(--ink);color:var(--paper)}
 @media(min-width:801px){.gz-swipe{display:none}}
 .gz-txt .pc-wrap{margin-bottom:26px}
 .gz-step h4.gz-sub{font-size:22px;line-height:1.2;margin:36px 0 10px}
+.gz-deeper{margin-top:26px}
+.gz-deeper>summary{font-size:20px}
+.gz-deeper .gz-cards{margin:14px 0 18px}

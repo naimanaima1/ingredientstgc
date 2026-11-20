@@ -306,10 +306,18 @@ def page(d):
                     tone = GZ_TONES[k % 4]
                     flip = ' gz-flip' if k % 2 else ''
                     rich = gz_blocks(r, extra)
-                    long_ = ' gz-long' if rich else ''
+                    if extra.get('deeper'):
+                        dp = extra['deeper']
+                        deeper = (f'<details class="gz-fold gz-deeper"><summary>{e(dp.get("title", "Go deeper"))}'
+                                  + (f'<small>{e(dp["sub"])}</small>' if dp.get('sub') else '')
+                                  + f'</summary><div class="gz-fold-in">{gz_blocks(r, dp)}</div></details>')
+                    else:
+                        deeper = ''
+                    long_ = ' gz-long' if (rich or deeper) else ''
                     dek = f'<p class="gz-dek"><em>{e(extra["dek"])}</em></p>' if extra.get('dek') else ''
                     # a rich step reads: lead, deeper layer, products, lock-in, then the small print
-                    body_ = (f'<p>{e(x)}</p>{rich}{strip}{gz_lockin(extra)}{note}' if rich else f'<p>{e(x)}</p>{note}{strip}{gz_lockin(extra)}')
+                    body_ = (f'<p>{e(x)}</p>{rich}{strip}{deeper}{gz_lockin(extra)}{note}' if (rich or deeper) else f'<p>{e(x)}</p>{note}{strip}{gz_lockin(extra)}')
+                    rich = rich or deeper
                     gz += (f'<section class="gz-step{flip}{long_}" data-tone="{tone}" id="step-{k + 1}"><div class="gz-grid">'
                            f'<div class="gz-txt"><span class="gz-n" aria-hidden="true">{k + 1:02d}</span>{f'<span class="gz-kicker gz-chapter">{e(ro["chapter"])} {k + 1:02d}</span>' if ro.get('chapter') else ''}<h3>{e(t)}</h3>{dek}{body_}</div>'
                            f'{gz_image(d, wi, n, extra)}</div></section>')
