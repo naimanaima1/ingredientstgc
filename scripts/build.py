@@ -319,6 +319,7 @@ def shell(r, title, desc, body, path, current=''):
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{r}assets/site.css">
+<script src="{r}assets/analytics.js"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -669,6 +670,7 @@ def main():
     tips_json()
     write('assets/tips.js', open(os.path.join(ROOT, 'src', 'tips.js'), encoding='utf-8').read())
     write('assets/nudge.js', open(os.path.join(ROOT, 'src', 'nudge.js'), encoding='utf-8').read())
+    write('assets/analytics.js', open(os.path.join(ROOT, 'src', 'analytics.js'), encoding='utf-8').read())
     write('assets/guide.js', open(os.path.join(ROOT, 'src', 'guide.js'), encoding='utf-8').read())
     import groups as GRP_PRE
     GRP_PRE.build()

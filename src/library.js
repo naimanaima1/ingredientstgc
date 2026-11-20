@@ -140,7 +140,7 @@
     const load = () => loading = loading || fetch(LIB.root + 'data/find.json').then(r => r.json()).then(j => (all = j));
     fIn.addEventListener('focus', load);
     const close = () => { fList.hidden = true; fList.innerHTML = ''; fIn.setAttribute('aria-expanded', 'false'); pick = -1; };
-    const choose = p => { close(); fIn.value = p.n; render(p.i, p); };
+    const choose = p => { close(); fIn.value = p.n; render(p.i, p); window.tgcTrack && tgcTrack('label_lookup', { product: p.n, brand: p.b }); };
     const show = () => {
       const q = norm(fIn.value);
       if (!all || q.length < 2) return close();
@@ -177,6 +177,7 @@
     const items = split(ta.value);
     if (!items.length) { ta.focus(); return; }
     render(items, null);
+    window.tgcTrack && tgcTrack('label_pasted', { ingredients: items.length });
     nameEl.textContent = 'Your label';
     dotsBox.innerHTML = rows.map(([k]) => `<button type="button" class="dot2" data-k="${k}" aria-label="${esc(GN[k][1])}"></button>`).join('');
     cap.innerHTML = `<small>Your label</small><b>${seen.size} of ${items.length} ingredients explained</b><p>Tap a group below, or a dotted word, to read more. We add ingredients every week.</p>`;
