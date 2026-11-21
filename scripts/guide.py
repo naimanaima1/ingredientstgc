@@ -79,17 +79,21 @@ LEAD_FORMS = {
 }
 LEAD_ENDPOINT = JARA_URL + '/api/printable-signup'
 
-def lead_form(slug, name, fid='get-guide'):
+def lead_form(slug, name, fid='get-guide', button=None, short=False):
     f = LEAD_FORMS.get(slug)
     if not f:
         return ''
     pdf = B.utm(JARA_URL + f['pdf'], 'plan_end', 'printables', f'{slug}_form')
+    legal = ('By signing up, you join the <b>JARA email list</b>.' if short else
+             f'By signing up, you join the <b>JARA email list</b>. JARA is the hair journal app from The Good Coil. '
+             f"You'll get the {e(name)} PDF and occasional JARA emails, and you can unsubscribe anytime. "
+             f'<a href="{JARA_URL}/privacy">Privacy</a>')
     return f'''<form class="lead-form" id="{fid}" data-endpoint="{LEAD_ENDPOINT}" data-printable="{e(f['printable'])}" data-slug="{e(slug)}" data-where="{fid}" data-no-nudge data-fallback="{B.utm(JARA_URL + TRACK[slug][1][1], 'plan_end', 'printables', f'{slug}_print')}" novalidate>
         <label for="{fid}-email">Your email</label>
         <div class="lead-row"><input id="{fid}-email" name="email" type="email" autocomplete="email" required placeholder="you@email.com">
-        <button type="submit" class="btn">{e(f['button'])}</button></div>
+        <button type="submit" class="btn">{e(button or f['button'])}</button></div>
         <input class="lead-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <p class="lead-legal">By signing up, you join the <b>JARA email list</b>. JARA is the hair journal app from The Good Coil. You'll get the {e(name)} PDF and occasional JARA emails, and you can unsubscribe anytime. <a href="{JARA_URL}/privacy">Privacy</a></p>
+        <p class="lead-legal">{legal}</p>
         <p class="lead-msg" role="status" aria-live="polite" hidden></p>
         <p class="lead-ok" hidden>Check your inbox. Can't wait? <a href="{pdf}" download>Download it now &rarr;</a></p>
         <noscript><p><a href="{B.utm(JARA_URL + TRACK[slug][1][1], 'plan_end', 'printables', f'{slug}_print')}">Get it on itsjara.com &rarr;</a></p></noscript>
@@ -271,8 +275,8 @@ def hero_cta(d):
     slug = d.get('track_as', d['slug'])
     if d.get('email_first') and slug in LEAD_FORMS:
         name = TRACK[slug][1][0]
-        return (lead_form(slug, name, 'hero-guide')
-                + f'<a class="gd-skip" href="#routine">{e(d.get("go_link", "or read the five habits"))} &darr;</a>')
+        return (lead_form(slug, name, 'hero-guide', d.get('hero_button'), short=True)
+                + f'<a class="gd-skip" href="#routine">{e(d.get("go_link", "Read the article"))} &darr;</a>')
     return f'<a class="gd-go" href="#routine">{e(d.get("go", "Start with the routine"))} →</a>{hero_print(d)}'
 
 def hero_print(d):
