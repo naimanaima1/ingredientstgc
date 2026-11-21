@@ -52,7 +52,7 @@ CATS = [
     ('protein', 'Proteins', 'strength', 'Proteins broken into pieces small enough to cling to the hair (hydrolyzed wheat, rice, silk, keratin and similar).'),
     ('amino', 'Amino acids', 'strength', 'The smallest building blocks of protein. Light, and usually fine for protein-sensitive hair.'),
     ('peptide', 'Peptides', 'strength', 'Short amino-acid chains, often in scalp serums or bond repair. Not the same as a hydrolyzed protein.'),
-    ('lipid', 'Ceramides and lipids', 'strength', "Lipids like the ones between the cells of the hair's outer layer: ceramides, phytosphingosine, cholesterol."),
+    ('lipid', 'Ceramides and lipids', 'strength', "Lipids like the hair's own, the ones that hold its outer layer together: ceramides, cholesterol, phytosphingosine, 18-MEA. Oils and butters are lipids too, but they coat the outside, so they are counted under Oils and butters."),
     ('bond', 'Bond builders', 'strength', 'Ingredients made to work on the bonds inside the hair, often after bleach, colour or heat.'),
     ('film', 'Film-formers (hold)', 'texture', 'They leave a flexible film as hair dries, for definition and hold.'),
     ('thick', 'Thickeners and gums', 'texture', 'Gums, cellulose and polymers that give a product its texture.'),
@@ -205,7 +205,7 @@ def build():
     <form class="paste dx-form" id="dx-form">
       <label for="dx-t">Ingredient list</label>
       <textarea id="dx-t" rows="5" placeholder="Water, Glycerin, Cetearyl Alcohol, …"></textarea>
-      <div class="paste-row"><button class="go" type="submit">Break it down</button><button class="link-btn" type="button" id="dx-ex">Try an example</button></div>
+      <div class="paste-row"><button class="go" type="submit">Break it down</button><button class="link-btn" type="button" id="dx-ex">Try an example</button><button class="link-btn" type="button" id="dx-clear" hidden>Clear and start over</button></div>
     </form>
     <div class="finder dx-finder">
       <label for="dx-f">Or pick a product we have read</label>
@@ -234,7 +234,7 @@ def build():
     <h1>Put two labels <em>side by side</em>.</h1>
     <p class="lead">Which one has more water binders, more protein, a stronger cleanser, more oils? Pick a product or paste each list. Higher up the list usually means more of it in the bottle.</p>
     <div class="dx-slots" id="dx-slots"></div>
-    <div class="paste-row"><button class="go" type="button" id="dx-cmp-go">Compare</button><button class="link-btn" type="button" id="dx-add">Add a third label</button></div>
+    <div class="paste-row"><button class="go" type="button" id="dx-cmp-go">Compare</button><button class="link-btn" type="button" id="dx-add">Add a third label</button><button class="link-btn" type="button" id="dx-cmp-clear">Clear all</button></div>
   </section>
   <section class="dx-out" id="dx-cmp-out" hidden aria-live="polite">
     <div class="dx-table-wrap"><table class="dx-table dx-ctable" id="dx-ctable"></table></div>

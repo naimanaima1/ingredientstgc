@@ -1300,3 +1300,4 @@ a.gp-ing:hover{background:var(--ink);color:var(--paper)}
 .dx-finder input,.dx-slot .finder input{color:var(--ink);background:#fff;border:1px solid var(--ink);padding:12px 14px;max-width:560px}
 .dx-finder input::placeholder,.dx-slot .finder input::placeholder{color:var(--muted)}
 .dx-finder .f-list,.dx-slot .f-list{color:var(--ink)}
+.dx-slot .dx-slot-clear{justify-self:start;color:var(--muted);font-size:13px}.dx-cmp-out,#dx-cmp .link-btn{color:var(--ink)}

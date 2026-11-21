@@ -107,6 +107,7 @@
       return `<tr id="dx-r${x.n}"><td class="dx-n">${x.n}</td><th scope="row">${label(x)}</th><td>${chips(x)}</td><td>${esc(what)}${extra}</td></tr>`;
     }).join('');
     out.hidden = false;
+    $('dx-clear').hidden = false;
     out.querySelectorAll('[data-hl]').forEach(b => b.addEventListener('click', () => focus(b.getAttribute('aria-pressed') === 'true' ? null : b.dataset.hl, null)));
     focus(null, null);
     out.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
@@ -171,11 +172,14 @@
     box.className = 'dx-slot';
     box.innerHTML = `<h3>Label ${NAMES[k]}</h3>
       <div class="finder"><label for="cs-f${k}">Pick a product</label><input id="cs-f${k}" type="text" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="cs-l${k}" placeholder="Start typing"><ul class="f-list" id="cs-l${k}" role="listbox" hidden></ul></div>
-      <label for="cs-t${k}">Or paste the ingredient list</label><textarea id="cs-t${k}" rows="4" placeholder="Water, Glycerin, …"></textarea>`;
+      <label for="cs-t${k}">Or paste the ingredient list</label><textarea id="cs-t${k}" rows="4" placeholder="Water, Glycerin, …"></textarea>
+      <button type="button" class="link-btn dx-slot-clear">Clear this label</button>`;
     $('dx-slots').appendChild(box);
     const s = { name: '', slug: '', input: box.querySelector('input'), ta: box.querySelector('textarea') };
     finder(s.input, box.querySelector('ul'), p => { s.name = p.n; s.slug = p.s; s.ta.value = p.i.join(', '); });
     s.ta.addEventListener('input', () => { if (s.slug) { s.slug = ''; s.name = ''; s.input.value = ''; } });
+    s.clear = () => { s.ta.value = ''; s.input.value = ''; s.name = ''; s.slug = ''; };
+    box.querySelector('.dx-slot-clear').addEventListener('click', () => { s.clear(); s.input.focus(); });
     if (init) { s.ta.value = init.t || ''; s.name = init.n || ''; s.slug = init.s || ''; s.input.value = init.n || ''; }
     slots.push(s);
     $('dx-add').hidden = slots.length >= 3;
@@ -251,6 +255,17 @@
     $('dx-copy').addEventListener('click', () => navigator.clipboard.writeText(location.href).then(() => { $('dx-copy').textContent = 'Link copied'; }));
     $('dx-add').addEventListener('click', () => addSlot());
     $('dx-cmp-go').addEventListener('click', compare);
+    $('dx-clear').addEventListener('click', () => {
+      ta.value = ''; $('dx-f').value = ''; out.hidden = true; $('dx-clear').hidden = true; current = null;
+      history.replaceState(null, '', location.pathname); ta.focus();
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    });
+    $('dx-cmp-clear').addEventListener('click', () => {
+      while (slots.length > 2) { slots.pop(); $('dx-slots').lastElementChild.remove(); }
+      slots.forEach(s => s.clear());
+      $('dx-add').hidden = false; $('dx-cmp-out').hidden = true;
+      history.replaceState(null, '', location.pathname + '#compare'); slots[0].input.focus();
+    });
 
     // Links in: #t=<list>, #p=<product>, #compare=p:slug~t:list
     const h = location.hash.slice(1), [key, val] = [h.split('=')[0], decodeURIComponent(h.slice(h.indexOf('=') + 1))];
