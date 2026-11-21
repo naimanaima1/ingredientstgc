@@ -54,6 +54,43 @@
        "image_alt": "Hands holding a dropper bottle of The Ordinary Multi-Peptide Serum for Hair Density against dark wood.",
        "blocks": [
         {
+         "type": "cards",
+         "title": "Six scalp ingredients, decoded",
+         "link_ing": true,
+         "items": [
+          [
+           "Caffeine",
+           "The most studied of the six. Early research looks promising for follicle activity.",
+           "Most studied"
+          ],
+          [
+           "Green tea (EGCG)",
+           "Antioxidants being studied for scalp health and follicle signalling.",
+           "Antioxidant"
+          ],
+          [
+           "Capixyl",
+           "A peptide plus red clover extract, for fuller-looking hair.",
+           "Peptide"
+          ],
+          [
+           "Redensyl",
+           "A plant complex with a green-tea-derived ingredient, aimed at density.",
+           "Plant complex"
+          ],
+          [
+           "Procapil",
+           "A peptide with apigenin and oleanolic acid, for density formulas.",
+           "Peptide"
+          ],
+          [
+           "Aminexil",
+           "Used in anti-hair-fall formulas. It is not minoxidil.",
+           "Not minoxidil"
+          ]
+         ]
+        },
+        {
          "type": "edit",
          "label": "The serum edit",
          "use": [
@@ -81,46 +118,9 @@
         }
        ],
        "deeper": {
-        "title": "Go deeper",
-        "sub": "Six ingredients decoded, and how to apply",
+        "title": "How to apply a scalp serum",
+        "sub": "And how to judge a formula",
         "blocks": [
-         {
-          "type": "cards",
-          "title": "Six scalp ingredients, decoded",
-          "link_ing": true,
-          "items": [
-           [
-            "Caffeine",
-            "The most studied of the six. Early research looks promising for follicle activity.",
-            "Most studied"
-           ],
-           [
-            "Green tea (EGCG)",
-            "Antioxidants being studied for scalp health and follicle signalling.",
-            "Antioxidant"
-           ],
-           [
-            "Capixyl",
-            "A peptide plus red clover extract, for fuller-looking hair.",
-            "Peptide"
-           ],
-           [
-            "Redensyl",
-            "A plant complex with a green-tea-derived ingredient, aimed at density.",
-            "Plant complex"
-           ],
-           [
-            "Procapil",
-            "A peptide with apigenin and oleanolic acid, for density formulas.",
-            "Peptide"
-           ],
-           [
-            "Aminexil",
-            "Used in anti-hair-fall formulas. It is not minoxidil.",
-            "Not minoxidil"
-           ]
-          ]
-         },
          {
           "type": "p",
           "text": "The evidence varies, so judge the whole formula, not one headline ingredient."
@@ -140,7 +140,10 @@
        "link": [
         "All the scalp-care ingredients",
         "groups/scalp-actives/"
-       ]
+       ],
+       "image": "winter-arc-lock-in-w1-s1.jpg",
+       "quote": "Consistency is more useful than a generous amount once in a while.",
+       "image_pos": "50% 40%"
       }
      ],
      [
@@ -155,13 +158,22 @@
          "kicker": "Shampoo myth",
          "title": "Sulfate-free doesn't mean gentle.",
          "paras": [
-          "Strength comes from the whole cleanser blend. Look for isethionates, taurates or glucosides near the top of the label."
+          "Strength comes from the whole cleanser blend, not one word on the front of the bottle."
+         ]
+        },
+        {
+         "type": "chips",
+         "title": "Gentle cleansers to look for",
+         "items": [
+          "Isethionates",
+          "Taurates",
+          "Glucosides"
          ]
         }
        ],
        "deeper": {
-        "title": "Go deeper",
-        "sub": "Scalp-first washing, clarifying, flakes",
+        "title": "When to clarify, and when flakes aren't dryness",
+        "sub": "Scalp-first washing, buildup, seborrheic dermatitis",
         "blocks": [
          {
           "type": "h",
@@ -200,7 +212,10 @@
          "TGC-096",
          "Level 1 shampoo"
         ]
-       ]
+       ],
+       "image": "winter-arc-lock-in-w1-s2.jpg",
+       "quote": "Buildup doesn't become beneficial just because your hair is tucked away.",
+       "image_pos": "50% 30%"
       }
      ],
      [
@@ -224,6 +239,32 @@
          ]
         },
         {
+         "type": "cards",
+         "title": "Four ways to seal",
+         "items": [
+          [
+           "Silicone serum",
+           "The most slip. Smooth a little over your leave-in, on the last few inches.",
+           "Most slip"
+          ],
+          [
+           "Squalane",
+           "The lightest. A few drops if richer products weigh you down.",
+           "Lightest"
+          ],
+          [
+           "Plant oils",
+           "Coconut oil can get inside the hair and reduce protein loss, so it's also a good pre-wash treatment.",
+           "Pre-wash pick"
+          ],
+          [
+           "Hair grease",
+           "Petrolatum and mineral oil: classic for very dry ends and twists. Warm a little in your palms.",
+           "Most hold"
+          ]
+         ]
+        },
+        {
          "type": "edit",
          "label": "The ceramide edit",
          "use": [
@@ -243,8 +284,8 @@
         }
        ],
        "deeper": {
-        "title": "Go deeper",
-        "sub": "Inside a strand, and four ways to seal",
+        "title": "What's inside a strand, and what makes a great conditioner",
+        "sub": "Lipids, ceramides and the formula behind slip",
         "blocks": [
          {
           "type": "p",
@@ -255,38 +296,15 @@
           "text": "Ceramides are lipids too, but the whole conditioner matters more: fatty alcohols for texture, cationic conditioners and silicones for slip, oils for softness."
          },
          {
-          "type": "cards",
-          "title": "Four ways to seal",
-          "items": [
-           [
-            "Silicone serum",
-            "The most slip. Smooth a little over your leave-in, on the last few inches.",
-            "Most slip"
-           ],
-           [
-            "Squalane",
-            "The lightest. A few drops if richer products weigh you down.",
-            "Lightest"
-           ],
-           [
-            "Plant oils",
-            "Coconut oil can get inside the hair and reduce protein loss, so it's also a good pre-wash treatment.",
-            "Pre-wash pick"
-           ],
-           [
-            "Hair grease",
-            "Petrolatum and mineral oil: classic for very dry ends and twists. Warm a little in your palms.",
-            "Most hold"
-           ]
-          ]
-         },
-         {
           "type": "p",
           "text": "Pick one, apply it after your leave-in, and reapply when your ends start to feel rough."
          }
         ]
        },
-       "lockin": "Slip first, then a seal. Two parts of one strategy against friction."
+       "lockin": "Slip first, then a seal. Two parts of one strategy against friction.",
+       "image": "winter-arc-lock-in-w1-s3.jpg",
+       "quote": "Think of sealing as giving each strand a thin protective jacket.",
+       "image_pos": "50% 45%"
       }
      ],
      [
@@ -296,8 +314,8 @@
        "dek": "Make wash day feel like a treatment, not a chore.",
        "image_alt": "Wearing a pink thermal heat cap over the hair while conditioning, in a pink robe.",
        "deeper": {
-        "title": "Go deeper",
-        "sub": "Why warmth helps, and oil pre-wash",
+        "title": "Why warmth helps (and when it doesn't need to)",
+        "sub": "Penetration vs. surface conditioning",
         "blocks": [
          {
           "type": "p",
@@ -305,7 +323,7 @@
          },
          {
           "type": "p",
-          "text": "For a pre-wash oil, warm a little coconut oil in a bowl of warm water and apply it to your lengths. Never use anything that feels hot, and skip heat if your scalp is irritated."
+          "text": "Skip heat if your scalp is irritated or sensitive."
          }
         ]
        },
@@ -316,6 +334,32 @@
          "TGC-091",
          "Thermal heat cap"
         ]
+       ],
+       "image": "winter-arc-lock-in-w1-s4.jpg",
+       "quote": "Not every conditioning ingredient needs to penetrate the hair to be useful.",
+       "image_pos": "50% 25%",
+       "blocks": [
+        {
+         "type": "cards",
+         "title": "Three ways to add warmth",
+         "items": [
+          [
+           "Warm the bottle",
+           "Stand the closed tub in warm water for a few minutes. Never microwave it.",
+           "Easiest"
+          ],
+          [
+           "Heat cap",
+           "Gentle, steady warmth while you condition. Follow the product's timing.",
+           "Deepest"
+          ],
+          [
+           "Warm oil pre-wash",
+           "Warm a little coconut oil in a water bath and apply to lengths before shampoo. Never hot.",
+           "Pre-wash"
+          ]
+         ]
+        }
        ]
       }
      ],
@@ -326,6 +370,37 @@
        "dek": "Some answers aren't in your bathroom cabinet.",
        "blocks": [
         {
+         "type": "cards",
+         "title": "Tests your doctor may consider",
+         "items": [
+          [
+           "CBC",
+           "Checks for anemia.",
+           "Blood"
+          ],
+          [
+           "Ferritin",
+           "Your iron stores.",
+           "Iron"
+          ],
+          [
+           "Thyroid",
+           "Can affect hair.",
+           "Hormones"
+          ],
+          [
+           "Vitamin D",
+           "Depending on your history.",
+           "Vitamin"
+          ],
+          [
+           "B12, folate, zinc",
+           "If a deficiency is suspected.",
+           "If needed"
+          ]
+         ]
+        },
+        {
          "type": "myth",
          "kicker": "Before you supplement",
          "title": "Test first. Iron especially.",
@@ -335,40 +410,9 @@
         }
        ],
        "deeper": {
-        "title": "Go deeper",
-        "sub": "Tests your doctor may consider",
+        "title": "Why there's no magic ferritin number",
+        "sub": "Getting informed vs. chasing numbers",
         "blocks": [
-         {
-          "type": "cards",
-          "title": "Tests your doctor may consider",
-          "items": [
-           [
-            "CBC",
-            "Checks for anemia.",
-            "Blood"
-           ],
-           [
-            "Ferritin",
-            "Your iron stores.",
-            "Iron"
-           ],
-           [
-            "Thyroid",
-            "Can affect hair.",
-            "Hormones"
-           ],
-           [
-            "Vitamin D",
-            "Depending on your history.",
-            "Vitamin"
-           ],
-           [
-            "B12, folate, zinc",
-            "If a deficiency is suspected.",
-            "If needed"
-           ]
-          ]
-         },
          {
           "type": "p",
           "text": "There's no single ferritin number that guarantees growth. This is about getting informed, not chasing ideal numbers."
@@ -376,7 +420,10 @@
         ]
        },
        "lockin": "Shedding changed? Talk to your doctor before you add another supplement.",
-       "image_alt": "Hands lifting long dark curls away from the parting at the scalp."
+       "image_alt": "Hands lifting long dark curls away from the parting at the scalp.",
+       "image": "winter-arc-lock-in-w1-s5.jpg",
+       "quote": "Taking more than you need isn't a shortcut to longer or thicker hair.",
+       "image_pos": "50% 25%"
       }
      ]
     ]
@@ -456,5 +503,8 @@
    ]
   ]
  },
- "layout": "guided"
+ "layout": "guided",
+ "openers": true,
+ "hero_print": "Get the free printable",
+ "unfold": true
 }

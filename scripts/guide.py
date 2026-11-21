@@ -320,7 +320,11 @@ def page(d):
                     rich = gz_blocks(r, extra)
                     if extra.get('deeper'):
                         dp = extra['deeper']
-                        deeper = (f'<details class="gz-fold gz-deeper" data-track="{e(dp.get("title", "Go deeper"))}" data-habit="{k + 1}"><summary>{e(dp.get("title", "Go deeper"))}'
+                        if d.get('unfold'):  # the lesson shown openly, under its own heading
+                            deeper = (f'<div class="gz-lesson"><h4 class="gz-lesson-h">{e(dp.get("title", "Go deeper"))}</h4>'
+                                      f'{gz_blocks(r, dp)}</div>')
+                        else:
+                          deeper = (f'<details class="gz-fold gz-deeper" data-track="{e(dp.get("title", "Go deeper"))}" data-habit="{k + 1}"><summary>{e(dp.get("title", "Go deeper"))}'
                                   + (f'<small>{e(dp["sub"])}</small>' if dp.get('sub') else '')
                                   + f'</summary><div class="gz-fold-in">{gz_blocks(r, dp)}</div></details>')
                     else:
@@ -350,7 +354,7 @@ def page(d):
             if ro.get('between'):
                 bt = ro['between']
                 groups = ''.join(f'<div><h4>{e(kk)}</h4><ul class="ticks">' + ''.join(f'<li>{e(x)}</li>' for x in v) + '</ul></div>' for kk, v in bt['groups'])
-                bits += f'<div class="gz-after"><details class="gd-fold"><summary>{e(bt["title"])}<small>{e(bt["sub"])}</small></summary><div class="gd-between">{groups}</div></details></div>'
+                bits += f'<div class="gz-after"><details class="gd-fold"{" open" if d.get("unfold") else ""}><summary>{e(bt["title"])}<small>{e(bt["sub"])}</small></summary><div class="gd-between">{groups}</div></details></div>'
             out.append(f'<section class="gz-sec" id="routine"><div class="tp-in gz-head"><h2>{e(ro["title"])}</h2>' + (f'<p class="gd-lead">{e(ro["intro"])}</p>' if ro.get('intro') else '') + f'</div>{bits}</section>')
             jump.append(('routine', ro.get('jump', ro['title'])))
             save()
@@ -525,7 +529,7 @@ def index_page(guides):
   <p class="fine">These are guides to cosmetic hair care, not medical advice. For hair loss, scalp conditions or allergies, talk to a dermatologist or doctor.</p>'''
     B.write('plans/index.html', B.shell('../', 'Hair plans · The Good Coil', f'{len(guides)} hair-care guides from The Good Coil: edges, length retention, moisture, shine, wash and goes and winter care.', body, 'plans/', 'plans'))
 
-REDIRECTS = {'healthy-edges': 'edge-growth-plan', 'deep-moisture-protein-balance': 'moisture-and-protein', 'mega-growth-retention': 'mega-growth-and-retention'}
+REDIRECTS = {'healthy-edges': 'edge-growth-plan', 'deep-moisture-protein-balance': 'moisture-and-protein', 'mega-growth-retention': 'mega-growth-and-retention', 'winter-arc-lock-in-v2': 'winter-arc-lock-in'}
 
 def build():
     out = [json.load(open(f, encoding='utf-8')) for f in sorted(glob.glob(os.path.join(B.ROOT, 'content', 'guide-*.json')))]

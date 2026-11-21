@@ -1180,3 +1180,8 @@ a.gp-ing:hover{background:var(--ink);color:var(--paper)}
 .gz-col .gz-cards li{flex:0 0 260px;scroll-snap-align:start}
 .gz-col .gz-swipe{display:inline}
 .gz-deeper>summary{font-size:19px;line-height:1.25}
+.gz-lesson{margin:34px 0 8px;border-top:2px solid currentColor;padding-top:18px}
+.gz-lesson-h{font-size:24px;line-height:1.2;letter-spacing:-.03em;margin:0 0 12px}
+.gz-step .gz-lesson h4.gz-sub{font-size:18px;margin:22px 0 6px}
+.gz-lesson p{font-size:17px!important}
+.gz-lesson p,.gz-colin>p{margin:0 0 14px}
