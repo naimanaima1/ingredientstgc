@@ -380,7 +380,7 @@
           ],
           [
            "Ferritin",
-           "Your iron stores.",
+           "Your iron stores. Many hair specialists look for about 40–70 ng/mL when shedding is a concern.",
            "Iron"
           ],
           [
@@ -410,12 +410,16 @@
         }
        ],
        "deeper": {
-        "title": "Why there's no magic ferritin number",
-        "sub": "Getting informed vs. chasing numbers",
+        "title": "Ferritin: the 40–70 ng/mL range",
+        "sub": "What the number means, and what it doesn't",
         "blocks": [
          {
           "type": "p",
-          "text": "There's no single ferritin number that guarantees growth. This is about getting informed, not chasing ideal numbers."
+          "text": "Many hair specialists look for a ferritin of about 40–70 ng/mL when shedding is a concern. That's well above the 12–15 ng/mL cutoff labs often use to diagnose iron deficiency, so a result marked \"normal\" can still be worth discussing."
+         },
+         {
+          "type": "p",
+          "text": "It's a range to talk through with your doctor, not a guarantee of growth, and not a reason to take iron on your own. Too much iron can be harmful."
          }
         ]
        },
