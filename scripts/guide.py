@@ -202,7 +202,7 @@ def gz_blocks(r, extra):
                 cards += (f'<li><span class="gz-card-n">{n:02d}</span>' + (f'<span class="gz-card-tag">{e(tag)}</span>' if tag else '')
                           + f'<b>{hl}</b><p>{e(body)}</p></li>')
             out += (f'<div class="gz-cards"><div class="gz-cards-head"><span class="pc-label">{e(b["title"])}</span>'
-                    f'<span class="gz-swipe" aria-hidden="true">Swipe &rarr;</span></div>'
+                    f'<span class="gz-swipe" aria-hidden="true">More &rarr;</span></div>'
                     f'<ul aria-label="{e(b["title"])}">{cards}</ul></div>')
         elif t == 'vs':
             cols = ''.join(f'<div><span class="gz-kicker">{e(a)}</span><p>{e(c)}</p></div>' for a, c in b['items'])
@@ -320,7 +320,7 @@ def page(d):
                     rich = gz_blocks(r, extra)
                     if extra.get('deeper'):
                         dp = extra['deeper']
-                        deeper = (f'<details class="gz-fold gz-deeper"><summary>{e(dp.get("title", "Go deeper"))}'
+                        deeper = (f'<details class="gz-fold gz-deeper" data-track="{e(dp.get("title", "Go deeper"))}" data-habit="{k + 1}"><summary>{e(dp.get("title", "Go deeper"))}'
                                   + (f'<small>{e(dp["sub"])}</small>' if dp.get('sub') else '')
                                   + f'</summary><div class="gz-fold-in">{gz_blocks(r, dp)}</div></details>')
                     else:

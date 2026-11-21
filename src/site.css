@@ -1175,3 +1175,8 @@ a.gp-ing:hover{background:var(--ink);color:var(--paper)}
   .gz-open-n{font-size:clamp(120px,14vw,220px)}
 }
 @media(min-width:900px){.gz-open .gz-open-txt h3{max-width:44%;font-size:clamp(40px,4.6vw,68px)}}
+/* one-column chapters: lesson cards are a single swipe/scroll row at every width */
+.gz-col .gz-cards ul{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;gap:12px;padding-bottom:12px}
+.gz-col .gz-cards li{flex:0 0 260px;scroll-snap-align:start}
+.gz-col .gz-swipe{display:inline}
+.gz-deeper>summary{font-size:19px;line-height:1.25}

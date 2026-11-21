@@ -134,4 +134,10 @@
     window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(move); } }, { passive: true });
     move();
   }
+  /* Count which lessons people open (Google Analytics + PostHog via tgcTrack). */
+  document.querySelectorAll('details[data-track]').forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (d.open && window.tgcTrack) tgcTrack('plan_fold_open', { plan: location.pathname, habit: +d.getAttribute('data-habit'), fold: d.getAttribute('data-track') });
+    });
+  });
 })();
