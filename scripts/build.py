@@ -617,6 +617,28 @@ def data_files(counts):
     }
     write('data/ingredients.json', json.dumps(out, ensure_ascii=False, indent=1))
 
+def bust_cache():
+    """Stamp every CSS/JS link with a fingerprint of the file, so a changed stylesheet
+    or script always loads fresh instead of a browser or CDN serving the old one."""
+    import hashlib
+    assets = os.path.join(OUT, 'assets')
+    stamp = {}
+    for fn in os.listdir(assets):
+        if fn.endswith(('.css', '.js')):
+            with open(os.path.join(assets, fn), 'rb') as fh:
+                stamp[fn] = hashlib.sha1(fh.read()).hexdigest()[:10]
+    pat = re.compile(r'(assets/)(' + '|'.join(re.escape(f) for f in stamp) + r')(")')
+    for root, _, files in os.walk(OUT):
+        for f in files:
+            if f.endswith('.html'):
+                path = os.path.join(root, f)
+                with open(path, encoding='utf-8') as fh:
+                    html = fh.read()
+                new = pat.sub(lambda m: f'{m.group(1)}{m.group(2)}?v={stamp[m.group(2)]}{m.group(3)}', html)
+                if new != html:
+                    with open(path, 'w', encoding='utf-8') as fh:
+                        fh.write(new)
+
 def extras(tags, plan_urls=()):
     write('CNAME', 'library.thegoodcoil.com\n')
     write('.nojekyll', '')
@@ -702,6 +724,7 @@ def main():
     import ecosystem_tests  # TEST JARA landing + Good Coil homepage (noindex)
     ecosystem_tests.build()
     extras(tags, plan_urls)
+    bust_cache()
     checks(counts)
     text = '### Hair plans\n' + (f'{len(plan_urls)} plans built.\n' + '\n'.join(plan_notes) if plan_urls else 'No programs found.') + '\n'
     print(text)
