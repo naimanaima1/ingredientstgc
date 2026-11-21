@@ -43,7 +43,7 @@ CATS = [
     ('sil-amino', 'Amino silicones', 'slip', 'Silicones that cling mostly to damaged spots and resist stacking up (amodimethicone and similar).'),
     ('silicone', 'Silicones', 'slip', 'Coating ingredients that add slip, shine and frizz control.'),
     ('cond', 'Conditioners and detanglers', 'slip', 'Ingredients that add slip so hair detangles more easily.'),
-    ('humectant', 'Humectants', 'moist', 'They draw water in and hold on to it: glycerin, glycols, aloe, honey, panthenol and similar.'),
+    ('humectant', 'Water binders (humectants)', 'moist', 'They draw water in and hold on to it: glycerin, glycols, aloe, honey, panthenol and similar.'),
     ('butter', 'Butters', 'oils', 'Rich, solid fats such as shea, cocoa and mango butter.'),
     ('mineral', 'Mineral oil and petrolatum', 'oils', 'Petroleum-derived oils and jellies that seal and coat.'),
     ('wax', 'Waxes', 'oils', 'Beeswax, candelilla, lanolin and similar: they seal and add hold.'),
@@ -138,8 +138,8 @@ TAG_MAP = {'protein': 'protein', 'ceramides': 'lipid', 'silicone': 'silicone', '
            'humectant': 'humectant', 'butter/oil': 'oil', 'slip/detangler': 'cond', 'film-former': 'film',
            'chelating': 'chelator', 'bond repair': 'bond', 'paraben': 'paraben', 'phthalate': 'phthalate', 'strong-cleanser': 'strong'}
 
-# Quick checks: always shown, found or not. The homepage's eight first.
-QUICK = ['protein', 'lipid', 'silicone', 'sulfate', 'peptide', 'paraben', 'strong', 'phthalate',
+# Quick checks: always shown, found or not. Water binders, oils and butters first (owner, Nov 21), then the homepage's eight.
+QUICK = ['humectant', 'oil', 'butter', 'protein', 'lipid', 'silicone', 'sulfate', 'peptide', 'paraben', 'strong', 'phthalate',
          'drying', 'fragrance', 'allergen', 'essential', 'mineral', 'formaldehyde', 'isothiazolinone', 'coconut', 'gluten']
 
 EXAMPLE = ('Water (Aqua), Cetearyl Alcohol, Behentrimonium Methosulfate, Glycerin, Butyrospermum Parkii (Shea) Butter, '
