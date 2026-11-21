@@ -327,14 +327,14 @@ def shell(r, title, desc, body, path, current=''):
 <header class="site-header">
   <a href="{r}" class="wordmark" aria-label="The Good Coil Library home"><span class="brand-symbol" aria-hidden="true">◎</span> the<span class="brand-amp">good</span>coil<span class="wordmark-sub">Library</span></a>
   <nav class="nav" aria-label="Main">
-    <a href="{r}#find" class="hide-sm"{cur('home')}>Label Decoder</a>
+    <a href="{r}label-decoder/" class="hide-sm"{cur('decoder')}>Label Decoder</a>
     <a href="{r}ingredients/" class="hide-sm"{cur('ingredients')}>Ingredients</a>
     <a href="{r}products/" class="hide-sm"{cur('products')}>Products</a>
     <a href="{r}plans/" class="hide-sm"{cur('plans')}>Hair Plans</a>
     <a class="nav-cta" href="{utm(QUIZ_URL, 'nav_cta', 'hair_quiz')}">Take Hair Quiz</a>
   </nav>
 </header>
-<nav class="subnav" aria-label="Library sections"><a href="{r}#find">Label Decoder</a><a href="{r}ingredients/">Ingredients</a><a href="{r}products/">Products</a><a href="{r}plans/">Hair Plans</a></nav>
+<nav class="subnav" aria-label="Library sections"><a href="{r}label-decoder/">Label Decoder</a><a href="{r}ingredients/">Ingredients</a><a href="{r}products/">Products</a><a href="{r}plans/">Hair Plans</a></nav>
 <main id="main" class="wrap">
 {body}
 </main>
@@ -694,6 +694,7 @@ def main():
     write('assets/nudge.js', open(os.path.join(ROOT, 'src', 'nudge.js'), encoding='utf-8').read())
     write('assets/analytics.js', open(os.path.join(ROOT, 'src', 'analytics.js'), encoding='utf-8').read())
     write('assets/guide.js', open(os.path.join(ROOT, 'src', 'guide.js'), encoding='utf-8').read())
+    write('assets/mini.js', open(os.path.join(ROOT, 'src', 'mini.js'), encoding='utf-8').read())
     import groups as GRP_PRE
     GRP_PRE.build()
     tags = property_pages()

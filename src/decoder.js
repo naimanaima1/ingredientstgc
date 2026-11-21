@@ -1,7 +1,9 @@
 // The full Label Decoder (/label-decoder/): one label broken down, or two or three compared.
+// Also the engine for the homepage's mini decoder (src/mini.js); the page sets window.DX_ROOT.
 // window.DX (written by scripts/decoder.py): keys, rows [slug, title, what, cats, inci], cats, fams, rules, quick.
 (function () {
   const D = window.DX;
+  const ROOT = window.DX_ROOT || '';
   const norm = s => s.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const PREFIX = /^(organic|certified organic|deionized|distilled|purified|pure|raw|natural|unrefined)\s+/i;
@@ -63,7 +65,7 @@
     ['formaldehyde', 'isothiazolinone', 'allergen', 'drying', 'strong', 'sulfate'].forEach(c => { if (x.cats.includes(c) && x.r) bits.push(CAT[c].d); });
     return bits;
   }
-  const label = x => x.r ? `<a href="${D.root}${x.r[0]}/">${esc(x.t)}</a>` : esc(x.t);
+  const label = x => x.r ? `<a href="${ROOT}${x.r[0]}/">${esc(x.t)}</a>` : esc(x.t);
   const chips = x => x.cats.length ? x.cats.map(c => `<span class="dx-chip f-${CAT[c].f}">${esc(CAT[c].n)}</span>`).join('') : '<span class="dx-chip dx-unsorted">Not sorted yet</span>';
 
   // ---------- one label ----------
@@ -116,7 +118,7 @@
 
   // ---------- products we have read ----------
   let all = null, loading = null;
-  const load = () => loading = loading || fetch(D.root + 'data/find.json').then(r => r.json()).then(j => (all = j)).catch(() => (all = []));
+  const load = () => loading = loading || fetch(ROOT + 'data/find.json').then(r => r.json()).then(j => (all = j)).catch(() => (all = []));
   function finder(input, list, onPick) {
     let pick = -1, hits = [];
     const close = () => { list.hidden = true; list.innerHTML = ''; input.setAttribute('aria-expanded', 'false'); pick = -1; };
@@ -290,6 +292,6 @@
     }
   }
 
-  window.DX_CORE = { split, classify, read, cleanser, stat };
+  window.DX_CORE = { split, classify, read, cleanser, stat, finder, CAT, FAM };
   if (typeof document !== 'undefined' && document.getElementById('dx-form')) init();
 })();

@@ -126,23 +126,22 @@ def build(out='', root='', quiet=True):
     plans.sort(key=lambda g: g.get('order', 99))
 
     if quiet:
-        lead = ('Name a product you use and we will tell you what is in it. '
+        lead = ('Find a product you use, or paste its ingredient list, and see what is in it. '
                 'No scores, no verdicts.')
-        controls = f'''<div class="finder">
+        controls = f'''<div class="mini-tabs" role="tablist" aria-label="How to read a label">
+        <button type="button" role="tab" id="mt-find" aria-selected="true" aria-controls="mp-find">Find a product</button><button type="button" role="tab" id="mt-paste" aria-selected="false" aria-controls="t-form">Paste a list</button>
+      </div>
+      <div class="finder mini-find" id="mp-find" role="tabpanel" aria-labelledby="mt-find">
         <label for="tf">Your product</label>
         <input id="tf" type="text" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="tf-list" placeholder="Start typing, e.g. Quench or Aunt Jackie's">
         <ul class="f-list t-list" id="tf-list" role="listbox" hidden></ul>
         <p class="f-note">{n_found} labels read so far.</p>
       </div>
-      <details class="paste t-paste" >
-        <summary>Our library does not have your product yet?</summary>
-        <form id="t-form">
-          <label for="tt">Paste the ingredient list from the bottle</label>
-          <textarea id="tt" rows="3" placeholder="Water, Glycerin, Cetearyl Alcohol, …"></textarea>
-          <button class="go" type="submit">Read this label</button>
-        </form>
-      </details>
-      <p class="home-full"><a href="{R}label-decoder/">See the full breakdown, or compare two labels &rarr;</a></p>'''
+      <form class="paste mini-paste" id="t-form" role="tabpanel" aria-labelledby="mt-paste" hidden>
+        <label for="tt">Paste the ingredient list from the bottle</label>
+        <textarea id="tt" rows="4" placeholder="Water, Glycerin, Cetearyl Alcohol, …"></textarea>
+        <button class="go" type="submit">Read this label</button>
+      </form>'''
     else:
         lead = ('Paste the ingredient list from a bottle or a product page. Every ingredient in '
                 'our library is explained by what it does. No scores, no verdicts.')
@@ -153,21 +152,16 @@ def build(out='', root='', quiet=True):
       </form>
       <p class="home-full"><a href="../label-decoder/">See the full breakdown, or compare two labels &rarr;</a></p>'''
     if quiet:
-        rows = ''.join(
-            f'''<li class="t-row" data-g="{k}"><span class="t-name">{e(n)}</span>'''
-            f'''<span class="t-ans">?</span><span class="t-detail"></span></li>'''
-            for k, n, _ in B.CHECK_GROUPS)
-        card = f'''<figure class="btl btl-quiet" id="card">
-      <div class="btl-top"><span>Does it have…</span><b id="btl-name"></b></div>
-      <ol class="t-answers" id="t-answers" aria-live="polite">{rows}</ol>
-      <p class="t-note" id="t-note">Pick a product and we will read its label.</p>
-      <details class="t-more" id="t-more" hidden>
-        <summary>See the full ingredient list</summary>
-        <p class="inci" id="t-inci"></p>
-        <p class="t-foot" id="t-foot"></p>
-      </details>
+        ex = {'n': name, 's': p['_slug'], 'i': items}
+        card = f'''<figure class="btl mini" id="card">
+      <div class="btl-top"><span id="mini-tag">Example</span><b id="btl-name"><a href="{R}products/{p['_slug']}/">{e(name)}</a></b></div>
+      <div class="mini-q" id="mini-q" role="group" aria-label="Quick checks"></div>
+      <p class="mini-words" id="mini-words">{e(', '.join(items))}</p>
+      <p class="mini-foot" id="mini-foot"></p>
+      <div class="mini-links"><a id="mini-full" href="{R}label-decoder/#p={p['_slug']}">See every ingredient explained &rarr;</a><a id="mini-cmp" href="{R}label-decoder/#compare=p%3A{p['_slug']}">Compare with another product &rarr;</a></div>
     </figure>'''
-        script = f'<script src="{R}assets/home-test.js" defer></script>'
+        script = (f'<script>window.DX_ROOT={json.dumps(R)};window.MINI_EXAMPLE={json.dumps(ex, ensure_ascii=False)};</script>'
+                  f'<script src="{R}assets/decoder.js" defer></script><script src="{R}assets/mini.js" defer></script>')
     else:
         card = f'''<figure class="btl" id="card" aria-labelledby="btl-name">
       <div class="cap" id="cap" aria-live="polite"><small>{e(first[1])}</small><b>{e(first[2])}</b><p>{e(first[3])}</p></div>
@@ -210,8 +204,8 @@ def build(out='', root='', quiet=True):
 </div></aside>
 </div>
 {script}'''
-    desc = ('Name a hair-care product and see whether it has protein, ceramides, silicones, '
-            'sulfates or peptides in it, with every ingredient explained by what it does.' if quiet
+    desc = ('Find a hair-care product or paste its ingredient list and see what is in it: water binders, '
+            'oils and butters, protein, silicones, cleansers and fragrance, with every ingredient explained.' if quiet
             else 'Paste a hair-care ingredient list and see every ingredient explained by what it does.')
     html = B.shell(R, 'The Good Coil Library: read any hair-care label', desc, body, OUT_PATH, 'home')
     if not quiet:

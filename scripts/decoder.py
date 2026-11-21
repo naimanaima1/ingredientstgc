@@ -191,7 +191,7 @@ def check_rules():
 def build():
     check_rules()
     R = '../'
-    js = 'window.DX=' + json.dumps({**data(), 'root': R}, ensure_ascii=False, separators=(',', ':')) + ';\n' + \
+    js = 'window.DX=' + json.dumps(data(), ensure_ascii=False, separators=(',', ':')) + ';\n' + \
          open(B.os.path.join(B.ROOT, 'src', 'decoder.js'), encoding='utf-8').read()
     B.write('assets/decoder.js', js)
     legend = ''.join(f'<button type="button" class="dx-fam" data-f="{k}" aria-pressed="false"><i class="dx-sw f-{k}"></i>{e(n)}</button>' for k, n, _ in FAMILIES)
@@ -241,9 +241,9 @@ def build():
     <p class="fine dx-fine">Counts show how many ingredients of each kind a label has; "first at #3" shows where the first one sits. Labels list ingredients from most to least, down to about 1%, so higher up usually means more. Neither count tells you the exact amount. This is information, not advice.</p>
   </section>
   </div>
-  <script>window.DX_EXAMPLE={json.dumps(EXAMPLE)};</script>
+  <script>window.DX_ROOT='../';window.DX_EXAMPLE={json.dumps(EXAMPLE)};</script>
   <script src="../assets/decoder.js" defer></script>
 '''
     B.write('label-decoder/index.html', B.shell(R, 'Label Decoder: full ingredient breakdown · The Good Coil Library',
             'Paste any hair-care ingredient list and see every ingredient sorted and explained: cleansers, silicones, proteins, ceramides, humectants, oils, preservatives, fragrance allergens, phthalates and more.',
-            body, 'label-decoder/', 'home'))
+            body, 'label-decoder/', 'decoder'))
