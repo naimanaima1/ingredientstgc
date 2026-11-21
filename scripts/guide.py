@@ -64,6 +64,30 @@ TRACK = {
         'A free 4-page printable: five check-ins, back-view landmarks and a chart of the length you kept.')),
     'moisture-and-protein': ('Damage Recovery & Strengthening', None),
 }
+# Plans whose printable can be requested right here: the form posts to JARA's sign-up endpoint,
+# which adds the address to the JARA email list and emails the PDF (same list and email as itsjara.com).
+LEAD_FORMS = {
+    'winter-arc-lock-in': {'printable': 'winter-arc-lock-in', 'pdf': '/jara-winter-arc-lock-in.pdf',
+                           'button': 'Email me the free guide'},
+}
+LEAD_ENDPOINT = JARA_URL + '/api/printable-signup'
+
+def lead_form(slug, name):
+    f = LEAD_FORMS.get(slug)
+    if not f:
+        return ''
+    pdf = B.utm(JARA_URL + f['pdf'], 'plan_end', 'printables', f'{slug}_form')
+    return f'''<form class="lead-form" id="get-guide" data-endpoint="{LEAD_ENDPOINT}" data-printable="{e(f['printable'])}" data-slug="{e(slug)}" data-fallback="{B.utm(JARA_URL + TRACK[slug][1][1], 'plan_end', 'printables', f'{slug}_print')}" novalidate>
+        <label for="lead-email">Your email</label>
+        <div class="lead-row"><input id="lead-email" name="email" type="email" autocomplete="email" required placeholder="you@email.com">
+        <button type="submit" class="btn">{e(f['button'])}</button></div>
+        <input class="lead-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="lead-legal">By signing up, you join the <b>JARA email list</b>. JARA is the hair journal app from The Good Coil. You'll get the {e(name)} PDF and occasional JARA emails, and you can unsubscribe anytime. <a href="{JARA_URL}/privacy">Privacy</a></p>
+        <p class="lead-msg" role="status" aria-live="polite" hidden></p>
+        <p class="lead-ok" hidden>Check your inbox. Can't wait? <a href="{pdf}" download>Download it now &rarr;</a></p>
+        <noscript><p><a href="{B.utm(JARA_URL + TRACK[slug][1][1], 'plan_end', 'printables', f'{slug}_print')}">Get it on itsjara.com &rarr;</a></p></noscript>
+      </form>'''
+
 TOOLKIT = ('wash day toolkit', '/free-hair-tracker',
            'A free printable wash log, length chart and trim tracker. Print it and fill it in after each wash.')
 
@@ -84,7 +108,7 @@ def track_choice(r):
     <h2>Track this plan <em>your way</em></h2>
     <div class="track-opts">
       <div class="track-opt track-app"><span class="eyebrow">In the app</span><h3>Track it in JARA</h3><p>{app}</p><a class="btn" href="{go}">Try JARA free</a></div>
-      <div class="track-opt track-hand"><span class="eyebrow">On paper</span><h3>Track it by hand</h3><p>{e(blurb)}</p><a class="btn btn-line" href="{dl}">Get the free {e(name)}</a></div>
+      <div class="track-opt track-hand"><span class="eyebrow">On paper</span><h3>Track it by hand</h3><p>{e(blurb)}</p>{lead_form(slug, name) or f'<a class="btn btn-line" href="{dl}">Get the free {e(name)}</a>'}</div>
     </div>
   </div></aside>'''
 
@@ -232,7 +256,7 @@ def hero_print(d):
     sheet = TRACK.get(d.get('track_as', d['slug']), (None, None))[1]
     if not sheet:
         return ''
-    url = B.utm(JARA_URL + sheet[1], 'plan_hero', 'printables', f"{d['slug']}_print")
+    url = '#get-guide' if d.get('track_as', d['slug']) in LEAD_FORMS else B.utm(JARA_URL + sheet[1], 'plan_hero', 'printables', f"{d['slug']}_print")
     return f'<a class="gd-go gd-go-line" href="{url}">{e(d["hero_print"])}</a>'
 
 def section(id_, title, intro, inner, cls=''):

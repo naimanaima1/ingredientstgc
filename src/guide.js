@@ -140,4 +140,32 @@
       if (d.open && window.tgcTrack) tgcTrack('plan_fold_open', { plan: location.pathname, habit: +d.getAttribute('data-habit'), fold: d.getAttribute('data-track') });
     });
   });
+  /* Free guide form: posts to JARA's sign-up endpoint, which adds the address to the JARA list and emails the PDF. */
+  document.querySelectorAll('form.lead-form').forEach(function (f) {
+    var msg = f.querySelector('.lead-msg'), ok = f.querySelector('.lead-ok'), btn = f.querySelector('button');
+    f.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var email = f.email.value.trim();
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.hidden = false; msg.textContent = 'Enter a valid email.'; f.email.focus(); return; }
+      btn.disabled = true; msg.hidden = false; msg.textContent = 'Sending…';
+      fetch(f.getAttribute('data-endpoint'), {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, printable: f.getAttribute('data-printable'), website: f.website.value })
+      }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+        .then(function (res) {
+          if (!res.ok) throw new Error((res.j && res.j.error) || 'Something went wrong.');
+          msg.hidden = true; ok.hidden = false; f.querySelector('.lead-row').hidden = true; f.querySelector('label').hidden = true;
+          if (window.tgcTrack) tgcTrack('generate_lead', { source: 'library-' + f.getAttribute('data-slug') });
+        })
+        .catch(function (err) {
+          btn.disabled = false;
+          var known = err && err.message && /valid email|Try again/.test(err.message);
+          if (known) { msg.textContent = err.message; return; }
+          /* couldn't reach JARA from here: send them to the same form on itsjara.com */
+          msg.innerHTML = '';
+          var a = document.createElement('a'); a.href = f.getAttribute('data-fallback'); a.textContent = 'Get it on itsjara.com \u2192';
+          msg.appendChild(document.createTextNode("Couldn't send it from here. ")); msg.appendChild(a);
+        });
+    });
+  });
 })();

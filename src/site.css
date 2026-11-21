@@ -1185,3 +1185,18 @@ a.gp-ing:hover{background:var(--ink);color:var(--paper)}
 .gz-step .gz-lesson h4.gz-sub{font-size:18px;margin:22px 0 6px}
 .gz-lesson p{font-size:17px!important}
 .gz-lesson p,.gz-colin>p{margin:0 0 14px}
+/* free guide form (posts to JARA) */
+.lead-form{margin-top:14px;text-align:left}
+.lead-form label{display:block;font-size:13px;font-weight:800;margin-bottom:6px}
+.lead-row{display:flex;gap:8px;flex-wrap:wrap}
+.lead-row[hidden]{display:none}
+.lead-row input{flex:1 1 220px;min-height:48px;border:2px solid var(--ink);background:#fff;padding:0 14px;font:inherit;font-size:16px;color:var(--ink)}
+.lead-row input:focus{outline:3px solid var(--cobalt);outline-offset:2px}
+.lead-row .btn{min-height:48px;cursor:pointer}
+.lead-row .btn[disabled]{opacity:.6;cursor:wait}
+.lead-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+.lead-legal{font-size:12.5px!important;line-height:1.55!important;margin-top:10px;opacity:.85}
+.lead-legal a{color:inherit;text-decoration:underline}
+.lead-msg{font-size:14px;font-weight:700;margin-top:8px}
+.lead-ok{font-size:16px;font-weight:800;background:var(--citrus);color:var(--ink);border:1px solid var(--ink);padding:12px 14px;margin-top:10px}
+.lead-ok a{color:var(--ink)}
