@@ -59,7 +59,7 @@ def jara(where, r='../../', over=None):
 # form; plans without their own printable get the wash day toolkit.
 TRACK = {
     'winter-arc-lock-in': ('Winter Moisture & Softness', ('Winter Arc Lock-In', '/winter-arc-lock-in',
-        'A free 4-page printable: the five habits, a 12-week tracker and photo check-ins.')),
+        'A free 19-page guide: the five habits in depth, a label cheat sheet, a 12-week tracker and photo check-ins.')),
     'mega-growth-and-retention': ('Length Retention', ('Length Check Challenge', '/length-check-challenge',
         'A free 4-page printable: five check-ins, back-view landmarks and a chart of the length you kept.')),
     'moisture-and-protein': ('Damage Recovery & Strengthening', None),
