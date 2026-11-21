@@ -18,6 +18,7 @@ library.thegoodcoil.com
   /                         search + list of every ingredient
   /glycerin/                one page per ingredient
   /properties/, /properties/humectant/
+  /label-decoder/           full label breakdown and compare (scripts/decoder.py, src/decoder.js)
   /plans/                   hair plans (content/guide-*.json)
   /about/                   how we write, sources, affiliate disclosure
   /data/ingredients.json    the published data (JARA copies this nightly)
@@ -60,3 +61,7 @@ Styles are in `src/site.css` and follow The Good Coil: paper `#F8F7F2`, ink `#43
 ## Test: full programs at /programs/
 
 `content/programs-full.json` holds the full Signature Care Programs (Intensive Care Collection), transcribed from the owner's original document. `scripts/programs_full.py` builds `/programs/` and `/data/programs-full.json`. These pages carry `noindex`, aren't in the menu or the sitemap, and don't touch `/plans/` or `data/plans.json`. Edit the JSON file to change the content; product examples use catalog ids (e.g. `TGC-063`).
+
+## Full Label Decoder at /label-decoder/
+
+Paste a list or pick a product: every ingredient is sorted into detailed categories (kinds of cleanser and silicone, humectants, oils vs butters vs esters, proteins, amino acids, peptides, ceramides, bond builders, film-formers, preservatives including parabens, formaldehyde releasers and isothiazolinones, fragrance allergens, essential oils, phthalates, drying alcohols, PEGs, coconut-derived, wheat/barley/rye/oat and more), highlighted on the label and explained row by row. "Compare labels" puts two or three side by side (strongest cleanser, water binders, protein, oils, slip and so on, with where each first appears). Sheet rows come first; name patterns in `scripts/decoder.py` (RULES) sort everything else, so adding a pattern needs no sheet work. Links can be shared: `#t=<list>`, `#p=<product>`, `#compare=p:<product>~t:<list>`.

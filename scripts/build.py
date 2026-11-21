@@ -341,7 +341,7 @@ def shell(r, title, desc, body, path, current=''):
 <footer class="site-footer">
   <form class="foot-search" action="{r}ingredients/" method="get" role="search"><label for="fq">Look up an ingredient</label><input id="fq" name="q" type="search" placeholder="Try glycerin, BTAC or shea" autocomplete="off"><button type="submit">Search</button></form>
   <div><a href="{r}" class="wordmark"><span class="brand-symbol" aria-hidden="true">◎</span> the<span class="brand-amp">good</span>coil</a><p>Good knowledge. Happy hair.<br>A journey that's yours.</p></div>
-  <nav class="footer-links" aria-label="Footer"><a href="{r}ingredients/">All ingredients</a><a href="{r}plans/">Hair plans</a><a href="{r}products/">Products</a><a href="{r}properties/">By property</a><a href="{r}groups/">Ingredient families</a><a href="{r}label-check/">Parabens &amp; phthalates</a><a href="{r}about/">How we write</a><a href="{r}about/#affiliate">Affiliate disclosure</a><a href="{utm('https://thegoodcoil.com', 'footer', 'ecosystem')}">The Good Coil</a><a href="{utm('https://itsjara.com', 'footer')}">JARA hair journal</a></nav>
+  <nav class="footer-links" aria-label="Footer"><a href="{r}ingredients/">All ingredients</a><a href="{r}plans/">Hair plans</a><a href="{r}products/">Products</a><a href="{r}properties/">By property</a><a href="{r}groups/">Ingredient families</a><a href="{r}label-decoder/">Full label breakdown</a><a href="{r}label-decoder/#compare">Compare labels</a><a href="{r}label-check/">Parabens &amp; phthalates</a><a href="{r}about/">How we write</a><a href="{r}about/#affiliate">Affiliate disclosure</a><a href="{utm('https://thegoodcoil.com', 'footer', 'ecosystem')}">The Good Coil</a><a href="{utm('https://itsjara.com', 'footer')}">JARA hair journal</a></nav>
   <div class="footer-bottom"><span>© {datetime.date.today().year} The Good Coil</span><span>Descriptions, not verdicts: every head of hair is different.</span><span>Educational guidance, not medical advice.</span></div>
 </footer>
 <script src="{r}assets/tips.js" data-root="{r}" defer></script>
@@ -643,7 +643,7 @@ def extras(tags, plan_urls=()):
     write('CNAME', 'library.thegoodcoil.com\n')
     write('.nojekyll', '')
     write('robots.txt', f'User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n')
-    urls = [''] + [f"{i['_slug']}/" for i in ing] + ['properties/'] + [f'properties/{prop_slug(t)}/' for t in tags] + ['ingredients/', 'about/', 'plans/', 'products/', 'label-check/'] + [f"products/{p['_slug']}/" for p in products] + list(plan_urls)
+    urls = [''] + [f"{i['_slug']}/" for i in ing] + ['properties/'] + [f'properties/{prop_slug(t)}/' for t in tags] + ['ingredients/', 'about/', 'plans/', 'products/', 'label-check/', 'label-decoder/'] + [f"products/{p['_slug']}/" for p in products] + list(plan_urls)
     write('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
           ''.join(f'  <url><loc>{SITE}/{u}</loc></url>\n' for u in urls) + '</urlset>\n')
     write('favicon.svg', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#DCF473"/><circle cx="16" cy="16" r="10" fill="none" stroke="#432731" stroke-width="3"/><circle cx="16" cy="16" r="4" fill="#432731"/></svg>')
@@ -721,6 +721,8 @@ def main():
     guided_test.build()
     import watchlist
     watchlist.build()
+    import decoder  # the full Label Decoder and compare at /label-decoder/
+    decoder.build()
     import ecosystem_tests  # TEST JARA landing + Good Coil homepage (noindex)
     ecosystem_tests.build()
     extras(tags, plan_urls)

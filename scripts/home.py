@@ -141,7 +141,8 @@ def build(out='', root='', quiet=True):
           <textarea id="tt" rows="3" placeholder="Water, Glycerin, Cetearyl Alcohol, …"></textarea>
           <button class="go" type="submit">Read this label</button>
         </form>
-      </details>'''
+      </details>
+      <p class="home-full"><a href="{R}label-decoder/">See the full breakdown, or compare two labels &rarr;</a></p>'''
     else:
         lead = ('Paste the ingredient list from a bottle or a product page. Every ingredient in '
                 'our library is explained by what it does. No scores, no verdicts.')
@@ -149,7 +150,8 @@ def build(out='', root='', quiet=True):
         <label for="t">Ingredient list</label>
         <textarea id="t" rows="4" placeholder="Water, Glycerin, Cetearyl Alcohol, …"></textarea>
         <div class="paste-row"><button class="go" type="submit">Explain this label</button><button class="link-btn" type="button" id="reset" hidden>Back to the example</button></div>
-      </form>'''
+      </form>
+      <p class="home-full"><a href="../label-decoder/">See the full breakdown, or compare two labels &rarr;</a></p>'''
     if quiet:
         rows = ''.join(
             f'''<li class="t-row" data-g="{k}"><span class="t-name">{e(n)}</span>'''
