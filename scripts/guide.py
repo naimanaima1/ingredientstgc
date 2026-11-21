@@ -59,7 +59,7 @@ def jara(where, r='../../', over=None):
 # form; plans without their own printable get the wash day toolkit.
 TRACK = {
     'winter-arc-lock-in': ('Winter Moisture & Softness', ('Winter Arc Lock-In', '/winter-arc-lock-in',
-        'A free 4-page printable: the four locks, a 12-week tracker and photo check-ins.')),
+        'A free 4-page printable: the five habits, a 12-week tracker and photo check-ins.')),
     'mega-growth-and-retention': ('Length Retention', ('Length Check Challenge', '/length-check-challenge',
         'A free 4-page printable: five check-ins, back-view landmarks and a chart of the length you kept.')),
     'moisture-and-protein': ('Damage Recovery & Strengthening', None),
@@ -221,8 +221,19 @@ def gz_blocks(r, extra):
             out += prod_strip(r, b['use'], False, b.get('label', 'What to use'))
     return out
 
-def gz_lockin(extra):
-    return (f'<p class="gz-lock"><span class="gz-kicker">The lock-in</span>{e(extra["lockin"])}</p>' if extra.get('lockin') else '')
+def gz_lockin(extra, n=None):
+    label = f'Lock-in #{n:02d}' if n else 'The lock-in'
+    return (f'<p class="gz-lock"><span class="gz-kicker">{label}</span>{e(extra["lockin"])}</p>' if extra.get('lockin') else '')
+
+def hero_print(d):
+    """A second hero button to the plan's free printable, when the page asks for one."""
+    if not d.get('hero_print'):
+        return ''
+    sheet = TRACK.get(d.get('track_as', d['slug']), (None, None))[1]
+    if not sheet:
+        return ''
+    url = B.utm(JARA_URL + sheet[1], 'plan_hero', 'printables', f"{d['slug']}_print")
+    return f'<a class="gd-go gd-go-line" href="{url}">{e(d["hero_print"])}</a>'
 
 def section(id_, title, intro, inner, cls=''):
     return f'''<section class="gd-sec {cls}" id="{id_}"><div class="tp-in">
@@ -233,7 +244,7 @@ def section(id_, title, intro, inner, cls=''):
 
 def page(d):
     r = '../../'
-    SLUG[0] = d['slug']
+    SLUG[0] = d.get('track_as', d['slug'])
     def save():
         if not any('jara-save' in x for x in out):
             out.append(jara('track', r, d.get('jara')))
@@ -245,7 +256,8 @@ def page(d):
     if d.get('causes'):
         c = d['causes']
         items = ''.join(f'<li><h3>{e(t)}</h3><p>{e(what)}</p><p class="gd-why">{e(why)}</p></li>' for t, what, why in c['items'])
-        out.append(section('why', c['title'], c.get('intro'), f'<ul class="gd-causes">{items}</ul>'))
+        bk = '<span class="gz-book" aria-hidden="true">00</span>' if d.get('openers') else ''
+        out.append(section('why', c['title'], c.get('intro'), bk and f'{bk}<ul class="gd-causes">{items}</ul>' or f'<ul class="gd-causes">{items}</ul>', 'gz-bk' if bk else ''))
         jump.append(('why', c.get('jump', c['title'])))
 
     # 2. before you start
@@ -318,6 +330,18 @@ def page(d):
                     # a rich step reads: lead, deeper layer, products, lock-in, then the small print
                     body_ = (f'<p>{e(x)}</p>{rich}{strip}{deeper}{gz_lockin(extra)}{note}' if (rich or deeper) else f'<p>{e(x)}</p>{note}{strip}{gz_lockin(extra)}')
                     rich = rich or deeper
+                    if d.get('openers'):
+                        fn = extra.get('image') or f"{d['slug']}-w{wi}-s{n}.jpg"
+                        img = (f'<img src="../../assets/img/{e(fn)}" alt="{e(extra.get("image_alt", ""))}" loading="lazy"'
+                               + (f' style="object-position:{e(extra["image_pos"])}"' if extra.get('image_pos') else '') + '>') if os.path.exists(os.path.join(B.ROOT, 'src', 'img', fn)) else ''
+                        quote = f'<blockquote class="gz-quote"><p>{e(extra["quote"])}</p><cite>The Good Coil</cite></blockquote>' if extra.get('quote') else ''
+                        body2 = f'<p class="gz-lead">{e(x)}</p>{quote}{rich}{strip}{deeper}{gz_lockin(extra, k + 1)}{note}'
+                        gz += (f'<section class="gz-open" id="step-{k + 1}"><figure class="gz-open-img">{img}</figure>'
+                               f'<div class="gz-open-txt"><span class="gz-open-n" aria-hidden="true">{k + 1:02d}</span>'
+                               f'<span class="gz-kicker">{e(ro.get("chapter", "Step"))} {k + 1:02d}</span><h3>{e(t)}</h3>{dek}</div></section>'
+                               f'<section class="gz-step gz-col" data-tone="{tone}"><div class="gz-txt gz-colin">{body2}</div></section>')
+                        k += 1
+                        continue
                     gz += (f'<section class="gz-step{flip}{long_}" data-tone="{tone}" id="step-{k + 1}"><div class="gz-grid">'
                            f'<div class="gz-txt"><span class="gz-n" aria-hidden="true">{k + 1:02d}</span>{f'<span class="gz-kicker gz-chapter">{e(ro["chapter"])} {k + 1:02d}</span>' if ro.get('chapter') else ''}<h3>{e(t)}</h3>{dek}{body_}</div>'
                            f'{gz_image(d, wi, n, extra)}</div></section>')
@@ -464,7 +488,7 @@ def page(d):
         src = f'<p class="tp-ref">Source: {e(en["source"])}</p>' if en.get('source') else ''
         notes = ''.join(f'<p>{e(x)}</p>' for x in en.get('notes', []))
         out.append(f'''<section class="gd-sec gd-ink" id="end"><div class="tp-in">
-  <div class="gd-derm"><div><h2>{e(en['title'])}</h2>{notes}{src}</div><div>{right}</div></div>
+  <div class="gd-derm"><div>{'<span class="gz-book" aria-hidden="true">06</span>' if d.get('openers') else ''}<h2>{e(en['title'])}</h2>{notes}{src}</div><div>{right}</div></div>
 </div></section>''')
         out.append(jara('end', r, d.get('jara')))
 
@@ -476,7 +500,7 @@ def page(d):
     <h1>{e(d['name'])}</h1>
     <p class="gd-tag"><em>{e(d['tagline'])}</em></p>
     <p class="gd-intro">{e(d['intro'])}</p>
-    <a class="gd-go" href="#routine">{e(d.get('go', 'Start with the routine'))} →</a>
+    <a class="gd-go" href="#routine">{e(d.get('go', 'Start with the routine'))} →</a>{hero_print(d)}
   </div>
   <div class="tp-photo"><img src="{r}assets/img/{e(d['image'])}" alt="{e(d['image_alt'])}" width="848" height="1424"></div>
 </section>
@@ -486,6 +510,8 @@ def page(d):
 <p class="source tp-in tp-source"><span>The Good Coil hair plan · Ref {e(d['id'])}</span><a href="{r}plans/">All hair plans</a><a href="{r}about/">How we write these</a></p>'''
     html = B.shell(r, f"{d['name']} · The Good Coil", d.get('description', d['tagline']), body, f"plans/{d['slug']}/", 'plans')
     html = html.replace('<main id="main" class="wrap">', '<main id="main" class="gd">', 1)
+    if d.get('hidden'):  # preview versions: reachable by link, never indexed or listed
+        html = html.replace('</head>', '<meta name="robots" content="noindex">\n</head>', 1)
     B.write(f"plans/{d['slug']}/index.html", html)
     return d
 
@@ -506,7 +532,7 @@ def build():
     out.sort(key=lambda g: g.get('order', 99))
     for g in out:
         page(g)
-    index_page(out)
+    index_page([g for g in out if not g.get('hidden')])
     live = {g['slug'] for g in out}
     for old, new in REDIRECTS.items():  # the plan pages these replaced
         if new in live:

@@ -116,4 +116,22 @@
     }, { rootMargin: '-35% 0px -35% 0px' });
     gz.forEach(function (x) { gio.observe(x); });
   }
+  /* Chapter openers: slow parallax where CSS scroll timelines aren't supported (Safari, Firefox). */
+  var opens = document.querySelectorAll('.gz-open-img img');
+  if (opens.length && !(window.CSS && CSS.supports && CSS.supports('animation-timeline: view()')) &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var ticking = false;
+    var move = function () {
+      ticking = false;
+      var vh = window.innerHeight;
+      opens.forEach(function (img) {
+        var box = img.parentNode.getBoundingClientRect();
+        if (box.bottom < 0 || box.top > vh) return;
+        var t = (vh - box.top) / (vh + box.height); /* 0 entering, 1 leaving */
+        img.style.transform = 'translateY(' + (-18 + 18 * Math.min(1, Math.max(0, t))) + '%)';
+      });
+    };
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(move); } }, { passive: true });
+    move();
+  }
 })();

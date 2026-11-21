@@ -683,7 +683,7 @@ def main():
     _, plan_notes = plans.build()          # earlier layout, now under /test-program/, still writes data/plans.json
     import guide
     guides = guide.build()                 # the live hair plans
-    plan_urls = [f"plans/{g['slug']}/" for g in guides]
+    plan_urls = [f"plans/{g['slug']}/" for g in guides if not g.get('hidden')]
     import products as PR
     PR.build()
     import home
