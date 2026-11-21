@@ -1200,3 +1200,26 @@ a.gp-ing:hover{background:var(--ink);color:var(--paper)}
 .lead-msg{font-size:14px;font-weight:700;margin-top:8px}
 .lead-ok{font-size:16px;font-weight:800;background:var(--citrus);color:var(--ink);border:1px solid var(--ink);padding:12px 14px;margin-top:10px}
 .lead-ok a{color:var(--ink)}
+/* email-first plan pages */
+.gz-hero .lead-form{max-width:520px;margin-top:22px}
+.gz-hero .lead-form label{color:var(--paper)}
+.gz-hero .lead-row input{border-color:var(--paper)}
+.gz-hero .lead-row .btn{background:var(--citrus);color:var(--ink);border:1px solid var(--ink)}
+.gz-hero .lead-legal,.gz-hero .lead-legal a{color:var(--paper)}
+.gz-hero .lead-msg{color:var(--paper)}
+.gd-skip{display:inline-block;margin-top:14px;font-size:15px;font-weight:700;color:inherit;text-underline-offset:4px}
+.gdl{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:44px;align-items:center;margin-top:56px;padding-top:48px;border-top:1px solid currentColor}
+.gdl-cover{margin:0;position:relative}
+.gdl-cover img{width:100%;height:auto;display:block;border:2px solid var(--paper);transform:rotate(-1.5deg);box-shadow:10px 10px 0 var(--citrus)}
+.gdl-cover span{position:absolute;right:-10px;top:-14px;background:var(--citrus);color:var(--ink);border:1px solid var(--ink);font-weight:800;font-size:13px;padding:6px 12px;transform:rotate(6deg)}
+.gdl-txt .eyebrow{color:var(--citrus)}
+.gdl-txt h2{font-size:clamp(30px,3.6vw,46px);line-height:1.05;letter-spacing:-.04em;margin:6px 0 12px}
+.gdl-txt>p{font-size:18px;line-height:1.55}
+.gdl-txt .ticks li{font-size:16px}
+.gdl-txt .ticks li:before{border-color:var(--citrus)}
+.gd-ink .lead-form label,.gd-ink .lead-legal,.gd-ink .lead-legal a,.gd-ink .lead-msg{color:var(--paper)}
+.gd-ink .lead-row .btn{background:var(--citrus);color:var(--ink);border:1px solid var(--paper)}
+.gd-ink .lead-row input{border-color:var(--paper)}
+@media(max-width:800px){.gdl{grid-template-columns:1fr;gap:28px;margin-top:40px;padding-top:36px}.gdl-cover span{right:4px}}
+.lead-row .btn{font-weight:800;font-size:15px;padding:0 22px;border-radius:0;white-space:nowrap}
+@media(max-width:800px){.lead-row .btn{width:100%}}

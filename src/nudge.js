@@ -16,6 +16,7 @@
   function set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
 
   if (document.querySelector('meta[name="robots"][content*="noindex"]')) return;
+  if (document.querySelector('[data-no-nudge]')) return; // the page already asks for an email
   if (get(CLICKED)) return;
   var last = +get(KEY) || 0;
   if (Date.now() - last < QUIET_DAYS * 864e5) return;

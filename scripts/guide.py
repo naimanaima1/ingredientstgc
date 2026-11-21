@@ -68,18 +68,25 @@ TRACK = {
 # which adds the address to the JARA email list and emails the PDF (same list and email as itsjara.com).
 LEAD_FORMS = {
     'winter-arc-lock-in': {'printable': 'winter-arc-lock-in', 'pdf': '/jara-winter-arc-lock-in.pdf',
-                           'button': 'Email me the free guide'},
+                           'button': 'Email me the free guide', 'cover': 'winter-arc-lock-in-guide-cover.jpg',
+                           'title': 'Get the free Winter Arc Lock-In guide',
+                           'blurb': '19 pages to keep this winter: every habit in more depth than fits here, plus the tools to actually do it.',
+                           'inside': ['The five habits, each with the science behind it',
+                                      'A label cheat sheet to take shopping',
+                                      'A before-your-appointment worksheet for your doctor',
+                                      'A morning and night checklist for your mirror',
+                                      'A 12-week tracker and four photo check-ins']},
 }
 LEAD_ENDPOINT = JARA_URL + '/api/printable-signup'
 
-def lead_form(slug, name):
+def lead_form(slug, name, fid='get-guide'):
     f = LEAD_FORMS.get(slug)
     if not f:
         return ''
     pdf = B.utm(JARA_URL + f['pdf'], 'plan_end', 'printables', f'{slug}_form')
-    return f'''<form class="lead-form" id="get-guide" data-endpoint="{LEAD_ENDPOINT}" data-printable="{e(f['printable'])}" data-slug="{e(slug)}" data-fallback="{B.utm(JARA_URL + TRACK[slug][1][1], 'plan_end', 'printables', f'{slug}_print')}" novalidate>
-        <label for="lead-email">Your email</label>
-        <div class="lead-row"><input id="lead-email" name="email" type="email" autocomplete="email" required placeholder="you@email.com">
+    return f'''<form class="lead-form" id="{fid}" data-endpoint="{LEAD_ENDPOINT}" data-printable="{e(f['printable'])}" data-slug="{e(slug)}" data-where="{fid}" data-no-nudge data-fallback="{B.utm(JARA_URL + TRACK[slug][1][1], 'plan_end', 'printables', f'{slug}_print')}" novalidate>
+        <label for="{fid}-email">Your email</label>
+        <div class="lead-row"><input id="{fid}-email" name="email" type="email" autocomplete="email" required placeholder="you@email.com">
         <button type="submit" class="btn">{e(f['button'])}</button></div>
         <input class="lead-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <p class="lead-legal">By signing up, you join the <b>JARA email list</b>. JARA is the hair journal app from The Good Coil. You'll get the {e(name)} PDF and occasional JARA emails, and you can unsubscribe anytime. <a href="{JARA_URL}/privacy">Privacy</a></p>
@@ -87,6 +94,16 @@ def lead_form(slug, name):
         <p class="lead-ok" hidden>Check your inbox. Can't wait? <a href="{pdf}" download>Download it now &rarr;</a></p>
         <noscript><p><a href="{B.utm(JARA_URL + TRACK[slug][1][1], 'plan_end', 'printables', f'{slug}_print')}">Get it on itsjara.com &rarr;</a></p></noscript>
       </form>'''
+
+def guide_section(slug, name):
+    """The closing download: cover, what's inside, the form. Replaces the 'next plan' links."""
+    f = LEAD_FORMS[slug]
+    inside = ''.join(f'<li>{e(x)}</li>' for x in f['inside'])
+    return f'''<div class="gdl">
+    <figure class="gdl-cover"><img src="../../assets/img/{e(f['cover'])}" alt="The JARA Winter Arc Lock-In guide cover" width="1100" height="850" loading="lazy"><span>Free · 19 pages</span></figure>
+    <div class="gdl-txt"><span class="eyebrow">Free guide</span><h2>{e(f['title'])}</h2><p>{e(f['blurb'])}</p>
+      <ul class="ticks">{inside}</ul>{lead_form(slug, name, 'get-guide')}</div>
+  </div>'''
 
 TOOLKIT = ('wash day toolkit', '/free-hair-tracker',
            'A free printable wash log, length chart and trim tracker. Print it and fill it in after each wash.')
@@ -249,6 +266,15 @@ def gz_lockin(extra, n=None):
     label = f'Lock-in #{n:02d}' if n else 'The lock-in'
     return (f'<p class="gz-lock"><span class="gz-kicker">{label}</span>{e(extra["lockin"])}</p>' if extra.get('lockin') else '')
 
+def hero_cta(d):
+    """Email-first pages: the guide form, with a quiet way into the content. Otherwise the buttons."""
+    slug = d.get('track_as', d['slug'])
+    if d.get('email_first') and slug in LEAD_FORMS:
+        name = TRACK[slug][1][0]
+        return (lead_form(slug, name, 'hero-guide')
+                + f'<a class="gd-skip" href="#routine">{e(d.get("go_link", "or read the five habits"))} &darr;</a>')
+    return f'<a class="gd-go" href="#routine">{e(d.get("go", "Start with the routine"))} →</a>{hero_print(d)}'
+
 def hero_print(d):
     """A second hero button to the plan's free printable, when the page asks for one."""
     if not d.get('hero_print'):
@@ -270,6 +296,8 @@ def page(d):
     r = '../../'
     SLUG[0] = d.get('track_as', d['slug'])
     def save():
+        if d.get('email_first'):
+            return
         if not any('jara-save' in x for x in out):
             out.append(jara('track', r, d.get('jara')))
     cat = {c.get('id'): c for c in B.cat}
@@ -512,13 +540,23 @@ def page(d):
         en = d['end']
         lst = ''.join(f'<li>{e(x)}</li>' for x in en.get('list', []))
         nxt = ''.join(f'<a href="{r}{u}"><small>{e(why)}</small><b>{e(n)} →</b></a>' for n, why, u in en.get('next', []))
+        if d.get('email_first'):
+            nxt = ''
         right = (f'<ul>{lst}</ul>' if lst else '') + (f'<div class="tp-next">{nxt}</div>' if nxt else '')
         src = f'<p class="tp-ref">Source: {e(en["source"])}</p>' if en.get('source') else ''
         notes = ''.join(f'<p>{e(x)}</p>' for x in en.get('notes', []))
         out.append(f'''<section class="gd-sec gd-ink" id="end"><div class="tp-in">
   <div class="gd-derm"><div>{'<span class="gz-book" aria-hidden="true">06</span>' if d.get('openers') else ''}<h2>{e(en['title'])}</h2>{notes}{src}</div><div>{right}</div></div>
+  {guide_section(d.get('track_as', d['slug']), TRACK[d.get('track_as', d['slug'])][1][0]) if d.get('email_first') else ''}
 </div></section>''')
-        out.append(jara('end', r, d.get('jara')))
+        if d.get('email_first'):
+            plan = TRACK.get(d.get('track_as', d['slug']), (None, None))[0]
+            out.append(jara_card(r, 'Rather track it in the app?',
+                                 f'JARA is the hair journal from The Good Coil. Choose the {plan} care plan and it reminds you on the right days, logs each wash in seconds, and shows you which wash days went best.' if plan else
+                                 'JARA is the hair journal from The Good Coil. Log each wash in seconds and see which routine gives you your best days.',
+                                 'jara-end', 'Try JARA free'))
+        else:
+            out.append(jara('end', r, d.get('jara')))
 
     jump_html = ''.join(f'<a href="#{a}">{e(b)}</a>' for a, b in jump)
     hero_cls = 'gd-hero gz-hero' if d.get('layout') == 'guided' else 'gd-hero'
@@ -528,7 +566,7 @@ def page(d):
     <h1>{e(d['name'])}</h1>
     <p class="gd-tag"><em>{e(d['tagline'])}</em></p>
     <p class="gd-intro">{e(d['intro'])}</p>
-    <a class="gd-go" href="#routine">{e(d.get('go', 'Start with the routine'))} →</a>{hero_print(d)}
+    {hero_cta(d)}
   </div>
   <div class="tp-photo"><img src="{r}assets/img/{e(d['image'])}" alt="{e(d['image_alt'])}" width="848" height="1424"></div>
 </section>

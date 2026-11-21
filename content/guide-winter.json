@@ -2,7 +2,7 @@
  "id": "GUIDE-WINTER",
  "slug": "winter-arc-lock-in",
  "name": "Winter arc lock-in",
- "tagline": "Five things to lock in before the cold gets to your hair.",
+ "tagline": "Five habits to lock in before the cold gets to your hair.",
  "image": "style-twists.jpg",
  "image_alt": "Chunky two-strand twists parted off the hairline, resting over one shoulder.",
  "eyebrow": "Guide · winter hair care",
@@ -509,6 +509,7 @@
  },
  "layout": "guided",
  "openers": true,
- "hero_print": "Get the free printable",
- "unfold": true
+ "unfold": true,
+ "email_first": true,
+ "go_link": "or read the five habits"
 }

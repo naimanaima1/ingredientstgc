@@ -155,7 +155,7 @@
         .then(function (res) {
           if (!res.ok) throw new Error((res.j && res.j.error) || 'Something went wrong.');
           msg.hidden = true; ok.hidden = false; f.querySelector('.lead-row').hidden = true; f.querySelector('label').hidden = true;
-          if (window.tgcTrack) tgcTrack('generate_lead', { source: 'library-' + f.getAttribute('data-slug') });
+          if (window.tgcTrack) tgcTrack('generate_lead', { source: 'library-' + f.getAttribute('data-slug'), form: f.getAttribute('data-where') });
         })
         .catch(function (err) {
           btn.disabled = false;
