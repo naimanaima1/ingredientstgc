@@ -6,6 +6,7 @@ with a short disclosure; links are left out of catalog.json. Notes and barcodes 
 """
 import json, os, shutil
 import build as B
+import similar as SIM
 
 # Product photos: src/products/<catalog id>.webp (800x1000, 4:5). A product with a file gets a photo
 # on its page and as its sharing image; one without keeps the text-only layout.
@@ -43,6 +44,8 @@ def shop_link(p, r):
             if amazon else 'Some shop links on The Good Coil are affiliate links: we may earn a small commission at no extra cost to you.')
     return (f'<div class="shop"><div class="shop-row"><a class="shop-btn" href="{e(url)}" target="_blank" rel="sponsored nofollow noopener">{e(where)} <span aria-hidden="true">&#8599;</span></a>{READ_MORE}</div>'
             f'<p class="shop-note">{note} <a href="{r}about/#affiliate">Disclosure</a></p></div>')
+
+SIMILAR = {}  # product id -> similar-label matches, filled in build()
 
 def product_page(p):
     r = '../../'
@@ -102,6 +105,7 @@ def product_page(p):
     <div>{strip}</div>
   </section>
   {grouped}
+  {SIM.section(p, SIMILAR.get(p['id']), step, r)}
   <p class="source"><span>The Good Coil catalog · Ref {e(p['id'])}. Properties come from our catalog tags and describe what the product contains, not how it will work on your hair.</span><a href="{r}data/catalog.json">Get this as data (JSON)</a><a href="{r}about/">How we write these</a></p>'''
     name = B.product_full_name(p)
     desc = f"What's inside {name}: the full ingredient list, decoded." if items else f"{name} in The Good Coil catalog."
@@ -154,6 +158,10 @@ def build():
         for f in os.listdir(PHOTO_DIR):
             if f.endswith('.webp'):
                 shutil.copy(os.path.join(PHOTO_DIR, f), os.path.join(B.OUT, 'assets', 'products', f))
+    try:
+        SIMILAR.update(SIM.build_index(prods, step_of, items_of))
+    except Exception as err:  # never let this section stop the rest of the site from publishing
+        print(f'Warning: similar labels skipped ({err!r})')
     for p in prods:
         if step_of(p) != 'tool':
             product_page(p)
@@ -174,6 +182,7 @@ def build():
         'products': [{'id': p['id'], 'slug': p['_slug'], 'url': f"{B.SITE}/products/{p['_slug']}/" if step_of(p) != 'tool' else None,
                       'name': p.get('name', '').strip(), 'brand': p.get('brand', '').strip(), 'kind': p.get('kind') or 'product',
                       'step': step_of(p), 'properties': props_of(p), 'ingredients': items_of(p),
-                      'ingredient_ids': [i['id'] for i in (B.lookup(t) for t in items_of(p)) if i]} for p in prods],
+                      'ingredient_ids': [i['id'] for i in (B.lookup(t) for t in items_of(p)) if i],
+                      'similar': [q['id'] for q, _, _, _ in SIMILAR.get(p['id'], [])]} for p in prods],
     }
     B.write('data/catalog.json', json.dumps(data, ensure_ascii=False, indent=1))

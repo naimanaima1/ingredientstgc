@@ -46,6 +46,10 @@ Optional, understood when present:
 
 Every build prints a report (in the Action's summary): how many label words are recognised, the most common label words that have no ingredient row yet, and wording that could read as a hair-growth or drug claim. The report never changes any text.
 
+## Similar labels on product pages
+
+Every product page lists up to three catalog products whose labels are built the same way (`scripts/similar.py`). Products are compared only with others at the same step, and only when both labels have been read (5+ ingredients). Each pair is checked on five things: for shampoos, the main cleanser (strength and kind), conditioning agents, water binders, protein and oils; for everything else, slip and conditioning agents, water binders, protein, oils or butters, and silicones. A match needs 3 of 5 to be the same, and shampoos must also share the strength of their main cleanser. Each match shows what is the same and what is different, plus a link to the side-by-side compare. Words are sorted with the Label Decoder's own categories, so the two always agree. `data/catalog.json` lists each product's matches under `similar`. Prices are not used.
+
 ## Run it locally
 
 ```

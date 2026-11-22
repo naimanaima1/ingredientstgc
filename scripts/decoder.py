@@ -87,7 +87,7 @@ ESS = r'(peppermint|mentha|tea tree|melaleuca|rosemary|rosmarinus|lavender|lavan
 RULES = [
     ('sulfate', r'\b(lauryl|laureth|coco|cocoyl|myreth|coceth|decyl|deceth|tridecyl|trideceth|pareth|cetyl|cetearyl|alkyl|alkyleth|myristyl)\b.*\bsulfate\b', None),
     ('strong', r'olefin sulfonate|dodecylbenzene sulfonate|alkylbenzene sulfonate', None),
-    ('mild', r'isethionate|taurate|glucoside\b|sarcosinate|sulfosuccinate|amphoacetate|amphodiacetate|amphopropionate|glutamate|glycinate|alaninate|lactylate|glyceryl cocoate|polyglucose|coco glucoside', r'glutamate diacetate|stearoyl lactylate|cetearyl glucoside|glyceryl glucoside|methyl glucoside|tetrasodium glutamate|monosodium glutamate'),
+    ('mild', r'isethionate|taurate|glucoside\b|sarcosinate|sulfosuccinate|amphoacetate|amphodiacetate|amphopropionate|amphodipropionate|glutamate|glycinate|alaninate|lactylate|glyceryl cocoate|polyglucose|coco glucoside', r'glutamate diacetate|stearoyl lactylate|cetearyl glucoside|glyceryl glucoside|methyl glucoside|tetrasodium glutamate|monosodium glutamate'),
     ('cosurf', r'betaine\b.*|sultaine|amine oxide|\bcocamide\b|lauramide|amphoteric', r'^betaine$|^trimethylglycine$'),
     ('quat', r'trimonium|polyquaternium|quaternium|dimethylamine\b|hydroxyethylmonium|ethyl ethonium|dimonium|esterquat|ammonium chloride\b|methosulfate', r'quaternium 15$|^ammonium chloride$|benzalkonium|benzethonium'),
     ('fatty', r'\b(cetyl|stearyl|cetearyl|behenyl|myristyl|arachidyl|oleyl|lauryl|isostearyl|caprylic|brassica|lanolin) alcohols?\b|\boctyldodecanol\b|\bc\d+ \d+ alcohols?\b|^cetostearyl alcohol', None),

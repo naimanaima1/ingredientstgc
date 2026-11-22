@@ -1378,3 +1378,18 @@ html{scroll-behavior:smooth}
 .step-f[aria-pressed="true"]{background:var(--ink);color:var(--paper);text-decoration:none}
 .step-f[aria-pressed="true"] b{color:var(--citrus)}
 .strip .dot[hidden],#labels-list>li[hidden]{display:none}
+
+/* Similar labels on product pages (scripts/similar.py) */
+.sim-list{list-style:none;padding:0;margin:0;display:grid;gap:18px}
+.sim{border:1px solid var(--ink);background:#fff;padding:20px 22px}
+.sim-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.sim-name b{display:block;font-size:19px;line-height:1.25;letter-spacing:-.02em}
+.sim-name span{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.sim-name:hover b{text-decoration:underline;text-underline-offset:3px}
+.sim-count{background:var(--citrus);border:1px solid var(--ink);font-size:12px;font-weight:700;padding:4px 10px;white-space:nowrap}
+.sim-why{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:8px}
+.sim-why li{display:grid;grid-template-columns:86px minmax(0,1fr);gap:12px;align-items:baseline;font-size:14px;line-height:1.55;border-top:1px solid var(--line);padding-top:8px}
+.sim-mark{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.sim-why .diff .sim-mark{color:var(--cobalt)}
+.sim-cmp{display:inline-block;margin-top:14px;font-size:14px;font-weight:700;border-bottom:1px solid var(--ink)}
+@media(max-width:760px){.sim{padding:16px}.sim-why li{grid-template-columns:1fr;gap:2px}}
