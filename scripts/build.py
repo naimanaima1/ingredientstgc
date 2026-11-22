@@ -147,15 +147,29 @@ prop_slug = lambda t: slugify(t)
 
 # The quick check on product pages and in the label decoder.
 CHECK_GROUPS = [
+    ('humectant', 'Humectants', 'Water binders such as glycerin and aloe. They draw water toward the hair and help it hold on to it.'),
+    ('slip/detangler', 'Slip & detangling', 'Conditioning agents and fatty alcohols that help strands slide apart instead of catching.'),
+    ('butter/oil', 'Oils, butters & emollients', 'Fatty ingredients that coat, soften and cut friction. Heavier ones can weigh down fine or low-porosity hair.'),
     ('protein', 'Protein', 'Proteins broken into pieces small enough to cling to the hair surface.'),
     ('ceramides', 'Ceramides', "Lipids like the ones between the cells of the hair's outer layer."),
+    ('peptide', 'Peptides', 'Short amino-acid chains. Not the same thing as a hydrolysed protein.'),
+    ('scalp-active', 'Scalp actives & antioxidants', 'Ingredients aimed at the scalp, like caffeine and rosemary, and plant antioxidants.'),
     ('silicone', 'Silicones', 'Coating ingredients that add slip and shine.'),
     ('sulfate', 'Sulfates', 'Strong cleansing agents, the kind that make a shampoo lather hard.'),
-    ('peptide', 'Peptides', 'Short amino-acid chains. Not the same thing as a hydrolysed protein.'),
-    ('paraben', 'Parabens', 'Preservatives whose names end in -paraben. The EU treats each one differently.'),
     ('strong-cleanser', 'Strong non-sulfate cleansers', 'Cleansers such as olefin sulfonates are not sulfates, but they are strong. Sulfate-free does not always mean gentle.'),
+    ('paraben', 'Parabens', 'Preservatives whose names end in -paraben. The EU treats each one differently.'),
     ('phthalate', 'Phthalates', 'Chemicals used to carry fragrance and soften plastics. Names end in -phthalate.'),
 ]
+# A check matches any of these ingredient tags (default: the check's own key).
+CHECK_TAGS = {
+    'butter/oil': {'butter/oil', 'emollient', 'lipid'},
+    'scalp-active': {'scalp active', 'scalp & fiber active', 'peptide / scalp & fiber active', 'antioxidant', 'antioxidants'},
+}
+
+def check_hit(k, tags):
+    """True when any of these tags puts an ingredient (or a catalog product) in check k."""
+    tags = {t.strip().lower() for t in tags}
+    return bool(CHECK_TAGS.get(k, {k}) & tags)
 
 # Tags that describe where an ingredient is used rather than what a product is for.
 # A product never takes these on from its ingredients: a leave-in for the lengths
@@ -214,7 +228,7 @@ def groups_for(t, i=None):
     import watchlist
     i = i if i is not None else lookup(t)
     if i:
-        return [k for k, _, _ in CHECK_GROUPS if k in i['_tags']] + [w for w in watchlist.groups(t, i['inci_name'], *i['_aliases']) if w not in i['_tags']]
+        return [k for k, _, _ in CHECK_GROUPS if check_hit(k, i['_tags'])] + [w for w in watchlist.groups(t, i['inci_name'], *i['_aliases']) if w not in i['_tags']]
     g = check_by_name(t)
     return ([g] if g else []) + watchlist.groups(t)
 
@@ -241,8 +255,8 @@ def check_strip(items, r='', tags=(), js=True):
     """The quick-check strip. items=None when we have not typed the label out yet."""
     if items is None:
         cells = ''.join(
-            f'''<div class="chk-item {'is-tag' if k in tags else 'is-unread'}" data-g="{k}"><b>{e(label)}</b>
-      <span class="chk-state">{'Tagged in our catalog' if k in tags else 'Not checked'}</span><p>{e(desc)}</p></div>'''
+            f'''<div class="chk-item {'is-tag' if check_hit(k, tags) else 'is-unread'}" data-g="{k}"><b>{e(label)}</b>
+      <span class="chk-state">{'Tagged in our catalog' if check_hit(k, tags) else 'Not checked'}</span><p>{e(desc)}</p></div>'''
             for k, label, desc in CHECK_GROUPS)
         return f'<div class="chk">{cells}</div><p class="chk-note">We have not typed this label out yet, so this is what our catalog says rather than what the bottle says.</p>'
     found, guessed, unknown = check_label(items)
