@@ -156,13 +156,16 @@ CHECK_GROUPS = [
     ('scalp-active', 'Scalp actives & antioxidants', 'Ingredients aimed at the scalp, like caffeine and rosemary, and plant antioxidants.'),
     ('silicone', 'Silicones', 'Coating ingredients that add slip and shine.'),
     ('sulfate', 'Sulfates', 'Strong cleansing agents, the kind that make a shampoo lather hard.'),
-    ('strong-cleanser', 'Strong non-sulfate cleansers', 'Cleansers such as olefin sulfonates are not sulfates, but they are strong. Sulfate-free does not always mean gentle.'),
+    ('strong-cleanser', 'Non-sulfate cleansers', 'Cleansers that are not sulfates. Most are gentle (isethionates, taurates, glucosides), but some, like olefin sulfonates, are still strong.'),
     ('paraben', 'Parabens', 'Preservatives whose names end in -paraben. The EU treats each one differently.'),
     ('phthalate', 'Phthalates', 'Chemicals used to carry fragrance and soften plastics. Names end in -phthalate.'),
 ]
 # A check matches any of these ingredient tags (default: the check's own key).
 CHECK_TAGS = {
     'butter/oil': {'butter/oil', 'emollient', 'lipid'},
+    # Key kept as 'strong-cleanser' (the decoder and saved links use it); the check now covers every
+    # non-sulfate cleanser, and strong ones are marked in the list.
+    'strong-cleanser': {'strong-cleanser', 'mild-cleansing', 'foam-booster', 'clarifying'},
     'scalp-active': {'scalp active', 'scalp & fiber active', 'peptide / scalp & fiber active', 'antioxidant', 'antioxidants'},
 }
 
@@ -259,12 +262,20 @@ def check_strip(items, r='', tags=(), js=True):
       <span class="chk-state">{'Tagged in our catalog' if check_hit(k, tags) else 'Not checked'}</span><p>{e(desc)}</p></div>'''
             for k, label, desc in CHECK_GROUPS)
         return f'<div class="chk">{cells}</div><p class="chk-note">We have not typed this label out yet, so this is what our catalog says rather than what the bottle says.</p>'
+    import watchlist
     found, guessed, unknown = check_label(items)
     cells = ''
     for k, label, desc in CHECK_GROUPS:
-        hits = [f'<a href="{r}{i["_slug"]}/">{e(i["_title"])}</a>' for i in found[k]] + [e(t) for t in guessed[k]]
+        if k == 'strong-cleanser':
+            strong = lambda i: 'clarifying' in i['_tags'] or bool(watchlist.groups(i['inci_name'], *i['_aliases']))
+            rows = sorted(found[k], key=lambda i: not strong(i))
+            hits = [f'<a href="{r}{i["_slug"]}/">{e(i["_title"])}</a>' + (' <em class="chk-flag">strong</em>' if strong(i) else '') for i in rows] \
+                + [e(t) + ' <em class="chk-flag">strong</em>' for t in guessed[k]]
+        else:
+            hits = [f'<a href="{r}{i["_slug"]}/">{e(i["_title"])}</a>' for i in found[k]] + [e(t) for t in guessed[k]]
         if hits:
-            cells += f'''<div class="chk-item is-yes" data-g="{k}"><b>{e(label)}</b><span class="chk-state">Yes, {len(hits)}</span><p>{', '.join(hits)}</p>
+            shown = ', '.join(hits[:4]) + (f'<details class="chk-extra"><summary>+{len(hits) - 4} more</summary>{", ".join(hits[4:])}</details>' if len(hits) > 4 else '')
+            cells += f'''<div class="chk-item is-yes" data-g="{k}"><b>{e(label)}</b><span class="chk-state">Yes, {len(hits)}</span><div class="chk-list">{shown}</div>
       <button type="button" class="chk-lite" data-g="{k}" aria-pressed="false">Show these</button></div>'''
         else:
             cells += f'''<div class="chk-item is-no" data-g="{k}"><b>{e(label)}</b><span class="chk-state">None found</span><p>{e(desc)}</p></div>'''

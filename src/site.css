@@ -1364,3 +1364,11 @@ html{scroll-behavior:smooth}
 @media(max-width:860px){.chk{grid-template-columns:repeat(3,minmax(0,1fr))}.chk .chk-item{border:0}}
 @media(max-width:640px){.chk{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:380px){.chk{grid-template-columns:minmax(0,1fr)}}
+/* Quick check lists: 4 shown, the rest behind "+N more"; strong cleansers marked */
+.chk-list{font-size:14px;line-height:1.55;color:var(--ink);margin-top:2px}
+.chk-extra{display:inline}
+.chk-extra summary{display:inline;cursor:pointer;font-weight:700;text-decoration:underline;text-underline-offset:3px;margin-left:4px;list-style:none}
+.chk-extra summary::-webkit-details-marker{display:none}
+.chk-extra[open] summary{display:none}
+.chk-extra[open]::before{content:", "}
+.chk-flag{font-style:normal;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:1px 5px;border-radius:2px;margin-left:2px;vertical-align:1px}
