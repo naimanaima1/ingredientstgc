@@ -48,14 +48,47 @@ for name, rows in (('ingredients', _a), ('catalog', _b)):
 ing = [r for r in _a if r.get('id') and r.get('inci_name')]
 cat = _b
 
+# Research notes pasted into the sheet often end with source markers: "[promo.basf][my.basf]",
+# "journals.sagepub+1", "europa". They are notes for the editor, not page text, so they are
+# removed from every cell before anything is built. Only marker shapes are touched: bracketed
+# lowercase hosts, domain-like tokens, "+N", and the bare source names below.
+_SRC_BRACKETS = re.compile(r'(?:\s*\[[a-z0-9][a-z0-9.\-]*\])+')
+_SRC_BARE = {'aussie', 'cos', 'dermnetnz', 'europa', 'incibeauty', 'inolex', 'lotioncrafter', 'pentyllabs',
+             'specialchem', 'thegoodscentscompany', 'potentiaingredients', 'esters-solvents', 'cosmeticsandtoiletries',
+             'cir-safety', 'knowde', 'ashland', 'happi', 'formunova', 'skincarisma', 'asiamnaturally', 'lubrizol'}
+_SRC_TAIL = re.compile(r'(?<=[.!?\u201d")])\s+([a-z][a-z0-9.\-]*[a-z0-9](?:\+\d+)?)(?=\s+[A-Z]|\s*$)')
+
+def strip_sources(text):
+    if not text or not isinstance(text, str):
+        return text
+    text = _SRC_BRACKETS.sub('', text)
+    def tail(m):
+        tok = m.group(1)
+        base = re.sub(r'\+\d+$', '', tok)
+        return '' if ('.' in base or tok != base or base in _SRC_BARE) else m.group(0)
+    return re.sub(r'[ \t]{2,}', ' ', _SRC_TAIL.sub(tail, text)).strip()
+
+# Tags written in newer research rows, mapped onto the site's existing properties so Quick check
+# and the property pages pick them up. Edit freely.
+TAG_ALIASES = {
+    'protein-conditioning': 'protein',
+    'conditioning-slip': 'slip/detangler',
+    'styling-hold': 'film-former', 'conditioning-hold': 'film-former', 'film-forming': 'film-former',
+    'emollient': 'butter/oil',
+    'antioxidants': 'antioxidant',
+}
+
 for i in ing:
+    for k in list(i):
+        if k != 'id' and isinstance(i[k], str):
+            i[k] = strip_sources(i[k])
     i['_short'] = re.sub(r'\s*\(.*?\)', '', i.get('common_name') or i['inci_name']).strip()
     i['_title'] = i['_short'] if len(i['inci_name']) > 28 else i['inci_name']
     if col(i, 'display_name'):  # the name people actually use, set in the sheet
         i['_title'] = i['_short'] = col(i, 'display_name')
     # A slug column in the sheet freezes the address; otherwise it comes from the page title.
     i['_slug'] = col(i, 'slug') or slugify(i['_title'])
-    i['_tags'] = [t.strip() for t in (i.get('property_tag') or '').split(',') if t.strip() and t.strip().lower() != 'none']
+    i['_tags'] = list(dict.fromkeys(TAG_ALIASES.get(t.strip().lower(), t.strip()) for t in (i.get('property_tag') or '').split(',') if t.strip() and t.strip().lower() != 'none'))
     i['_aliases'] = [a for a in split_names(i.get('aliases_also_listed_as')) if norm(a) != norm(i['inci_name'])]
     i['_source'] = col(i, 'source') or 'The Good Coil research'
 
