@@ -1327,3 +1327,10 @@ a.gp-ing:hover{background:var(--ink);color:var(--paper)}
 .mini-links a:hover{color:var(--cobalt)}
 @media(max-width:760px){.mini-q{grid-template-columns:repeat(2,minmax(0,1fr))}.mini-tabs{width:100%}.mini-tabs button{flex:1;padding:11px 8px}}
 .mini-find[hidden],.mini-paste[hidden]{display:none!important}
+
+/* Product page shop button + affiliate note */
+.shop{margin-top:22px;max-width:60ch}
+.shop-btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 24px;background:var(--ink);color:var(--paper);border:1px solid var(--ink);border-radius:999px;font-weight:700;font-size:15px;text-decoration:none}
+.shop-btn:hover,.shop-btn:focus-visible{background:var(--paper);color:var(--ink)}
+.shop-note{font-size:12px;line-height:1.45;color:var(--muted);margin:8px 0 0}
+.shop-note a{color:inherit}

@@ -593,7 +593,7 @@ def about_page():
     <h2>Sources</h2>
     <p>Ingredient descriptions are The Good Coil's own research unless a page says otherwise. If we use data from Open Beauty Facts, that page names it as the source; Open Beauty Facts data is shared under the Open Database Licence (share-alike).</p>
     <h2 id="affiliate">Affiliate disclosure</h2>
-    <p>Ingredient pages have no shop links. Elsewhere on The Good Coil, some product links are affiliate links: we may earn a small commission at no extra cost to you. Commissions never change what we write about an ingredient.</p>
+    <p>Ingredient pages have no shop links. Product pages may have a shop button, and those links are affiliate links: if you buy through one, we may earn a small commission at no extra cost to you. As an Amazon Associate, The Good Coil earns from qualifying purchases. Commissions never change what we write about an ingredient or which products we list.</p>
     <h2>Not medical advice</h2>
     <p>This is educational information about cosmetic ingredients. For hair loss, scalp conditions or allergies, talk to a dermatologist or doctor.</p>
     <h2>Use the data</h2>

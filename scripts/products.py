@@ -1,7 +1,8 @@
 """Products: /products/ list, one page per product (tools are listed only), data/catalog.json.
 
 Reads the catalog sheet (data/catalog.csv). Published fields: name, brand, kind, step, properties
-and the ingredient list. Links, notes and barcodes are never published.
+and the ingredient list. A product page shows its shop link (often an affiliate link) as a button
+with a short disclosure; links are left out of catalog.json. Notes and barcodes are never published.
 """
 import json
 import build as B
@@ -19,6 +20,19 @@ def props_of(p):
 
 def items_of(p):
     return B.split_label(p['full ingredient list']) if p.get('full ingredient list') else []
+
+def shop_link(p, r):
+    """The shop button and its affiliate note, or '' when the row has no usable https link."""
+    url = (p.get('link') or '').strip()
+    if not url.lower().startswith('https://'):
+        return ''
+    host = url.split('/')[2].lower()
+    amazon = 'amazon.' in host or host in ('amzn.to', 'a.co') or host.startswith('link.amazon')
+    where = 'Shop on Amazon' if amazon else f"Shop at {(p.get('brand') or '').strip() or 'the brand'}"
+    note = ('Affiliate link. As an Amazon Associate, The Good Coil earns from qualifying purchases, at no extra cost to you.'
+            if amazon else 'Some shop links on The Good Coil are affiliate links: we may earn a small commission at no extra cost to you.')
+    return (f'<div class="shop"><a class="shop-btn" href="{e(url)}" target="_blank" rel="sponsored nofollow noopener">{e(where)} <span aria-hidden="true">&#8599;</span></a>'
+            f'<p class="shop-note">{note} <a href="{r}about/#affiliate">Disclosure</a></p></div>')
 
 def product_page(p):
     r = '../../'
@@ -67,6 +81,7 @@ def product_page(p):
       <p class="aka"><em>by</em> {e(p.get('brand', '').strip())}</p>
       <div class="meta">{tags}</div>
       <p class="fine">Properties come from our catalog tags and describe what the product contains, not how it will work on your hair.</p>
+      {shop_link(p, r)}
     </div>
     {inside}
   </section>
