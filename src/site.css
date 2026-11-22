@@ -1347,3 +1347,12 @@ html{scroll-behavior:smooth}
 .prod-side .fine{margin-top:12px}
 .prod-side .shop{margin-top:16px}
 @media(max-width:560px){.prod-row{grid-template-columns:118px minmax(0,1fr);gap:16px}.prod-side .fine{display:none}.prod-side .shop-btn{padding:0 18px;font-size:14px}}
+/* Product hero: desktop pins the photo onto the label; phone keeps it beside the button */
+.prod-h1-long{font-size:clamp(40px,4.4vw,68px)!important}
+.label-photo{display:none}
+@media(min-width:981px){
+  .prod-row.pinned{display:block}
+  .prod-row.pinned .prod-photo{display:none}
+  .label-photo{display:block;float:right;width:150px;height:auto;aspect-ratio:4/5;object-fit:cover;margin:2px -6px 12px 22px;border:6px solid #fff;outline:1px solid var(--ink);box-shadow:4px 4px 0 var(--ink);transform:rotate(2.2deg)}
+  .label-product .inci{display:flow-root}
+}

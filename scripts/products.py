@@ -50,6 +50,8 @@ def product_page(p):
     step = step_of(p)
     strip = B.check_strip(items if items else None, r, props_of(p))
     tags = ''.join(f'<a class="tag" href="{r}properties/{B.prop_slug(t)}/">{e(t)}</a>' for t in props_of(p))
+    photo = photo_of(p)
+    pin = f'<img class="label-photo" src="{r}assets/products/{photo}" alt="" width="800" height="1000">' if photo else ''
     if items:
         found = [(t, B.lookup(t)) for t in items]
         def word(t, i):
@@ -69,7 +71,7 @@ def product_page(p):
             for t, v in sorted(groups.items(), key=lambda kv: -len(kv[1])))
         inside = f'''<figure class="label label-product" aria-labelledby="lbl">
       <div class="label-top"><span>Ingredients · as printed</span><b id="lbl">{e(B.product_full_name(p))}</b></div>
-      <p class="inci">{words}.</p>
+      <p class="inci">{pin}{words}.</p>
       <figcaption class="label-foot"><span><b>{len(items)} ingredients</b>, {len({id(i) for i in known})} with their own page.</span><span>Dotted words have their own page.</span></figcaption>
     </figure>'''
         grouped = f'''<section class="section" id="groups">
@@ -83,17 +85,15 @@ def product_page(p):
       <figcaption class="label-foot"><span>Labels are read by hand from brand sites and packaging.</span></figcaption>
     </figure>'''
         grouped = ''
-    photo = photo_of(p)
     side = f'''<div class="meta">{tags}</div>
-      <p class="fine">Properties come from our catalog tags and describe what the product contains, not how it will work on your hair.</p>
       {shop_link(p, r)}'''
     body = f'''  <a class="crumb" href="../">← All products</a>
   <section class="first">
     <div class="name">
       <span class="eyebrow"><span class="little-dot"></span>{e(STEP_LABEL.get(step, step.capitalize() or 'Product'))}</span>
-      <h1 class="prod-h1">{e(p.get('name', '').strip())}</h1>
+      <h1 class="prod-h1{' prod-h1-long' if len(p.get('name', '').strip()) > 32 else ''}">{e(p.get('name', '').strip())}</h1>
       <p class="aka"><em>by</em> {e(p.get('brand', '').strip())}</p>
-      {side if not photo else f'<div class="prod-row"><figure class="prod-photo"><img src="{r}assets/products/{photo}" alt="{e(B.product_full_name(p))}" width="800" height="1000"></figure><div class="prod-side">{side}</div></div>'}
+      {side if not photo else f'<div class="prod-row{' pinned' if items else ''}"><figure class="prod-photo"><img src="{r}assets/products/{photo}" alt="{e(B.product_full_name(p))}" width="800" height="1000"></figure><div class="prod-side">{side}</div></div>'}
     </div>
     {inside}
   </section>
@@ -102,7 +102,7 @@ def product_page(p):
     <div>{strip}</div>
   </section>
   {grouped}
-  <p class="source"><span>The Good Coil catalog · Ref {e(p['id'])}</span><a href="{r}data/catalog.json">Get this as data (JSON)</a><a href="{r}about/">How we write these</a></p>'''
+  <p class="source"><span>The Good Coil catalog · Ref {e(p['id'])}. Properties come from our catalog tags and describe what the product contains, not how it will work on your hair.</span><a href="{r}data/catalog.json">Get this as data (JSON)</a><a href="{r}about/">How we write these</a></p>'''
     name = B.product_full_name(p)
     desc = f"What's inside {name}: the full ingredient list, decoded." if items else f"{name} in The Good Coil catalog."
     B.write(f"products/{p['_slug']}/index.html", B.shell(r, f"{name}: ingredients · The Good Coil", desc, body, f"products/{p['_slug']}/", 'products', image=f"assets/products/{photo}" if photo else None))
