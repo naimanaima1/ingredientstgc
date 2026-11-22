@@ -54,7 +54,7 @@ INTRO = {
         'Oils and butters seal moisture in: light oils soften without weight, richer oils cushion dry strands, and butters and occlusives lock it in until you wash.',
         ''),
     'Film Formers': (
-        'Film formers wrap hair in a thin, flexible layer: conditioning polyquats add slip and frizz control, hold polymers set the curl, and gel thickeners give a gel its body.',
+        'Film formers wrap hair in a thin, flexible layer: conditioning polyquats add slip and frizz control, hold polymers set the curl, plant gels give a softer botanical hold, and gel thickeners give a gel its body.',
         ''),
 }
 
@@ -94,7 +94,7 @@ CROSS = {
     'Ceramides': ('Ceramides are one kind of lipid. ', 'Explore Lipids', 'lipids'),
     'Lipids': ('Looking at plant oils? ', 'Explore Oils & Butters', 'oils-butters'),
     'Conditioning Agents': ('Fatty alcohols and polyquats have their own pages: ', 'Alcohols', 'alcohols'),
-    'Film Formers': ('Plant gels sit under ', 'Humectants', 'humectants'),
+    'Film Formers': ('Plant gels hold water as well as hair, so they are on the Humectants page too, next to slip-only botanicals like marshmallow root. ', 'Explore Humectants', 'humectants'),
 }
 
 HOW_TO_SPOT = {
@@ -162,6 +162,8 @@ HOW_TO_SPOT = {
         ('Starts with Polyquaternium-', 'Conditioning polymers. Polyquaternium-69 is the hold type.'),
         ('PVP', 'A classic styling resin.'),
         ('Carbomer', 'The gel thickener.'),
+        ('Pectin, Xanthan Gum, Chia (Salvia Hispanica) or Sea Moss (Chondrus Crispus)', 'Plant gels. The base of most botanical gels and custards.'),
+        ('Ends in Copolymer or Crosspolymer', 'VP/VA Copolymer, Maltodextrin/VP Copolymer, Acrylates Copolymer. More hold polymers, often next to PVP.'),
     ],
     'Surfactants & Cleansers': [
         ('Ends in -sulfate', 'Sodium Lauryl Sulfate and Sodium Laureth Sulfate. Note that Methosulfate, as in Behentrimonium Methosulfate, is a conditioning ingredient, not a cleanser.'),
@@ -241,11 +243,35 @@ SCALES = {
     'Oils & Butters': {'axis': 'Richness', 'low': 'Lightest', 'high': 'Richest',
                        'levels': {'GRP-040': 1, 'GRP-041': 2, 'GRP-042': 3}},
 }
-# Catalog products shown as examples under a group (owner's picks, 18 Nov).
+# Catalog products shown as examples under a group (owner's picks, 18 Nov; widened 22 Nov).
+# Shampoos sit at the level of the strongest cleanser in their list: any olefin sulfonate
+# makes it level 2, any sulfate level 3. Products with no ingredient list are left out.
 EXAMPLES = {
-    'GRP-016': ['TGC-096', 'TGC-154'],
-    'GRP-023': ['TGC-001', 'TGC-135'],
-    'GRP-015': ['TGC-024', 'TGC-036'],
+    # Level 1: only gentle cleansers (isethionates, taurates, glucosides, amphoterics)
+    'GRP-016': ['TGC-096', 'TGC-154', 'TGC-069', 'TGC-074', 'TGC-105', 'TGC-175'],
+    # Level 2: olefin sulfonate first
+    'GRP-023': ['TGC-001', 'TGC-135', 'TGC-063', 'TGC-065', 'TGC-185'],
+    # Level 3: sulfates
+    'GRP-015': ['TGC-024', 'TGC-036', 'TGC-103'],
+    # Chelating shampoos (EDTA, phytate/phytic acid, gluconate)
+    'GRP-025': ['TGC-002', 'TGC-023', 'TGC-003', 'TGC-130'],
+    # Ceramides
+    'GRP-026': ['TGC-163', 'TGC-009', 'TGC-168', 'TGC-161', 'TGC-173', 'TGC-170', 'TGC-169', 'TGC-172'],
+    'GRP-027': ['TGC-163', 'TGC-009', 'TGC-172'],
+    'GRP-028': ['TGC-163', 'TGC-009', 'TGC-149'],
+    # Film formers
+    'GRP-044': ['TGC-068', 'TGC-062', 'TGC-061', 'TGC-060', 'TGC-144', 'TGC-058'],
+    'GRP-046': ['TGC-034', 'TGC-035', 'TGC-046', 'TGC-022', 'TGC-152', 'TGC-182'],
+    'GRP-045': ['TGC-058', 'TGC-059', 'TGC-178', 'TGC-133'],
+}
+EX_LABEL = {
+    'GRP-025': 'Chelating shampoos in our catalog',
+    'GRP-026': 'Products in our catalog with named ceramides',
+    'GRP-027': 'Products in our catalog with phytosphingosine',
+    'GRP-028': 'Products in our catalog with pseudo-ceramides',
+    'GRP-044': 'Stylers in our catalog with hold polymers',
+    'GRP-046': 'Botanical gels in our catalog',
+    'GRP-045': 'Gels in our catalog thickened with carbomer',
 }
 STOPS = [('#DCF473', '#432731'), ('#DCE6F0', '#432731'), ('#2548D7', '#fff'), ('#432731', '#fff')]
 
@@ -286,7 +312,8 @@ def example_html(gid):
         links.append(f'<a href="../../products/{p["_slug"]}/">{e(full)}</a>')
     if not links:
         return ''
-    return f'<p class="gp-ex"><b>Shampoos in our catalog built on this kind of cleanser</b>{"".join(links)}</p>'
+    label = EX_LABEL.get(gid, 'Shampoos in our catalog built on this kind of cleanser')
+    return f'<p class="gp-ex"><b>{e(label)}</b>{"".join(links)}</p>'
 
 
 def page(family, rows, ids):

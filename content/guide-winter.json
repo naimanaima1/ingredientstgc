@@ -100,17 +100,17 @@
            "Redensyl, Procapil, Capixyl and 1% caffeine."
           ],
           [
-           "The INKEY List Caffeine Stimulating Scalp Treatment",
+           "TGC-179",
            "Caffeine",
            "1% caffeine + 1% Redensyl, overnight."
           ],
           [
-           "L'Oréal Paris Elvive Fall Resist Aminexil Serum",
+           "TGC-180",
            "Aminexil",
            "1.5% Aminexil with caffeine. Full Resist in the UK."
           ],
           [
-           "California Naturals Re:GRO Anti-Thinning Scalp Serum",
+           "TGC-181",
            "Capixyl",
            "5% Capixyl, caffeine and rosemary oil."
           ]
@@ -206,10 +206,32 @@
         "Cleanser levels, from gentlest to strongest",
         "groups/surfactants-cleansers/"
        ],
-       "label": "A level 1 shampoo to try",
+       "label": "Level 1 shampoos to try",
        "use": [
         [
          "TGC-096",
+         "Level 1 shampoo",
+         "Fragrance-free"
+        ],
+        [
+         "TGC-154",
+         "Level 1 shampoo",
+         "Detangling slip"
+        ],
+        [
+         "TGC-069",
+         "Level 1 shampoo"
+        ],
+        [
+         "TGC-074",
+         "Level 1 shampoo"
+        ],
+        [
+         "TGC-105",
+         "Level 1 shampoo"
+        ],
+        [
+         "TGC-175",
          "Level 1 shampoo"
         ]
        ],
