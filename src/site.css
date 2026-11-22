@@ -1334,3 +1334,8 @@ a.gp-ing:hover{background:var(--ink);color:var(--paper)}
 .shop-btn:hover,.shop-btn:focus-visible{background:var(--paper);color:var(--ink)}
 .shop-note{font-size:12px;line-height:1.45;color:var(--muted);margin:8px 0 0}
 .shop-note a{color:inherit}
+.shop-row{display:flex;align-items:center;flex-wrap:wrap;gap:10px 22px}
+.read-more{font-weight:700;font-size:15px;color:var(--ink);text-decoration:none;min-height:44px;display:inline-flex;align-items:center;gap:6px}
+.read-more u{text-decoration:underline;text-underline-offset:4px}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
