@@ -6,8 +6,12 @@ labels have been read. Shampoos must also share the strength of their main clean
     cleanse:  main cleanser (how strong, which kind), conditioning agents, water binders, protein, oils
     others:   slip and conditioning, water binders, protein, oils and butters, silicones
 
-Each one is either the same (both have it, or neither does; for the cleanser, the same strength) or
-different. Matches are listed with the plain reasons, the differences included, never as a score out
+Each one is either the same or different. "The same" means both labels have it in the same place:
+leading the label (in the first LEAD ingredients), lower down, or not at all. So rice protein at #3
+and a trace of protein at #19 count as different. For the cleanser, the same strength.
+
+Product tags from the catalog sheet count too: for leave-ins, stylers and sealants, "heat protectant"
+is a sixth check and must match, the way the cleanser must match for shampoos. Matches are listed with the plain reasons, the differences included, never as a score out
 of 100 and never as a verdict. Words are sorted with the Label Decoder's own categories (decoder.py:
 sheet rows first, then RULES), so the decoder and this section always agree.
 
@@ -25,7 +29,9 @@ _GENERIC = {'cond': ['quat', 'fatty', 'silicone'], 'cleanser': ['sulfate', 'stro
 
 MIN_ITEMS = 5          # a label shorter than this is too thin to compare
 SHOW = 3               # matches shown on a product page
-MIN_SAME = 3           # of 5: anything below is not "similar"
+LEAD = 6               # an ingredient in the first 6 positions leads the label
+MAX_DIFF = 2           # more differences than this and it is not "similar"
+HEAT_STEPS = {'leave-in', 'style', 'seal'}
 
 
 def classify(t):
@@ -102,12 +108,21 @@ def profile(p, items):
             break
     # The first cleanser on the label is the one there is most of; strength comes from the strongest.
     first = next((t for t, c in read if c & {'sulfate', 'strong', 'mild', 'cosurf', 'cleanser'}), None)
+    tags = {t.strip().lower() for t in (p.get('properties') or '').split(',') if t.strip()}
     return {'p': p, 'read': read, 'level': level, 'main': main, 'first': first,
-            'kind': kind_of(first) if first else None}
+            'kind': kind_of(first) if first else None, 'tags': tags}
 
 
 def has(prof, cats):
     return [t for t, c in prof['read'] if c & cats]
+
+
+def band(prof, cats):
+    """('lead' | 'some' | 'none', position of the first one, the words)."""
+    hits = [(i + 1, t) for i, (t, c) in enumerate(prof['read']) if c & cats]
+    if not hits:
+        return 'none', None, []
+    return ('lead' if hits[0][0] <= LEAD else 'some'), hits[0][0], [t for _, t in hits]
 
 
 def _names(ts):
@@ -118,6 +133,12 @@ def compare(a, b, step):
     """[(same, line)] for each dimension, written from page a's point of view ('this one' vs b's name)."""
     other = B.product_full_name(b['p'])
     out = []
+    if step in HEAT_STEPS:
+        ha, hb = 'heat protectant' in a['tags'], 'heat protectant' in b['tags']
+        line = ('Both are heat protectants (tagged in our catalog).' if ha and hb else
+                'Neither is tagged as a heat protectant.' if not ha and not hb else
+                'Only this one is a heat protectant.' if ha else f'Only {other} is a heat protectant.')
+        out.append((ha == hb, line, 'heat'))
     for key, thing, cats in DIMS['cleanse' if step == 'cleanse' else 'other']:
         if key == 'clean':
             la, lb = a['level'], b['level']
@@ -132,18 +153,20 @@ def compare(a, b, step):
                 line = f"Different cleanser strength: this one is built on {la[1]}{ma}, {other} on {lb[1]}{mb}."
             out.append((same, line, key))
             continue
-        ha, hb = has(a, cats), has(b, cats)
-        if ha and hb:
-            shared = [t for t in ha if B.norm(short(t)) in {B.norm(short(x)) for x in hb}]
-            line = (f"Both have {thing}, including {_names(shared)}." if shared
-                    else f"Both have {thing}, but different ones.")
-            out.append((True, line, key))
-        elif not ha and not hb:
+        (ba, pa, ha), (bb, pb, hb) = band(a, cats), band(b, cats)
+        if ba == 'none' and bb == 'none':
             out.append((True, f"Neither has {thing}.", key))
-        elif ha:
-            out.append((False, f"Only this one has {thing} ({_names(ha)}).", key))
-        else:
+        elif ba == 'none':
             out.append((False, f"Only {other} has {thing} ({_names(hb)}).", key))
+        elif bb == 'none':
+            out.append((False, f"Only this one has {thing} ({_names(ha)}).", key))
+        elif ba != bb and abs(pa - pb) > 2:  # across the line but close (#6 vs #8) still counts as the same
+            out.append((False, f"{thing[0].upper() + thing[1:]} at a different strength: from #{pa} on this label, from #{pb} on {other}.", key))
+        else:
+            where = 'near the top' if ba == bb == 'lead' else 'lower down' if ba == bb == 'some' else 'at about the same place'
+            shared = [t for t in ha if B.norm(short(t)) in {B.norm(short(x)) for x in hb}]
+            what = f", including {_names(shared)}" if shared else ', but different ones'
+            out.append((True, f"Both have {thing} {where}{what}.", key))
     return out
 
 
@@ -173,10 +196,13 @@ def build_index(prods, step_of, items_of):
                 continue
             rows = compare(a, b, st)
             n = sum(1 for s, _, _ in rows if s)
-            # For a shampoo the cleanser decides the most: a different strength is never "similar".
+            # Gates: for a shampoo the cleanser strength, for leave-ins, stylers and sealants heat
+            # protection. A difference there is never "similar".
             if st == 'cleanse' and not rows[0][0]:
                 continue
-            if n >= MIN_SAME:
+            if st in HEAT_STEPS and not rows[0][0]:
+                continue
+            if len(rows) - n <= MAX_DIFF:
                 cands.append((n, _closeness(a, b), b['p'], rows))
         cands.sort(key=lambda c: (-c[0], -c[1], c[2].get('name', '').lower()))
         out[pid] = [(q, rows, n, len(rows)) for n, _, q, rows in cands[:SHOW]]
@@ -205,6 +231,6 @@ def section(p, matches, step, r):
       </li>''')
     many, one = STEP_WORD.get(step, ('products', 'product'))
     return f'''<section class="section" id="similar">
-    <div class="intro"><span class="eyebrow">Similar labels</span><h2>Built like this one</h2><p>Looking for a dupe? These {e(many)} in our catalog have labels built the same way, checked on the five things that matter most for a {e(one)}. A similar label says what is in the bottle, not how it will feel on your hair.</p></div>
+    <div class="intro"><span class="eyebrow">Similar labels</span><h2>Built like this one</h2><p>Looking for a dupe? These {e(many)} in our catalog have labels built the same way, checked on the {'six' if step in HEAT_STEPS else 'five'} things that matter most for a {e(one)}. A similar label says what is in the bottle, not how it will feel on your hair.</p></div>
     <ul class="sim-list">{''.join(cards)}</ul>
   </section>'''
