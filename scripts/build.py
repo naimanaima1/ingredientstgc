@@ -119,7 +119,9 @@ for p in products:
     _pseen[sl] = p
     p['_slug'] = sl
 
-labels = [(p, split_label(p['full ingredient list'])) for p in cat
+# Only rows that got a product page (id and name filled in). A half-entered sheet row
+# with a list but no id or name is skipped until it is finished.
+labels = [(p, split_label(p['full ingredient list'])) for p in products
           if p.get('full ingredient list') and (p.get('kind') or 'product') == 'product']
 
 STEPS = [('cleanse', 'Cleanse'), ('condition', 'Condition'), ('treatment', 'Treat'), ('leave-in', 'Leave-in'), ('style', 'Style'), ('seal', 'Seal')]
