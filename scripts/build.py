@@ -199,7 +199,8 @@ CHECK_TAGS = {
     # Key kept as 'strong-cleanser' (the decoder and saved links use it); the check now covers every
     # non-sulfate cleanser, and strong ones are marked in the list.
     'strong-cleanser': {'strong-cleanser', 'mild-cleansing', 'foam-booster', 'clarifying'},
-    'scalp-active': {'scalp active', 'scalp & fiber active', 'peptide / scalp & fiber active', 'antioxidant', 'antioxidants'},
+    'scalp-active': {'scalp active', 'scalp & fiber active', 'peptide / scalp & fiber active', 'antioxidant', 'antioxidants',
+                     'botanical-extract', 'algae-extract'},  # plant extracts with antioxidant compounds (owner, Nov 22)
 }
 
 def check_hit(k, tags):
