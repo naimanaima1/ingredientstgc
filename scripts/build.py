@@ -305,7 +305,7 @@ def utm(url, medium, campaign='jara_beta', content=''):
     out = base + ('&' if '?' in base else '?') + q
     return out + ('#' + frag if frag else '')
 
-def shell(r, title, desc, body, path, current=''):
+def shell(r, title, desc, body, path, current='', image=None):
     """r = relative path to the site root, e.g. '../'."""
     cur = lambda k: ' aria-current="page"' if current == k else ''
     return f'''<!DOCTYPE html>
@@ -316,7 +316,7 @@ def shell(r, title, desc, body, path, current=''):
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{SITE}/{path}">
-<meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:type" content="website">
+<meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:type" content="website">{f'<meta property="og:image" content="{SITE}/{image}"><meta name="twitter:card" content="summary_large_image">' if image else ''}
 <link rel="icon" href="{r}favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">

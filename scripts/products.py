@@ -4,8 +4,16 @@ Reads the catalog sheet (data/catalog.csv). Published fields: name, brand, kind,
 and the ingredient list. A product page shows its shop link (often an affiliate link) as a button
 with a short disclosure; links are left out of catalog.json. Notes and barcodes are never published.
 """
-import json
+import json, os, shutil
 import build as B
+
+# Product photos: src/products/<catalog id>.webp (800x1000, 4:5). A product with a file gets a photo
+# on its page and as its sharing image; one without keeps the text-only layout.
+PHOTO_DIR = os.path.join(B.ROOT, 'src', 'products')
+
+def photo_of(p):
+    fn = f"{p['id']}.webp"
+    return fn if os.path.exists(os.path.join(PHOTO_DIR, fn)) else None
 
 e = B.e
 STEP_ORDER = ['cleanse', 'condition', 'treatment', 'leave-in', 'style', 'seal', 'tool']
@@ -75,15 +83,17 @@ def product_page(p):
       <figcaption class="label-foot"><span>Labels are read by hand from brand sites and packaging.</span></figcaption>
     </figure>'''
         grouped = ''
+    photo = photo_of(p)
+    side = f'''<div class="meta">{tags}</div>
+      <p class="fine">Properties come from our catalog tags and describe what the product contains, not how it will work on your hair.</p>
+      {shop_link(p, r)}'''
     body = f'''  <a class="crumb" href="../">← All products</a>
   <section class="first">
     <div class="name">
       <span class="eyebrow"><span class="little-dot"></span>{e(STEP_LABEL.get(step, step.capitalize() or 'Product'))}</span>
       <h1 class="prod-h1">{e(p.get('name', '').strip())}</h1>
       <p class="aka"><em>by</em> {e(p.get('brand', '').strip())}</p>
-      <div class="meta">{tags}</div>
-      <p class="fine">Properties come from our catalog tags and describe what the product contains, not how it will work on your hair.</p>
-      {shop_link(p, r)}
+      {side if not photo else f'<div class="prod-row"><figure class="prod-photo"><img src="{r}assets/products/{photo}" alt="{e(B.product_full_name(p))}" width="800" height="1000"></figure><div class="prod-side">{side}</div></div>'}
     </div>
     {inside}
   </section>
@@ -95,7 +105,7 @@ def product_page(p):
   <p class="source"><span>The Good Coil catalog · Ref {e(p['id'])}</span><a href="{r}data/catalog.json">Get this as data (JSON)</a><a href="{r}about/">How we write these</a></p>'''
     name = B.product_full_name(p)
     desc = f"What's inside {name}: the full ingredient list, decoded." if items else f"{name} in The Good Coil catalog."
-    B.write(f"products/{p['_slug']}/index.html", B.shell(r, f"{name}: ingredients · The Good Coil", desc, body, f"products/{p['_slug']}/", 'products'))
+    B.write(f"products/{p['_slug']}/index.html", B.shell(r, f"{name}: ingredients · The Good Coil", desc, body, f"products/{p['_slug']}/", 'products', image=f"assets/products/{photo}" if photo else None))
 
 def index_page(prods):
     steps = [s for s in STEP_ORDER if any(step_of(p) == s for p in prods)]
@@ -139,6 +149,11 @@ hasChips.forEach(c=>c.addEventListener('click',()=>{{const k=c.dataset.has;has.h
 
 def build():
     prods = B.products
+    if os.path.isdir(PHOTO_DIR):
+        os.makedirs(os.path.join(B.OUT, 'assets', 'products'), exist_ok=True)
+        for f in os.listdir(PHOTO_DIR):
+            if f.endswith('.webp'):
+                shutil.copy(os.path.join(PHOTO_DIR, f), os.path.join(B.OUT, 'assets', 'products', f))
     for p in prods:
         if step_of(p) != 'tool':
             product_page(p)
