@@ -1372,3 +1372,9 @@ html{scroll-behavior:smooth}
 .chk-extra[open] summary{display:none}
 .chk-extra[open]::before{content:", "}
 .chk-flag{font-style:normal;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:1px 5px;border-radius:2px;margin-left:2px;vertical-align:1px}
+/* Ingredient page: step counts act as filters */
+.step-f{font:inherit;color:inherit;background:none;border:0;padding:2px 6px;margin:0 -6px;border-radius:3px;cursor:pointer;white-space:nowrap;text-decoration:underline dotted;text-underline-offset:3px;min-height:24px}
+.step-f:hover{text-decoration-style:solid}
+.step-f[aria-pressed="true"]{background:var(--ink);color:var(--paper);text-decoration:none}
+.step-f[aria-pressed="true"] b{color:var(--citrus)}
+.strip .dot[hidden],#labels-list>li[hidden]{display:none}

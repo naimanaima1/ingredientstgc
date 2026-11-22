@@ -288,6 +288,28 @@ def check_label(items):
                     guessed[g].append(t)
     return found, guessed, unknown
 
+# Ingredient pages: the step counts ("Condition 5") filter the product list and the position chart.
+STEP_FILTER_JS = """<script>
+(function () {
+  var btns = document.querySelectorAll('.step-f');
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var on = btn.getAttribute('aria-pressed') !== 'true', step = btn.dataset.step;
+      btns.forEach(function (b) { b.setAttribute('aria-pressed', b === btn && on ? 'true' : 'false'); });
+      document.querySelectorAll('#labels-list > li, .strip .dot').forEach(function (el) {
+        el.hidden = on && el.dataset.step !== step;
+      });
+      var stack = {};  // re-stack the visible dots so filtered columns have no gaps
+      document.querySelectorAll('.strip .dot').forEach(function (d) {
+        if (d.hidden) return;
+        var h = stack[d.style.left] || 0; stack[d.style.left] = h + 1;
+        d.style.bottom = (58 + h * 24) + 'px';
+      });
+    });
+  });
+})();
+</script>"""
+
 def check_strip(items, r='', tags=(), js=True):
     """The quick-check strip. items=None when we have not typed the label out yet."""
     if items is None:
@@ -507,13 +529,18 @@ def ingredient_page(g):
         for k, (p, items, n) in enumerate(hits):
             h = stack.get(n, 0); stack[n] = h + 1
             name = f"{p.get('brand', '').strip()} {p.get('name', '').strip()}".strip()
-            dots += f'<a class="dot" href="#p{k}" style="left:{x(n)}%;bottom:{58 + h * 24}px;animation-delay:{1.3 + k * .06:.2f}s" aria-label="{e(name)}: {ordinal(n)} of {len(items)}"></a>'
+            dots += f'<a class="dot" data-step="{e(p.get('step', ''))}" href="#p{k}" style="left:{x(n)}%;bottom:{58 + h * 24}px;animation-delay:{1.3 + k * .06:.2f}s" aria-label="{e(name)}: {ordinal(n)} of {len(items)}"></a>'
         ticks = ''.join(f'<span class="tick" style="left:{x(n)}%">{ordinal(n)}</span>' for n in (1, 10, 20, 30, 40))
-        steps = ' · '.join(f'<span>{lbl} <b>{sum(1 for h in hits if h[0].get("step") == s)}</b></span>' for s, lbl in STEPS
+        def step_f(s, lbl):
+            n = sum(1 for h in hits if h[0].get('step') == s)
+            if not n:
+                return f'<span>{lbl} <b>{n}</b></span>'
+            return f'<button type="button" class="step-f" data-step="{s}" aria-pressed="false" aria-controls="labels-list">{lbl} <b>{n}</b></button>'
+        steps = ' · '.join(step_f(s, lbl) for s, lbl in STEPS
                            if s != 'treatment' or any(h[0].get('step') == s for h in hits))
         top = sum(1 for h in hits if h[2] <= 3)
         heading = f"On {len(hits)} of the {len(labels)} labels we've read" + (', usually near the top' if top * 2 >= len(hits) and len(hits) > 1 else '')
-        rows = ''.join(f'''<li id="p{k}"><span class="pos">{n}<small>of {len(items)}</small></span><div><span class="step">{e(STEP.get(p.get('step', ''), p.get('step', '').capitalize()))}</span><a href="{r}products/{p.get('_slug', '')}/"><b>{e(p.get('brand', '').strip())}</b> {e(p.get('name', '').strip())}</a></div></li>''' for k, (p, items, n) in enumerate(hits))
+        rows = ''.join(f'''<li id="p{k}" data-step="{e(p.get('step', ''))}"><span class="pos">{n}<small>of {len(items)}</small></span><div><span class="step">{e(STEP.get(p.get('step', ''), p.get('step', '').capitalize()))}</span><a href="{r}products/{p.get('_slug', '')}/"><b>{e(p.get('brand', '').strip())}</b> {e(p.get('name', '').strip())}</a></div></li>''' for k, (p, items, n) in enumerate(hits))
         sections.append(f'''<section class="across" id="across">
     <div class="intro">
       <span class="eyebrow">Found in these products</span>
@@ -523,10 +550,10 @@ def ingredient_page(g):
     </div>
     <div>
       <div class="strip" role="img" aria-label="Where {e(title)} sits on each label">{dots}<div class="axis"></div>{ticks}</div>
-      <ol class="labels">{rows}</ol>
+      <ol class="labels" id="labels-list">{rows}</ol>
       <p class="fine">These are labels we've read by hand from brand sites and packaging, not a list of recommendations. We add more as we go.</p>
     </div>
-  </section>''')
+  </section>{STEP_FILTER_JS}''')
 
     mytags = set(g['_tags'])
     related = [i for i in ing if i is not g and (set(i['_tags']) & mytags if mytags else i.get('category') == g.get('category'))]
