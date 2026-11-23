@@ -1470,10 +1470,22 @@ a.dupe-pname:hover b{text-decoration:underline;text-underline-offset:3px}
 .dupe-preview{margin:24px 0 0;padding:10px 14px;background:var(--blue-mist);font-size:14px;font-weight:600}
 .dupe-preview a{border-bottom:1px solid var(--ink)}
 /* Products page finder: undo the homepage hero's dark-background finder styles (line ~651) */
-#find label{display:block;color:var(--ink);font-size:13px;font-weight:700;letter-spacing:0;text-transform:none;margin-bottom:0}
-#find input[type=search]{color:var(--ink);background:#fff;border:1px solid var(--ink);border-radius:0;padding:12px 14px;font-size:17px;max-width:560px}
-#find input[type=search]::placeholder{color:var(--muted)}
-#find input[type=search]:focus{outline:3px solid var(--cobalt);outline-offset:2px;background:#fff}
-#find label.check{display:flex;align-items:center;gap:10px;font-weight:600}
-#find label.check input{width:20px;height:20px;margin:0;accent-color:var(--ink)}
+.finder#find label{display:block;color:var(--ink);font-size:13px;font-weight:700;letter-spacing:0;text-transform:none;margin-bottom:0}
+.finder#find input[type=search]{color:var(--ink);background:#fff;border:1px solid var(--ink);border-radius:0;padding:12px 14px;font-size:17px;max-width:560px}
+.finder#find input[type=search]::placeholder{color:var(--muted)}
+.finder#find input[type=search]:focus{outline:3px solid var(--cobalt);outline-offset:2px;background:#fff}
+.finder#find label.check{display:flex;align-items:center;gap:10px;font-weight:600}
+.finder#find label.check input{width:20px;height:20px;margin:0;accent-color:var(--ink)}
 .ing-list .ing-hit{font-family:inherit}
+
+/* ===== Standardization, Nov 2026 =====
+   One shadow: the printed label card (and its sticker) keeps its hard ink offset, because it is a
+   physical object. Things that float (dropdowns, tips, the JARA card) share one soft shadow.
+   Everything else is flat. Two corner styles: square for content, pill for actions. */
+:root{--float:0 12px 32px rgba(67,39,49,.18)}
+.plan-photo,.prod-photo,.label-photo,.gz-myth,.gdl-cover img,.dx-focus li.lit a,.track-app,.tp-track input:checked+.tp-track-in{box-shadow:none}
+.f-list,.t-list,.tip,.nudge{box-shadow:var(--float)}
+@media(max-width:600px){.nudge{box-shadow:0 -8px 24px rgba(67,39,49,.16)}}
+.go,.gd-go,.btn{border-radius:999px}
+.gp-scale a,.gz-img{border-radius:0}
+.finder input,.t-find input,.t-paste textarea,.gp-ing,.chk-flag,.step-f{border-radius:0}
