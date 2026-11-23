@@ -144,7 +144,9 @@ def compare(a, b, step):
             la, lb = a['level'], b['level']
             same = la[0] == lb[0]
             if same and a['kind'] and a['kind'] == b['kind']:
-                line = f"Same kind of main cleanser: both lead with {a['kind']} ({short(a['first'])} / {short(b['first'])})."
+                fa, fb = short(a['first']), short(b['first'])
+                line = (f"Same main cleanser: both lead with {fa}." if B.norm(fa) == B.norm(fb)
+                        else f"Same kind of main cleanser: both lead with {a['kind']} ({fa} / {fb}).")
             elif same:
                 line = f"Both are built on {la[1]} ({short(a['main'] or '')} / {short(b['main'] or '')})." if la[0] else 'Neither has a cleanser.'
             else:

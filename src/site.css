@@ -1393,3 +1393,11 @@ html{scroll-behavior:smooth}
 .sim-why .diff .sim-mark{color:var(--cobalt)}
 .sim-cmp{display:inline-block;margin-top:14px;font-size:14px;font-weight:700;border-bottom:1px solid var(--ink)}
 @media(max-width:760px){.sim{padding:16px}.sim-why li{grid-template-columns:1fr;gap:2px}}
+
+/* Dupe pages (scripts/dupes.py) */
+.dupe-built{list-style:none;padding:0;margin:0;display:grid;gap:8px;font-size:15px;line-height:1.55}
+.dupe-built li{border-top:1px solid var(--line);padding-top:8px}
+.dupe-line{margin:12px 0 0;font-size:14px;line-height:1.5;background:var(--paper);padding:10px 12px}
+.dupe-line span{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.dupe-more{margin:18px 0 0;font-size:15px;font-weight:700}
+.dupe-more a{border-bottom:1px solid var(--ink)}

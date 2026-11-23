@@ -50,6 +50,10 @@ Every build prints a report (in the Action's summary): how many label words are 
 
 Every product page lists up to three catalog products whose labels are built the same way (`scripts/similar.py`). Products are compared only with others at the same step, and only when both labels have been read (5+ ingredients). Each pair is checked on five things: for shampoos, the main cleanser (strength and kind), conditioning agents, water binders, protein and oils; for everything else, slip and conditioning agents, water binders, protein, oils or butters, and silicones. Leave-ins, stylers and sealants get a sixth check from the catalog `properties` column: `heat protectant`. "The same" means at about the same place on both labels: leading (first 6 ingredients), lower down, or absent. A match can differ on at most 2 checks, and the gate must match (cleanser strength for shampoos, heat protection for leave-ins, stylers and sealants). Each match shows what is the same and what is different, plus a link to the side-by-side compare. Words are sorted with the Label Decoder's own categories, so the two always agree. `data/catalog.json` lists each product's matches under `similar`. Prices are not used.
 
+## Dupe pages
+
+`/dupes/<slug>/` pages (`scripts/dupes.py`) compare one much-searched product with the catalog: **Closest wash** (same cleanser strength, then the most cleansers in common, weighted toward the top of both labels) and **Closest overall** (the most Similar labels checks the same). To add a page, add a line to `PAGES` in that file. A product with no label in the catalog gets no page. Pages are listed in the sitemap and linked from the product's own page.
+
 ## Run it locally
 
 ```

@@ -797,6 +797,7 @@ def main():
     plan_urls = [f"plans/{g['slug']}/" for g in guides if not g.get('hidden')]
     import products as PR
     PR.build()
+    plan_urls += PR.DUPE_URLS              # dupe pages go in the sitemap
     import home
     home.build()                                            # the homepage at /
     home.build(out='previous-home/', root='../', quiet=False)  # the first one, noindex

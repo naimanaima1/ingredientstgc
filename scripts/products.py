@@ -7,6 +7,7 @@ with a short disclosure; links are left out of catalog.json. Notes and barcodes 
 import json, os, shutil
 import build as B
 import similar as SIM
+import dupes as DUP
 
 # Product photos: src/products/<catalog id>.webp (800x1000, 4:5). A product with a file gets a photo
 # on its page and as its sharing image; one without keeps the text-only layout.
@@ -46,6 +47,8 @@ def shop_link(p, r):
             f'<p class="shop-note">{note} <a href="{r}about/#affiliate">Disclosure</a></p></div>')
 
 SIMILAR = {}  # product id -> similar-label matches, filled in build()
+DUPE_PAGES = {}  # product id -> its dupe page path (scripts/dupes.py)
+DUPE_URLS = []  # for the sitemap
 
 def product_page(p):
     r = '../../'
@@ -106,6 +109,7 @@ def product_page(p):
   </section>
   {grouped}
   {SIM.section(p, SIMILAR.get(p['id']), step, r)}
+  {f'<p class="dupe-more"><a href="{r}{DUPE_PAGES[p["id"]]}">See the full comparison: closest wash and closest overall <span aria-hidden="true">&#8594;</span></a></p>' if p['id'] in DUPE_PAGES else ''}
   <p class="source"><span>The Good Coil catalog · Ref {e(p['id'])}. Properties come from our catalog tags and describe what the product contains, not how it will work on your hair.</span><a href="{r}data/catalog.json">Get this as data (JSON)</a><a href="{r}about/">How we write these</a></p>'''
     name = B.product_full_name(p)
     desc = f"What's inside {name}: the full ingredient list, decoded." if items else f"{name} in The Good Coil catalog."
@@ -162,6 +166,11 @@ def build():
         SIMILAR.update(SIM.build_index(prods, step_of, items_of))
     except Exception as err:  # never let this section stop the rest of the site from publishing
         print(f'Warning: similar labels skipped ({err!r})')
+    try:
+        DUPE_PAGES.update(DUP.build(prods, step_of, items_of))
+        DUPE_URLS.extend(DUPE_PAGES.values())
+    except Exception as err:  # never let these pages stop the rest of the site from publishing
+        print(f'Warning: dupe pages skipped ({err!r})')
     for p in prods:
         if step_of(p) != 'tool':
             product_page(p)
