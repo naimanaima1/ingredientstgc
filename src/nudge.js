@@ -1,5 +1,6 @@
 /* JARA nudge: a small, dismissible card that slides in from the bottom corner.
-   Gentle by design: never covers the page, never on first paint, at most once
+   Gentle by design: never covers the page, only after the reader scrolls (no timer),
+   never while a page's quick answer is on screen (KEEP_CLEAR), at most once
    every 14 days per browser, never after someone has clicked through to JARA,
    and never on test or noindex pages. The wording matches the page:
      plan pages        → schedule this plan in JARA
@@ -10,7 +11,7 @@
   var KEY = 'tgc_nudge';            // stores the time it was last shown or dismissed
   var CLICKED = 'tgc_nudge_clicked'; // set once someone clicks through; we stop showing
   var QUIET_DAYS = 14;
-  var DELAY_MS = 25000;             // or 45% scroll, whichever comes first
+  var DEPTH = 0.45;                 // shown once the reader has scrolled 45% of the page, never on a timer
 
   function get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
   function set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
@@ -75,9 +76,20 @@
     return false;
   }
 
+  // Parts of a page the card must never sit over: it waits until they've scrolled away.
+  var KEEP_CLEAR = '.dupe-quick, .dupe-head';
+  function keepClearVisible() {
+    var els = document.querySelectorAll(KEEP_CLEAR);
+    for (var i = 0; i < els.length; i++) {
+      var r = els[i].getBoundingClientRect();
+      if (r.bottom > 0 && r.top < innerHeight) return true;
+    }
+    return false;
+  }
+
   function show() {
     if (shown) return;
-    if (inlineJaraVisible()) return; // try again on the next scroll
+    if (inlineJaraVisible() || keepClearVisible()) return; // try again on the next scroll
     shown = true;
     cleanup();
     set(KEY, Date.now());
@@ -112,12 +124,8 @@
   function onScroll() {
     var doc = document.documentElement;
     var depth = (scrollY + innerHeight) / doc.scrollHeight;
-    if (depth > 0.45) show();
+    if (depth > DEPTH) show();
   }
-  var timer = setTimeout(function () {
-    show();
-    if (!shown) addEventListener('scroll', onScroll, { passive: true });
-  }, DELAY_MS);
   addEventListener('scroll', onScroll, { passive: true });
-  function cleanup() { clearTimeout(timer); removeEventListener('scroll', onScroll); }
+  function cleanup() { removeEventListener('scroll', onScroll); }
 })();
