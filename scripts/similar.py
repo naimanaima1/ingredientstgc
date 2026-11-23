@@ -113,6 +113,44 @@ def profile(p, items):
             'kind': kind_of(first) if first else None, 'tags': tags}
 
 
+# What softens a strong cleanser in the finished formula (shown, never used to change its level).
+BUFFER_TOP = 10        # softeners count when they sit in the first 10 ingredients
+SOFTENERS = [('co-cleansers', {'cosurf'}), ('conditioning polymers', {'quat', 'cond'}),
+             ('oils and emollients', {'oil', 'butter', 'ester', 'fatty'})]
+
+
+def softeners(prof):
+    """[(position, word)] near the top that soften the main cleanser: amphoteric co-cleansers,
+    conditioning polymers, oils and emollients. Amphoacetates count even though the decoder files
+    them under mild cleansers."""
+    main = prof['main']
+    out = []
+    for i, (t, c) in enumerate(prof['read'][:BUFFER_TOP]):
+        if t == main:
+            continue
+        if c & {'cosurf', 'quat', 'cond', 'oil', 'butter', 'ester', 'fatty'} or 'ampho' in B.norm(t):
+            out.append((i + 1, t))
+    return out
+
+
+def cleanser_note(prof):
+    """One plain line on how the cleanser sits in this formula, or ''.
+    Strong cleansers and sulfates: what softens them near the top of the label, if anything.
+    Glucosides leading the label: mild, but less slip than isethionates or taurates."""
+    lvl = prof['level'][0]
+    if lvl >= 2 and prof['main']:
+        pos = next(i + 1 for i, (t, _) in enumerate(prof['read']) if t == prof['main'])
+        soft = softeners(prof)
+        lead = f"{prof['level'][1][0].upper()}{prof['level'][1][1:]} ({short(prof['main'])}, #{pos})"
+        if soft:
+            names = ', '.join(f'{short(t)} (#{q})' for q, t in soft[:3]) + (' and more' if len(soft) > 3 else '')
+            return f"{lead}, softened in this formula by {names}."
+        return f"{lead}, with no co-cleansers, conditioning polymers or oils near the top of the label to soften it."
+    if lvl == 1 and prof['kind'] == 'glucosides':
+        return "Led by a glucoside: mild on the scalp, but glucosides leave less slip than isethionates or taurates, and can feel squeaky on high-porosity hair."
+    return ''
+
+
 def has(prof, cats):
     return [t for t, c in prof['read'] if c & cats]
 
@@ -179,6 +217,8 @@ def _closeness(a, b):
     score = sum(min(wa[k], wb[k]) for k in wa.keys() & wb.keys())
     if a['kind'] and a['kind'] == b['kind']:
         score += 1
+    if a['level'][0] >= 2 and bool(softeners(a)) == bool(softeners(b)):
+        score += 0.5   # two strong cleansers: both softened, or both bare
     return score
 
 
@@ -217,7 +257,7 @@ STEP_WORD = {'cleanse': ('shampoos and cleansers', 'shampoo'), 'condition': ('co
              'style': ('stylers', 'styler'), 'seal': ('oils and sealants', 'oil or sealant')}
 
 
-def section(p, matches, step, r):
+def section(p, matches, step, r, items_of=None):
     """The 'Similar labels' section for one product page, or '' when nothing is close enough."""
     if not matches:
         return ''
@@ -226,8 +266,11 @@ def section(p, matches, step, r):
         lis = ''.join(f'<li class="{"same" if s else "diff"}"><span class="sim-mark">{"Same" if s else "Different"}</span>{e(line)}</li>'
                       for s, line, _ in sorted(rows, key=lambda x: not x[0]))
         cmp_href = f"{r}label-decoder/#compare=p:{p['_slug']}~p:{q['_slug']}"
+        note = cleanser_note(profile(q, items_of(q))) if step == 'cleanse' and items_of else ''
+        note = f'<p class="dupe-line"><span>About its cleanser</span>{e(note)}</p>' if note else ''
         cards.append(f'''<li class="sim">
         <div class="sim-head"><a class="sim-name" href="{r}products/{q['_slug']}/"><b>{e(q.get('name', '').strip())}</b><span>{e(q.get('brand', '').strip())}</span></a><span class="sim-count">Same on {n} of {total}</span></div>
+        {note}
         <ul class="sim-why">{lis}</ul>
         <a class="sim-cmp" href="{cmp_href}">Compare the two labels side by side <span aria-hidden="true">&#8594;</span></a>
       </li>''')

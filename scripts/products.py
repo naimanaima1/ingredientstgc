@@ -108,7 +108,7 @@ def product_page(p):
     <div>{strip}</div>
   </section>
   {grouped}
-  {SIM.section(p, SIMILAR.get(p['id']), step, r)}
+  {SIM.section(p, SIMILAR.get(p['id']), step, r, items_of)}
   {f'<p class="dupe-more"><a href="{r}{DUPE_PAGES[p["id"]]}">See the full comparison: closest wash and closest overall <span aria-hidden="true">&#8594;</span></a></p>' if p['id'] in DUPE_PAGES else ''}
   <p class="source"><span>The Good Coil catalog · Ref {e(p['id'])}. Properties come from our catalog tags and describe what the product contains, not how it will work on your hair.</span><a href="{r}data/catalog.json">Get this as data (JSON)</a><a href="{r}about/">How we write these</a></p>'''
     name = B.product_full_name(p)

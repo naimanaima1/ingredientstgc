@@ -108,7 +108,7 @@ def build(prods, step_of, items_of):
         wash = sorted(cands, key=lambda c: (-c['wash'], -c['n'], c['q'].get('name', '').lower()))[:SHOW]
         overall = sorted(cands, key=lambda c: (-c['n'], -c['close'], c['q'].get('name', '').lower()))[:SHOW]
         wash_cards = ''.join(_card(target, a, c['q'], c['rows'],
-                                   f'<p class="dupe-line"><span>Cleansers on this label</span>{e(_lineup(c["b"]))}</p>', r,
+                                   f'<p class="dupe-line"><span>Cleansers on this label</span>{e(_lineup(c["b"]))}{(" " + e(SIM.cleanser_note(c["b"]))) if SIM.cleanser_note(c["b"]) else ""}</p>', r,
                                    badge=(lambda k: f"{k} cleanser{'s' if k != 1 else ''} in common")(len(_shared_cleansers(a, c['b'])))) for c in wash)
         overall_cards = ''.join(_card(target, a, c['q'], c['rows'], '', r) for c in overall)
         name = B.product_full_name(target)
@@ -122,7 +122,7 @@ def build(prods, step_of, items_of):
   </section>
   <section class="section">
     <div class="intro"><span class="eyebrow">The original</span><h2>What its label is built on</h2><p>Cleansers set how a shampoo washes. Everything else shapes how hair feels after.</p></div>
-    <ul class="dupe-built"><li><b>Cleansers:</b> {e(a['level'][1])}: {e(_lineup(a))}.</li>{built}</ul>
+    <ul class="dupe-built"><li><b>Cleansers:</b> {e(a['level'][1])}: {e(_lineup(a))}.{(' ' + e(SIM.cleanser_note(a))) if SIM.cleanser_note(a) else ''}</li>{built}</ul>
   </section>
   <section class="section" id="closest-wash">
     <div class="intro"><span class="eyebrow">Closest wash</span><h2>Washes most like it</h2><p>The same cleanser strength, then the most cleansers in common, counting most where they sit near the top of both labels.</p></div>
