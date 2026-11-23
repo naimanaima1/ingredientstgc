@@ -3,6 +3,8 @@ products in PREVIEW, so the new layout can be judged next to the live page. Noth
 
 What changes from the live page (scripts/products.py product_page):
   - The brand is part of the headline ("Cécred Hydrating Shampoo"), with a one-line summary of the label.
+    A "subline" column in the catalog sheet replaces that line for a product; left empty, it is written
+    from the label (_summary).
   - "What's in it" replaces the 12-cell "Does it have..." grid AND the "By property" list: the groups the
     label has, each with its ingredients and where they start on the label, then one line for what it
     doesn't have.
@@ -140,7 +142,7 @@ def page(p, photo, shop_html, similar, dupe_path):
     <div class="v2-title">
       <span class="eyebrow"><span class="little-dot"></span>{e(step.capitalize() or 'Product')}</span>
       <h1><em>{e(brand)}</em> {e(name)}</h1>
-      <p class="v2-sum">{e(_summary(p, step, groups, items))}</p>
+      <p class="v2-sum">{e(B.col(p, 'subline', 'Subline') or _summary(p, step, groups, items))}</p>
       <div class="v2-next">{next_main}<a class="v2-jara" href="{B.utm('https://itsjara.com', 'product_v2_cta', 'jara_beta', p['_slug'])}">Check it against your hair in JARA <span aria-hidden="true">&#8599;</span></a></div>
       {shop_html.replace('<a class="read-more" href="#check"><u>Read more</u><span aria-hidden="true">&#8595;</span></a>', '')}
     </div>

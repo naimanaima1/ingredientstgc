@@ -43,6 +43,7 @@ Optional, understood when present:
 **Programs Overview** (`data/programs.csv`) and **Program steps** (`data/program-steps.csv`): the hair plans at `/plans/` and `data/plans.json`. Until the repository secrets `PROGRAMS_CSV_URL` and `PROGRAM_STEPS_CSV_URL` exist, the copies saved in `data/` are used. Program steps columns: `program_id, order, step, when, weeks, wash_day_role, property, condition, product_ids, notes`, where `when` is `every_wash`, `every_7_days` (any number), `daily`, `nightly` or `weeks` (with `weeks` like `3,6`; `0` means before you start). Optional overview columns: `slug`, `version`, `image` (a file in `src/img/`).
 
 **Product catalog:** only `kind`, `brand`, `name`, `step` and `full ingredient list` are used, to show where an ingredient sits on real labels. Links, notes and prices are not published.
+Optional: `subline`, one short line shown under the product name on the new product page (preview at `/products/<slug>/v2/`). Left empty, the line is written from the label, e.g. "A shampoo built on a mild cleanser, with water binders and protein."
 
 Every build prints a report (in the Action's summary): how many label words are recognised, the most common label words that have no ingredient row yet, and wording that could read as a hair-growth or drug claim. The report never changes any text.
 
