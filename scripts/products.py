@@ -244,6 +244,14 @@ def build():
 <noscript><meta http-equiv="refresh" content="0; url={dest}"></noscript></head>
 <body><a href="{dest}">Continue</a></body></html>
 ''')
+    try:  # PREVIEW: product page v2 at /products/<slug>/v2/ (noindex); see scripts/product_v2.py
+        import product_v2 as PV2
+        for w in PV2.PREVIEW:
+            q = PV2._find(prods, w)
+            if q:
+                PV2.page(q, photo_of(q), shop_link(q, '../../../'), SIMILAR.get(q['id']), DUPE_PAGES.get(q['id']))
+    except Exception as err:
+        print(f'Warning: product v2 preview skipped ({err!r})')
     index_page(prods)
     data = {
         'generated': B.datetime.datetime.now(B.datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),

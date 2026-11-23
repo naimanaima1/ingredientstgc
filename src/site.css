@@ -1540,3 +1540,45 @@ a.dupe-pname:hover b{text-decoration:underline;text-underline-offset:3px}
  .gp-stops+.gp-v-end{margin:8px 0 0}
 }
 .gp-v-end{display:none}
+
+/* ===== Product page v2 PREVIEW (scripts/product_v2.py) ===== */
+.v2-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:64px;align-items:start;margin-top:28px}
+.v2-title h1{font-size:clamp(44px,5vw,76px);line-height:.98;letter-spacing:-.05em;margin:14px 0 18px}
+.v2-title h1 em{display:block;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;color:var(--cobalt);letter-spacing:-.02em;font-size:.62em;margin-bottom:6px}
+.v2-sum{font-size:20px;line-height:1.45;letter-spacing:-.015em;font-weight:600;max-width:32ch;margin:0 0 26px}
+.v2-media{position:relative}
+.v2-photo{display:block;width:72%;height:auto;aspect-ratio:4/5;object-fit:cover;margin-left:auto}
+.v2-media .v2-label{position:relative;margin:-38% 22% 0 0;z-index:1}
+.v2-media-solo .v2-label{margin:0}
+.v2-sec{margin-top:88px;border-top:2px solid var(--ink);padding-top:30px}
+.v2-sec h2{font-size:40px;line-height:1.02;letter-spacing:-.045em;margin:0 0 14px}
+.v2-sec h2 em{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;color:var(--cobalt);letter-spacing:-.02em}
+.v2-intro{font-size:17px;line-height:1.6;max-width:62ch;margin:0 0 20px}
+.v2-note{font-size:17px;line-height:1.6;max-width:62ch;margin:0 0 18px;padding-left:14px;border-left:3px solid var(--citrus)}
+.v2-has{list-style:none;margin:0;padding:0}
+.v2-has li{display:grid;grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:28px;padding:18px 0;border-top:1px solid var(--line)}
+.v2-has-k b{display:block;font-size:20px;letter-spacing:-.02em}
+.v2-has-k span{display:block;font-size:15px;color:var(--muted);margin-top:2px}
+.v2-has-v{font-size:17px;line-height:1.6}
+.v2-has-v a{font-weight:700;text-decoration:underline dotted 1.5px;text-underline-offset:3px}
+.v2-pos{display:inline-block;margin-left:10px;font-size:14px;font-weight:700;color:var(--cobalt)}
+.v2-not{font-size:16px;line-height:1.6;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;margin:0;max-width:80ch}
+.v2-not b{color:var(--ink)}
+.v2-sims{list-style:none;margin:0;padding:0}
+.v2-sim{border-top:1px solid var(--line);padding:22px 0}
+.v2-sim-head{display:flex;justify-content:space-between;gap:16px;align-items:baseline;flex-wrap:wrap}
+.v2-sim-head a{font-size:20px;letter-spacing:-.02em;text-decoration:underline;text-underline-offset:4px}
+.v2-sim-head span{font-size:14px;font-weight:700;background:var(--citrus);padding:3px 10px;border-radius:999px}
+.v2-sim-cols{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:12px}
+.v2-sim-cols h4{font-size:13px;margin:0 0 6px}
+.v2-sim-cols div:last-child h4{color:var(--cobalt)}
+.v2-sim-cols ul{margin:0;padding-left:18px;font-size:15px;line-height:1.55}
+.v2-sim-cols li{margin-bottom:6px}
+.v2-cmp{display:inline-block;margin-top:10px;font-size:14px;font-weight:700;border-bottom:1px solid var(--ink)}
+.v2-dupe{margin:24px 0 0;font-size:16px;font-weight:700}.v2-dupe a{border-bottom:1.5px solid var(--ink)}
+@media(max-width:760px){
+ .v2-hero{grid-template-columns:1fr;gap:36px}.v2-title h1 em{font-size:.7em}.v2-sum{font-size:18px}
+ .v2-photo{width:86%}.v2-media .v2-label{margin:-30% 8% 0 0}
+ .v2-sec{margin-top:64px}.v2-sec h2{font-size:32px}
+ .v2-has li{grid-template-columns:1fr;gap:6px}.v2-sim-cols{grid-template-columns:1fr;gap:12px}
+}
