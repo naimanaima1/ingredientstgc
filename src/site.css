@@ -1582,3 +1582,4 @@ a.dupe-pname:hover b{text-decoration:underline;text-underline-offset:3px}
  .v2-sec{margin-top:64px}.v2-sec h2{font-size:32px}
  .v2-has li{grid-template-columns:1fr;gap:6px}.v2-sim-cols{grid-template-columns:1fr;gap:12px}
 }
+@media(max-width:760px){.v2-title .shop{margin-bottom:8px}.v2-media-solo{margin-top:12px}.v2-hero{gap:44px}}
