@@ -39,11 +39,15 @@ def groups_of(i):
     if 'fragrance' in cat: g.append('scent')
     return g or ['help']
 
+EXAMPLE = 'seht'   # words in brand + name of the homepage example label; short labels read best there
+
 def pick_example():
-    by_id = {p['id']: (p, items) for p, items in B.labels}
-    if 'TGC-134' in by_id:
-        return by_id['TGC-134']
-    return max(B.labels, key=lambda pi: (sum(1 for t in pi[1] if B.lookup(t)) / len(pi[1]), len(pi[1])))
+    want = B.norm(EXAMPLE)
+    hits = [(p, items) for p, items in B.labels if want in B.norm(B.product_full_name(p))]
+    if hits:  # the shortest matching label, e.g. the shampoo rather than a longer conditioner
+        return min(hits, key=lambda pi: len(pi[1]))
+    short = [pi for pi in B.labels if len(pi[1]) <= 15] or B.labels
+    return max(short, key=lambda pi: (sum(1 for t in pi[1] if B.lookup(t)) / len(pi[1]), -len(pi[1])))
 
 # The homepage. Built twice: the live one at / with the quiet answer card, and
 # the first version at /previous-home/ with the full label card, for comparison.
