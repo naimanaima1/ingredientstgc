@@ -1655,3 +1655,39 @@ a.dupe-pname:hover b{text-decoration:underline;text-underline-offset:3px}
 @media(prefers-reduced-motion:reduce){.iv2-bar{transition:none}}
 @media(forced-colors:active){.iv2-bar{background:CanvasText}.iv2-cta{border:1px solid ButtonText}}
 body:has(.iv2) .nav-cta{white-space:normal;text-align:center;line-height:1.2}
+
+/* ---------- guide blocks: evidence ladder, rows, list, wrapping product grid (no side scrolling) ---------- */
+.gz-ladder{margin:30px 0}
+.gz-ladder-key{font-size:15px!important;color:var(--muted);margin:0 0 12px!important}
+.gz-ladder>ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.gz-tier{border-bottom:1px solid var(--line);padding:18px 0 20px}
+.gz-tier-h{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin-bottom:10px}
+.gz-tier-h b{font-size:17px;letter-spacing:-.01em}
+.gz-tier-h small{flex-basis:100%;font-size:15px;color:var(--muted);line-height:1.45}
+.gz-meter{display:inline-flex;gap:3px}
+.gz-meter i{width:14px;height:8px;border:1px solid var(--ink);display:block}
+.gz-meter i.on{background:var(--cobalt);border-color:var(--cobalt)}
+.gz-tier ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.gz-tier li{padding-left:14px;border-left:2px solid var(--line)}
+.gz-tier li b{font-size:16px}
+.gz-tier li b a{color:var(--ink);border-bottom:1px dotted currentColor}
+.gz-tier li p{font-size:15px!important;line-height:1.55!important;margin:3px 0 0!important}
+.gz-tier li .gz-caveat{font-size:15px!important;color:var(--muted)}
+.gz-rows,.gz-list{margin:26px 0}
+.gz-rows ul,.gz-list ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.gz-rows li{display:grid;grid-template-columns:minmax(0,10em) minmax(0,1fr);gap:4px 20px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.5}
+.gz-rows li b{font-weight:800}
+.gz-list li{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:12px 0;border-bottom:1px solid var(--line)}
+.gz-list li b{font-size:16px}
+.gz-list li b a{color:var(--ink);border-bottom:1px dotted currentColor}
+.gz-list li .gz-card-tag{margin:0}
+.gz-list li p{flex-basis:100%;font-size:15px!important;line-height:1.5!important;margin:0!important}
+.pc-grid .pc-strip{flex-wrap:wrap;overflow:visible;scroll-snap-type:none}
+.pc-grid .pc{flex:1 1 calc(50% - 5px);max-width:none;min-width:0}
+.gz-sources{line-height:1.7}
+.gz-sources a{text-decoration:underline;text-underline-offset:2px}
+@media(max-width:560px){
+  .gz-rows li{grid-template-columns:1fr}
+  .pc-grid .pc{flex-basis:100%}
+}
+@media(forced-colors:active){.gz-meter i.on{background:CanvasText}}

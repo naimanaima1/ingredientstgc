@@ -1,0 +1,513 @@
+{
+  "id": "GUIDE-SCALP",
+  "slug": "scalp-serums",
+  "name": "Scalp serums, decoded",
+  "tagline": "What they can do for density, shedding and scalp health, and what they can't.",
+  "image": "hairline.jpg",
+  "image_alt": "Fingertips resting along a curly hairline, the other hand on the crown.",
+  "eyebrow": "Guide · scalp care",
+  "go": "Start with what you're seeing",
+  "description": "Scalp serums for hair density, shedding and scalp health: what's normal shedding, which ingredients have real evidence (minoxidil, caffeine, rosemary, peptides), how to apply a serum, and when to see a dermatologist.",
+  "intro": "Scalp serums promise fuller hair, less shedding and a healthier scalp. Some ingredients have real research behind them, and some have mostly marketing. This guide sorts the two, shows you how to use a serum so it has a fair chance, and tells you when it's time to see a dermatologist instead.",
+  "order": 7,
+  "layout": "guided",
+  "openers": true,
+  "unfold": true,
+  "causes": {
+    "title": "First, what are you actually seeing?",
+    "jump": "What you're seeing",
+    "intro": "Shedding, thinning and breakage look alike in the drain. They need different things.",
+    "items": [
+      [
+        "Everyday shedding",
+        "Losing 50 to 100 hairs a day is normal.",
+        "In curly and coily hair, shed hairs stay caught until you detangle, so wash day can look like a lot more than it is."
+      ],
+      [
+        "A shedding spell",
+        "More hair than usual falling out all over, often two to four months after a big stressor: illness, giving birth, major weight loss, stress or a new medicine.",
+        "It usually settles once the trigger has passed, and fullness tends to return within six to nine months."
+      ],
+      [
+        "Gradual thinning",
+        "A wider part or a thinner crown, slowly, over months or years.",
+        "Often pattern hair loss. This is where a serum, or a medicine like minoxidil, can help."
+      ],
+      [
+        "Breakage",
+        "Short pieces of hair, not full strands with a small white bulb at one end.",
+        "That's the strand snapping, not the scalp shedding. A serum won't fix it; conditioning and gentler handling will."
+      ],
+      [
+        "Thinning that comes with pain, bumps or itch",
+        "At the edges after tight styles, or at the crown with tenderness or scaling.",
+        "Traction alopecia and CCCA are common in Black women and can scar if they're left. See a dermatologist early."
+      ]
+    ]
+  },
+  "routine": {
+    "title": "Five steps to a scalp routine that's worth it",
+    "jump": "The five steps",
+    "intro": "Do them in order. Each one gives the next a fairer chance.",
+    "chapter": "Step",
+    "washes": [
+      {
+        "title": "The routine",
+        "sub": "Five steps",
+        "steps": [
+          [
+            "Start with a calm, clean scalp",
+            "A serum only works on skin it can reach. Wash often enough that oil, flakes and product don't sit on your scalp, and settle any flaking or itch before you add something new.",
+            {
+              "dek": "No serum outworks a flaky, itchy scalp.",
+              "quote": "Treat the scalp first. The serum comes second.",
+              "blocks": [
+                {
+                  "type": "chips",
+                  "title": "Anti-flake ingredients to look for in a shampoo",
+                  "link_ing": true,
+                  "items": [
+                    "Ketoconazole",
+                    "Zinc Pyrithione",
+                    "Piroctone Olamine",
+                    "Salicylic Acid"
+                  ]
+                },
+                {
+                  "type": "p",
+                  "text": "In small studies, anti-dandruff shampoos with ketoconazole, piroctone olamine or zinc pyrithione also cut shedding a little over six months of use. If you flake, they're worth a place on wash day."
+                }
+              ],
+              "deeper": {
+                "title": "When flakes aren't dryness",
+                "sub": "Buildup, seborrheic dermatitis, and why oil can make it worse",
+                "blocks": [
+                  {
+                    "type": "h",
+                    "text": "Buildup"
+                  },
+                  {
+                    "type": "p",
+                    "text": "Waxy, product-coloured flakes that come back days after washing are often buildup. A clarifying wash, then a conditioner for slip, usually clears them."
+                  },
+                  {
+                    "type": "h",
+                    "text": "Seborrheic dermatitis"
+                  },
+                  {
+                    "type": "p",
+                    "text": "Greasy yellow scale, redness or itching that won't settle can be seborrheic dermatitis. More oil feeds it rather than fixing it. An anti-dandruff shampoo two or three times a week is the usual first step; a dermatologist can suggest a stronger one."
+                  }
+                ]
+              },
+              "lockin": "Calm and clean before you add anything new.",
+              "link": [
+                "All the scalp-care ingredients",
+                "groups/scalp-actives/"
+              ],
+              "image": "winter-arc-lock-in-w1-s2.jpg",
+              "image_alt": "Washing coily hair at a bathroom sink, lather worked into the scalp with fingertips.",
+              "image_pos": "50% 30%"
+            }
+          ],
+          [
+            "Choose a serum by what's in it",
+            "Most serums for density lean on the same handful of ingredients. The research behind them ranges from a medicine with decades of trials to an oil with none, so read the label before you trust the front of the bottle.",
+            {
+              "dek": "Strongest evidence at the top.",
+              "blocks": [
+                {
+                  "type": "ladder",
+                  "title": "Scalp ingredients, by the strength of the evidence",
+                  "key": "More filled bars means stronger research in people, not a better product for you.",
+                  "tiers": [
+                    {
+                      "label": "Medicine",
+                      "note": "Approved to treat pattern hair loss. Sold with dosing directions, not as a cosmetic.",
+                      "items": [
+                        [
+                          "Minoxidil",
+                          "The only over-the-counter medicine approved for pattern hair loss in women and men, as a 2% solution or a 5% foam.",
+                          "Extra shedding in the first weeks is common and usually passes. Results take at least four months, and stop when you stop using it."
+                        ]
+                      ]
+                    },
+                    {
+                      "label": "Some trials in people",
+                      "note": "Promising, but small, short or funded by the maker.",
+                      "items": [
+                        [
+                          "Caffeine",
+                          "In a 2017 trial of 210 men, a 0.2% caffeine liquid did about as well as 5% minoxidil at keeping hairs in their growing phase.",
+                          "One trial, in men, run with the maker. Promising, not proven."
+                        ],
+                        [
+                          "Ketoconazole",
+                          "An anti-dandruff ingredient that improved hair density in small studies, mostly as a shampoo.",
+                          "Easiest to use as your wash-day shampoo, two or three times a week."
+                        ],
+                        [
+                          "Rosemary oil",
+                          "In a 2015 trial of 100 people, rosemary oil matched 2% minoxidil after six months, with less scalp itch.",
+                          "It was compared with the weaker strength of minoxidil, and neither group had changed by month three."
+                        ],
+                        [
+                          "Pumpkin seed oil",
+                          "In a 2021 trial of 60 women with pattern thinning, pumpkin seed oil improved hair over three months.",
+                          "Small and short. Worth watching, not betting on."
+                        ]
+                      ]
+                    },
+                    {
+                      "label": "Mostly the maker's own studies",
+                      "note": "Common in density serums. Independent trials of each one on its own are scarce.",
+                      "items": [
+                        [
+                          "Redensyl",
+                          "A plant complex aimed at density, often with a green-tea-derived ingredient."
+                        ],
+                        [
+                          "Capixyl",
+                          "A peptide with red clover extract, for fuller-looking hair."
+                        ],
+                        [
+                          "Procapil",
+                          "A peptide with apigenin and oleanolic acid. Often sold together with the two above."
+                        ],
+                        [
+                          "Aminexil",
+                          "L'Oréal's anti-hair-fall ingredient. It is not minoxidil, despite the similar name."
+                        ]
+                      ]
+                    },
+                    {
+                      "label": "Comfort, not growth",
+                      "note": "Nice to use. No good evidence they add hair.",
+                      "items": [
+                        [
+                          "Castor oil",
+                          "Loved for shine and slip on the lengths, but no human trials show it grows hair."
+                        ],
+                        [
+                          "Scalp massage",
+                          "In a 2016 study of nine men, four minutes a day for 24 weeks made hairs a little thicker.",
+                          "Tiny study, but free, and it helps a serum spread. Keep it gentle on braids and edges."
+                        ]
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "edit",
+                  "grid": true,
+                  "label": "Serums built on these ingredients",
+                  "use": [
+                    [
+                      "TGC-064",
+                      "Peptides + caffeine",
+                      "Redensyl, Procapil, Capixyl and 1% caffeine."
+                    ],
+                    [
+                      "The INKEY List Caffeine Stimulating Scalp Treatment",
+                      "Caffeine",
+                      "1% caffeine + 1% Redensyl, overnight."
+                    ],
+                    [
+                      "L'Oréal Paris Elvive Fall Resist Aminexil Serum",
+                      "Aminexil",
+                      "1.5% Aminexil with caffeine. Full Resist in the UK."
+                    ],
+                    [
+                      "California Naturals Re:GRO Anti-Thinning Scalp Serum",
+                      "Capixyl",
+                      "5% Capixyl, caffeine and rosemary oil."
+                    ]
+                  ]
+                }
+              ],
+              "deeper": {
+                "title": "How to read a serum label",
+                "sub": "Percentages, fragrance and patch tests",
+                "blocks": [
+                  {
+                    "type": "h",
+                    "text": "Find the active"
+                  },
+                  {
+                    "type": "p",
+                    "text": "A percentage on the front tells you how much of the star ingredient is in there. With no percentage, look for it in the first half of the ingredient list."
+                  },
+                  {
+                    "type": "h",
+                    "text": "Watch the fragrance"
+                  },
+                  {
+                    "type": "p",
+                    "text": "Fragrance and essential oils, rosemary included, are common causes of scalp irritation. If your scalp is sensitive, start with a fragrance-free formula."
+                  },
+                  {
+                    "type": "h",
+                    "text": "Patch-test first"
+                  },
+                  {
+                    "type": "p",
+                    "text": "Put a little behind your ear or on your inner arm for two days before it goes on your whole scalp."
+                  }
+                ]
+              },
+              "lockin": "Pick one serum for its evidence, not its hype, and stick with it.",
+              "image": "winter-arc-lock-in-w1-s1.jpg",
+              "image_alt": "Hands holding a dropper bottle of a multi-peptide hair density serum against dark wood.",
+              "image_pos": "50% 40%"
+            }
+          ],
+          [
+            "Put it on your scalp, not your hair",
+            "A serum does nothing on the lengths. Part your hair into sections, apply along each part, and massage it in with your fingertips. Follow the label for how much and how often.",
+            {
+              "dek": "Small amounts, right on the skin, every time.",
+              "quote": "The same few drops every day beat a big dose once in a while.",
+              "blocks": [
+                {
+                  "type": "rows",
+                  "title": "How to apply",
+                  "items": [
+                    [
+                      "1. Start right",
+                      "On a clean scalp, dry or towel-dried, as the label says."
+                    ],
+                    [
+                      "2. Part",
+                      "Make a part about an inch from your hairline."
+                    ],
+                    [
+                      "3. Apply",
+                      "A few drops along the part, right on the skin."
+                    ],
+                    [
+                      "4. Repeat",
+                      "Move over an inch and do it again until the area is covered."
+                    ],
+                    [
+                      "5. Massage",
+                      "Fingertips, not nails, for a minute or two."
+                    ],
+                    [
+                      "6. Let it dry",
+                      "Before you style, tie your hair up or sleep."
+                    ]
+                  ]
+                },
+                {
+                  "type": "myth",
+                  "kicker": "Serum myth",
+                  "title": "More isn't faster.",
+                  "paras": [
+                    "Extra drops don't add results. They add buildup and a higher chance of irritation."
+                  ]
+                },
+                {
+                  "type": "vs",
+                  "items": [
+                    [
+                      "Braids, locs and twists",
+                      "A nozzle bottle or dropper along the parts. Lighter, water-based serums leave less buildup."
+                    ],
+                    [
+                      "Loose hair",
+                      "Work in sections so the serum reaches skin, not just the hair on top."
+                    ]
+                  ]
+                }
+              ],
+              "lockin": "On the scalp, in sections, on schedule.",
+              "note": "Burning, redness or new itching after you apply? Rinse it off and stop using it.",
+              "image": "braids-wide.jpg",
+              "image_alt": "Neat cornrows with clear parts, braids hanging over one shoulder.",
+              "image_pos": "50% 30%"
+            }
+          ],
+          [
+            "Give it time, and track it",
+            "Hair grows slowly, so every serum needs months. Plan on three to four months of steady use before you judge it, and up to a year for the full picture.",
+            {
+              "dek": "Week two is too early to know anything.",
+              "blocks": [
+                {
+                  "type": "rows",
+                  "title": "What to expect",
+                  "items": [
+                    [
+                      "Weeks 1 to 8",
+                      "Nothing to see yet. With minoxidil, some extra shedding is common."
+                    ],
+                    [
+                      "Months 3 to 4",
+                      "The first fair check: less shedding, fine new hairs along your part."
+                    ],
+                    [
+                      "Month 6",
+                      "A good point to decide whether it's working for you."
+                    ],
+                    [
+                      "Month 12",
+                      "The full result."
+                    ]
+                  ]
+                },
+                {
+                  "type": "h",
+                  "text": "Take the same photo every month"
+                },
+                {
+                  "type": "p",
+                  "text": "Same light, same spot, same part, hair dry. Your memory will tell you nothing has changed; photos won't."
+                }
+              ],
+              "lockin": "Judge it at month four, not week two.",
+              "image": "style-washngo.jpg",
+              "image_alt": "A full, rounded coily wash and go, seen from the side.",
+              "image_pos": "50% 35%"
+            }
+          ],
+          [
+            "Ease the tension, and check what's underneath",
+            "A serum can't undo hair pulled out by tight styles, and shedding often starts somewhere else in the body. Loosen what pulls, and get checked if shedding won't settle.",
+            {
+              "dek": "Your scalp is part of the rest of you.",
+              "blocks": [
+                {
+                  "type": "list",
+                  "title": "Signs a style is too tight",
+                  "items": [
+                    [
+                      "Pain or tenderness after styling",
+                      "Your scalp shouldn't hurt in a fresh style. If it does, take it down or loosen it."
+                    ],
+                    [
+                      "Small bumps along the hairline",
+                      "A sign of pulling at the follicle."
+                    ],
+                    [
+                      "Thinning where the tension sits",
+                      "Edges, temples or around the parts of braids and ponytails."
+                    ]
+                  ]
+                },
+                {
+                  "type": "h",
+                  "text": "Worth asking your doctor about"
+                },
+                {
+                  "type": "p",
+                  "text": "Iron and ferritin, vitamin D and thyroid are common checks when shedding won't stop. Bring a list of recent illness, new medicines and stress."
+                },
+                {
+                  "type": "p",
+                  "text": "A dermatologist can tell shedding from pattern loss, traction alopecia or CCCA. For the kinds that scar, the sooner the better."
+                }
+              ],
+              "lockin": "Loosen what pulls. Check what's underneath.",
+              "note": "Patches, tenderness, bumps or itching at the crown? See a dermatologist soon.",
+              "link": [
+                "Edge Growth Plan",
+                "plans/edge-growth-plan/"
+              ],
+              "image": "braids.jpg",
+              "image_alt": "Cornrows braided back from the hairline into long braids.",
+              "image_pos": "50% 30%"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "jara": {
+    "track": [
+      "Track your serum in JARA",
+      "Log each application and a monthly scalp photo, so your month-four check is an honest one."
+    ]
+  },
+  "trouble": {
+    "title": "If something feels off",
+    "jump": "Fixes",
+    "items": [
+      [
+        "My scalp itches or burns after a serum",
+        "Stop using it. Fragrance, essential oils, alcohol and propylene glycol are common irritants. Try a fragrance-free formula, or ask a dermatologist."
+      ],
+      [
+        "More shedding after starting minoxidil",
+        "Common in the first weeks and usually temporary. If it carries on past three months, check in with a doctor."
+      ],
+      [
+        "Buildup under braids or locs",
+        "Use less, choose a lighter water-based formula, and wash your scalp every week or two."
+      ],
+      [
+        "Hair coming out in clumps or patches",
+        "See a dermatologist. Patches aren't everyday shedding."
+      ],
+      [
+        "No change after six months",
+        "Talk to a dermatologist about other options, and ask about blood tests."
+      ]
+    ]
+  },
+  "end": {
+    "title": "The scalp serum lock-in",
+    "notes": [
+      "A serum is a slow habit, not a quick fix.",
+      "Healthy scalp first, the right ingredient second, patience third."
+    ],
+    "list": [
+      "Your scalp is calm and flake-free",
+      "You chose a serum for its ingredients",
+      "You apply it on the skin, in sections",
+      "You've set a month-four check",
+      "Nothing on your head hurts"
+    ],
+    "next": [
+      [
+        "Edge Growth Plan",
+        "If your edges need their own attention",
+        "plans/edge-growth-plan/"
+      ],
+      [
+        "Winter arc lock-in",
+        "Five habits for the cold months",
+        "plans/winter-arc-lock-in/"
+      ]
+    ],
+    "sources": [
+      [
+        "AAD: hair shedding",
+        "https://www.aad.org/public/diseases/hair-loss/insider/shedding"
+      ],
+      [
+        "AAD: hair loss in Black women",
+        "https://www.aad.org/public/diseases/hair-loss/insider/hair-loss-black-women"
+      ],
+      [
+        "Caffeine vs minoxidil, 2017",
+        "https://pubmed.ncbi.nlm.nih.gov/29055953/"
+      ],
+      [
+        "Rosemary oil vs minoxidil, 2015",
+        "https://pubmed.ncbi.nlm.nih.gov/25842469/"
+      ],
+      [
+        "Ketoconazole shampoo, 1998",
+        "https://pubmed.ncbi.nlm.nih.gov/9669136/"
+      ],
+      [
+        "Scalp massage, 2016",
+        "https://pubmed.ncbi.nlm.nih.gov/26904154/"
+      ],
+      [
+        "Peptide actives review, 2025",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12251978"
+      ]
+    ]
+  }
+}

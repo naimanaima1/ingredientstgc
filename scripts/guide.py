@@ -263,7 +263,30 @@ def gz_blocks(r, extra):
             out += (f'<details class="gz-fold"><summary>{e(b["title"])}' + (f'<small>{e(b["sub"])}</small>' if b.get('sub') else '')
                     + f'</summary><div class="gz-fold-in">{inner}</div></details>')
         elif t == 'edit':
-            out += prod_strip(r, b['use'], False, b.get('label', 'What to use'))
+            strip = prod_strip(r, b['use'], False, b.get('label', 'What to use'))
+            out += strip.replace('class="pc-wrap"', 'class="pc-wrap pc-grid"', 1) if b.get('grid') else strip
+        elif t == 'ladder':
+            # Ingredients ranked by the strength of the evidence: one vertical list, no side scrolling.
+            tiers, total = '', len(b['tiers'])
+            for n, tr in enumerate(b['tiers']):
+                meter = ''.join(f'<i class="{"on" if k < total - n else ""}"></i>' for k in range(total))
+                rows = ''.join(
+                    f'<li><b>{_ing_link(r, it[0]) if b.get("link_ing", True) else e(it[0])}</b><p>{e(it[1])}</p>'
+                    + (f'<p class="gz-caveat">{e(it[2])}</p>' if len(it) > 2 and it[2] else '') + '</li>'
+                    for it in tr['items'])
+                tiers += (f'<li class="gz-tier"><div class="gz-tier-h"><span class="gz-meter" aria-hidden="true">{meter}</span>'
+                          f'<b>{e(tr["label"])}</b>' + (f'<small>{e(tr["note"])}</small>' if tr.get('note') else '')
+                          + f'</div><ul>{rows}</ul></li>')
+            out += (f'<div class="gz-ladder"><span class="pc-label">{e(b["title"])}</span>'
+                    + (f'<p class="gz-ladder-key">{e(b["key"])}</p>' if b.get('key') else '') + f'<ol>{tiers}</ol></div>')
+        elif t == 'rows':
+            items = ''.join(f'<li><b>{e(a)}</b><span>{e(c)}</span></li>' for a, c in b['items'])
+            out += (f'<div class="gz-rows"><span class="pc-label">{e(b["title"])}</span><ul>{items}</ul></div>')
+        elif t == 'list':
+            items = ''.join(f'<li><b>{_ing_link(r, a) if b.get("link_ing") else e(a)}</b>'
+                            + (f'<span class="gz-card-tag">{e(tag)}</span>' if tag else '') + f'<p>{e(c)}</p></li>'
+                            for a, c, tag in ((list(x) + [''])[:3] for x in b['items']))
+            out += f'<div class="gz-list"><span class="pc-label">{e(b["title"])}</span><ul>{items}</ul></div>'
     return out
 
 def gz_lockin(extra, n=None):
@@ -548,6 +571,8 @@ def page(d):
             nxt = ''
         right = (f'<ul>{lst}</ul>' if lst else '') + (f'<div class="tp-next">{nxt}</div>' if nxt else '')
         src = f'<p class="tp-ref">Source: {e(en["source"])}</p>' if en.get('source') else ''
+        if en.get('sources'):
+            src += '<p class="tp-ref gz-sources"><b>Sources</b> ' + ' · '.join(f'<a href="{e(u)}" rel="noopener">{e(t)}</a>' for t, u in en['sources']) + '</p>'
         notes = ''.join(f'<p>{e(x)}</p>' for x in en.get('notes', []))
         out.append(f'''<section class="gd-sec gd-ink" id="end"><div class="tp-in">
   <div class="gd-derm"><div>{'<span class="gz-book" aria-hidden="true">06</span>' if d.get('openers') else ''}<h2>{e(en['title'])}</h2>{notes}{src}</div><div>{right}</div></div>

@@ -54,7 +54,7 @@
        "image_alt": "Hands holding a dropper bottle of The Ordinary Multi-Peptide Serum for Hair Density against dark wood.",
        "blocks": [
         {
-         "type": "cards",
+         "type": "list",
          "title": "Six scalp ingredients, decoded",
          "link_ing": true,
          "items": [
@@ -91,7 +91,7 @@
          ]
         },
         {
-         "type": "edit",
+         "type": "edit", "grid": true,
          "label": "The serum edit",
          "use": [
           [
@@ -137,10 +137,7 @@
        },
        "lockin": "Make scalp care part of the routine, not something you remember when your hair acts up.",
        "note": "Heavier shedding that won't stop, or patchy thinning? See a dermatologist.",
-       "link": [
-        "All the scalp-care ingredients",
-        "groups/scalp-actives/"
-       ],
+       "link": ["Scalp serums, decoded: the full guide", "plans/scalp-serums/"],
        "image": "winter-arc-lock-in-w1-s1.jpg",
        "quote": "Consistency is more useful than a generous amount once in a while.",
        "image_pos": "50% 40%"
