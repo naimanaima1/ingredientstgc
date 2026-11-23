@@ -49,7 +49,7 @@ def find(ing):
 def _h1(text):
     words = text.split(' ')
     if len(words) < 2:
-        return f'<em>{e(text)}</em>'
+        return e(text)
     return f'{e(" ".join(words[:-1]))} <em>{e(words[-1])}</em>'
 
 
@@ -78,15 +78,14 @@ def page(g, draft=''):
     # ---- the one count
     if hits:
         top = sum(1 for h in hits if h[2] <= 5)
-        where = ', usually in the top five' if top * 2 >= len(hits) and len(hits) > 1 else ''
+        where = ', usually in the top 5' if top * 2 >= len(hits) and len(hits) > 1 else ''
         fact = f'<p class="iv2-fact">In <b>{len(hits)} of {len(labels)}</b> labels we’ve read{where}.</p>'
     else:
         fact = f'<p class="iv2-fact">Not on any of the {len(labels)} labels we’ve read yet.</p>'
 
     tags = ''.join(f'<a class="tag" href="{r}properties/{B.prop_slug(t)}/">{e(t)}</a>' for t in g['_tags'])
-    jumps = [('why', 'Why it matters', deep), ('research', 'Research', evid), ('good', 'Good to know', note or howto),
-             ('across', 'Products', hits), ('hair', 'Ideal for', hair)]
-    jump = ''.join(f'<a href="#{k}">{lbl}</a>' for k, lbl, ok in jumps if ok)
+    cta = (f'<a class="iv2-cta" href="#across">See the {len(hits)} product{"s" if len(hits) != 1 else ""} with it <span aria-hidden="true">&#8595;</span></a>'
+           if len(hits) > 1 else '')
 
     # ---- label card (same as live: it's on the keep list)
     if hits:
@@ -118,12 +117,10 @@ def page(g, draft=''):
       <figcaption class="label-foot"><span>We haven't read a label with it yet.</span><span>We've read {len(labels)} so far.</span></figcaption>
     </figure>'''
 
-    S = []
+    # Why, research and good-to-know as one section with small subheadings
+    parts = []
     if deep:
-        S.append(f'''<section class="iv2-sec" id="why">
-    <h2>Why your curls care</h2>
-    <div class="prose"><p>{e(deep)}</p></div>
-  </section>''')
+        parts.append(f'<p>{e(deep)}</p>')
     if evid:
         tag, _, rest = evid.partition('. ')
         if rest and len(tag) <= 70 and B.re.match(r'(Established|Cosmetic|Emerging|Promising|Regulated|Universal|Standard)', tag):
@@ -133,29 +130,39 @@ def page(g, draft=''):
         src = B.col(g, 'sources', 'research_sources')
         src = f'<p class="iv2-src"><b>Sources</b> {e(src)}</p>' if src else \
             '<p class="iv2-src iv2-todo"><b>Sources</b> One linked study or review per claim goes here (new sheet column: <code>sources</code>).</p>'
-        S.append(f'''<section class="iv2-sec" id="research">
-    <h2>What the research says</h2>
-    <div class="prose">{ev}{src}</div>
-  </section>''')
-    if note or howto:
-        good = f'<p class="note">{e(note)}</p>' if note else ''
-        use = f'<h3>How to get the most out of it</h3><p>{e(howto)}</p>' if howto else ''
-        S.append(f'''<section class="iv2-sec" id="good">
-    <h2>Good to know</h2>
-    <div class="prose">{good}{use}</div>
-  </section>''')
+        parts.append(f'<h3 id="research">What the research says</h3>{ev}{src}')
+    if note:
+        parts.append(f'<h3 id="good">Good to know</h3><p class="note">{e(note)}</p>')
+    if howto:
+        parts.append(f'<h3>How to use it</h3><p>{e(howto)}</p>')
+    merged = f'''<section class="iv2-sec" id="why">
+    <h2>Why your curls care</h2>
+    <div class="prose iv2-prose">{''.join(parts)}</div>
+  </section>''' if parts else ''
 
     if hits:
         x = lambda n: round(2.5 + (min(n, 40) - 1) / 39 * 95, 1)
-        stack, dots = {}, ''
-        for k, (p, items, n) in enumerate(hits):
-            h = stack.get(n, 0); stack[n] = h + 1
-            dots += (f'<a class="dot" tabindex="-1" aria-hidden="true" data-step="{e(p.get("step", ""))}" href="#{"example" if k == 0 else f"p{k}"}" '
-                     f'style="left:{x(n)}%;bottom:{58 + h * 24}px;animation-delay:{1.3 + min(k, 40) * .04:.2f}s"></a>')
+        per = {}
+        for p, items, n in hits:
+            per[min(n, 40)] = per.get(min(n, 40), 0) + 1
+        tall = max(per.values())
+        near = sum(1 for h in hits if h[2] <= 5); mid = sum(1 for h in hits if 5 < h[2] <= 15); low = len(hits) - near - mid
         ticks = ''.join(f'<span class="tick" style="left:{x(n)}%">{B.ordinal(n)}</span>' for n in (1, 10, 20, 30, 40))
         bands = (f'<span class="iv2-band" style="left:0;width:{x(5.5)}%"><b>Near the top</b><span> 1–5</span></span>'
                  f'<span class="iv2-band" style="left:{x(5.5)}%;width:{x(15.5) - x(5.5)}%"><b>Middle</b><span> 6–15</span></span>'
                  f'<span class="iv2-band" style="left:{x(15.5)}%;right:0"><b>Lower down</b><span> 16+</span></span>')
+        if tall <= 4:   # few products: one dot each, stacked
+            stack, marks = {}, ''
+            for k, (p, items, n) in enumerate(hits):
+                h = stack.get(n, 0); stack[n] = h + 1
+                marks += (f'<a class="dot" tabindex="-1" aria-hidden="true" data-step="{e(p.get("step", ""))}" href="#{"example" if k == 0 else f"p{k}"}" '
+                          f'style="left:{x(n)}%;bottom:{58 + h * 24}px;animation-delay:{1.3 + min(k, 40) * .04:.2f}s"></a>')
+            mode = 'dots'
+        else:           # many products: a bar per position, with its count
+            marks = ''.join(f'<span class="iv2-bar" aria-hidden="true" data-pos="{n}" style="left:{x(n)}%;height:{round(c / tall * 100)}px"><i>{c}</i></span>'
+                            for n, c in sorted(per.items()))
+            mode = 'bars'
+        data = e(json.dumps([[min(n, 40), p.get('step', '')] for p, items, n in hits]))
         def step_f(s, lbl):
             c = sum(1 for h in hits if h[0].get('step') == s)
             if not c:
@@ -170,15 +177,20 @@ def page(g, draft=''):
                      f'<a href="{r}products/{p.get("_slug", "")}/"><b>{e(p.get("brand", "").strip())}</b> {e(p.get("name", "").strip())}</a></div></li>')
         rest_n = len(hits) - 1 - CAP
         show = f'<button type="button" class="iv2-all" aria-controls="labels-list">Show all {len(hits) - 1} products</button>' if rest_n > 0 else ''
-        S.append(f'''<section class="iv2-sec iv2-across" id="across">
+        chart = (f'<div class="strip iv2-strip iv2-{mode}" data-hits="{data}" role="img" aria-label="Where {e(title)} sits on {len(hits)} labels: {near} near the top, {mid} in the middle, {low} lower down">'
+                 f'{bands}{marks}<div class="axis"></div>{ticks}</div>') if len(hits) >= 5 else ''
+        S_ACROSS = f'''<section class="iv2-sec iv2-across" id="across">
     <h2>Where it sits on {len(hits)} label{'s' if len(hits) != 1 else ''}</h2>
-    <p class="iv2-why">Labels list ingredients from most to least, down to about 1%. Below that, the order is free. Each dot is one product.</p>
-    <div class="strip iv2-strip" role="img" aria-label="Where {e(title)} sits on {len(hits)} labels: {sum(1 for h in hits if h[2] <= 5)} near the top, {sum(1 for h in hits if 5 < h[2] <= 15)} in the middle, {sum(1 for h in hits if h[2] > 15)} lower down">{bands}{dots}<div class="axis"></div>{ticks}</div>
-    {f'<div class="iv2-steps" role="group" aria-label="Show one step">{steps}</div>' if steps else ''}
+    <p class="iv2-why">Labels list ingredients from most to least, down to about 1%. Below that, the order is free.{' Each bar counts the products with it at that spot.' if chart and mode == 'bars' else (' Each dot is one product.' if chart else '')}</p>
+    {chart}
+    {f'<div class="iv2-steps" role="group" aria-label="Show one step"><span>Show only</span>{steps}</div>' if steps else ''}
     {f'<ol class="labels iv2-list" id="labels-list">{rows}</ol>{show}' if rows else ''}
     <p class="fine">Labels we’ve read by hand from brand sites and packaging, not a list of recommendations. The first one is on the label card above.</p>
-  </section>''')
+  </section>'''
+    else:
+        S_ACROSS = ''
 
+    S = [x for x in (S_ACROSS, merged) if x]
     if hair:
         S.append(f'''<section class="iv2-sec" id="hair">
     <h2>Ideal for</h2>
@@ -205,8 +217,7 @@ def page(g, draft=''):
       <p class="lead">{e(summary)}</p>
       {fact}
       {watchlist.ingredient_note(g)}
-      <div class="iv2-tags">{tags}</div>
-      <nav class="iv2-jump" aria-label="On this page">{jump}</nav>
+      <div class="iv2-tags">{cta}{tags}</div>
     </div>
     {hero}
   </section>
@@ -230,6 +241,17 @@ def page(g, draft=''):
       document.querySelectorAll('#labels-list > li, .strip .dot').forEach(function (el) {{
         el.hidden = on && el.dataset.step !== step;
       }});
+      var strip = document.querySelector('.iv2-bars');
+      if (strip) {{
+        var data = JSON.parse(strip.dataset.hits), per = {{}}, tall = 0;
+        data.forEach(function (h) {{ if (!on || h[1] === step) {{ per[h[0]] = (per[h[0]] || 0) + 1; tall = Math.max(tall, per[h[0]]); }} }});
+        strip.querySelectorAll('.iv2-bar').forEach(function (b) {{
+          var c = per[b.dataset.pos] || 0;
+          b.style.height = (c ? Math.round(c / tall * 100) : 0) + 'px';
+          b.querySelector('i').textContent = c || '';
+          b.classList.toggle('zero', !c);
+        }});
+      }}
       var stack = {{}};
       document.querySelectorAll('.strip .dot').forEach(function (d) {{
         if (d.hidden) return;

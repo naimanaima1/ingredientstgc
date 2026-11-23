@@ -69,15 +69,17 @@ def _summary(p, step, groups, items):
     return lead + '.'
 
 
-def _label_card(p, items):
+def _label_card(p, items, photo=''):
     words = []
     for t in items:
         i = B.lookup(t)
         words.append(f'<a href="../../../{i["_slug"]}/">{e(t)}</a>' if i else e(t))
     known = len({id(i) for i in (B.lookup(t) for t in items) if i})
-    return f'''<figure class="label label-product v2-label" aria-labelledby="lbl">
+    pin = (f'<img class="v2-pin" src="../../../assets/products/{photo}" alt="{e(B.product_full_name(p))}" width="800" height="1000">'
+           if photo else '')
+    return f'''<figure class="label label-product v2-label{' has-pin' if photo else ''}" aria-labelledby="lbl">
       <div class="label-top"><span>Ingredients · as printed</span><b id="lbl">{e(B.product_full_name(p))}</b></div>
-      <p class="inci">{', '.join(words)}.</p>
+      <p class="inci">{pin}{', '.join(words)}.</p>
       <figcaption class="label-foot"><span><b>{len(items)} ingredients</b>, {known} with their own page.</span><span>Dotted words have their own page.</span></figcaption>
     </figure>'''
 
@@ -91,7 +93,7 @@ def _similar(p, matches, step):
         diff = ''.join(f'<li>{e(line)}</li>' for s, line, _ in cmp if not s)
         rows.append(f'''<li class="v2-sim">
         <div class="v2-sim-head"><a href="../../{q['_slug']}/"><b>{e(q.get('brand', '').strip())}</b> {e(q.get('name', '').strip())}</a><span>Same on {n} of {total}</span></div>
-        <div class="v2-sim-cols"><div><h4>Same</h4><ul>{same}</ul></div><div><h4>Different</h4><ul>{diff or '<li>Nothing on our five checks.</li>'}</ul></div></div>
+        <div class="v2-sim-cols{'' if diff else ' v2-one'}"><div><h4>Same</h4><ul>{same}</ul></div>{f'<div><h4>Different</h4><ul>{diff}</ul></div>' if diff else ''}</div>
         <a class="v2-cmp" href="../../../label-decoder/#compare=p:{p['_slug']}~p:{q['_slug']}">Compare the two labels side by side &#8594;</a>
       </li>''')
     word = SIM.STEP_WORD.get(step, ('products', 'product'))
@@ -119,9 +121,18 @@ def page(p, photo, shop_html, similar, dupe_path):
     note = SIM.cleanser_note(SIM.profile(p, items)) if step == 'cleanse' else ''
     unread = (f' {unknown} of the {len(items)} ingredients aren’t in our library yet, so treat “not on this label” as “not that we can see”.'
               if unknown else '')
+    known = len(items) - unknown
+    if not groups:
+        not_line = (f'<p class="v2-empty"><b>We haven’t read most of these ingredients yet.</b> {known} of the {len(items)} have a page in our library, '
+                    f'so we can’t group this label by what it does. The full label is above, and we add ingredients every week.</p>')
+    elif unknown * 2 > len(items):
+        not_line = (f'<p class="v2-not">{unknown} of the {len(items)} ingredients aren’t in our library yet, so this list may be missing groups.</p>')
+    else:
+        not_line = f'<p class="v2-not"><b>Not on this label, as far as we can see:</b> {e(", ".join(missing))}.</p>'
+    next_main = ('<a class="v2-go" href="#similar">Compare with a similar label <span aria-hidden="true">&#8595;</span></a>' if similar
+                 else '<a class="v2-go" href="#check">See what’s in it <span aria-hidden="true">&#8595;</span></a>')
     r = '../../../'
-    hero_media = (f'''<div class="v2-media"><img class="v2-photo" src="{r}assets/products/{photo}" alt="{e(B.product_full_name(p))}" width="800" height="1000">{_label_card(p, items)}</div>'''
-                  if photo else f'<div class="v2-media v2-media-solo">{_label_card(p, items)}</div>')
+    hero_media = f'<div class="v2-media v2-media-solo">{_label_card(p, items, photo)}</div>'
     dupe = (f'<p class="v2-dupe"><a href="{r}{dupe_path}">See the full dupe check: closest wash and closest overall &#8594;</a></p>' if dupe_path else '')
     body = f'''  <p class="dupe-preview">Preview of a new product page layout ({'with' if photo else 'without'} a photo). <a href="../">See the live page</a></p>
   <a class="crumb" href="{r}products/">← All products</a>
@@ -130,15 +141,16 @@ def page(p, photo, shop_html, similar, dupe_path):
       <span class="eyebrow"><span class="little-dot"></span>{e(step.capitalize() or 'Product')}</span>
       <h1><em>{e(brand)}</em> {e(name)}</h1>
       <p class="v2-sum">{e(_summary(p, step, groups, items))}</p>
-      {shop_html}
+      <div class="v2-next">{next_main}<a class="v2-jara" href="{B.utm('https://itsjara.com', 'product_v2_cta', 'jara_beta', p['_slug'])}">Check it against your hair in JARA <span aria-hidden="true">&#8599;</span></a></div>
+      {shop_html.replace('<a class="read-more" href="#check"><u>Read more</u><span aria-hidden="true">&#8595;</span></a>', '')}
     </div>
     {hero_media}
   </section>
   <section class="v2-sec" id="check">
     <h2>What&#8217;s <em>in it</em></h2>
     {f'<p class="v2-note">{e(note)}</p>' if note else ''}
-    <ul class="v2-has">{rows}</ul>
-    <p class="v2-not"><b>Not on this label:</b> {e(', '.join(missing))}.{e(unread)}</p>
+    {f'<ul class="v2-has">{rows}</ul>' if rows else ''}
+    {not_line}
   </section>
   {_similar(p, similar, step)}
   {dupe}
