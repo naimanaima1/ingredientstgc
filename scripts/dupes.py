@@ -288,10 +288,9 @@ def build(prods, step_of, items_of):
   <a class="crumb" href="{r}products/{target['_slug']}/">← {e(name)}</a>
   <section class="page-head dupe-head">
     <span class="eyebrow"><span class="little-dot"></span>Dupe check</span>
-    <h1>{e(brand)} {e(short_name)} dupes, checked against the label</h1>
-    <p>We compared its ingredient list, cleanser first, with every shampoo in our catalog and the ones other dupe lists keep naming. Here's what comes closest, and what isn't the same.</p>
+    <h1>Looking for a {e(brand)} {e(short_name)} dupe?</h1>
+    <p>These {e(SIM.STEP_WORD.get(step, ('products', ''))[0])} have labels built most like it, compared ingredient by ingredient. A similar label tells you what is in the bottle, not how it will feel on your hair, and no formula is an exact copy.</p>
     <div class="dupe-quick">{quick}</div>
-    <p class="dupe-quick-foot">No formula is an exact copy. A close label tells you what's in the bottle, not how it will feel on your hair.</p>
   </section>
   {_note(spec)}
   <section class="section" id="side-by-side">

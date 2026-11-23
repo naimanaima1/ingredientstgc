@@ -115,6 +115,12 @@ def product_page(p):
     desc = f"What's inside {name}: the full ingredient list, decoded." if items else f"{name} in The Good Coil catalog."
     B.write(f"products/{p['_slug']}/index.html", B.shell(r, f"{name}: ingredients · The Good Coil", desc, body, f"products/{p['_slug']}/", 'products', image=f"assets/products/{photo}" if photo else None))
 
+# Short names for the "Label has" filters, from the Label Decoder's groups (build.CHECK_GROUPS).
+HAS_LABEL = {'humectant': 'Water binders', 'slip/detangler': 'Slip', 'butter/oil': 'Oils & butters', 'protein': 'Protein',
+             'ceramides': 'Ceramides', 'peptide': 'Peptides', 'scalp-active': 'Scalp actives', 'silicone': 'Silicones',
+             'sulfate': 'Sulfates', 'strong-cleanser': 'Non-sulfate cleansers', 'paraben': 'Parabens', 'phthalate': 'Phthalates'}
+
+
 def index_page(prods):
     steps = [s for s in STEP_ORDER if any(step_of(p) == s for p in prods)]
     chips = '<button class="chip" type="button" aria-pressed="true" data-tag="">All</button>' + ''.join(
@@ -124,34 +130,86 @@ def index_page(prods):
         if not its:
             return ''
         f, g, _ = B.check_label(its)
-        return ' '.join(k for k, _, _ in B.CHECK_GROUPS if f[k] or g[k])
+        return ' '.join(k.replace('/', '-') for k, _, _ in B.CHECK_GROUPS if f[k] or g[k])
+
+    def ings_of(p):
+        """One entry per label word, in label order: the word plus the library's names for it,
+        so 'hyaluronic acid' finds Sodium Hyaluronate. Entries are separated by '|'."""
+        out = []
+        for t in items_of(p):
+            i = B.lookup(t)
+            names = [t] + ([i['inci_name'], i.get('common_name') or ''] + i['_aliases'] if i else [])
+            out.append(' '.join(dict.fromkeys(B.norm(x) for x in names if x)))
+        return '|'.join(out)
 
     def row(p):
         has = bool(items_of(p))
-        inner = f'''<b>{e(p.get('name', '').strip())}</b><span>{e(p.get('brand', '').strip())} · {e(STEP_LABEL.get(step_of(p), step_of(p)))}</span>{'<i>label read</i>' if has else ''}'''
+        inner = f'''<b>{e(p.get('name', '').strip())}</b><span>{e(p.get('brand', '').strip())} · {e(STEP_LABEL.get(step_of(p), step_of(p)))}</span>{'<i>label read</i>' if has else ''}<em class="ing-hit" hidden></em>'''
         q = B.norm(f"{p.get('brand', '')} {p.get('name', '')}")
         link = f'<a href="{p["_slug"]}/">{inner}</a>' if step_of(p) != 'tool' else f'<div class="nolink">{inner}</div>'
-        return f'<li data-tags="{step_of(p)}" data-q="{e(q)}" data-label="{1 if has else 0}" data-checks="{checks_of(p)}">{link}</li>'
+        return f'<li data-tags="{step_of(p)}" data-q="{e(q)}" data-label="{1 if has else 0}" data-checks="{checks_of(p)}" data-ings="{e(ings_of(p))}">{link}</li>'
     rows = ''.join(row(p) for p in sorted(prods, key=lambda p: (p.get('brand', '').lower(), p.get('name', '').lower())))
     n_lab = sum(1 for p in prods if items_of(p))
+    has_chips = ''.join(
+        f'<button class="chip chip3" type="button" data-has="{k.replace("/", "-")}" data-name="{e(HAS_LABEL.get(k, lbl))}" data-state="">{e(HAS_LABEL.get(k, lbl))}</button>'
+        for k, lbl, _ in B.CHECK_GROUPS)
     body = f'''  <section class="page-head"><span class="eyebrow"><span class="little-dot"></span>The Good Coil catalog</span><h1>Products</h1>
   <p>Every product in our catalog, with what's inside when we've read its label ({n_lab} of {len(prods)} so far). This is a reference list, not a ranking.</p></section>
   <section class="finder" id="find" aria-label="Find a product">
     <label for="q">Search by product or brand</label>
     <input id="q" type="search" placeholder="Try Pattern, leave-in or curl cream" autocomplete="off">
     <div class="chips" role="group" aria-label="Filter by step">{chips}</div>
-    <div class="chips chips-has" role="group" aria-label="Filter by what the label contains"><button class="chip" type="button" aria-pressed="false" data-has="protein">Has protein</button><button class="chip" type="button" aria-pressed="false" data-has="ceramides">Has ceramides</button><button class="chip" type="button" aria-pressed="false" data-has="silicone">Has silicones</button><button class="chip" type="button" aria-pressed="false" data-has="sulfate">Has sulfates</button></div>
+    <div class="finder-ing">
+      <label for="ing">Has these ingredients</label>
+      <div class="ing-row"><input id="ing" type="search" placeholder="Try hyaluronic acid, then ceramide" autocomplete="off" enterkeyhint="done"><button class="btn-add" id="ing-add" type="button">Add</button></div>
+      <p class="finder-hint" id="ing-hint">Add as many as you like. Products need all of them. Other names for the same ingredient count too.</p>
+      <ul class="ing-tokens" id="tokens" aria-label="Ingredients you added"></ul>
+    </div>
+    <fieldset class="chips chips-has">
+      <legend>What the label has <span>Tap once for has, twice for doesn't have, again to clear</span></legend>
+      {has_chips}
+    </fieldset>
     <label class="check"><input type="checkbox" id="lab"> Only products with an ingredient list</label>
+    <p class="finder-share"><button class="btn-link" id="clear" type="button" hidden>Clear all filters</button><button class="btn-link" id="share" type="button" hidden>Copy a link to this search</button><span id="copied" role="status"></span></p>
   </section>
   <p class="count-line" id="count" aria-live="polite">{len(prods)} products</p>
   <ul class="ing-list" id="list">{rows}</ul>
-  <p class="empty-msg" id="none" hidden>Nothing matches. Try the brand name, or clear the filters.</p>
+  <p class="empty-msg" id="none" hidden>Nothing matches. Try fewer filters, another name for the ingredient, or clear the filters.</p>
 <script>
-(()=>{{const q=document.getElementById('q'),lab=document.getElementById('lab'),list=[...document.querySelectorAll('#list li')],chips=[...document.querySelectorAll('.chips:not(.chips-has) .chip')],hasChips=[...document.querySelectorAll('.chips-has .chip')],count=document.getElementById('count'),none=document.getElementById('none');let tag='',has=new Set();
+(()=>{{const $=id=>document.getElementById(id);const q=$('q'),lab=$('lab'),ing=$('ing'),tokEl=$('tokens'),list=[...document.querySelectorAll('#list li')],chips=[...document.querySelectorAll('.chips:not(.chips-has) .chip')],hasChips=[...document.querySelectorAll('.chips-has .chip')],count=$('count'),none=$('none'),share=$('share'),clear=$('clear'),copied=$('copied');
+let tag='',state={{}},toks=[];const TOTAL={len(prods)};
 const n=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
-function run(){{const v=n(q.value);let k=0;list.forEach(li=>{{const c=(li.dataset.checks||'').split(' ');const ok=(!v||li.dataset.q.includes(v))&&(!tag||li.dataset.tags===tag)&&(!lab.checked||li.dataset.label==='1')&&[...has].every(x=>c.includes(x));li.hidden=!ok;if(ok)k++}});count.textContent=k+' of {len(prods)} products';none.hidden=k>0}}
-q.addEventListener('input',run);lab.addEventListener('change',run);chips.forEach(c=>c.addEventListener('click',()=>{{tag=c.dataset.tag;chips.forEach(x=>x.setAttribute('aria-pressed',x===c));run()}}));
-hasChips.forEach(c=>c.addEventListener('click',()=>{{const k=c.dataset.has;has.has(k)?has.delete(k):has.add(k);c.setAttribute('aria-pressed',has.has(k));run()}}));}})();
+const STOP=new Set(['acid','extract','oil','the','and']);
+function core(w){{return w.length>=7?w.slice(0,w.length-2):w}}
+function hit(entries,t){{for(let i=0;i<entries.length;i++){{const en=entries[i];if(en.includes(t))return i;}}
+const ws=t.split(' ').filter(w=>w&&!STOP.has(w)).map(core);if(!ws.length)return -1;
+for(let i=0;i<entries.length;i++){{const en=entries[i];if(ws.every(w=>en.includes(w)))return i;}}return -1}}
+function label(t){{return t.charAt(0).toUpperCase()+t.slice(1)}}
+function drawTokens(){{tokEl.innerHTML='';toks.forEach((t,i)=>{{const li=document.createElement('li');const b=document.createElement('button');b.type='button';b.className='tok';b.textContent=label(t)+' ';const x=document.createElement('span');x.setAttribute('aria-hidden','true');x.textContent='×';b.appendChild(x);b.setAttribute('aria-label','Remove '+t);b.addEventListener('click',()=>{{toks.splice(i,1);drawTokens();run()}});li.appendChild(b);tokEl.appendChild(li)}})}}
+function addTok(){{ing.value.split(/[,;]+/).map(n).filter(Boolean).forEach(t=>{{if(!toks.includes(t))toks.push(t)}});ing.value='';drawTokens();run()}}
+function drawChip(c){{const st=state[c.dataset.has]||'';c.dataset.state=st;c.textContent=(st==='has'?'Has ':st==='no'?'No ':'')+(st?c.dataset.name.toLowerCase():c.dataset.name);c.setAttribute('aria-label',c.dataset.name+(st==='has'?': has':st==='no'?': does not have':': any'))}}
+function run(){{const v=n(q.value);const want=Object.entries(state).filter(([k,s])=>s);let k=0;
+list.forEach(li=>{{const c=(li.dataset.checks||'').split(' ');const read=li.dataset.label==='1';let ok=(!v||li.dataset.q.includes(v))&&(!tag||li.dataset.tags===tag)&&(!lab.checked||read);
+if(ok&&want.length)ok=read&&want.every(([g,s])=>s==='has'?c.includes(g):!c.includes(g));
+const em=li.querySelector('.ing-hit');let found=[];
+if(ok&&toks.length){{const entries=(li.dataset.ings||'').split('|');for(const t of toks){{const i=hit(entries,t);if(i<0){{ok=false;break}}found.push(label(t)+' at #'+(i+1))}}}}
+if(em){{em.hidden=!(ok&&found.length);em.textContent=found.join(' · ')}}
+li.hidden=!ok;if(ok)k++}});
+count.textContent=k+' of '+TOTAL+' products';none.hidden=k>0;
+const active=v||tag||lab.checked||want.length||toks.length;share.hidden=!active;clear.hidden=!active;save(v)}}
+function save(v){{const p=new URLSearchParams();if(q.value.trim())p.set('q',q.value.trim());if(tag)p.set('step',tag);
+const h=Object.keys(state).filter(k=>state[k]==='has'),o=Object.keys(state).filter(k=>state[k]==='no');if(h.length)p.set('has',h.join(','));if(o.length)p.set('no',o.join(','));
+if(toks.length)p.set('ing',toks.join(','));if(lab.checked)p.set('read','1');const s=p.toString();try{{history.replaceState(null,'',location.pathname+(s?'?'+s:''))}}catch(e){{}}}}
+function load(){{const p=new URLSearchParams(location.search);if(p.get('q'))q.value=p.get('q');const st=p.get('step');if(st){{const c=chips.find(x=>x.dataset.tag===st);if(c){{tag=st;chips.forEach(x=>x.setAttribute('aria-pressed',x===c))}}}}
+(p.get('has')||'').split(',').filter(Boolean).forEach(k=>state[k]='has');(p.get('no')||'').split(',').filter(Boolean).forEach(k=>state[k]='no');
+toks=(p.get('ing')||'').split(',').map(n).filter(Boolean);if(p.get('read')==='1')lab.checked=true;hasChips.forEach(drawChip);drawTokens()}}
+q.addEventListener('input',run);lab.addEventListener('change',run);
+chips.forEach(c=>c.addEventListener('click',()=>{{tag=c.dataset.tag;chips.forEach(x=>x.setAttribute('aria-pressed',x===c));run()}}));
+hasChips.forEach(c=>c.addEventListener('click',()=>{{const k=c.dataset.has,s=state[k]||'';state[k]=s===''?'has':s==='has'?'no':'';drawChip(c);run()}}));
+$('ing-add').addEventListener('click',addTok);ing.addEventListener('keydown',ev=>{{if(ev.key==='Enter'){{ev.preventDefault();addTok()}}}});
+clear.addEventListener('click',()=>{{q.value='';tag='';chips.forEach((x,i)=>x.setAttribute('aria-pressed',i===0));state={{}};hasChips.forEach(drawChip);toks=[];drawTokens();lab.checked=false;run();q.focus()}});
+share.addEventListener('click',async()=>{{try{{await navigator.clipboard.writeText(location.href);copied.textContent='Link copied'}}catch(e){{copied.textContent='Copy the address from your browser bar'}}setTimeout(()=>copied.textContent='',2500)}});
+load();run()}})();
 </script>'''
     B.write('products/index.html', B.shell('../', 'Products: what\'s inside · The Good Coil', 'Every product in The Good Coil catalog, with its ingredient list decoded.', body, 'products/', 'products'))
 
@@ -169,6 +227,8 @@ def build():
     try:
         DUPE_PAGES.update(DUP.build(prods, step_of, items_of))
         DUPE_URLS.extend(DUPE_PAGES.values())
+        import dupes_v1  # PREVIEW: the first version at /dupes/<slug>/v1/ for side-by-side review
+        dupes_v1.build(prods, step_of, items_of)
     except Exception as err:  # never let these pages stop the rest of the site from publishing
         print(f'Warning: dupe pages skipped ({err!r})')
     for p in prods:

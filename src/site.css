@@ -1405,7 +1405,7 @@ html{scroll-behavior:smooth}
 
 /* Dupe pages v2 (scripts/dupes.py) */
 .dupe-head{border-bottom:0}
-.dupe-head h1{max-width:16ch}
+.dupe-head h1{max-width:18ch}
 .dupe-head>p{max-width:62ch;font-size:17px;line-height:1.6}
 .dupe-quick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin-top:30px;border:1px solid var(--ink)}
 .dupe-pick{padding:22px 24px 24px;background:#fff}
@@ -1446,3 +1446,34 @@ a.dupe-pname:hover b{text-decoration:underline;text-underline-offset:3px}
 
 .dupe-page .sim-why li{font-size:15px}
 .dupe-page .sim-mark,.dupe-page .dupe-line span{font-size:12px}
+
+/* Products page: ingredient search and has / doesn't-have filters */
+.finder-ing{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.ing-row{display:flex;gap:10px;align-items:flex-end;max-width:560px}
+.ing-row input{flex:1;min-width:0}
+.btn-add{font:inherit;font-size:14px;font-weight:700;background:var(--ink);color:var(--paper);border:1px solid var(--ink);border-radius:999px;padding:10px 20px;min-height:44px;cursor:pointer}
+.btn-add:hover{background:var(--cobalt);border-color:var(--cobalt)}
+.finder-hint{margin:2px 0 0;font-size:13px;color:var(--muted)}
+.ing-tokens{list-style:none;padding:0;margin:4px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.ing-tokens:empty{display:none}
+.tok{font:inherit;font-size:14px;font-weight:700;background:var(--citrus);border:1px solid var(--ink);color:var(--ink);padding:7px 12px;min-height:40px;cursor:pointer}
+.tok span{font-weight:400;margin-left:2px}
+.chips-has{border:0;padding:0;margin:6px 0 0;min-width:0}
+.chips-has legend{font-size:13px;font-weight:700;padding:0;margin-bottom:10px;width:100%}
+.chips-has legend span{display:block;font-weight:400;color:var(--muted);margin-top:2px}
+.chip3[data-state=has]{background:var(--citrus);border-color:var(--ink)}
+.chip3[data-state=no]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.finder-share{margin:0;display:flex;gap:18px;flex-wrap:wrap;align-items:center;font-size:14px}
+.btn-link{font:inherit;font-size:14px;font-weight:700;background:none;border:0;border-bottom:1px solid var(--ink);padding:4px 0;color:var(--ink);cursor:pointer;min-height:32px}
+.finder-share [role=status]{color:var(--cobalt);font-weight:700}
+.ing-list .ing-hit{grid-column:1 / -1;font-style:normal;font-size:13px;font-weight:600;color:var(--ink);background:var(--paper);padding:4px 8px;justify-self:start;margin-top:2px}
+.dupe-preview{margin:24px 0 0;padding:10px 14px;background:var(--blue-mist);font-size:14px;font-weight:600}
+.dupe-preview a{border-bottom:1px solid var(--ink)}
+/* Products page finder: undo the homepage hero's dark-background finder styles (line ~651) */
+#find label{display:block;color:var(--ink);font-size:13px;font-weight:700;letter-spacing:0;text-transform:none;margin-bottom:0}
+#find input[type=search]{color:var(--ink);background:#fff;border:1px solid var(--ink);border-radius:0;padding:12px 14px;font-size:17px;max-width:560px}
+#find input[type=search]::placeholder{color:var(--muted)}
+#find input[type=search]:focus{outline:3px solid var(--cobalt);outline-offset:2px;background:#fff}
+#find label.check{display:flex;align-items:center;gap:10px;font-weight:600}
+#find label.check input{width:20px;height:20px;margin:0;accent-color:var(--ink)}
+.ing-list .ing-hit{font-family:inherit}
