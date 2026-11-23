@@ -150,12 +150,12 @@ def page(g, draft=''):
         stack, dots = {}, ''
         for k, (p, items, n) in enumerate(hits):
             h = stack.get(n, 0); stack[n] = h + 1
-            dots += (f'<a class="dot" tabindex="-1" data-step="{e(p.get("step", ""))}" href="#{"example" if k == 0 else f"p{k}"}" '
+            dots += (f'<a class="dot" tabindex="-1" aria-hidden="true" data-step="{e(p.get("step", ""))}" href="#{"example" if k == 0 else f"p{k}"}" '
                      f'style="left:{x(n)}%;bottom:{58 + h * 24}px;animation-delay:{1.3 + min(k, 40) * .04:.2f}s"></a>')
         ticks = ''.join(f'<span class="tick" style="left:{x(n)}%">{B.ordinal(n)}</span>' for n in (1, 10, 20, 30, 40))
-        bands = (f'<span class="iv2-band" style="left:0;width:{x(5.5)}%"><b>Near the top</b> 1–5</span>'
-                 f'<span class="iv2-band" style="left:{x(5.5)}%;width:{x(15.5) - x(5.5)}%"><b>Middle</b> 6–15</span>'
-                 f'<span class="iv2-band" style="left:{x(15.5)}%;right:0"><b>Lower down</b> 16+</span>')
+        bands = (f'<span class="iv2-band" style="left:0;width:{x(5.5)}%"><b>Near the top</b><span> 1–5</span></span>'
+                 f'<span class="iv2-band" style="left:{x(5.5)}%;width:{x(15.5) - x(5.5)}%"><b>Middle</b><span> 6–15</span></span>'
+                 f'<span class="iv2-band" style="left:{x(15.5)}%;right:0"><b>Lower down</b><span> 16+</span></span>')
         def step_f(s, lbl):
             c = sum(1 for h in hits if h[0].get('step') == s)
             if not c:

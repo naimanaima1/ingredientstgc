@@ -1625,7 +1625,7 @@ a.dupe-pname:hover b{text-decoration:underline;text-underline-offset:3px}
   .iv2-sec{grid-template-columns:1fr;margin-top:52px;padding-top:30px}
   .iv2-sec h2,.iv2-sec>*:not(h2),.iv2-across .iv2-why,.iv2-across .iv2-strip{grid-column:1;grid-row:auto}
   .iv2-sec h2{font-size:27px}
-  .iv2-band{font-size:10px}
+  .iv2-band{font-size:11px}
   .iv2-band span{display:none}
 }
 @media(forced-colors:active){.iv2 .step-f,.iv2-all{border:1px solid ButtonText}.iv2 .step-f[aria-pressed=true]{outline:2px solid Highlight}}
