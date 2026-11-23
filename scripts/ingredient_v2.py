@@ -9,8 +9,7 @@ What changes from the live page (build.py ingredient_page), from the ingredient 
   - The position chart has three labelled bands, and its dots are no longer one tab stop each.
   - Step filter buttons keep an outline in Windows High Contrast.
   - Meta description doesn't repeat the name; JSON-LD describes the ingredient.
-  - DRAFT lead lines for the preview ingredients (in DRAFT_LEAD) show the voice the review suggests;
-    the live text still comes from the sheet.
+  - The opening line is the sheet's plain_english_summary, as on the live page.
 
 Delete this file and its lines in build.py when the preview is done.
 """
@@ -22,12 +21,7 @@ e = B.e
 # Matched against the INCI name, the page title and the slug.
 PREVIEW = ['glycerin', 'parfum']
 
-DRAFT_LEAD = {
-    'glycerin': 'Pulls water into your hair, from your products and from the air. '
-                'It works best when the air is neither very dry nor very humid.',
-    'parfum': 'The scent. One word on the label can stand for dozens of ingredients '
-              'the brand doesn’t have to list one by one.',
-}
+DRAFT_LEAD = {}  # the opening line always comes from the sheet (plain_english_summary)
 
 CAP = 12
 
