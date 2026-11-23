@@ -292,8 +292,8 @@ def lvl_badge(r, lv, sc):
     if g in lv:
         top = max(lv.values())
         bg = tone(lv[g], top)[0]
-        return f'<span class="gp-lvl" style="--c:{bg}">Level {lv[g]} of {top} · {e(sc["axis"])}</span>'
-    return '<span class="gp-lvl is-support">Supporting ingredient · no level</span>'
+        return f'<p class="gp-sub"><span class="gp-sub-dot" style="--c:{bg}"></span>Level {lv[g]} of {top} · {e(sc["axis"].lower())}</p>'
+    return '<p class="gp-sub">Supporting ingredient · no level</p>'
 
 
 def example_html(gid):
@@ -326,11 +326,21 @@ def page(family, rows, ids):
         lv = {r['group_id']: sc['levels'][r['group_id']] for r in rows if r.get('group_id') in sc['levels']}
         top = max(lv.values()) if lv else 0
         if top:
-            segs = ''.join(
-                f'<li><a href="#{family_slug(r["sub_classification"])}" style="--c:{tone(lv[r["group_id"]], top)[0]}"><b>Level {lv[r["group_id"]]}</b><span>{e(short_name(r["sub_classification"]))}</span></a></li>'
-                for r in rows if r.get('group_id') in lv)
-            dial = f'''<div class="gp-scale"><p class="gp-scale-t">{e(sc["axis"])}, from level 1 to level {top}</p>
-    <ol>{segs}</ol><p class="gp-scale-ends"><span>&larr; {e(sc["low"])}</span><span>{e(sc["high"])} &rarr;</span></p></div>'''
+            lvl_rows = [r for r in rows if r.get('group_id') in lv]
+            strip = ''.join(f'<i style="--c:{tone(lv[r["group_id"]], top)[0]}"></i>' for r in lvl_rows)
+            def kinds(sub):
+                m = re.search(r'\((.*)\)', sub)
+                return m.group(1) if m else ''
+            stops = ''.join(
+                f'<li><a href="#{family_slug(r["sub_classification"])}"><small>Level {lv[r["group_id"]]}</small><b>{e(short_name(r["sub_classification"]))}</b>'
+                + (f'<span>{e(kinds(r["sub_classification"]))}</span>' if kinds(r["sub_classification"]) else '') + '</a></li>'
+                for r in lvl_rows)
+            dial = f'''<div class="gp-dial">
+      <h2 class="gp-top-t">{e(sc["axis"])}</h2>
+      <div class="gp-strip" aria-hidden="true">{strip}</div>
+      <ol class="gp-stops" style="--n:{len(lvl_rows)}">{stops}</ol>
+      <p class="gp-scale-ends"><span>&larr; {e(sc["low"])}</span><span>{e(sc["high"])} &rarr;</span></p>
+    </div>'''
     for n, r in enumerate(rows, 1):
         ps = paragraphs(r.get('how_it_behaves_on_coily_hair'))
         long_p = ps[0] if ps else ''
@@ -342,7 +352,8 @@ def page(family, rows, ids):
         secs += f'''  <section class="gp-sec" id="{family_slug(r['sub_classification'])}">
     <div class="gp-num"><span>{n:02d}</span></div>
     <div class="gp-body">
-      {lvl_badge(r, lv, sc)}<h2>{e(r['sub_classification'])}</h2>
+      <h2>{e(r['sub_classification'])}</h2>
+      {lvl_badge(r, lv, sc)}
       {f'<p class="gp-short">{e(short_p)}</p>' if short_p else ''}
       <p class="gp-long">{e(long_p)}</p>
       <div class="gp-ings">{member_html(members, ids)}</div>
@@ -370,23 +381,29 @@ def page(family, rows, ids):
             msg = f'None of the {total} ingredients named below have their own page yet.'
         else:
             msg = f'{soon} of the {total} ingredients named below {"does" if soon == 1 else "do"} not have {"its" if soon == 1 else "their"} own page yet.'
-        note = (f'<p class="gp-soon">{msg} '
-                'The row is on the way, and the name here will become a link as soon as it lands.</p>')
+        note = (f'<li class="gp-know-soon">{msg} '
+                'The row is on the way, and the name here will become a link as soon as it lands.</li>')
 
-    callouts = ''.join(f'<p class="gp-note">{e(t)}</p>' for t in NOTES.get(family, []))
+    def know(t):
+        """A note as a list item: its first sentence in bold, the rest plain."""
+        m = re.match(r'(.+?[.!?])\s+(.+)$', t.strip(), re.S)
+        return f'<li><b>{e(m.group(1))}</b> {e(m.group(2))}</li>' if m else f'<li>{e(t)}</li>'
+    callouts = ''.join(know(t) for t in NOTES.get(family, []))
     if family in CROSS:
         pre, txt, slug = CROSS[family]
-        callouts += f'<p class="gp-note">{e(pre)}<a href="../{slug}/">{e(txt)} &rarr;</a></p>'
+        callouts += f'<li>{e(pre)}<a href="../{slug}/">{e(txt)} &rarr;</a></li>'
+    fam_words = family.split(' ')
+    h1 = (f'{e(" ".join(fam_words[:-1]))} <em>{e(fam_words[-1].lower())}</em>' if len(fam_words) > 1 else e(family))
+    know_html = (f'''<div class="gp-know"><h2 class="gp-top-t">Good to know</h2><ul>{callouts}{note}</ul></div>'''
+                 if (callouts or note) else '')
+    top_html = f'<div class="gp-top{" gp-top-solo" if not dial else ""}">{dial}{know_html}</div>' if (dial or know_html) else ''
     body = f'''  <a class="crumb" href="../../groups/">← Ingredient families</a>
   <section class="gp-first">
-    <span class="eyebrow"><span class="little-dot"></span>Ingredient family</span>
-    <h1>{e(family)}</h1>
+    <h1>{h1}</h1>
     <p class="gp-lead">{e(head)}</p>
     {f'<p class="lead">{e(lead)}</p>' if lead else ''}
-    {callouts}
-    {note}
-    {dial}
   </section>
+  {top_html}
 {secs}  {spot_html}
 '''
     return B.shell('../../', f'{family} · The Good Coil Library',

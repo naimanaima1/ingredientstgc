@@ -1489,3 +1489,41 @@ a.dupe-pname:hover b{text-decoration:underline;text-underline-offset:3px}
 .go,.gd-go,.btn{border-radius:999px}
 .gp-scale a,.gz-img{border-radius:0}
 .finder input,.t-find input,.t-paste textarea,.gp-ing,.chk-flag,.step-f{border-radius:0}
+
+/* ===== Family pages v2 (scripts/groups.py): a dial and a "Good to know" list instead of boxes ===== */
+.gp-first{max-width:none}
+.gp-first h1 em{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;color:var(--cobalt);letter-spacing:-.02em}
+.gp-first .gp-lead{max-width:34ch}
+.gp-top{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:72px;margin-top:48px;align-items:start}
+.gp-top-solo{grid-template-columns:minmax(0,760px)}
+.gp-top-t{font-size:15px;font-weight:700;letter-spacing:0;margin:0 0 16px}
+.gp-strip{display:flex;height:14px;border-radius:999px;overflow:hidden}
+.gp-strip i{flex:1;background:var(--c)}
+.gp-stops{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:20px}
+.gp-stops a{display:block;text-decoration:none;color:var(--ink)}
+.gp-stops small{display:block;font-size:13px;font-weight:700;margin-bottom:4px}
+.gp-stops b{display:block;font-size:19px;letter-spacing:-.02em;line-height:1.2}
+.gp-stops span{display:block;font-size:15px;color:var(--muted);margin-top:4px;line-height:1.45}
+.gp-stops a:hover b{text-decoration:underline;text-underline-offset:3px}
+.gp-stops a:focus-visible{outline:3px solid var(--cobalt);outline-offset:4px}
+.gp-top .gp-scale-ends{font-size:13px;font-weight:700;color:var(--muted);margin-top:14px}
+.gp-know ul{list-style:none;margin:0;padding:0}
+.gp-know li{border-top:1px solid var(--line);padding:14px 0;font-size:16px;line-height:1.55}
+.gp-know li b{display:block;margin-bottom:2px}
+.gp-know li a{font-weight:700;border-bottom:1px solid var(--ink)}
+.gp-know .gp-know-soon{font-size:14px;color:var(--muted)}
+.gp-sec{border-top:2px solid var(--ink);margin-top:88px;padding-top:30px;grid-template-columns:120px minmax(0,1fr);gap:40px}
+.gp-num span{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;font-size:64px;line-height:.8;color:var(--cobalt);letter-spacing:0}
+.gp-body h2{margin:0 0 6px}
+.gp-sub{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700;color:var(--muted);margin:0 0 18px}
+.gp-sub-dot{width:12px;height:12px;border-radius:50%;background:var(--c);border:1px solid var(--ink);flex:none}
+.gp-ing{border:0;border-radius:999px;padding:8px 14px;font-weight:700}
+.gp-ing.is-soon{border:0;border-bottom:1px dashed var(--muted);border-radius:0;padding:8px 2px}
+.gp-guide{background:none;border:0;border-top:1px solid var(--line);padding:16px 0 0}
+.gp-guide b{display:inline;font-size:16px;letter-spacing:0;text-transform:none;margin:0 6px 0 0;color:var(--cobalt)}
+.gp-guide b:after{content:':'}
+@media(max-width:760px){
+ .gp-top{grid-template-columns:1fr;gap:44px;margin-top:36px}
+ .gp-stops{grid-template-columns:1fr;gap:14px}.gp-strip{height:10px}
+ .gp-sec{grid-template-columns:1fr;gap:6px;margin-top:64px}.gp-num span{font-size:48px}
+}
