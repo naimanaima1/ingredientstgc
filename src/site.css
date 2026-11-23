@@ -1583,3 +1583,50 @@ a.dupe-pname:hover b{text-decoration:underline;text-underline-offset:3px}
  .v2-has li{grid-template-columns:1fr;gap:6px}.v2-sim-cols{grid-template-columns:1fr;gap:12px}
 }
 @media(max-width:760px){.v2-title .shop{margin-bottom:8px}.v2-media-solo{margin-top:12px}.v2-hero{gap:44px}}
+
+/* ---------- PREVIEW: ingredient page v2 (scripts/ingredient_v2.py) ---------- */
+.iv2 .name h1 em{font-family:'Instrument Serif',serif;font-weight:400;font-style:italic;color:var(--cobalt);letter-spacing:-.03em}
+.iv2-on{font-size:15px;line-height:1.6;margin-top:4px}
+.iv2-on span{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:8px}
+.iv2 .lead{max-width:36ch}
+.iv2-fact{font-size:16px;margin-top:18px;padding-top:14px;border-top:1px solid var(--line);max-width:36ch}
+.iv2-fact b{font-weight:800}
+.iv2-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.iv2-jump{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:16px;font-size:13px;font-weight:600}
+.iv2-jump a{border-bottom:1px solid currentColor;padding:4px 0}
+.iv2-sec{margin-top:72px;border-top:1px solid var(--line);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:12px 64px;align-items:start}
+.iv2-sec h2{font-size:34px;line-height:1.1;letter-spacing:-.045em;grid-column:1}
+.iv2-sec>*:not(h2){grid-column:2}
+.iv2-sec h3{font-size:17px;margin-top:22px}
+.iv2-src{font-size:13px;color:var(--muted);margin-top:16px;line-height:1.6}
+.iv2-src b{color:var(--ink);margin-right:6px}
+.iv2-todo{border:1px dashed var(--line);padding:8px 12px}
+.iv2-across{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}
+.iv2-across .iv2-why{font-size:14px;grid-row:2;grid-column:1;max-width:34ch}
+.iv2-across .iv2-strip{grid-row:1/span 2}
+.iv2-strip{height:200px}
+.iv2-band{position:absolute;top:0;bottom:44px;border-left:1px dashed var(--line);padding:0 0 0 8px;font-size:11px;font-weight:600;color:var(--muted);line-height:1.3}
+.iv2-band:first-child{border-left:0;background:rgba(37,72,215,.07)}
+.iv2-band b{display:block;color:var(--ink);font-weight:800;padding-top:4px}
+.iv2 .dot{z-index:1}
+.iv2-steps{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.iv2 .step-f{border:1px solid var(--line);border-radius:999px;padding:6px 14px;margin:0;text-decoration:none;font-size:13px;font-weight:600;min-height:36px}
+.iv2 .step-f:hover{border-color:var(--ink)}
+.iv2 .step-f b{color:var(--cobalt);margin-left:2px}
+.iv2-list{margin-top:14px}
+.iv2-list .iv2-more{display:none}
+.iv2-list.open .iv2-more,.iv2-list.filtered .iv2-more{display:flex}
+.iv2-list li[hidden]{display:none!important}
+.iv2-all{font:inherit;font-size:14px;font-weight:700;color:var(--ink);background:none;border:1px solid var(--ink);border-radius:999px;padding:10px 20px;margin-top:16px;cursor:pointer;justify-self:start;min-height:44px}
+.iv2-all:hover{background:var(--ink);color:var(--paper)}
+.iv2 .fine{font-size:13px;color:var(--muted);margin-top:14px}
+.iv2 .related a{border-radius:999px}
+@media(max-width:760px){
+  .iv2-sec{grid-template-columns:1fr;margin-top:52px;padding-top:30px}
+  .iv2-sec h2,.iv2-sec>*:not(h2),.iv2-across .iv2-why,.iv2-across .iv2-strip{grid-column:1;grid-row:auto}
+  .iv2-sec h2{font-size:27px}
+  .iv2-band{font-size:10px}
+  .iv2-band span{display:none}
+}
+@media(forced-colors:active){.iv2 .step-f,.iv2-all{border:1px solid ButtonText}.iv2 .step-f[aria-pressed=true]{outline:2px solid Highlight}}
+body:has(.iv2) .nav-cta{white-space:normal;text-align:center;line-height:1.2}

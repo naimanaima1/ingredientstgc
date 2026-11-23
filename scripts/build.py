@@ -811,6 +811,11 @@ def main():
     guided_test.build()
     import watchlist
     watchlist.build()
+    try:  # PREVIEW: ingredient page v2 at /<slug>/v2/ (noindex); see scripts/ingredient_v2.py
+        import ingredient_v2
+        ingredient_v2.build()
+    except Exception as ex:
+        print('Ingredient v2 preview skipped:', ex)
     import decoder  # the full Label Decoder and compare at /label-decoder/
     decoder.build()
     import ecosystem_tests  # TEST JARA landing + Good Coil homepage (noindex)
