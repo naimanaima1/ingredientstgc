@@ -332,13 +332,15 @@ def page(family, rows, ids):
                 m = re.search(r'\((.*)\)', sub)
                 return m.group(1) if m else ''
             stops = ''.join(
-                f'<li><a href="#{family_slug(r["sub_classification"])}"><small>Level {lv[r["group_id"]]}</small><b>{e(short_name(r["sub_classification"]))}</b>'
+                f'<li style="--c:{tone(lv[r["group_id"]], top)[0]}"><a href="#{family_slug(r["sub_classification"])}"><small>Level {lv[r["group_id"]]}</small><b>{e(short_name(r["sub_classification"]))}</b>'
                 + (f'<span>{e(kinds(r["sub_classification"]))}</span>' if kinds(r["sub_classification"]) else '') + '</a></li>'
                 for r in lvl_rows)
             dial = f'''<div class="gp-dial">
       <h2 class="gp-top-t">{e(sc["axis"])}</h2>
       <div class="gp-strip" aria-hidden="true">{strip}</div>
+      <p class="gp-v-end">{e(sc["low"])}</p>
       <ol class="gp-stops" style="--n:{len(lvl_rows)}">{stops}</ol>
+      <p class="gp-v-end">{e(sc["high"])}</p>
       <p class="gp-scale-ends"><span>&larr; {e(sc["low"])}</span><span>{e(sc["high"])} &rarr;</span></p>
     </div>'''
     for n, r in enumerate(rows, 1):

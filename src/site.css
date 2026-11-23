@@ -1527,3 +1527,16 @@ a.dupe-pname:hover b{text-decoration:underline;text-underline-offset:3px}
  .gp-stops{grid-template-columns:1fr;gap:14px}.gp-strip{height:10px}
  .gp-sec{grid-template-columns:1fr;gap:6px;margin-top:64px}.gp-num span{font-size:48px}
 }
+/* Phones: the strip turns vertical, so each level sits next to its own colour */
+@media(max-width:760px){
+ .gp-dial .gp-strip{display:none}
+ .gp-stops{gap:0;margin-top:0}
+ .gp-stops li{position:relative;padding:10px 0 12px 26px}
+ .gp-stops li:before{content:'';position:absolute;left:0;top:0;bottom:0;width:10px;background:var(--c)}
+ .gp-stops li:first-child:before{border-radius:999px 999px 0 0}
+ .gp-stops li:last-child:before{border-radius:0 0 999px 999px}
+ .gp-top .gp-scale-ends{display:none}
+ .gp-v-end{display:block!important;font-size:13px;font-weight:700;color:var(--muted);margin:0 0 8px}
+ .gp-stops+.gp-v-end{margin:8px 0 0}
+}
+.gp-v-end{display:none}
