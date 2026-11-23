@@ -167,15 +167,24 @@ def _names(ts):
     return ', '.join(short(t) for t in ts[:2]) + (' and more' if len(ts) > 2 else '')
 
 
+def label_name(p, other_p=None):
+    """How a product is named in a comparison line: its brand, or its name when both share a brand."""
+    brand, name = p.get('brand', '').strip(), p.get('name', '').strip()
+    if not brand or (other_p is not None and B.norm(brand) == B.norm(other_p.get('brand', ''))):
+        return name or brand
+    return brand
+
+
 def compare(a, b, step):
-    """[(same, line)] for each dimension, written from page a's point of view ('this one' vs b's name)."""
-    other = B.product_full_name(b['p'])
+    """[(same, line, key)] for each dimension. Both products are named, never 'this one'."""
+    me = label_name(a['p'], b['p'])
+    other = label_name(b['p'], a['p'])
     out = []
     if step in HEAT_STEPS:
         ha, hb = 'heat protectant' in a['tags'], 'heat protectant' in b['tags']
         line = ('Both are heat protectants (tagged in our catalog).' if ha and hb else
                 'Neither is tagged as a heat protectant.' if not ha and not hb else
-                'Only this one is a heat protectant.' if ha else f'Only {other} is a heat protectant.')
+                f'Only {me} is a heat protectant.' if ha else f'Only {other} is a heat protectant.')
         out.append((ha == hb, line, 'heat'))
     for key, thing, cats in DIMS['cleanse' if step == 'cleanse' else 'other']:
         if key == 'clean':
@@ -190,7 +199,7 @@ def compare(a, b, step):
             else:
                 ma = f" ({short(a['main'])})" if a['main'] else ''
                 mb = f" ({short(b['main'])})" if b['main'] else ''
-                line = f"Different cleanser strength: this one is built on {la[1]}{ma}, {other} on {lb[1]}{mb}."
+                line = f"Different cleanser strength: {me} is built on {la[1]}{ma}, {other} on {lb[1]}{mb}."
             out.append((same, line, key))
             continue
         (ba, pa, ha), (bb, pb, hb) = band(a, cats), band(b, cats)
@@ -199,9 +208,9 @@ def compare(a, b, step):
         elif ba == 'none':
             out.append((False, f"Only {other} has {thing} ({_names(hb)}).", key))
         elif bb == 'none':
-            out.append((False, f"Only this one has {thing} ({_names(ha)}).", key))
+            out.append((False, f"Only {me} has {thing} ({_names(ha)}).", key))
         elif ba != bb and abs(pa - pb) > 2:  # across the line but close (#6 vs #8) still counts as the same
-            out.append((False, f"{thing[0].upper() + thing[1:]} at a different strength: from #{pa} on this label, from #{pb} on {other}.", key))
+            out.append((False, f"{thing[0].upper() + thing[1:]} at a different strength: from #{pa} on {me}, from #{pb} on {other}.", key))
         else:
             where = 'near the top' if ba == bb == 'lead' else 'lower down' if ba == bb == 'some' else 'at about the same place'
             shared = [t for t in ha if B.norm(short(t)) in {B.norm(short(x)) for x in hb}]

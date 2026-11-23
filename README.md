@@ -52,7 +52,7 @@ Every product page lists up to three catalog products whose labels are built the
 
 ## Dupe pages
 
-`/dupes/<slug>/` pages (`scripts/dupes.py`) compare one much-searched product with the catalog: **Closest wash** (same cleanser strength, then the most cleansers in common, weighted toward the top of both labels) and **Closest overall** (the most Similar labels checks the same). To add a page, add a line to `PAGES` in that file. A product with no label in the catalog gets no page. Pages are listed in the sitemap and linked from the product's own page.
+`/dupes/<slug>/` pages (`scripts/dupes.py`) compare one much-searched product with the catalog: **Closest wash** (same cleanser strength, then the most cleansers in common, weighted toward the top of both labels) and **Closest overall** (the most Similar labels checks the same). To add a page, add a line to `PAGES` in that file. Each page opens with a quick answer, then an optional founder's note (`note` in `PAGES`, plain text), a side-by-side table, the original's label, the two ranked lists, and "Seen on other dupe lists": products added by hand under `extra` (brand, name, label, source) that aren't in the catalog yet. Those are compared the same way, marked "not in our catalog yet", and shown with the reason when their cleanser strength differs. A product with no label in the catalog gets no page. Pages are listed in the sitemap and linked from the product's own page.
 
 ## Run it locally
 
