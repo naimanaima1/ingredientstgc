@@ -597,7 +597,7 @@ def page(d):
     <p class="gd-intro">{e(d['intro'])}</p>
     {hero_cta(d)}
   </div>
-  <div class="tp-photo"><img src="{r}assets/img/{e(d['image'])}" alt="{e(d['image_alt'])}" width="848" height="1424"></div>
+  <div class="tp-photo"><img src="{r}assets/img/{e(d['image'])}" alt="{e(d['image_alt'])}" width="848" height="1424"{f' style="object-position:{e(d["image_pos"])}"' if d.get('image_pos') else ''}></div>
 </section>
 <nav class="gd-jump" aria-label="On this page">{jump_html}</nav>
 {''.join(out)}
